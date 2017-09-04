@@ -14,6 +14,6 @@ sudo pip install mysqlclient && sudo pip3 install mysqlclient
 # Third clone forked repo to directory where you want .
 first go to terminal and go to that dir
 then copy paste this link
-#git clone https://github.com/<YOUR USERNAME>/StudyMonk.git
+#git clone https://github.com/YOUR USERNAME/StudyMonk.git
 
 #open pycharm and then go the dir where you save that project and select that project and start improve this project
