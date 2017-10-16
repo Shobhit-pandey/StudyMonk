@@ -1,7 +1,15 @@
 myvenv
 db.sqlite3
 .DS_Store
-StudyStack/migrations/*
+StudyMonk/migrations/*
 
-.idea/*
+.idea/dataSources
+.idea/vcs.xml
+.idea/dataSources.xml
+.idea/dataSources.local.xml
+.idea/inspectionProfiles
+.idea/misc.xml
+.idea/modules.xml
+.idea/StudyMonk.iml
+.idea/workspace.xml
 StudyMonk/__pycache__/
