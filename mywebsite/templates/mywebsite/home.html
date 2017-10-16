@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-    <link href="{% static 'css/design.css' %}" rel="stylesheet" type="text/css">
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" type="text/css">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -27,7 +27,7 @@
     <div class="row">
         <div class="col-md-12 col-sm-12">
             <video id="video-bg-elem" preload="auto" autoplay="true" loop="loop" muted="muted">
-                <source src="_css/Short%20wildlife%20video%20clip%20HD.mp4" type="video/mp4" style="width: 100%">
+                <source src="{% static 'videos/Short%20wildlife%20video%20clip%20HD.mp4' %}" type="video/mp4" style="width: 100%">
             </video>
         </div>
     </div>
@@ -37,7 +37,7 @@
 <nav class="navbar navbar-inverse" >
     <div class="container">
         <div class="navbar-header">
-            <img class="image" src="Study.png">
+            <img class="image" src="{% static 'images/Study.png' %}">
         </div>
         <div class="navbar-header">
             <a class="navbar-brand" href="#" style="font-size: 50px;padding-top: 25px">Studymonk</a>
