@@ -3,3 +3,5 @@ db.sqlite3
 .DS_Store
 StudyStack/migrations/*
 
+.idea/*
+StudyMonk/__pycache__/
