@@ -1,15 +1,201 @@
-{% extends 'base.html' %}
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE>
+<html>
 <head>
-    <meta charset="UTF-8">
-    {% block head %}
-    <title>ABOUT</title>
-    {% endblock %}
+    {% load staticfiles %}
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <style>
+        .desc{
+
+            background-color: black;
+
+        }
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            width: 300px;
+            padding-top: 20px;
+
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+
+        }
+
+
+        .image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+        }
+
+        .btn-group {
+            padding-top: 20px;
+            padding-right: 30px;
+        }
+
+        hr {
+            color: black;
+            border-bottom: 2px solid;
+        }
+
+        .container-fluid {
+            padding-left: 100px;
+        }
+
+    </style>
 </head>
 <body>
-{% block body %}
-Developers of this site is Shobhit.He is pursing Btech CS from IIIT Vadodara.
-{% endblock %}
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <img class="image" src="{% static 'images/Study.png' %}">
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#" style="font-size: 50px;padding-top: 25px">Studymonk</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span>Aboutus</a></li>
+      <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user "></span> Sign Up</a>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="#">Student Signup</a></li>
+        <li><a href="#">Teacher Signup</a></li>
+      </ul>
+      </li>
+      <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in "></span> Login</a>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="#">Student Login</a></li>
+        <li><a href="#">Teacher Login</a></li>
+      </ul>
+      </li>
+    </ul>
+
+    </div>
+</nav>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4 col-sm-4">
+            <div class="card">
+                <img class="img-circle" src="{% static 'images/Study.png' %}" alt="Avatar" style="height:240px ;width:100%">
+                <h4><b><a href="#"> Sakshi Sharma </a></b></h4>
+                <div class ="desc">
+
+                <a href="mywebsite/home.html"><img src="{% static 'images/linkedin.jpeg' %}" alt="Avatar" style="height:40px ;width:50px; margin-right: 30px;margin-left: 30px"></a>
+                <a href="mywebsite/home.html"><img src="{% static 'images/github.png' %}" alt="Avatar" style="height:40px ;width:50px; margin-right: 30px"></a>
+
+                <a href="mywebsite/home.html"><img src="{% static 'images/fb.jpeg' %}" alt="Avatar" style="height:40px ;width:50px"></a>
+
+                </div>
+
+
+            </div>
+        </div>
+
+
+        <div class="col-md-4 col-sm-4">
+            <div class="card">
+                <img class="img-circle" src="{% static 'images/Study.png' %}" alt="Avatar" style="height:240px ; width:100%">
+                <h4><b><a href="#"> Maneesh</a></b></h4>
+
+                <div class ="desc">
+
+                <a href="mywebsite/home.html"><img src="{% static 'images/linkedin.jpeg' %}" alt="Avatar" style="height:40px ;width:50px; margin-right: 30px;margin-left: 30px"></a>
+                <a href="mywebsite/home.html"><img src="{% static 'images/github.png' %}" alt="Avatar" style="height:40px ;width:50px; margin-right: 30px"></a>
+
+                <a href="mywebsite/home.html"><img src="{% static 'images/fb.jpeg' %}" alt="Avatar" style="height:40px ;width:50px"></a>
+
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="col-md-4 col-sm-4">
+            <div class="card">
+                <img  class="img-circle" src="{% static 'images/Study.png' %}" alt="Avatar" style="height:240px ;width:100%">
+                <h4><b><a href="#">Phani </a></b></h4>
+                <div class ="desc">
+
+                <a href="mywebsite/home.html"><img src="{% static 'images/linkedin.jpeg' %}" alt="Avatar" style="height:40px ;width:50px; margin-right: 30px;margin-left: 30px"></a>
+                <a href="mywebsite/home.html"><img src="{% static 'images/github.png' %}" alt="Avatar" style="height:40px ;width:50px; margin-right: 30px"></a>
+
+                <a href="mywebsite/home.html"><img src="{% static 'images/fb.jpeg' %}" alt="Avatar" style="height:40px ;width:50px"></a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4 col-sm-4">
+
+            <div class="card">
+                <img  class="img-circle" src="{% static 'images/Study.png' %}" alt="Avatar" style="height:240px ;width:100%">
+                <h4><b><a href="#"> Shobhit </a></b></h4>
+                <div class ="desc">
+
+                <a href="mywebsite/home.html"><img src="{% static 'images/linkedin.jpeg' %}" alt="Avatar" style="height:40px ;width:50px; margin-right: 30px;margin-left: 30px"></a>
+                <a href="mywebsite/home.html"><img src="{% static 'images/github.png' %}" alt="Avatar" style="height:40px ;width:50px; margin-right: 30px"></a>
+
+                <a href="mywebsite/home.html"><img src="{% static 'images/fb.jpeg' %}" alt="Avatar" style="height:40px ;width:50px"></a>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-sm-4">
+
+            <div class="card">
+                <img  class="img-circle" src="{% static 'images/Study.png' %}" alt="Avatar" style="height:240px ;width:100%">
+                <h4><b><a href="#"> Bhuvanesh</a></b></h4>
+                <div class ="desc">
+
+                <a href="mywebsite/home.html"><img src="{% static 'images/linkedin.jpeg' %}" alt="Avatar" style="height:40px ;width:50px; margin-right: 30px;margin-left: 30px"></a>
+                <a href="mywebsite/home.html"><img src="{% static 'images/github.png' %}" alt="Avatar" style="height:40px ;width:50px; margin-right: 30px"></a>
+
+                <a href="mywebsite/home.html"><img src="{% static 'images/fb.jpeg' %}" alt="Avatar" style="height:40px ;width:50px"></a>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-md-4 col-sm-4">
+
+            <div class="card">
+                <img class="img-circle" src="{% static 'images/Study.png' %}" alt="Avatar" style="height:240px ;width:100%">
+                <h4><b><a href="#"> Omprakash </a></b></h4>
+                <div class ="desc">
+
+                <a href="mywebsite/home.html"><img src="{% static 'images/linkedin.jpeg' %}" alt="Avatar" style="height:40px ;width:50px; margin-right: 30px;margin-left: 30px"></a>
+                <a href="mywebsite/home.html"><img src="{% static 'images/github.png' %}" alt="Avatar" style="height:40px ;width:50px; margin-right: 30px"></a>
+
+                <a href="mywebsite/home.html"><img src="{% static 'images/fb.jpeg' %}" alt="Avatar" style="height:40px ;width:50px"></a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="col-xs-12">
+    <hr>
+</div>
+
+
+
 </body>
 </html>

@@ -1,0 +1,60 @@
+<!DOCTYPE>
+<html>
+<head>
+    {% load staticfiles %}
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link href="{% static 'css/home.css' %}" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <img class="image" src="{% static 'images/Study.png' %}">
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#" style="font-size: 50px;padding-top: 25px">Studymonk</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span>Aboutus</a></li>
+      <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user "></span> Sign Up</a>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="#">Student Signup</a></li>
+        <li><a href="#">Teacher Signup</a></li>
+      </ul>
+      </li>
+      <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in "></span> Login</a>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="#">Student Login</a></li>
+        <li><a href="#">Teacher Login</a></li>
+      </ul>
+      </li>
+    </ul>
+
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-6" id="college">
+
+                <div class="box"><p class="todo2" id ="college">College</p></div>
+        </div>
+        <div class="col-md-6 col-md-6" id="course">
+
+                <div class="box"><p class="todo2" id= "course">Course</p></div>
+
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
