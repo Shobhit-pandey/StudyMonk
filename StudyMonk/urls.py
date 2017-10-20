@@ -21,7 +21,6 @@ from mywebsite import views as mywebsite_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url (r'^',mywebsite_views.home,name="mywebsite"),
 
-    url(r'', include('mywebsite.urls', namespace='mywebsite')),
+    url(r'^', include('mywebsite.urls')),
 ]

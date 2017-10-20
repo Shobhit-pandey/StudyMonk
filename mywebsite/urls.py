@@ -1,9 +1,10 @@
 from django.conf.urls import url
-from . import views
+from mywebsite.views import home,discussion_forum,about_us,Studentsign
 
 urlpatterns = [
-    url(r'^$',views.home,name='home'),
-    url(r'^discussion-forum/$',views.discussion_forum,name='discussion_forum'),
-    url(r'^about-us/$',views.about_us,name='about_us'),
+    url(r'^$',home),
+    url(r'^discussion-forum/',view=discussion_forum,name='discussion_forum'),
+    url(r'^about-us',view=about_us,name='about_us'),
+    url(r'^Student-sign/',view=Studentsign,name='studentsign'),
 
     ]
