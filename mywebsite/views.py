@@ -15,4 +15,10 @@ def about_us(request):
 
 def Studentsign(request):
     return render(request,'mywebsite/Studentsign.html',{})
+def Teachersign(request):
+    return render(request,'mywebsite/Teachersign.html',{})
+def Studentlogin(request):
+    return  render(request,'mywebsite/Studentlogin.html',{})
+def Teacherlogin(request):
+    return  render(request,'mywebsite/Teacherlogin.html',{})
 
