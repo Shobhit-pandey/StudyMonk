@@ -68,14 +68,14 @@
             <li><a href="#"><span class="glyphicon glyphicon-user"></span>Aboutus</a></li>
       <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user "></span> Sign Up</a>
       <ul class="dropdown-menu" role="menu">
-        <li><a href="#">Student Signup</a></li>
-        <li><a href="#">Teacher Signup</a></li>
+        <li><a href="{% url 'studentsign' %}">Student Signup</a></li>
+        <li><a href="{% url 'teachersign' %}">Teacher Signup</a></li>
       </ul>
       </li>
       <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in "></span> Login</a>
       <ul class="dropdown-menu" role="menu">
-        <li><a href="#">Student Login</a></li>
-        <li><a href="#">Teacher Login</a></li>
+        <li><a href="{% url 'studentlogin' %}">Student Login</a></li>
+        <li><a href="{% url 'teacherlogin' %}">Teacher Login</a></li>
       </ul>
       </li>
     </ul>
