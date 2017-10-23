@@ -53,32 +53,37 @@
 
         <fieldset>
           <legend>Your basic info</legend>
+            <label for="username">UserName:</label>
+          {{ form.username }}
           <label for="firstname">First-Name:</label>
-          <input type="text" id="firstname" name="user_first_name">
+          {{ form.FirstName }}
 
             <label for="lastname">Last-Name:</label>
-          <input type="text" id="lastname" name="user_last_name">
+          {{ form.LastName }}
+
+            <label for="gender">Gender:</label>
+            {{ form.Gender }}
+        <!--select id="job" name="user_gender">
+          <optgroup label="Gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </optgroup>
+        </select!-->
 
           <label for="mail">Email:</label>
-          <input type="email" id="mail" name="user_email">
+          {{ form.EmailId }}
 
           <label for="password">Password:</label>
-          <input type="password" id="password" name="user_password">
+          {{ form.password1 }}
             <label for="password">Confirm Password:</label>
-          <input type="password" id="confirmpassword" name="user_confirm_password">
+          {{ form.password2 }}
 
 
          <!-- <label for="bio">Biography:</label>
           <textarea id="bio" name="user_bio"></textarea> -->
 
 
-        <label for="gender">Gender:</label>
-        <select id="job" name="user_gender">
-          <optgroup label="Gender">
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-          </optgroup>
-        </select>
+
 
   </fieldset>
 
