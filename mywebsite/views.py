@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect ,reverse
 
 # Create your views here.
-from mywebsite.form import StudentRegistration
+from mywebsite.form import StudentRegistration, FacultyRegistration
 
 
 def home(request):
@@ -27,3 +27,14 @@ def student_signup(request):
         form = StudentRegistration()
         args = {'form':form}
     return render(request,'mywebsite/Studentsign.html',{'form':form})
+
+def faculty_signup(request):
+    if (request.method=='POST'):
+        form=FacultyRegistration(request.POST)
+        if (form.is_valid()):
+            form.save()
+            return HttpResponseRedirect(reverse('home'))
+    else:
+        form = FacultyRegistration()
+        args = {'form':form}
+    return render(request,'mywebsite/Teachersign.html',{'form':form})

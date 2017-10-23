@@ -29,14 +29,14 @@
              <li><a href="{% url 'discussion_forum' %}"><span class="glyphicon glyphicons-user-vr-add"></span>Discussion Forum</a></li>
       <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user "></span> Sign Up</a>
       <ul class="dropdown-menu" role="menu">
-        <li><a href="{% url 'studentsign' %}">Student Signup</a></li>
-        <li><a href="{% url 'teachersign' %}">Teacher Signup</a></li>
+        <li><a href="{% url 'student_signup' %}">Student Signup</a></li>
+        <li><a href="{% url 'faculty_signup' %}">Teacher Signup</a></li>
       </ul>
       </li>
       <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in "></span> Login</a>
       <ul class="dropdown-menu" role="menu">
-        <li><a href="{% url 'studentlogin' %}">Student Login</a></li>
-        <li><a href="{% url 'teacherlogin' %}">Teacher Login</a></li>
+        <li><a href="{% url 'student_login' %}">Student Login</a></li>
+        <li><a href="{% url 'faculty_login' %}">Teacher Login</a></li>
       </ul>
       </li>
     </ul>
@@ -50,15 +50,17 @@
            <p style="text-align: center size: 50px;"> Teacher Login </p>
             <div class="card">
 
-                <form action="#" method = "post">
+                <form action="home.html" method = "post">
+                    {% csrf_token %}
+            {{ form.as_p }}
                 <div class="form-group">
                     <label for="userName"> User Name</label>
-                    <input type ="text" maxlength="40" class="form-control" name="userName"placeholder="User Name">
+                    {{ form.username }}
                 </div>
                 <div class="form-group">
 
                     <label for="Password">  Password</label>
-                    <input type ="text" maxlength="20" class="form-control" name="password"placeholder="Password ">
+                    {{ form.password }}
                 </div>
 <p> <a href="#">Forgot Password</a> </p><p><a href="#">Create New Account</a>
                 </p>
