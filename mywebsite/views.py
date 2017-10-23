@@ -1,24 +1,29 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render
+from django.http import HttpResponseRedirect
+from django.shortcuts import render, redirect ,reverse
 
 # Create your views here.
-def home(request):
-    return render(request,'mywebsite/home.html',{})
+from mywebsite.form import StudentRegistration
 
-def discussion_forum(request):
-    return render(request,'mywebsite/discussion_forum.html',{})
+
+def home(request):
+    return render(request,'mywebsite/home.html')
 
 def about_us(request):
-    return render(request,'mywebsite/about.html',{})
+    return render(request,'mywebsite/about.html')
 
-def Studentsign(request):
-    return render(request,'mywebsite/Studentsign.html',{})
-def Teachersign(request):
-    return render(request,'mywebsite/Teachersign.html',{})
-def Studentlogin(request):
-    return  render(request,'mywebsite/Studentlogin.html',{})
-def Teacherlogin(request):
-    return  render(request,'mywebsite/Teacherlogin.html',{})
+def discussion_forum(request):
+    return render(request,'mywebsite/discussion_forum.html')
 
+def student_signup(request):
+    if (request.method=='POST'):
+        form=StudentRegistration(request.POST)
+        if (form.is_valid()):
+            form.save()
+            return HttpResponseRedirect(reverse('home'))
+    else:
+        form = StudentRegistration()
+        args = {'form':form}
+    return render(request,'mywebsite/Studentsign.html',{'form':form})

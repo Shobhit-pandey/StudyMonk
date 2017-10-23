@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% load staticfiles %}
+ {% load staticfiles %}
 <html>
 <head>
     <link rel="stylesheet" href="{% static 'css/home.css' %}" type="text/css">
@@ -13,165 +13,170 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
-    <script type="text/javascript" src="js/jQuery.js"></script>
-    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/jQuery.js"></script>
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+
 
 
 </head>
 <body>
-<section>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12 col-sm-12">
-                <video id="video-bg-elem" preload="auto" autoplay="true" loop="loop" muted="muted">
-                    <source src="{% static 'videos/Short%20wildlife%20video%20clip%20HD.mp4' %}" type="video/mp4"
-                            style="width: 100%">
-                </video>
-            </div>
+<section >
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <video id="video-bg-elem" preload="auto" autoplay="true" loop="loop" muted="muted">
+                <source src="{% static 'videos/Short%20wildlife%20video%20clip%20HD.mp4' %}" type="video/mp4" style="width: 100%">
+            </video>
         </div>
     </div>
+</div>
 
 
-    <nav class="navbar navbar-inverse">
-        <div class="container">
-            <div class="navbar-header">
-                <img class="image" src="{% static 'images/Study.png' %}">
-            </div>
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#" style="font-size: 50px;padding-top: 25px">Studymonk</a>
-            </div>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="{% url 'about_us' %}"><span class="glyphicon glyphicon-user"></span> Aboutus</a></li>
-                <li><a href="{% url 'discussion_forum' %}"><span class="glyphicon glyphicons-user-vr-add"></span>Discussion
-                    Forum</a></li>
-                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
-                        class="glyphicon glyphicon-user "></span> Sign Up</a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="{% url 'studentsign' %}">Student Signup</a></li>
-                        <li><a href="{% url 'teachersign' %}">Teacher Signup</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
-                        class="glyphicon glyphicon-log-in "></span> Login</a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="{% url 'studentlogin' %}">Student Login</a></li>
-                        <li><a href="{% url 'teacherlogin' %}">Teacher Login</a></li>
-                    </ul>
-                </li>
-            </ul>
-
-        </div>
-    </nav>
-
-
+<nav class="navbar navbar-inverse" >
     <div class="container">
-        <div class="row">
-            <div class="col-md-12 col-sm-12">
-                <h1 class="todo1">
-                    Build software that communicates with everyone in the world.
-                </h1>
-            </div>
+        <div class="navbar-header">
+            <img class="image" src="{% static 'images/Study.png' %}">
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#" style="font-size: 50px;padding-top: 25px">Studymonk</a>
+        </div>
+         <ul class="nav navbar-nav navbar-right">
+            <li><a href="{% url 'about_us' %}"><span class="glyphicon glyphicon-user"></span> Aboutus</a></li>
+             <li><a href="{% url 'discussion_forum' %}"><span class="glyphicon glyphicons-user-vr-add"></span>Discussion Forum</a></li>
+      <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user "></span> Sign Up</a>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="{% url 'student_signup' %}">Student Signup</a></li>
+        <li><a href="#">Teacher Signup</a></li>
+      </ul>
+      </li>
+      <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in "></span> Login</a>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="#">Student Login</a></li>
+        <li><a href="#">Teacher Login</a></li>
+      </ul>
+      </li>
+    </ul>
+
+    </div>
+</nav>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <h1 class="todo1">
+                Build software that communicates with everyone in the world.
+            </h1>
         </div>
     </div>
+</div>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-md-6" id="college">
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-6" id="college">
 
-                <div class="box"><p class="todo2" id="college">College</p></div>
-            </div>
-            <div class="col-md-6 col-md-6" id="course">
+                <div class="box"><p class="todo2" id ="college">College</p></div>
+        </div>
+        <div class="col-md-6 col-md-6" id="course">
 
-                <div class="box"><p class="todo2" id="course">Course</p></div>
+                <div class="box"><p class="todo2" id= "course">Course</p></div>
 
-            </div>
         </div>
     </div>
+</div>
 
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-sm-6">
-                <div class="row2"><p>Questions? Talk to an expert.</p></div>
-            </div>
-            <div class="col-md-6 col-sm-6">
-                <div class="row2"><p>Questions? Talk to an expert.</p></div>
-            </div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-sm-6">
+            <div class="row2"><p>Questions? Talk to an expert.</p></div>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <div class="row2"><p>Questions? Talk to an expert.</p></div>
         </div>
     </div>
+</div>
 </section>
 
-<div class="container" id="additional" style="margin-top: 200px">
+<div class = "container" id="additional" style="margin-top: 200px">
 
 </div>
 <script type="text/javascript">
-    var elem = $("#college");
-    var clicked1 = false;
-    var clicked2 = false;
-    var element = $("#additional");
+var elem = $("#college");
+var clicked1 = false;
+var clicked2 = false;
+var element =$("#additional");
 
-    elem.click(function () {
+elem.click(function() {
 
-        if (clicked1 == false) {
-            if (clicked2 == true) {
-                element.empty();
-            }
-
-            clicked1 = true;
-            var id = $(this).attr("id");
-            console.log(id);
-            var items = ["IIT Gandhinagar ", "IIIT Vadodara", "IIT Bombay", "IIT Delhi"];
-            total = 4;
-            for (j = 0; j < total; j++) {
-                var s = "<div class='row' id ='college_display'> ";
-                var p = "";
-                for (i = 0; i < 3 && j < total; i++) {
-
-                    p = p + "<div class='col-md-4'><div class='card'><p>" + items[j] + "</p></div></div>";
-                    j++;
-                }
-                j--;
-                var t = s + p + "</div>";
-                element.append(t);
-            }
+    if(clicked1==false)
+    {
+        if(clicked2==true)
+        {
+            element.empty();
         }
-    });
 
-    var elem2 = $("#course");
-    elem2.click(function () {
+        clicked1 =true;
+        var id = $(this).attr("id");
+        console.log(id);
+        var items = ["IIT Gandhinagar ", "IIIT Vadodara","IIT Bombay","IIT Delhi"];
+        total = 4;
+        for(j=0;j<total;j++)
+        {
+            var s ="<div class='row' id ='college_display'> ";
+            var p="";
+            for (i=0;i<3&&j<total;i++)
+            {
 
-        if (clicked2 == false) {
-            if (clicked1 == true) {
-                element.empty();
+                p = p+ "<div class='col-md-4'><div class='card'><p>"+items[j]+"</p></div></div>";
+                j++;
             }
-
-            clicked2 = true;
-            var id = $(this).attr("id");
-            console.log(id);
-            var items = ["Data Structure", "Database Management System", "Computer Networks", "Software Engineering"];
-            total = 4;
-            for (j = 0; j < total; j++) {
-                var s = "<div class='row' id='course_display'> ";
-                var p = "";
-                for (i = 0; i < 3 && j < total; i++) {
-                    p = p + "<div class='col-md-4'><div class='card'><p>" + items[j] + "</p></div></div>";
-                    j++;
-                }
-                j--;
-                var t = s + p + "</div>";
-                element.append(t);
-            }
-            //fun(id);
-            //increase_clicks(id);
-
+            j--;
+            var t =s+p+"</div>";
+            element.append(t);
         }
-        //the element has been clicked... do stuff here
-    });
+    }
+});
+
+var elem2 = $("#course");
+elem2.click(function() {
+
+    if(clicked2==false)
+    {
+        if(clicked1==true)
+        {
+            element.empty();
+        }
+
+        clicked2 =true;
+        var id = $(this).attr("id");
+        console.log(id);
+        var items = ["Data Structure", "Database Management System","Computer Networks","Software Engineering"];
+        total = 4;
+        for(j=0;j<total;j++)
+        {
+            var s ="<div class='row' id='course_display'> ";
+            var p="";
+            for (i=0;i<3&&j<total;i++)
+            {
+                p = p+ "<div class='col-md-4'><div class='card'><p>"+items[j]+"</p></div></div>";
+                j++;
+            }
+            j--;
+            var t = s+p+"</div>";
+            element.append(t);
+        }
+    //fun(id);
+    //increase_clicks(id);
+
+    }
+  //the element has been clicked... do stuff here
+});
 
 
-</script>
+ </script>
 
 </body>
 </html>

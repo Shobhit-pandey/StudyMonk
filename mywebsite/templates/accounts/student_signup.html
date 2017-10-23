@@ -1,0 +1,29 @@
+
+{% load staticfiles %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/style1.css' %}" type="text/css">
+    <div class="container-fluid " id="bg">
+        <div class="row">
+
+            <h2>Sign up</h2>
+            <form method="post">
+                {% csrf_token %}
+                {% for field in form %}
+                    <p>
+                        {{ field.label_tag }}<br>
+                        {{ field }}
+                        {% if field.help_text %}
+                            <small style="color: grey">{{ field.help_text }}</small>
+                        {% endif %}
+                        {% for error in field.errors %}
+                            <p style="color: red">{{ error }}</p>
+                        {% endfor %}
+                    </p>
+                {% endfor %}
+                <button type="submit">Sign up</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
