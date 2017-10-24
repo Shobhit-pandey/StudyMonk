@@ -14,7 +14,7 @@ class StudentRegistration(models.Model):
     gender = models.CharField(choices=CHOICE,default='male', max_length=20)
 
     def __str__(self):
-        return self.user.email
+        return self.user.username
 
 
 class FacultyRegistration(models.Model):
@@ -25,4 +25,4 @@ class FacultyRegistration(models.Model):
     gender = models.CharField(choices=CHOICE, default='male', max_length=20)
 
     def __str__(self):
-        return self.user.email
+        return self.user.username

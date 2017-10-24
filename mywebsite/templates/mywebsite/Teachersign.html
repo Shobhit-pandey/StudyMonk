@@ -46,11 +46,11 @@
 
     </div>
 </nav>
-<form action="index.html" method="post">
+<form action="{% url 'faculty_signup' %}" method="post">
 
         <h1>Sign Up</h1>
 
-        <fieldset>
+        <!--fieldset>
           <legend>Your basic info</legend>
           <label for="firstname">First-Name:</label>
           <input type="text" id="firstname" name="user_first_name">
@@ -79,9 +79,10 @@
           </optgroup>
         </select>
 
-  </fieldset>
+  </fieldset-->
 
-
+    {% csrf_token %}
+    {{ form.as_p }}
     <div class="row" style="padding-top: 30px">
 
        <button type="submit">Sign Up</button>
