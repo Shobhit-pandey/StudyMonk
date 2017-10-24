@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="{% static 'css/home.css' %}" type="text/css">
+                <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -43,7 +45,33 @@
 
     </div>
 </nav>
-<div class="container-fluid">
+
+<form action="{% url 'home' %}" method="post">
+    {% csrf_token %}
+    <!--{{ form.as_table }}!-->
+        <h1>Student Login</h1>
+
+        <fieldset>
+            <label for="username">UserName:</label>
+          {{ form.username }}
+          <label for="password">Password:</label>
+          {{ form.password }}
+
+            <p style="float: left"> <a href="#">Forgot Password</a> </p>
+                </div>
+
+                <p style="float: right"><a href="#">Create New Account</a>
+                </p>
+        </fieldset>
+
+
+    <div class="row" style="padding-top: 30px">
+
+       <button type="submit">Login</button>
+        </div>
+      </form>
+
+<!-- <div class="container-fluid">
     <div class="row">
            <p style="text-align: center size: 50px;"> Student Login </p>
             <div class="card">
@@ -75,5 +103,6 @@
         </div>
 
 </div>
+-->
 </body>
 </html>
