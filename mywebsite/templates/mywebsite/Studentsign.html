@@ -48,31 +48,32 @@
     </div>
 </nav>
 <form action="{% url 'home' %}" method="post">
-    {% csrf_token %}
-    <!--{{ form.as_table }}!-->
-        <h1>Sign Up</h1>
+   <!-- {% csrf_token %}
+    <h1>Sign Up</h1>
 
         <fieldset>
           <legend>Your basic info</legend>
-            <label for="username">UserName:</label>
-          {{ form.username }}
-          <label for="firstname">First-Name:</label>
-          {{ form.FirstName }}
 
-            <label for="lastname">Last-Name:</label>
-          {{ form.LastName }}
+          <label for="first_name">First-Name:</label>
+          {{ form.first_name }}
+
+            <label for="last_name">Last-Name:</label>
+          {{ form.last_name }}
 
             <label for="gender">Gender:</label>
-            {{ form.Gender }}
-        <!--select id="job" name="user_gender">
+            {{ form.gender }}
+        <select id="job" name="user_gender">
           <optgroup label="Gender">
             <option value="male">Male</option>
             <option value="female">Female</option>
           </optgroup>
-        </select!-->
+        </select>
 
-          <label for="mail">Email:</label>
-          {{ form.EmailId }}
+          <label for="email">Email:</label>
+          {{ form.email }}
+
+            <label for="college_name">College Name</label>
+          {{ form.email }}
 
           <label for="password">Password:</label>
           {{ form.password1 }}
@@ -86,9 +87,10 @@
 
 
 
-  </fieldset>
+  </fieldset!-->
 
-
+    {% csrf_token %}
+    {{ form.as_p }}
     <div class="row" style="padding-top: 30px">
 
        <button type="submit">Sign Up</button>
