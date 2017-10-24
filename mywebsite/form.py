@@ -26,10 +26,17 @@ class StudentRegistrationForm(forms.Form):
         return self.cleaned_data.get('email')
 
     def save(self):
-        pass
+        print(self.cleaned_data)
+        u = User.objects.create_user(first_name=self.cleaned_data.get('first_name'),last_name=self.cleaned_data.get('last_name'),email=self.cleaned_data.get('email')
+                                ,password = self.cleaned_data.get('password'),username = self.cleaned_data.get('username'))
+        u.save()
+        s = StudentRegistration.objects.create(user=u, gender=self.cleaned_data.get('gender'),
+                                               college_name = self.cleaned_data.get('college_name'))
+        s.save()
 
     def clean_gender(self):
-        pass
+        print("clean gender: ", self.cleaned_data)
+        return self.cleaned_data.get('gender')
 
 
 class FacultyRegistrationForm(forms.Form):
@@ -45,7 +52,18 @@ class FacultyRegistrationForm(forms.Form):
 
 
     def save(self):
-        pass
+        print(self.cleaned_data)
+        u = User.objects.create(first_name=self.cleaned_data.get('first_name'),
+                                last_name=self.cleaned_data.get('last_name'),
+                                email=self.cleaned_data.get('email'),
+                                password=self.cleaned_data.get('password'),
+                                username=self.cleaned_data.get('username'))
+        u.save()
+        s = StudentRegistration.objects.create(user=u, gender=self.cleaned_data.get('gender'),
+                                               college_name=self.cleaned_data.get('college_name'),
+                                               description = self.cleaned_data.get('description'),
+                                               mentorship_status = self.cleaned_data.get('mentorship_status'))
+        s.save()
 
     def clean_email(self):
         if User.objects.filter(email=self.cleaned_data.get('email', None)).count() > 0:
@@ -54,4 +72,5 @@ class FacultyRegistrationForm(forms.Form):
         return self.cleaned_data.get('email')
 
     def clean_gender(self):
-        pass
+        print("clean gender: ", self.cleaned_data)
+        return self.cleaned_data.get('gender')

@@ -18,8 +18,10 @@ def discussion_forum(request):
 
 def student_signup(request):
     if (request.method=='POST'):
+        print("student")
         form=StudentRegistrationForm(request.POST)
         if (form.is_valid()):
+            print("valid")
             form.save()
             return HttpResponseRedirect(reverse('home'))
     else:

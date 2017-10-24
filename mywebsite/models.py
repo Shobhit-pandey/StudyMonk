@@ -4,7 +4,8 @@ from django.db.models.signals import post_save
 
 CHOICE = (
     ('male', 'male'),
-    ('female', 'female')
+    ('female', 'female'),
+    ('other','other')
 )
 
 class StudentRegistration(models.Model):
