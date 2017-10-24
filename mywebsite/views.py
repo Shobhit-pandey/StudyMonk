@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import PasswordChangeForm
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect,reverse
 
@@ -40,3 +43,19 @@ def faculty_signup(request):
     else:
         form = FacultyRegistrationForm()
     return render(request, 'accounts/Teachersign.html', {'form':form})
+
+@login_required
+def change_password(request):
+    if request.method=='POST':
+        form=PasswordChangeForm(data=request.POST,user=request.user)
+
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request,form.user)
+            return redirect(reverse('home'))
+        else:
+            return redirect(reverse('change_password'))
+    else:
+        form=PasswordChangeForm(user=request.user)
+        args={'form':form}
+        return render(request,'accounts/edit_password.html',args)
