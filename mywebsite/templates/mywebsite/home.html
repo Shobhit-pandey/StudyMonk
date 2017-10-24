@@ -41,6 +41,9 @@
         </div>
         <div class="navbar-header">
             <a class="navbar-brand" href="#" style="font-size: 50px;padding-top: 25px">Studymonk</a>
+            {% if user.is_authenticated %}
+            <h1>{{ user.username }}</h1>
+            {% endif %}
         </div>
          <ul class="nav navbar-nav navbar-right">
             <li><a href="{% url 'about_us' %}"><span class="glyphicon glyphicon-user"></span> Aboutus</a></li>

@@ -10,6 +10,9 @@ from mywebsite.form import StudentRegistrationForm, FacultyRegistrationForm
 def home(request):
     return render(request,'mywebsite/home.html')
 
+def profile(request):
+    return render(request,'mywebsite/home.html')
+
 def about_us(request):
     return render(request,'mywebsite/about.html')
 
@@ -26,7 +29,7 @@ def student_signup(request):
             return HttpResponseRedirect(reverse('home'))
     else:
         form = StudentRegistrationForm()
-    return render(request,'mywebsite/Studentsign.html',{'form':form})
+    return render(request, 'accounts/Studentsign.html', {'form':form})
 
 def faculty_signup(request):
     if (request.method=='POST'):
@@ -36,4 +39,4 @@ def faculty_signup(request):
             return HttpResponseRedirect(reverse('home'))
     else:
         form = FacultyRegistrationForm()
-    return render(request,'mywebsite/Teachersign.html',{'form':form})
+    return render(request, 'accounts/Teachersign.html', {'form':form})

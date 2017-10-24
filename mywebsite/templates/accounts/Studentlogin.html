@@ -46,12 +46,11 @@
     </div>
 </nav>
 
-<form action="{% url 'home' %}" method="post">
+<form action="{% url 'student_login' %}" method="post">
     {% csrf_token %}
-    <!--{{ form.as_table }}!-->
-        <h1>Student Login</h1>
+     <h1>Student Login</h1>
 
-        <fieldset>
+        <!--fieldset>
             <label for="username">UserName:</label>
           {{ form.username }}
           <label for="password">Password:</label>
@@ -62,9 +61,9 @@
 
                 <p style="float: right"><a href="#">Create New Account</a>
                 </p>
-        </fieldset>
+        </fieldset-->
 
-
+    {{ form.as_p }}
     <div class="row" style="padding-top: 30px">
 
        <button type="submit">Login</button>

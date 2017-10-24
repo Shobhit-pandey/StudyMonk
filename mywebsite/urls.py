@@ -9,7 +9,8 @@ urlpatterns = [
     url(r'^about-us/$',views.about_us,name='about_us'),
     url(r'^accounts/student/signup/$', views.student_signup, name='student_signup'),
     url(r'^accounts/faculty/signup/$', views.faculty_signup, name='faculty_signup'),
-    url(r'^accounts/student/login/$', login,{'template_name':'mywebsite/Studentlogin.html'}, name='student_login'),
-    url(r'^accounts/faculty/login/$', login,{'template_name':'mywebsite/Teacherlogin.html'}, name='faculty_login'),
+    url(r'^accounts/profile/$', views.profile, name='profile'),
+    url(r'^accounts/student/login/$', login,{'template_name':'accounts/Studentlogin.html'}, name='student_login'),
+    url(r'^accounts/faculty/login/$', login,{'template_name':'accounts/Teacherlogin.html'}, name='faculty_login'),
 
     ]
