@@ -27,12 +27,19 @@ class StudentRegistrationForm(forms.Form):
 
         return self.cleaned_data.get('email')
 
+    def clean_username(self):
+        if User.objects.filter(username=self.cleaned_data.get('username', None)).count() > 0:
+            raise forms.ValidationError("User with this username already exists")
+
+        return self.cleaned_data.get('username')
+
     def save(self):
         print(self.cleaned_data)
         u = User.objects.create_user(first_name=self.cleaned_data.get('first_name'),last_name=self.cleaned_data.get('last_name'),email=self.cleaned_data.get('email')
                                 ,password = self.cleaned_data.get('password'),username = self.cleaned_data.get('username'))
         u.save()
-        s = StudentRegistration.objects.create(user=u, gender=self.cleaned_data.get('gender'),
+        s = StudentRegistration.objects.create(user=u,
+                                               gender=self.cleaned_data.get('gender'),
                                                college_name = self.cleaned_data.get('college_name'))
         s.save()
 
@@ -56,13 +63,14 @@ class FacultyRegistrationForm(forms.Form):
 
     def save(self):
         print(self.cleaned_data)
-        u = User.objects.create(first_name=self.cleaned_data.get('first_name'),
+        u = User.objects.create_user(first_name=self.cleaned_data.get('first_name'),
                                 last_name=self.cleaned_data.get('last_name'),
                                 email=self.cleaned_data.get('email'),
                                 password=self.cleaned_data.get('password'),
                                 username=self.cleaned_data.get('username'))
         u.save()
-        s = FacultyRegistration.objects.create(user=u, gender=self.cleaned_data.get('gender'),
+        s = FacultyRegistration.objects.create(user=u,
+                                               gender=self.cleaned_data.get('gender'),
                                                college_name=self.cleaned_data.get('college_name'),
                                                description = self.cleaned_data.get('description'),
                                                mentorship_status = self.cleaned_data.get('mentorship_status'),
@@ -78,3 +86,9 @@ class FacultyRegistrationForm(forms.Form):
     def clean_gender(self):
         print("clean gender: ", self.cleaned_data)
         return self.cleaned_data.get('gender')
+
+    def clean_username(self):
+        if User.objects.filter(username=self.cleaned_data.get('username', None)).count() > 0:
+            raise forms.ValidationError("User with this username already exists")
+
+        return self.cleaned_data.get('username')
