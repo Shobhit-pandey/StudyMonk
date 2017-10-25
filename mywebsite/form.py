@@ -1,3 +1,4 @@
+import password as password
 from django import forms
 from django.contrib.auth.models import User
 
@@ -11,13 +12,14 @@ CHOICE = (
 
 class StudentRegistrationForm(forms.Form):
 
-    first_name = forms.CharField(max_length=50)
-    last_name = forms.CharField(max_length=50)
-    email = forms.EmailField()
-    gender = forms.ChoiceField(CHOICE)
-    college_name = forms.CharField(max_length=100)
-    username = forms.CharField(max_length=50)
-    password = forms.CharField(max_length=100)
+    #TODO provide required attribute
+    first_name = forms.CharField(max_length=50,required=True)
+    last_name = forms.CharField(max_length=50,required=True)
+    email = forms.EmailField(required=True)
+    gender = forms.ChoiceField(CHOICE,required=True)
+    college_name = forms.CharField(max_length=100,required=True)
+    username = forms.CharField(max_length=50,required=True)
+    password = forms.CharField(required=True,max_length=100,widget=forms.PasswordInput) #TODO (make password type input)
 
     def clean_email(self):
         if User.objects.filter(email=self.cleaned_data.get('email', None)).count() > 0:
@@ -41,13 +43,14 @@ class StudentRegistrationForm(forms.Form):
 
 class FacultyRegistrationForm(forms.Form):
 
-    first_name = forms.CharField(max_length=50)
-    last_name = forms.CharField(max_length=50)
-    email = forms.EmailField()
-    gender = forms.ChoiceField(CHOICE)
-    college_name = forms.CharField(max_length=100)
-    username = forms.CharField(max_length=50)
-    password = forms.CharField(max_length=100)
+    #TODO provide required attribute
+    first_name = forms.CharField(max_length=50,required=True)
+    last_name = forms.CharField(max_length=50,required=True)
+    email = forms.EmailField(required=True)
+    gender = forms.ChoiceField(CHOICE,required=True)
+    college_name = forms.CharField(max_length=100,required=True)
+    username = forms.CharField(max_length=50,required=True)
+    password = forms.CharField(required=True,max_length=100,widget=forms.PasswordInput) #TODO (make password type input)
     description = forms.CharField(max_length=1000,required=False)
     mentorship_status = forms.BooleanField(required=False)
 
