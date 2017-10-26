@@ -32,7 +32,7 @@ def student_signup(request):
             return HttpResponseRedirect(reverse('home'))
     else:
         form = StudentRegistrationForm()
-    return render(request, 'accounts/Studentsign.html', {'form':form})
+    return render(request, 'student/Studentsign.html', {'form':form})
 
 def faculty_signup(request):
     if (request.method=='POST'):
@@ -42,7 +42,7 @@ def faculty_signup(request):
             return HttpResponseRedirect(reverse('home'))
     else:
         form = FacultyRegistrationForm()
-    return render(request, 'accounts/Teachersign.html', {'form':form})
+    return render(request, 'faculty/Teachersign.html', {'form':form})
 
 @login_required
 def change_password(request):

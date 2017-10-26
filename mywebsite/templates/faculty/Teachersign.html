@@ -2,7 +2,7 @@
 {% load staticfiles %}
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+   <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Title</title>
     <link rel="stylesheet" href="css/normalize.css">
@@ -18,7 +18,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-
 <nav class="navbar navbar-inverse" >
     <div class="container">
         <div class="navbar-header">
@@ -54,21 +53,32 @@
 
     </div>
 </nav>
-<form action="{% url 'student_signup' %}" method="post">
-   <!-- {% csrf_token %}
-    <h1>Sign Up</h1>
+<form action="{% url 'faculty_signup' %}" method="post">
 
-        <fieldset>
+        <h1>Sign Up For Faculty</h1>
+
+        <!--fieldset>
           <legend>Your basic info</legend>
+          <label for="firstname">First-Name:</label>
+          <input type="text" id="firstname" name="user_first_name">
 
-          <label for="first_name">First-Name:</label>
-          {{ form.first_name }}
+            <label for="lastname">Last-Name:</label>
+          <input type="text" id="lastname" name="user_last_name">
 
-            <label for="last_name">Last-Name:</label>
-          {{ form.last_name }}
+          <label for="mail">Email:</label>
+          <input type="email" id="mail" name="user_email">
 
-            <label for="gender">Gender:</label>
-            {{ form.gender }}
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="user_password">
+            <label for="password">Confirm Password:</label>
+          <input type="password" id="confirmpassword" name="user_confirm_password">
+
+
+          <label for="bio">Biography:</label>
+          <textarea id="bio" name="user_bio"></textarea>
+
+
+        <label for="gender">Gender:</label>
         <select id="job" name="user_gender">
           <optgroup label="Gender">
             <option value="male">Male</option>
@@ -76,25 +86,7 @@
           </optgroup>
         </select>
 
-          <label for="email">Email:</label>
-          {{ form.email }}
-
-            <label for="college_name">College Name</label>
-          {{ form.email }}
-
-          <label for="password">Password:</label>
-          {{ form.password1 }}
-            <label for="password">Confirm Password:</label>
-          {{ form.password2 }}
-
-
-         <!-- <label for="bio">Biography:</label>
-          <textarea id="bio" name="user_bio"></textarea> -->
-
-
-
-
-  </fieldset!-->
+  </fieldset-->
 
     {% csrf_token %}
     {{ form.as_p }}
@@ -103,6 +95,7 @@
        <button type="submit">Sign Up</button>
         </div>
       </form>
+
 
 
 </body>

@@ -9,20 +9,20 @@ CHOICE = (
 )
 
 class StudentRegistration(models.Model):
-    user = models.ForeignKey(User)
-    college_name = models.CharField(max_length=100)
-    gender = models.CharField(choices=CHOICE,default='male', max_length=20)
+    user = models.ForeignKey(User,null=False)
+    college_name = models.CharField(max_length=100,null=False)
+    gender = models.CharField(choices=CHOICE,default='male', max_length=20,null=False)
 
     def __str__(self):
         return self.user.username
 
 
 class FacultyRegistration(models.Model):
-    user = models.ForeignKey(User)
-    college_name = models.CharField(max_length=100)
+    user = models.ForeignKey(User,null=False)
+    college_name = models.CharField(max_length=100,null=False)
     mentorship_status = models.BooleanField()
-    description = models.CharField(max_length=1000)
-    gender = models.CharField(choices=CHOICE, default='male', max_length=20)
+    description = models.CharField(max_length=1000,null=True)
+    gender = models.CharField(choices=CHOICE, default='male', max_length=20,null=False)
 
     def __str__(self):
         return self.user.username
