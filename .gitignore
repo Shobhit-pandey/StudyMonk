@@ -2,7 +2,7 @@ myvenv
 db.sqlite3
 .DS_Store
 StudyMonk/migrations/*
-
+mywebsite/migrations
 .idea/dataSources
 .idea/vcs.xml
 .idea/dataSources.xml

@@ -1,14 +1,19 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import PasswordChangeForm
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, redirect ,reverse
+from django.shortcuts import render, redirect,reverse
 
 # Create your views here.
-from mywebsite.form import StudentRegistration, FacultyRegistration
-
+from mywebsite.form import StudentRegistrationForm, FacultyRegistrationForm
 
 def home(request):
+    return render(request,'mywebsite/home.html')
+
+def profile(request):
     return render(request,'mywebsite/home.html')
 
 def about_us(request):
@@ -19,22 +24,38 @@ def discussion_forum(request):
 
 def student_signup(request):
     if (request.method=='POST'):
-        form=StudentRegistration(request.POST)
+        print("student")
+        form=StudentRegistrationForm(request.POST)
         if (form.is_valid()):
+            print("valid")
             form.save()
             return HttpResponseRedirect(reverse('home'))
     else:
-        form = StudentRegistration()
-        args = {'form':form}
-    return render(request,'mywebsite/Studentsign.html',{'form':form})
+        form = StudentRegistrationForm()
+    return render(request, 'accounts/Studentsign.html', {'form':form})
 
 def faculty_signup(request):
     if (request.method=='POST'):
-        form=FacultyRegistration(request.POST)
+        form=FacultyRegistrationForm(request.POST)
         if (form.is_valid()):
             form.save()
             return HttpResponseRedirect(reverse('home'))
     else:
-        form = FacultyRegistration()
-        args = {'form':form}
-    return render(request,'mywebsite/Teachersign.html',{'form':form})
+        form = FacultyRegistrationForm()
+    return render(request, 'accounts/Teachersign.html', {'form':form})
+
+@login_required
+def change_password(request):
+    if request.method=='POST':
+        form=PasswordChangeForm(data=request.POST,user=request.user)
+
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request,form.user)
+            return redirect(reverse('home'))
+        else:
+            return redirect(reverse('change_password'))
+    else:
+        form=PasswordChangeForm(user=request.user)
+        args={'form':form}
+        return render(request,'accounts/edit_password.html',args)
