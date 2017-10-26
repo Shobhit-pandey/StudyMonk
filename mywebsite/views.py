@@ -5,10 +5,15 @@ from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, redirect,reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 
 # Create your views here.
 from mywebsite.form import StudentRegistrationForm, FacultyRegistrationForm
+from mywebsite.models import StudentRegistration, FacultyRegistration
+
+
+def user_login(request):
+    pass
 
 def home(request):
     return render(request,'mywebsite/home.html')
@@ -59,3 +64,36 @@ def change_password(request):
         form=PasswordChangeForm(user=request.user)
         args={'form':form}
         return render(request,'accounts/edit_password.html',args)
+
+@login_required()
+def student_edit(request,pk):
+    Profile = get_object_or_404(StudentRegistration,pk=pk)
+    if request.method=='POST':
+        form = StudentRegistrationForm(request.POST,instance=Profile)
+        if form.is_valid():
+            Profile = form.save(commit=False)
+            Profile.user=request.user
+            Profile.save()
+            form.save()
+            return redirect(reverse('home'),pk=Profile.pk)
+    else:
+        form=StudentRegistrationForm(instance=Profile)
+        args={'form':form}
+        return render(request,'student/edit_student.html',args)
+
+
+@login_required()
+def faculty_edit(request,pk):
+    Profile = get_object_or_404(FacultyRegistration,pk=pk)
+    if request.method=='POST':
+        form = FacultyRegistrationForm(request.POST,instance=Profile)
+        if form.is_valid():
+            Profile = form.save(commit=False)
+            Profile.user=request.user
+            Profile.save()
+            form.save()
+            return redirect(reverse('home'),pk=Profile.pk)
+    else:
+        form=StudentRegistrationForm(instance=Profile)
+        args={'form':form}
+        return render(request,'faculty/edit_teacher.html',args)
