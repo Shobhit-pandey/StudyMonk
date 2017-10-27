@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <img class="image" src="{% static 'images/Study.png' %}">
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#" style="font-size: 50px;padding-top: 25px">Studymonk</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+            <li><a href="{% url 'about_us' %}"><span class="glyphicon glyphicon-user"></span> Aboutus</a></li>
+            <li><a href="{% url 'discussion_forum' %}"><span class="glyphicon glyphicons-user-vr-add"></span>Discussion
+                Forum</a></li>
+            {% if user.is_authenticated %}
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" ><img class="image1"  src="{% static 'images/Study.png' %}">Name</a>
+         <ul class="dropdown-menu" role="menu">
+          <li><a href="{% url 'change_password' %}"> Change Password</a></li>
+             {% if user.id in facultyregistration.user_id %}
+                    <li><a href="{% url 'faculty_edit' %}">Edit Faculty
+                        Profile</a></li>
+                {% else %}
+                    <li><a href="{% url 'student_edit' %}">Edit
+                        Student Profile</a></li>
+                {% endif %}
+                 <li><a href="{% url 'logout' %}"> Logout</a></li>
+         </ul>
+         </li>
+            {% else %}
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
+                        class="glyphicon glyphicon-user "></span> Sign Up</a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="{% url 'student_signup' %}">Student Signup</a></li>
+                        <li><a href="{% url 'faculty_signup' %}">Teacher Signup</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
+                        class="glyphicon glyphicon-log-in "></span> Login</a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="{% url 'student_login' %}">Student Login</a></li>
+                        <li><a href="{% url 'faculty_login' %}">Teacher Login</a></li>
+                    </ul>
+                </li>
+            {% endif %}
+        </ul>
+
+    </div>
+</nav>
+<form action="{% url 'faculty_signup' %}" method="post">
+
+    <h1>Sign Up For Faculty</h1>
+
+    <!--fieldset>
+      <legend>Your basic info</legend>
+      <label for="firstname">First-Name:</label>
+      <input type="text" id="firstname" name="user_first_name">
+
+        <label for="lastname">Last-Name:</label>
+      <input type="text" id="lastname" name="user_last_name">
+
+      <label for="mail">Email:</label>
+      <input type="email" id="mail" name="user_email">
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="user_password">
+        <label for="password">Confirm Password:</label>
+      <input type="password" id="confirmpassword" name="user_confirm_password">
+
+
+      <label for="bio">Biography:</label>
+      <textarea id="bio" name="user_bio"></textarea>
+
+
+    <label for="gender">Gender:</label>
+    <select id="job" name="user_gender">
+      <optgroup label="Gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </optgroup>
+    </select>
+
+</fieldset-->
+
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="row" style="padding-top: 30px">
+
+        <button type="submit">Sign Up</button>
+    </div>
+</form>
+
+
+</body>
+</html>
