@@ -35,19 +35,27 @@
 
 
 <nav class="navbar navbar-inverse" style="background-color: black" >
-    <div class="container">
+
               <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
             <img class="image" src="{% static 'images/Study.png' %}">
         </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
         <div class="navbar-header">
             <a class="navbar-brand" href="#" style="font-size: 50px;padding-top: 25px">Studymonk</a>
             {% if user.is_authenticated %}
             <h1>{{ user.username }}</h1>
             {% endif %}
         </div>
+      </ul>
          <ul class="nav navbar-nav navbar-right">
-            <li><a href="{% url 'about_us' %}"><span class="glyphicon glyphicon-user"></span> Aboutus</a></li>
-             <li><a href="{% url 'discussion_forum' %}"><span class="glyphicon glyphicons-user-vr-add"></span>Discussion Forum</a></li>
+            <li><a href="{% url 'about_us' %}" style="padding-top: 25px"><span class="glyphicon glyphicon-user"></span> Aboutus</a></li>
+             <li><a href="{% url 'discussion_forum' %}"style="padding-top: 25px;"><span class="glyphicon glyphicons-user-vr-add"></span>Discussion Forum</a></li>
       {% if user.is_authenticated %}
           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" ><img class="image1"  src="{% static 'images/Study.png' %}">Name</a>
          <ul class="dropdown-menu" role="menu">
@@ -63,13 +71,13 @@
          </ul>
          </li>
             {% else %}
-                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user "></span> Sign Up</a>
+                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"style="padding-top: 25px"><span class="glyphicon glyphicon-user "></span> Sign Up</a>
       <ul class="dropdown-menu" role="menu">
         <li><a href="{% url 'student_signup' %}">Student Signup</a></li>
         <li><a href="{% url 'faculty_signup' %}">Teacher Signup</a></li>
       </ul>
       </li>
-      <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in "></span> Login</a>
+      <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"style="padding-top: 25px"><span class="glyphicon glyphicon-log-in "></span> Login</a>
       <ul class="dropdown-menu" role="menu">
         <li><a href="{% url 'student_login' %}">Student Login</a></li>
         <li><a href="{% url 'faculty_login' %}">Teacher Login</a></li>
@@ -77,8 +85,8 @@
       </li>
             {% endif %}
     </ul>
-
     </div>
+
 </nav>
 
 
