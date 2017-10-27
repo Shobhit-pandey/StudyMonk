@@ -1,8 +1,6 @@
 <!DOCTYPE>
-{% load staticfiles %}
 <html>
 <head>
-
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -12,19 +10,62 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <link href="{% static 'css/home.css' %}" rel="stylesheet" type="text/css">
+    <style>
+        .desc{
+
+            background-color: black;
+
+        }
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            width: 100%;
+            padding-top: 20px;
+
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+
+        }
+
+
+        .image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+        }
+
+        .btn-group {
+            padding-top: 20px;
+            padding-right: 30px;
+        }
+
+        hr {
+            color: black;
+            border-bottom: 2px solid;
+        }
+
+        .container-fluid {
+            padding-left: 100px;
+        }
+        .teacher{
+            text-align: left;
+        }
+        .student{
+            text-align: right;
+        }
+    </style>
 </head>
 <body>
-
 <nav class="navbar navbar-inverse" style="background-color: blue" >
     <div class="container">
         <div class="navbar-header">
             <img class="image" src="{% static 'images/Study.png' %}">
         </div>
         <div class="navbar-header">
-            <a class="navbar-brand" href="#" style="font-size: 50px;padding-top: 25px;color: white">Studymonk</a>
+            <a class="navbar-brand" href="#" style="font-size: 50px;padding-top: 25px">Studymonk</a>
         </div>
-        <ul class="nav navbar-nav navbar-right">
+         <ul class="nav navbar-nav navbar-right">
             <li><a href="{% url 'about_us' %}"><span class="glyphicon glyphicon-user"></span> Aboutus</a></li>
              <li><a href="{% url 'discussion_forum' %}"><span class="glyphicon glyphicons-user-vr-add"></span>Discussion Forum</a></li>
       {% if user.is_authenticated %}
@@ -57,23 +98,22 @@
             {% endif %}
     </ul>
 
-
     </div>
 </nav>
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 col-md-6" id="college">
-
-                <div class="box"><p class="todo2" id ="college">College</p></div>
-        </div>
-        <div class="col-md-6 col-md-6" id="course">
-
-                <div class="box"><p class="todo2" id= "course">Course</p></div>
-
-        </div>
-    </div>
-</div>
 
 
-</body>
-</html>
+<!-- make a row for  every topic  -->
+
+
+            <div class="row">
+                    <div class="col-md-12 " style="background-color: #000000">
+<!-- display topic name  -->
+
+                        <h3  style ="color: #FFFFFF"> topic  name </h3>
+
+                        </a>
+                    </div>
+
+
+            </div>
+            </body>

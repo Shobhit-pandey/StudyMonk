@@ -15,13 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from pip._vendor.html5lib.treeadapters.sax import namespace
-
-from mywebsite import views as mywebsite_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url (r'^',mywebsite_views.home,name="mywebsite"),
 
-    url(r'', include('mywebsite.urls', namespace='mywebsite')),
+    url(r'^', include('mywebsite.urls')),
 ]

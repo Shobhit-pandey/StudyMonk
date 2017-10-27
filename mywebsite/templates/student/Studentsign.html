@@ -1,30 +1,34 @@
-<!DOCTYPE>
+<!DOCTYPE html>
 {% load staticfiles %}
-<html>
+<html lang="en">
 <head>
-
-    <!-- Latest compiled and minified CSS -->
+    <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/normalize.css">
+        <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <link href="{% static 'css/home.css' %}" rel="stylesheet" type="text/css">
 </head>
 <body>
 
-<nav class="navbar navbar-inverse" style="background-color: blue" >
+<nav class="navbar navbar-inverse" >
     <div class="container">
         <div class="navbar-header">
             <img class="image" src="{% static 'images/Study.png' %}">
         </div>
         <div class="navbar-header">
-            <a class="navbar-brand" href="#" style="font-size: 50px;padding-top: 25px;color: white">Studymonk</a>
+            <a class="navbar-brand" href="#" style="font-size: 50px;padding-top: 25px">Studymonk</a>
         </div>
-        <ul class="nav navbar-nav navbar-right">
+         <ul class="nav navbar-nav navbar-right">
+              <li><a href="#"><span class="glyphicon glyphicon-home"></span>Home</a></li>
             <li><a href="{% url 'about_us' %}"><span class="glyphicon glyphicon-user"></span> Aboutus</a></li>
              <li><a href="{% url 'discussion_forum' %}"><span class="glyphicon glyphicons-user-vr-add"></span>Discussion Forum</a></li>
       {% if user.is_authenticated %}
@@ -40,8 +44,7 @@
                 {% endif %}
                  <li><a href="{% url 'logout' %}"> Logout</a></li>
          </ul>
-         </li>
-            {% else %}
+         </li>{% else %}
                  <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user "></span> Sign Up</a>
       <ul class="dropdown-menu" role="menu">
         <li><a href="{% url 'student_signup' %}">Student Signup</a></li>
@@ -57,22 +60,57 @@
             {% endif %}
     </ul>
 
-
     </div>
 </nav>
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 col-md-6" id="college">
+<form action="{% url 'student_signup' %}" method="post">
+{#   <!-- {% csrf_token %}#}
+{#    <h1>Sign Up</h1>#}
+{##}
+{#        <fieldset>#}
+{#          <legend>Your basic info</legend>#}
+{##}
+{#          <label for="first_name">First-Name:</label>#}
+{#          {{ form.first_name }}#}
+{##}
+{#            <label for="last_name">Last-Name:</label>#}
+{#          {{ form.last_name }}#}
+{##}
+{#            <label for="gender">Gender:</label>#}
+{#            {{ form.gender }}#}
+{#        <select id="job" name="user_gender">#}
+{#          <optgroup label="Gender">#}
+{#            <option value="male">Male</option>#}
+{#            <option value="female">Female</option>#}
+{#          </optgroup>#}
+{#        </select>#}
+{##}
+{#          <label for="email">Email:</label>#}
+{#          {{ form.email }}#}
+{##}
+{#            <label for="college_name">College Name</label>#}
+{#          {{ form.email }}#}
+{##}
+{#          <label for="password">Password:</label>#}
+{#          {{ form.password1 }}#}
+{#            <label for="password">Confirm Password:</label>#}
+{#          {{ form.password2 }}#}
+{##}
+{##}
+{#         <!-- <label for="bio">Biography:</label>#}
+{#          <textarea id="bio" name="user_bio"></textarea> -->#}
+{##}
+{##}
+{##}
+{##}
+{#  </fieldset!-->#}
+    <h1>Sign Up For Student</h1>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="row" style="padding-top: 30px">
 
-                <div class="box"><p class="todo2" id ="college">College</p></div>
+       <button type="submit">Sign Up</button>
         </div>
-        <div class="col-md-6 col-md-6" id="course">
-
-                <div class="box"><p class="todo2" id= "course">Course</p></div>
-
-        </div>
-    </div>
-</div>
+      </form>
 
 
 </body>

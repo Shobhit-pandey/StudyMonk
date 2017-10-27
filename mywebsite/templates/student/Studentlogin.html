@@ -1,30 +1,32 @@
-<!DOCTYPE>
+<!DOCTYPE html>
 {% load staticfiles %}
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" type="text/css">
+                <link rel="stylesheet" href="{% static 'css/main.css' %}">
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <link href="{% static 'css/home.css' %}" rel="stylesheet" type="text/css">
 </head>
 <body>
-
-<nav class="navbar navbar-inverse" style="background-color: blue" >
+<nav class="navbar navbar-inverse" >
     <div class="container">
         <div class="navbar-header">
             <img class="image" src="{% static 'images/Study.png' %}">
         </div>
         <div class="navbar-header">
-            <a class="navbar-brand" href="#" style="font-size: 50px;padding-top: 25px;color: white">Studymonk</a>
+            <a class="navbar-brand" href="#" style="font-size: 50px;padding-top: 25px">Studymonk</a>
         </div>
-        <ul class="nav navbar-nav navbar-right">
+         <ul class="nav navbar-nav navbar-right">
+             <li><a href="#"><span class="glyphicon glyphicon-home"></span>Home</a></li>
             <li><a href="{% url 'about_us' %}"><span class="glyphicon glyphicon-user"></span> Aboutus</a></li>
              <li><a href="{% url 'discussion_forum' %}"><span class="glyphicon glyphicons-user-vr-add"></span>Discussion Forum</a></li>
       {% if user.is_authenticated %}
@@ -40,8 +42,7 @@
                 {% endif %}
                  <li><a href="{% url 'logout' %}"> Logout</a></li>
          </ul>
-         </li>
-            {% else %}
+         </li>{% else %}
                  <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user "></span> Sign Up</a>
       <ul class="dropdown-menu" role="menu">
         <li><a href="{% url 'student_signup' %}">Student Signup</a></li>
@@ -57,23 +58,65 @@
             {% endif %}
     </ul>
 
-
     </div>
 </nav>
-<div class="container">
+
+<form action="{% url 'student_login' %}" method="post">
+    {% csrf_token %}
+     <h1>Student Login</h1>
+
+        <!--fieldset>
+            <label for="username">UserName:</label>
+          {{ form.username }}
+          <label for="password">Password:</label>
+          {{ form.password }}
+
+            <p style="float: left"> <a href="#">Forgot Password</a> </p>
+                </div>
+
+                <p style="float: right"><a href="#">Create New Account</a>
+                </p>
+        </fieldset-->
+
+    {{ form.as_p }}
+    <div class="row" style="padding-top: 30px">
+
+       <button type="submit">Login</button>
+        </div>
+      </form>
+
+<!-- <div class="container-fluid">
     <div class="row">
-        <div class="col-md-6 col-md-6" id="college">
+           <p style="text-align: center size: 50px;"> Student Login </p>
+            <div class="card">
 
-                <div class="box"><p class="todo2" id ="college">College</p></div>
+                <form action="home.html" method = "post">
+                    {% csrf_token %}
+            {{ form.as_p }}
+                <div class="form-group">
+                    <label for="userName"> User Name</label>
+                    {{ form.username }}
+                </div>
+                <div class="form-group">
+
+                    <label for="Password">  Password</label>
+                    {{ form.password }}
+                </div>
+<p> <a href="#">Forgot Password</a> </p><p><a href="#">Create New Account</a>
+                </p>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-default" id="submit" type="submit">
+                    Login</button>
+                </div>
+
+
+            </form>
+
+            </div>
         </div>
-        <div class="col-md-6 col-md-6" id="course">
 
-                <div class="box"><p class="todo2" id= "course">Course</p></div>
-
-        </div>
-    </div>
 </div>
-
-
+-->
 </body>
 </html>
