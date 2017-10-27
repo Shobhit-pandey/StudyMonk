@@ -1,0 +1,136 @@
+<!DOCTYPE>
+<html>
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <style>
+        body{
+
+
+        }
+        .card {
+
+            width: 80%;
+            padding: 20px;
+            border: 1px solid;
+            border-color: #DBDBD6;
+            max-height: 100%;
+
+
+        }
+
+
+        .image {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .btn-group {
+            padding-top: 20px;
+            padding-right: 30px;
+        }
+
+        hr {
+            color: black;
+            border-bottom: 2px solid;
+        }
+
+        .container-fluid {
+            padding-left: 100px;
+        }
+        .desc{
+            text-align: center;
+            color: #A0A0A0;
+        }
+        .timest{
+            text-align: center;
+            color: black;
+            margin-top: 10px;
+            margin-bottom:10px;
+        }
+
+
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-inverse" >
+    <div class="container">
+        <div class="navbar-header">
+            <img class="image" src="{% static 'images/Study.png' %}">
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#" style="font-size: 50px;padding-top: 25px">Studymonk</a>
+        </div>
+         <ul class="nav navbar-nav navbar-right">
+            <li><a href="{% url 'about_us' %}"><span class="glyphicon glyphicon-user"></span> Aboutus</a></li>
+             <li><a href="{% url 'discussion_forum' %}"><span class="glyphicon glyphicons-user-vr-add"></span>Discussion Forum</a></li>
+      <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user "></span> Sign Up</a>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="{% url 'studentsign' %}">Student Signup</a></li>
+        <li><a href="{% url 'teachersign' %}">Teacher Signup</a></li>
+      </ul>
+      </li>
+      <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in "></span> Login</a>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="{% url 'studentlogin' %}">Student Login</a></li>
+        <li><a href="{% url 'teacherlogin' %}">Teacher Login</a></li>
+      </ul>
+      </li>
+    </ul>
+
+    </div>
+</nav>
+
+
+<div class="container-fluid">
+  <!-- make a row for a new thread -->
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <h3 align="center"><b> Primary Key </b></h3>
+
+                <div class="desc">
+                   Description This contains the description about a topic .
+                </div>
+                <div class="timest">
+                 28 May 2017
+                </div>
+                <p style="float: left; font-size: 9pt; text-align: center; width: 30%; margin-right: 2%; margin-bottom: 0.5em;"><img src="/Users/shivanshsharma/Desktop/v.png" style="width: 100%; height:10%; ">Documents</p>
+                <p style="float: left; font-size: 9pt; text-align: center; width: 30%; margin-right: 2%; margin-bottom: 0.5em;"><img src="/Users/shivanshsharma/Desktop/v.png" style="width: 100%; height:10%;">Videos</p>
+                <p style="float: left; font-size: 9pt; text-align: center; width: 30%; margin-right: 2%; margin-bottom: 0.5em;"><img src="/Users/shivanshsharma/Desktop/v.png" style="width: 100%; height:10%;">Comments</p>
+
+
+               <form action="#" method = "post">
+                <div class="form-group">
+
+                    <input type ="text" maxlength="2000" class="form-control" name="comment"placeholder="comment">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-default" id="comment" type="submit">
+                    Comment</button>
+                </div>
+            </form>
+
+
+             </div>
+        </div>
+    </div>
+
+
+<script type="text/javascript">
+
+
+</script>
+
+
+</body>
+</html>

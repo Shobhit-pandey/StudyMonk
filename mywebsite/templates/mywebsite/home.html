@@ -135,6 +135,7 @@ elem.click(function() {
         if(clicked2==true)
         {
             element.empty();
+            clicked2=false;
         }
 
         clicked1 =true;
@@ -149,7 +150,7 @@ elem.click(function() {
             for (i=0;i<3&&j<total;i++)
             {
 
-                p = p+ "<div class='col-md-4'><div class='card'><p>"+items[j]+"</p></div></div>";
+                p = p+ "<div class='col-md-4'><div class='box'><p>"+items[j]+"</p></div></div>";
                 j++;
             }
             j--;
@@ -167,6 +168,7 @@ elem2.click(function() {
         if(clicked1==true)
         {
             element.empty();
+            clicked1=false;
         }
 
         clicked2 =true;
@@ -180,18 +182,15 @@ elem2.click(function() {
             var p="";
             for (i=0;i<3&&j<total;i++)
             {
-                p = p+ "<div class='col-md-4'><div class='card'><p>"+items[j]+"</p></div></div>";
+                p = p+ "<div class='col-md-4'><div class='box'><p>"+items[j]+"</p></div></div>";
                 j++;
             }
             j--;
             var t = s+p+"</div>";
             element.append(t);
         }
-    //fun(id);
-    //increase_clicks(id);
-
     }
-  //the element has been clicked... do stuff here
+
 });
 
 
