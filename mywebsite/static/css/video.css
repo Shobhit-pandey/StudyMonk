@@ -1,5 +1,5 @@
 .fullscreen-bg {
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
@@ -13,7 +13,7 @@
   top: 0;
   left: 0;
   width: 100%;
-    height: 600px;
+  height: 100%;
 }
 
 @media (min-aspect-ratio: 16/9) {
@@ -30,10 +30,3 @@
   }
 }
 
-@media (max-width: 767px) {
-  .fullscreen-bg {
-
-  }
-
-
-}
