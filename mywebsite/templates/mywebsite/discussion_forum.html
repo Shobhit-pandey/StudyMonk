@@ -13,6 +13,56 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <link href="{% static 'css/home.css' %}" rel="stylesheet" type="text/css">
+
+    <style>
+        body{
+
+
+        }
+        .card {
+
+            width: 80%;
+            padding: 20px;
+            border: 1px solid;
+            border-color: #DBDBD6;
+            max-height: 100%;
+
+
+        }
+
+
+        .image {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .btn-group {
+            padding-top: 20px;
+            padding-right: 30px;
+        }
+
+        hr {
+            color: black;
+            border-bottom: 2px solid;
+        }
+
+        .container-fluid {
+            padding-left: 100px;
+        }
+        .teacher{
+            text-align: left;
+            color: #A0A0A0;
+        }
+        .student{
+            text-align: right;
+            color: black;
+            margin-top: 10px;
+            margin-bottom:10px;
+        }
+
+
+    </style>
 </head>
 <body>
 
@@ -60,19 +110,46 @@
 
     </div>
 </nav>
-<div class="container">
+
+<div class="container-fluid">
     <div class="row">
-        <div class="col-md-6 col-md-6" id="college">
+        <div class="col-md-12" style="text-align: center;">
 
-                <div class="box"><p class="todo2" id ="college">College</p></div>
-        </div>
-        <div class="col-md-6 col-md-6" id="course">
 
-                <div class="box"><p class="todo2" id= "course">Course</p></div>
+        <!-- give an option using for loop to select the subjects -->
+         <select>
+
+            <option value="Data Base Management"> Data Base Management</option>
+            <option value="Computer Networks">Computer Networks</option>
+            <option value="Compiler Design">Compiler Design</option>
+        </select>
+         </div>
+    </div>
+</div>
+
+
+
+<div class="container-fluid">
+  <!-- make a row for a new thread -->
+
+    <div class="row">
+        <div class="col-md-12">
+
+        <div class="card">
+                <h3 align="center"><b>{{ t.question }} </b></h3>
+
+                <div class="teacher">
+                   {{t.teacher}}
+                </div>
+                <div class="student">
+                 {{t.student  }}
+                </div>
+             </div>
+
 
         </div>
     </div>
-</div>
+    </div>
 
 
 </body>
