@@ -9,31 +9,39 @@
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </head>
 <body>
-<nav class="navbar navbar-inverse" >
-    <div class="container">
+<nav class="navbar navbar-inverse" style="opacity: 0.5">
         <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
             <img class="image" src="{% static 'images/Study.png' %}">
         </div>
-        <div class="navbar-header">
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+<div class="navbar-header">
             <a class="navbar-brand" href="#" style="font-size: 50px;padding-top: 25px">Studymonk</a>
         </div>
+
+      </ul>
          <ul class="nav navbar-nav navbar-right">
-             <li><a href="#"><span class="glyphicon glyphicon-home"></span>Home</a></li>
-            <li><a href="{% url 'about_us' %}"><span class="glyphicon glyphicon-user"></span> Aboutus</a></li>
-             <li><a href="{% url 'discussion_forum' %}"><span class="glyphicon glyphicons-user-vr-add"></span>Discussion Forum</a></li>
+             <li><a href="#"style="padding-top: 25px"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+            <li><a href="{% url 'about_us' %}" style="padding-top: 25px"><span class="glyphicon glyphicon-user"></span> Aboutus</a></li>
+             <li><a href="{% url 'discussion_forum' %}"style="padding-top: 25px"><span class="glyphicon glyphicons-user-vr-add"></span>Discussion Forum</a></li>
       {% if user.is_authenticated %}
-          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" ><img class="image1"  src="{% static 'images/Study.png' %}">Name</a>
+          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" ><img class="image1"  src="{% static 'images/Study.png' %}">{{ user.username }}</a>
          <ul class="dropdown-menu" role="menu">
           <li><a href="{% url 'change_password' %}"> Change Password</a></li>
-             {% if user.id in facultyregistration.user_id %}
+             {% if user.is_staff %}
                     <li><a href="{% url 'faculty_edit' %}">Edit Faculty
                         Profile</a></li>
                 {% else %}
@@ -43,13 +51,13 @@
                  <li><a href="{% url 'logout' %}"> Logout</a></li>
          </ul>
          </li>{% else %}
-                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user "></span> Sign Up</a>
+                 <li class="dropdown"><a style="padding-top: 25px" href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user "></span> Sign Up</a>
       <ul class="dropdown-menu" role="menu">
         <li><a href="{% url 'student_signup' %}">Student Signup</a></li>
         <li><a href="{% url 'faculty_signup' %}">Teacher Signup</a></li>
       </ul>
       </li>
-      <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in "></span> Login</a>
+      <li class="dropdown"><a style="padding-top: 25px" href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in "></span> Login</a>
       <ul class="dropdown-menu" role="menu">
         <li><a href="{% url 'student_login' %}">Student Login</a></li>
         <li><a href="{% url 'faculty_login' %}">Teacher Login</a></li>
