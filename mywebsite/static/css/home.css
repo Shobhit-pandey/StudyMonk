@@ -6,7 +6,7 @@
 
 }
 .todo1{
-    padding-top: 90px;
+    margin-top: 200px;
     font-size: 70px;
     text-align: center;
     color: white;
@@ -14,14 +14,14 @@
 .box {
     display: inline-block;
     background-color: red;
-    margin-left: 200px;
+    margin-left: 250px;
     width: 200px;
     text-align: center;
 }
 .row2{
     display: inline-block;
     width: 200px;
-    margin-left: 200px;
+    margin-left: 250px;
     padding: 5px;
     height: 40px;
     color: white;
