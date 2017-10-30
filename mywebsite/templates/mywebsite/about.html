@@ -12,46 +12,26 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href="{% static 'css/home.css' %}" rel="stylesheet" type="text/css">
 
-    <style>
-        .desc {
+    <title>About Us</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/style.css">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
+<script type="text/javascript" src="js/jQuery.js"></script>
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<style type="text/css">
+  .name{
+    width: 50%;
+    float: left;
+  }
+  image{
+    float: left;
+  }
 
-            background-color: black;
+</style>
 
-        }
 
-        .card {
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-            width: 300px;
-            padding-top: 20px;
-
-        }
-
-        .card:hover {
-            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-
-        }
-
-        .image {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-        }
-
-        .btn-group {
-            padding-top: 20px;
-            padding-right: 30px;
-        }
-
-        hr {
-            color: black;
-            border-bottom: 2px solid;
-        }
-
-        .container-fluid {
-            padding-left: 100px;
-        }
-
-    </style>
 </head>
 <body>
 
@@ -113,144 +93,137 @@
     </div>
 
 </nav>
+<div class = "container">
+  <div class="row" style="color:#FFFFFF; align-content:center;">
+  <div class="col-md-12">
 
+     <h1>About Us</h1>
+  </div>
+  </div>
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-4 col-sm-4">
-            <div class="card">
-                <img class="img-circle" src="{% static 'images/Study.png' %}" alt="Avatar"
-                     style="height:240px ;width:100%">
-                <h4><b><a href="#"> Sakshi Sharma </a></b></h4>
-                <div class="desc">
+    <div class ="row" style="color: #FFFFFF; margin-bottom:200px">
+      <div class = "col-md-6" id ="per" style="color:#FFFFFF; align-content:center;">
 
-                    <a href="mywebsite/home.html"><img src="{% static 'images/linkedin.jpeg' %}" alt="Avatar"
-                                                       style="height:40px ;width:50px; margin-right: 30px;margin-left: 30px"></a>
-                    <a href="mywebsite/home.html"><img src="{% static 'images/github.png' %}" alt="Avatar"
-                                                       style="height:40px ;width:50px; margin-right: 30px"></a>
+      </div>
+      <div class="col-md-6" id="pet">
+    </div>
+    </div>
 
-                    <a href="mywebsite/home.html"><img src="{% static 'images/fb.jpeg' %}" alt="Avatar"
-                                                       style="height:40px ;width:50px"></a>
+    <div class = "row" style=" margin-bottom:150px">
+        <div class = "col-md-4" id="per01">
 
-                </div>
+          <div id ="per1">
 
+            <img src="{% static 'images/Study.png' %}" class="img-circle">
 
-            </div>
+          </div>
         </div>
 
+        <div class = "col-md-4" id ="per02">
+          <div id ="per2">
+            <img src="{% static 'images/Study.png' %}" class="img-circle">
+        </div>
+        </div>
+        <div class = "col-md-4" id ="per03">
+          <div id ="per3">
+            <img src="{% static 'images/Study.png' %}" class="img-circle">
+          </div>
+        </div>
+    </div>
+ <div class = "row">
+        <div class = "col-md-4" id="per04">
 
-        <div class="col-md-4 col-sm-4">
-            <div class="card">
-                <img class="img-circle" src="{% static 'images/Study.png' %}" alt="Avatar"
-                     style="height:240px ; width:100%">
-                <h4><b><a href="#"> Maneesh</a></b></h4>
-
-                <div class="desc">
-
-                    <a href="mywebsite/home.html"><img src="{% static 'images/linkedin.jpeg' %}" alt="Avatar"
-                                                       style="height:40px ;width:50px; margin-right: 30px;margin-left: 30px"></a>
-                    <a href="mywebsite/home.html"><img src="{% static 'images/github.png' %}" alt="Avatar"
-                                                       style="height:40px ;width:50px; margin-right: 30px"></a>
-
-                    <a href="mywebsite/home.html"><img src="{% static 'images/fb.jpeg' %}" alt="Avatar"
-                                                       style="height:40px ;width:50px"></a>
-
-                </div>
-            </div>
+          <div id ="per4">
 
 
+            <img src="{% static 'images/Study.png' %}" class="img-circle">
+
+
+
+
+
+          </div>
         </div>
 
-        <div class="col-md-4 col-sm-4">
-            <div class="card">
-                <img class="img-circle" src="{% static 'images/Study.png' %}" alt="Avatar"
-                     style="height:240px ;width:100%">
-                <h4><b><a href="#">Phani </a></b></h4>
-                <div class="desc">
-
-                    <a href="mywebsite/home.html"><img src="{% static 'images/linkedin.jpeg' %}" alt="Avatar"
-                                                       style="height:40px ;width:50px; margin-right: 30px;margin-left: 30px"></a>
-                    <a href="mywebsite/home.html"><img src="{% static 'images/github.png' %}" alt="Avatar"
-                                                       style="height:40px ;width:50px; margin-right: 30px"></a>
-
-                    <a href="mywebsite/home.html"><img src="{% static 'images/fb.jpeg' %}" alt="Avatar"
-                                                       style="height:40px ;width:50px"></a>
-
-                </div>
-            </div>
+        <div class = "col-md-4" id ="per05">
+          <div id ="per5">
+            <img src="{% static 'images/Study.png' %}" class="img-circle">
+        </div>
+        </div>
+        <div class = "col-md-4" id ="per06">
+          <div id ="per6">
+            <img src="{% static 'images/Study.png' %}" class="img-circle">
+          </div>
         </div>
     </div>
 
-</div>
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-4 col-sm-4">
-
-            <div class="card">
-                <img class="img-circle" src="{% static 'images/Study.png' %}" alt="Avatar"
-                     style="height:240px ;width:100%">
-                <h4><b><a href="#"> Shobhit </a></b></h4>
-                <div class="desc">
-
-                    <a href="mywebsite/home.html"><img src="{% static 'images/linkedin.jpeg' %}" alt="Avatar"
-                                                       style="height:40px ;width:50px; margin-right: 30px;margin-left: 30px"></a>
-                    <a href="mywebsite/home.html"><img src="{% static 'images/github.png' %}" alt="Avatar"
-                                                       style="height:40px ;width:50px; margin-right: 30px"></a>
-
-                    <a href="mywebsite/home.html"><img src="{% static 'images/fb.jpeg' %}" alt="Avatar"
-                                                       style="height:40px ;width:50px"></a>
-
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4 col-sm-4">
-
-            <div class="card">
-                <img class="img-circle" src="{% static 'images/Study.png' %}" alt="Avatar"
-                     style="height:240px ;width:100%">
-                <h4><b><a href="#"> Bhuvanesh</a></b></h4>
-                <div class="desc">
-
-                    <a href="mywebsite/home.html"><img src="{% static 'images/linkedin.jpeg' %}" alt="Avatar"
-                                                       style="height:40px ;width:50px; margin-right: 30px;margin-left: 30px"></a>
-                    <a href="mywebsite/home.html"><img src="{% static 'images/github.png' %}" alt="Avatar"
-                                                       style="height:40px ;width:50px; margin-right: 30px"></a>
-
-                    <a href="mywebsite/home.html"><img src="{% static 'images/fb.jpeg' %}" alt="Avatar"
-                                                       style="height:40px ;width:50px"></a>
-
-                </div>
-
-            </div>
-        </div>
-
-        <div class="col-md-4 col-sm-4">
-
-            <div class="card">
-                <img class="img-circle" src="{% static 'images/Study.png' %}" alt="Avatar"
-                     style="height:240px ;width:100%">
-                <h4><b><a href="#"> Omprakash </a></b></h4>
-                <div class="desc">
-
-                    <a href="mywebsite/home.html"><img src="{% static 'images/linkedin.jpeg' %}" alt="Avatar"
-                                                       style="height:40px ;width:50px; margin-right: 30px;margin-left: 30px"></a>
-                    <a href="mywebsite/home.html"><img src="{% static 'images/github.png' %}" alt="Avatar"
-                                                       style="height:40px ;width:50px; margin-right: 30px"></a>
-
-                    <a href="mywebsite/home.html"><img src="{% static 'images/fb.jpeg' %}" alt="Avatar"
-                                                       style="height:40px ;width:50px"></a>
-
-                </div>
-            </div>
-        </div>
     </div>
+    </body>
+<script type="text/javascript">
 
-</div>
-<div class="col-xs-12">
-    <hr>
-</div>
+var nums = [1,2,3,4,5,6];
+
+// Let's loop over the numbers in our array
+for (var i = 0; i < nums.length; i++) {
+
+    // This is the number we're on...
+
+
+var element = "#per"+nums[i] ;
+
+
+var elem = $(element);
+
+elem.click(function() {
+
+    var id = $(this).attr("id");
+    console.log(id);
+    fun(id);
+    //increase_clicks(id);
+
+
+  //the element has been clicked... do stuff here
+});
+
+
+
+
+    //document.body.appendChild(elem);
+}
+
+function fun(numcopy)
+{
+    if($("#per").children().length>0)
+    {
+        var u = $("#per").children().one();
+        var id_child = $(u).attr("id");
+        var number_child = id_child.charAt(3);
+        var e = "#per0"+number_child;
+        var t = "#"+number_child;
+        $(t).remove();
+        $(e).append(u);
+    }
+
+    $("#per").append($("#"+numcopy));
+    //var id_child = $(("#"+numcopy)).attr("id");
+
+    //var id_child = $(u).attr("id");
+    //var number_child = id_child.charAt(3);
+    var i = numcopy.charAt(3)-1;
+
+     var data = "<div id ="+ "'"+numcopy.charAt(3)+"'"+"><h2>"+ "User["+i+"].Name"+"</h2><h3>"+ "User["+i+"].description "+"</h3><a href='User["+i+"].linkedin'><img src={% static 'images/Study.png' %} alt='Avatar' style='height:40px ;width:50px; margin-right: 30px;margin-left: 30px'></a><a href='User["+i+"].github'><img src='{% static 'images/Study.png' %}' alt='Avatar' style='height:40px ;width:50px; margin-right: 30px'></a><a href='User["+i+"].fb'><img src='{% static 'images/Study.png' %}' alt='Avatar' style='height:40px ;width:50px'></a></div>"
+
+    $("#pet").append(data);
+
+
+
+
+}
+
+</script>
+
+
 
 
 </body>
