@@ -12,15 +12,29 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <style>
+         body{
+        background-image: url({% static 'images/home.jpg' %});
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
         .desc{
 
             background-color: black;
 
         }
+        h3{
+            text-align: center;
+        }
         .card {
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-            width: 100%;
-            padding-top: 20px;
+            width: 30%;
+
+            align-content: center;
+
+            border: 1px solid;
+            border-color: #DBDBD6;
+            max-height: 100%;
+            margin:10px;
 
         }
 
@@ -34,7 +48,12 @@
             width: 80px;
             height: 80px;
             border-radius: 50%;
+            margin:auto;
+            display: block;
+
+
         }
+
 
         .btn-group {
             padding-top: 20px;
@@ -113,12 +132,26 @@
 <!-- make a row for  3 courses using for loop  -->
 
 
-            <div class="row">
-                    <div class="col-md-4 ">
-<!-- display course name and some image   -->
+          <div class="row" >
+                    <div class="col-md-4 card">
+
                         <a href = "actualpage.html">
-                        <img class="img-circle" src="Study.png" alt="Avatar" style="height:50px ; width:10%">
+                        <img class="img-circle img-center center-block" src="{% static 'images/Study.png' %}" alt="Avatar" style="height:50px ; width:10%;">
                         <h3>course</h3>
+                        </a>
+                    </div>
+                    <div class="col-md-4 card">
+
+                        <a href = "actualpage.html">
+                        <img class="img-circle img-center center-block" src="{% static 'images/Study.png' %}" alt="Avatar" style="height:50px ; width:10%;">
+                        <h3>course </h3>
+                        </a>
+                    </div>
+                    <div class="col-md-4 card">
+
+                        <a href = "actualpage.html">
+                        <img class="img-circle img-center center-block" src="{% static 'images/Study.png' %}" alt="Avatar" style="height:50px ; width:10%;">
+                        <h3>course </h3>
                         </a>
                     </div>
 

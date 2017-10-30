@@ -125,3 +125,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+AUTHENTICATION_BACKENDS = ('mywebsite.views.StudentCustomLogin',)
+
+EMAIL_HOST = 'localhost'
+EMAIL_PORT=1025
+
+

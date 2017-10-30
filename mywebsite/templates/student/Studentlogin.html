@@ -14,6 +14,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+<style>
+    
+    
+    body{
+        background-image: url({% static 'images/login.jpg' %});
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+    
+</style>
 
 </head>
 <body>
@@ -87,44 +98,17 @@
         </fieldset-->
 
     {{ form.as_p }}
+
     <div class="row" style="padding-top: 30px">
 
        <button type="submit">Login</button>
         </div>
-      </form>
+    <div class="row" style="padding-top: 30px">
 
-<!-- <div class="container-fluid">
-    <div class="row">
-           <p style="text-align: center size: 50px;"> Student Login </p>
-            <div class="card">
-
-                <form action="home.html" method = "post">
-                    {% csrf_token %}
-            {{ form.as_p }}
-                <div class="form-group">
-                    <label for="userName"> User Name</label>
-                    {{ form.username }}
-                </div>
-                <div class="form-group">
-
-                    <label for="Password">  Password</label>
-                    {{ form.password }}
-                </div>
-<p> <a href="#">Forgot Password</a> </p><p><a href="#">Create New Account</a>
-                </p>
-
-                <div class="form-group">
-                    <button type="submit" class="btn btn-default" id="submit" type="submit">
-                    Login</button>
-                </div>
-
-
-            </form>
-
-            </div>
+       <p style="float: left"> <a href="{% url 'reset_password' %}">Forgot Password? </a> </p>
+        <p style="float: right"><a href="{% url 'student_signup' %}">Create New Account</a>
         </div>
 
-</div>
--->
+      </form>
 </body>
 </html>

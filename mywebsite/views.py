@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.contrib.auth import update_session_auth_hash, authenticate, login
+from django.contrib.auth import update_session_auth_hash, authenticate, login, get_user_model
+from django.contrib.auth.backends import ModelBackend
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth.forms import PasswordChangeForm, UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.sites.shortcuts import get_current_site
-from django.http import HttpResponseRedirect
+from django.db.models import Q
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 
 # Create your views here.
@@ -153,3 +155,23 @@ def activate(request, uidb64, token):
         return redirect('home')
     else:
         return render(request, 'accounts/account_activation_invalid.html')
+
+class StudentCustomLogin(ModelBackend): #requires to define two functions authenticate and get_user
+    def authenticate(self, username=None, password=None, **kwargs):
+        UserModel = get_user_model()
+        try:
+            user = UserModel.objects.get(username=username)
+        except UserModel.DoesNotExist:
+            return None
+        else:
+            if getattr(user, 'is_active', False) and user.check_password(password):
+                if user.is_staff == False:
+                    return user
+        return redirect('home')
+
+    def get_user(self, user_id):
+        UserModel = get_user_model()
+        try:
+            return UserModel.objects.get(pk=user_id)
+        except UserModel.DoesNotExist:
+            return None
