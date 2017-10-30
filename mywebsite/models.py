@@ -38,3 +38,18 @@ def update_user_profile(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(user=instance)
     instance.profile.save()
+
+
+class AboutUs(models.Model):
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    gender = models.CharField(choices=CHOICE,default='male',max_length=100)
+    email = models.EmailField(null=False)
+    fb_id = models.CharField(max_length=1000)
+    github = models.CharField(max_length=1000)
+    linkedin = models.CharField(max_length=1000)
+    description = models.CharField(max_length=10000,null=False)
+    dp = models.ImageField()
+
+    def __str__(self):
+        return self.email

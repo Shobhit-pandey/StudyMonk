@@ -1,7 +1,8 @@
 from django import forms
+from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.models import User
 
-from mywebsite.models import StudentRegistration, FacultyRegistration
+from mywebsite.models import StudentRegistration, FacultyRegistration, AboutUs
 
 CHOICE = (
     ('male', 'male'),
@@ -95,3 +96,56 @@ class FacultyRegistrationForm(forms.Form):
             raise forms.ValidationError("User with this username already exists")
 
         return self.cleaned_data.get('username')
+
+class StudentEditProfile(UserChangeForm):
+
+    class Meta:
+
+        model=StudentRegistration
+        fields=(
+            'gender',
+            'college_name'
+        )
+
+class FacultyEditProfile(UserChangeForm):
+
+    class Meta:
+
+        model=FacultyRegistration
+        fields=(
+            'gender',
+            'college_name',
+            'mentorship_status',
+            'description'
+        )
+
+
+class AboutUsForm(forms.Form):
+    first_name = forms.CharField(max_length=100, required=True)
+    last_name = forms.CharField(max_length=100, required=True)
+    gender = forms.ChoiceField(CHOICE, required=True)
+    email = forms.EmailField(required=True,max_length=100)
+    fb_id = forms.CharField(max_length=1000, required=True)
+    linkedin = forms.CharField(max_length=1000, required=True)
+    github = forms.CharField(max_length=1000, required=True)
+    description = forms.CharField(max_length=10000, required=True)
+    dp = forms.ImageField()
+
+    def save(self, commit=False):
+        a = AboutUs.objects.create(first_name=self.cleaned_data.get('first_name'),
+                                   last_name=self.cleaned_data.get('last_name'),
+                                   email=self.cleaned_data.get('email'),
+                                   gender = self.cleaned_data.get('gender'),
+                                   fb_id =self.cleaned_data.get('fb_id'),
+                                   linkedin =self.cleaned_data.get('linkedin'),
+                                   github =self.cleaned_data.get('github'),
+                                   description = self.cleaned_data.get('description'),
+                                   dp = self.cleaned_data.get('dp'),
+                                   )
+        a.save()
+        return a
+
+    def clean_gender(self):
+        print("clean gender: ", self.cleaned_data)
+        return self.cleaned_data.get('gender')
+
