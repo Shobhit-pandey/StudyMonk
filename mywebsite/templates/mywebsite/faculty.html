@@ -12,16 +12,24 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <style>
-        .desc {
+        .desc{
 
             background-color: black;
 
         }
-
+        h3{
+            text-align: center;
+        }
         .card {
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-            width: 100%;
-            padding-top: 20px;
+            width: 30%;
+
+            align-content: center;
+
+            border: 1px solid;
+            border-color: #DBDBD6;
+            max-height: 100%;
+            margin:10px;
 
         }
 
@@ -30,11 +38,17 @@
 
         }
 
+
         .image {
             width: 80px;
             height: 80px;
             border-radius: 50%;
+            margin:auto;
+            display: block;
+
+
         }
+
 
         .btn-group {
             padding-top: 20px;
@@ -49,12 +63,10 @@
         .container-fluid {
             padding-left: 100px;
         }
-
-        .teacher {
+        .teacher{
             text-align: left;
         }
-
-        .student {
+        .student{
             text-align: right;
         }
     </style>
@@ -119,13 +131,15 @@
 
 
 <div class="row">
-    <div class="col-md-4 ">
-        <!-- display faculty name  and image  -->
-        <a href="actualpage.html">
-            <img class="img-responsive" src="Study.png" alt="Avatar" style="height:50px ; width:10%">
-            <h3>faculty name </h3>
-        </a>
-    </div>
+
+        <div class="col-md-4 card">
+<!-- display college name  and logo  -->
+                        <a href = "actualpage.html">
+                        <img class="img-circle img-center center-block" src="{% static 'images/Study.png' %}" alt="Avatar" style="height:50px ; width:10%;">
+                        <h3>name</h3>
+                        </a>
+                    </div>
+
 
 
 </div>
