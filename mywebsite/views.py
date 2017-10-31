@@ -16,7 +16,7 @@ from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 
-from mywebsite.form import StudentRegistrationForm, FacultyRegistrationForm
+from mywebsite.form import StudentRegistrationForm, FacultyRegistrationForm, StudentEditProfile, FacultyEditProfile
 from mywebsite.models import StudentRegistration, FacultyRegistration
 from mywebsite.token import account_activation_token
 
@@ -104,35 +104,29 @@ def change_password(request):
         return render(request,'accounts/edit_password.html',args)
 
 @login_required()
-def student_edit(request,pk):
-    Profile = get_object_or_404(StudentRegistration,pk=pk)
+def student_edit(request):
     if request.method=='POST':
-        form = StudentRegistrationForm(request.POST,instance=Profile)
+        form=StudentEditProfile(request.POST,instance=request.user)
+
         if form.is_valid():
-            Profile = form.save()
-            Profile.user=request.user
-            Profile.save()
             form.save()
-            return redirect(reverse('home'),pk=Profile.pk)
+            return redirect(reverse('home'))
     else:
-        form=StudentRegistrationForm(instance=Profile)
+        form=StudentEditProfile(instance=request.user)
         args={'form':form}
         return render(request,'student/edit_student.html',args)
 
 
 @login_required()
-def faculty_edit(request,pk):
-    Profile = get_object_or_404(FacultyRegistration,pk=pk)
+def faculty_edit(request):
     if request.method=='POST':
-        form = FacultyRegistrationForm(request.POST,instance=Profile)
+        form=FacultyEditProfile(request.POST,instance=request.user)
+
         if form.is_valid():
-            Profile = form.save()
-            Profile.user=request.user
-            Profile.save()
             form.save()
-            return redirect(reverse('home'),pk=Profile.pk)
+            return redirect(reverse('home'))
     else:
-        form=StudentRegistrationForm(instance=Profile)
+        form=FacultyEditProfile(instance=request.user)
         args={'form':form}
         return render(request,'faculty/edit_teacher.html',args)
 
