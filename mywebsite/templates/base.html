@@ -1,60 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-{% block content %}
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    {% block head %}
-    <title>BASE</title>
-    {% endblock %}
-</head>
-<body>
-<br>
- <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/accounts">Shobhit</a>
-          </div>
-          <div id="navbar" class="navbar-collapse collapse">
-              {% if user.is_authenticated %}
-            <ul class="nav navbar-nav">
-             <li><a href={% url 'accounts:about' %}>About</a></li>
-              <li><a href={% url 'accounts:contact' %}>Contact</a></li>
-                <li><a href={% url 'accounts:logout' %}>logout</a></li>
-                <li><a href={% url 'accounts:view_profile' %}>Profile</a></li>
-                <li><a href={% url 'accounts:edit_profile' %}>Edit Profile</a></li>
-                <li><a href={% url 'accounts:change_password' %}>change Password</a></li>
-                <li><a href={% url 'accounts:reset_password' %}>Forget Password?</a></li>
-            </ul>
+<nav class="navbar navbar-inverse" style="opacity: 0.5">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+            <img class="image" src="{% static 'images/Study.png' %}">
+        </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+<div class="navbar-header">
+            <a class="navbar-brand" href="#" style="font-size: 50px;padding-top: 25px">Studymonk</a>
+        </div>
+
+      </ul>
+         <ul class="nav navbar-nav navbar-right">
+              <li><a href="{% url 'home' %}"style="padding-top: 25px"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+            <li><a href="{% url 'about_us' %}" style="padding-top: 25px"><span class="glyphicon glyphicon-user"></span> Aboutus</a></li>
+             <li><a href="{% url 'discussion_forum' %}" style="padding-top: 25px"><span class="glyphicon glyphicons-user-vr-add"></span>Discussion Forum</a></li>
+      {% if user.is_authenticated %}
+          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" ><img class="image1"  src="{% static 'images/Study.png' %}">{{ user.username }}</a>
+         <ul class="dropdown-menu" role="menu">
+          <li><a href="{% url 'change_password' %}"> Change Password</a></li>
+             {% if user.is_staff %}
+                    <li><a href="{% url 'faculty_edit' %}">Edit Faculty
+                        Profile</a></li>
                 {% else %}
-               <ul class="nav navbar-nav">
-             <li><a href={% url 'accounts:about' %}>About</a></li>
-              <li><a href={% url 'accounts:contact' %}>Contact</a></li>
+                    <li><a href="{% url 'student_edit' %}">Edit
+                        Student Profile</a></li>
+                {% endif %}
+                 <li><a href="{% url 'logout' %}"> Logout</a></li>
+         </ul>
+         </li>{% else %}
+                 <li class="dropdown"><a style="padding-top: 25px" href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user "></span> Sign Up</a>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="{% url 'student_signup' %}">Student Signup</a></li>
+        <li><a href="{% url 'faculty_signup' %}">Teacher Signup</a></li>
+      </ul>
+      </li>
+      <li class="dropdown"><a style="padding-top: 25px" href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in "></span> Login</a>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="{% url 'student_login' %}">Student Login</a></li>
+        <li><a href="{% url 'faculty_login' %}">Teacher Login</a></li>
+      </ul>
+      </li>
+            {% endif %}
+    </ul>
 
-                 <li><a href={% url 'accounts:reset_password' %}>Forget Password?</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-            <li><a href={% url 'accounts:login' %}>Login</a></li>
-                <li><a href={% url 'accounts:register' %}>Register</a></li>
-
-            </ul>
-              {% endif %}
-          </div><!--/.nav-collapse -->
-        </div><!--/.container-fluid -->
-      </nav>
-<br>
-    {% block body %}
-        <h1>
-        Base
-        </h1>
-    {% endblock %}
-</body>
-{% endblock %}
-</html>
+</div>
+</nav>

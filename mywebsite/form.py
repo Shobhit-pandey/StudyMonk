@@ -103,7 +103,6 @@ class StudentEditProfile(UserChangeForm):
 
         model=StudentRegistration
         fields=(
-            'gender',
             'college_name',
             'password'
         )
@@ -114,7 +113,6 @@ class FacultyEditProfile(UserChangeForm):
 
         model=FacultyRegistration
         fields=(
-            'gender',
             'college_name',
             'mentorship_status',
             'description',
