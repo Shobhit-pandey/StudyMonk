@@ -25,6 +25,8 @@ def user_login(request):
     pass
 
 def home(request):
+    # student = StudentRegistration.objects.filter(college_name=StudentRegistration).order_by('user__studentregistration__college_name')
+    # faculty = FacultyRegistration.objects.update()
     return render(request,'mywebsite/home.html')
 
 def profile(request):
@@ -108,9 +110,9 @@ def student_edit(request):
     if request.method=='POST':
         form=StudentEditProfile(request.POST,instance=request.user)
 
-        if form.is_valid():
-            form.save()
-            return redirect(reverse('home'))
+        # if form.is_valid():
+        form.save()
+        return redirect(reverse('home'))
     else:
         form=StudentEditProfile(instance=request.user)
         args={'form':form}
@@ -122,9 +124,9 @@ def faculty_edit(request):
     if request.method=='POST':
         form=FacultyEditProfile(request.POST,instance=request.user)
 
-        if form.is_valid():
-            form.save()
-            return redirect(reverse('home'))
+        # if form.is_valid():
+        form.save()
+        return redirect(reverse('home'))
     else:
         form=FacultyEditProfile(instance=request.user)
         args={'form':form}

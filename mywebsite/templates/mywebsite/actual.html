@@ -79,7 +79,7 @@
     <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#" style="font-size: 50px;padding-top: 25px">Studymonk</a>
+                <a class="navbar-brand" href="{% url 'home' %}" style="font-size: 50px;padding-top: 25px">Studymonk</a>
                 {% if user.is_authenticated %}
                 {% endif %}
             </div>
