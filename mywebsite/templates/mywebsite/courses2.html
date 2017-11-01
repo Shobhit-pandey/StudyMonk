@@ -12,14 +12,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <style>
-         body{
-        background-image: url({% static 'images/home.jpg' %});
-        background-repeat: no-repeat;
-        background-size: 100%;
-    }
         .desc{
 
             background-color: black;
+
+        }
+        .top{
+            position: absolute;
 
         }
         h3{
@@ -27,30 +26,20 @@
         }
         .card {
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-            width: 30%;
+            width: 25%;
+            position: relative;
 
             align-content: center;
 
             border: 1px solid;
             border-color: #DBDBD6;
             max-height: 100%;
-            margin:10px;
+            margin-left:10px;
 
         }
 
         .card:hover {
             box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-
-        }
-
-
-        .image {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            margin:auto;
-            display: block;
-
 
         }
 
@@ -74,6 +63,12 @@
         .student{
             text-align: right;
         }
+        img.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
     </style>
 </head>
 <body>
@@ -131,30 +126,26 @@
 
 <!-- make a row for  3 courses using for loop  -->
 
+<div class="row" >
+                    <div class="col-md-3 card">
 
-          <div class="row" >
-                    <div class="col-md-4 card">
 
-                        <a href = "actualpage.html">
-                        <img class="img-circle img-center center-block" src="{% static 'images/Study.png' %}" alt="Avatar" style="height:50px ; width:10%;">
-                        <h3>course</h3>
-                        </a>
-                    </div>
-                    <div class="col-md-4 card">
+                        <img class = "imgA1" src="img.jpg" style="width:100%;" >
+
 
                         <a href = "actualpage.html">
-                        <img class="img-circle img-center center-block" src="{% static 'images/Study.png' %}" alt="Avatar" style="height:50px ; width:10%;">
-                        <h3>course </h3>
+                            <h3>Database Management System </h3>
                         </a>
-                    </div>
-                    <div class="col-md-4 card">
 
-                        <a href = "actualpage.html">
-                        <img class="img-circle img-center center-block" src="{% static 'images/Study.png' %}" alt="Avatar" style="height:50px ; width:10%;">
-                        <h3>course </h3>
-                        </a>
+
+                        <img class="imgB1  center"  src="IItbombay.jpg" alt="Avatar" style=" width: 150px;height: 150px; "">
+
+
+
                     </div>
 
 
-            </div>
-            </body>
+
+</div>
+</body>
+</html>

@@ -20,9 +20,11 @@
 
 
     body{
-        background-image: url({% static 'images/login.jpg' %});
-        background-repeat: no-repeat;
-        background-size: 100%;
+        background-image: url({% static 'images/teacherlogin1.jpg' %});
+        background-repeat:  no-repeat;
+			background-attachment: fixed;
+			background-size:  cover;
+
     }
 
 </style>
@@ -74,7 +76,7 @@
 </nav>
 
 
-<form action="{% url 'faculty_login' %}" method="post">
+<form action="{% url 'faculty_login' %}" method="post" style="float: right; margin-right: 100px;">
     {% csrf_token %}
     <h1>Teacher Login</h1>
 
