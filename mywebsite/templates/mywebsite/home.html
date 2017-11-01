@@ -114,98 +114,20 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6" id="college">
+            <a href="#">
             <div class="box"><p class="todo2" id="college">College</p></div>
+                </a>
 
         </div>
         <div class="col-md-6" id="course">
+          <a href="#">
             <div class="box"><p class="todo2" id="course">Course</p></div>
+              </a>
+        </div>
 
         </div>
     </div>
-</div>
 
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="row2"><p>Questions? Talk to an expert.</p></div>
-        </div>
-        <div class="col-md-6">
-            <div class="row2"><p>Questions? Talk to an expert.</p></div>
-        </div>
-    </div>
-</div>
-
-
-
-<div  id="additional" style="margin-top: 200px">
-
-</div>
-<script type="text/javascript">
-    var elem = $("#college");
-    var clicked1 = false;
-    var clicked2 = false;
-    var element = $("#additional");
-
-    elem.click(function () {
-
-        if (clicked1 == false) {
-            if (clicked2 == true) {
-                element.empty();
-                clicked2 = false;
-            }
-
-            clicked1 = true;
-            var id = $(this).attr("id");
-            console.log(id);
-            var items = ["IIT Gandhinagar ", "IIIT Vadodara", "IIT Bombay", "IIT Delhi"];
-            total = 4;
-            for (j = 0; j < total; j++) {
-                var s = "<div class='row' id ='college_display'> ";
-                var p = "";
-                for (i = 0; i < 3 && j < total; i++) {
-
-                    p = p + "<div class='col-md-4'><div class='box'><p>" + items[j] + "</p></div></div>";
-                    j++;
-                }
-                j--;
-                var t = s + p + "</div>";
-                element.append(t);
-            }
-        }
-    });
-
-    var elem2 = $("#course");
-    elem2.click(function () {
-
-        if (clicked2 == false) {
-            if (clicked1 == true) {
-                element.empty();
-                clicked1 = false;
-            }
-
-            clicked2 = true;
-            var id = $(this).attr("id");
-            console.log(id);
-            var items = ["Data Structure", "Database Management System", "Computer Networks", "Software Engineering"];
-            total = 4;
-            for (j = 0; j < total; j++) {
-                var s = "<div class='row' id='course_display'> ";
-                var p = "";
-                for (i = 0; i < 3 && j < total; i++) {
-                    p = p + "<div class='col-md-4'><div class='box'><p>" + items[j] + "</p></div></div>";
-                    j++;
-                }
-                j--;
-                var t = s + p + "</div>";
-                element.append(t);
-            }
-        }
-
-    });
-
-
-</script>
 
 </body>
 </html>
