@@ -10,6 +10,10 @@ https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-
 by copy and paste this in terminal
 
 sudo pip install mysqlclient && sudo pip3 install mysqlclient
+
+# install Pillow by -
+sudo pip install Pillow
+
 # second fork this repo 
 # Third clone forked repo to directory where you want .
 first go to terminal and go to that dir
