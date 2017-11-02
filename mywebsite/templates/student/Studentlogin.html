@@ -29,7 +29,7 @@
 
 </head>
 <body>
-<nav class="navbar navbar-inverse" style="opacity: 0.5">
+<nav class="navbar navbar-inverse" style="width: 100%;top: 0;position: fixed;">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
@@ -81,7 +81,7 @@
     </div>
 </nav>
 
-<form action="{% url 'student_login' %}" method="post">
+<form action="{% url 'student_login' %}" method="post" style="margin-top: 150px;">
     {% csrf_token %}
      <h1>Student Login</h1>
 
