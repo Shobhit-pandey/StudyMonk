@@ -20,7 +20,7 @@
 </head>
 <body background="{% static 'images/studentsignup.jpg' %}" style="opacity: 0.9">
 
-<nav class="navbar navbar-inverse" style="opacity: 0.5">
+<nav class="navbar navbar-inverse" style="width: 100%;top: 0;position: fixed;">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
@@ -71,7 +71,7 @@
 
 </div>
 </nav>
-<form action="{% url 'student_signup' %}" method="post">
+<form action="{% url 'student_signup' %}" method="post" style="margin-top: 100px">
 {#   <!-- {% csrf_token %}#}
 {#    <h1>Sign Up</h1>#}
 {##}

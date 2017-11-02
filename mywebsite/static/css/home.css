@@ -14,7 +14,6 @@
 .box {
     display: inline-block;
     background-color: red;
-    opacity: 0.3;
     margin-left: 250px;
     width: 200px;
     text-align: center;

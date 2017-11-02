@@ -37,6 +37,10 @@ def about_us(request):
 
 def discussion_forum(request):
     return render(request,'mywebsite/discussion_forum.html')
+def college(request):
+    return render(request,'mywebsite/college2.html')
+def course(request):
+    return render(request,'mywebsite/courses2.html')
 
 def student_signup(request):
     if (request.method=='POST'):

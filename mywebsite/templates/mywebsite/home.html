@@ -34,7 +34,7 @@
 </div>
 
 
-<nav class="navbar navbar-inverse"style="opacity: 0.5">
+<nav class="navbar navbar-inverse"style="width: 100%;top: 0;position: fixed;">
 
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -114,13 +114,13 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6" id="college">
-            <a href="#">
+            <a href="{% url 'college' %}">
             <div class="box"><p class="todo2" id="college">College</p></div>
                 </a>
 
         </div>
         <div class="col-md-6" id="course">
-          <a href="#">
+          <a href="{% url 'course' %}">
             <div class="box"><p class="todo2" id="course">Course</p></div>
               </a>
         </div>
