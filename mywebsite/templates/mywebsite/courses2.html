@@ -3,6 +3,7 @@
 <html>
 <head>
     <!-- Latest compiled and minified CSS -->
+            <link rel="stylesheet" href="{% static 'css/home.css' %}" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <!-- jQuery library -->
@@ -56,6 +57,12 @@
             text-align: right;
         }
         img.center {
+<<<<<<< HEAD
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+=======
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -69,6 +76,7 @@
     margin-top: 20%; text-align: center; padding-bottom: 20%
 
 }
+>>>>>>> e015028e280dd7646e4bc0a06ed91b3dc6049799
 
     </style>
 </head>
@@ -93,15 +101,14 @@
 
       </ul>
          <ul class="nav navbar-nav navbar-right">
-            <li><a href="{% url 'about_us' %}"><span class="glyphicon glyphicon-user"></span> Aboutus</a></li>
-             <li><a href="{% url 'discussion_forum' %}"><span class="glyphicon glyphicons-user-vr-add"></span>Discussion Forum</a></li>
+            <li><a href="{% url 'about_us' %}"><span style="padding-top: 12px" class="glyphicon glyphicon-user"></span> Aboutus</a></li>
+             <li><a href="{% url 'discussion_forum' %}"><span style="padding-top: 25px" class="glyphicon glyphicons-user-vr-add"></span>Discussion Forum</a></li>
       {% if user.is_authenticated %}
-          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" ><img class="image1"  src="{% static 'images/Study.png' %}" style="width: 50px;
-            height: 50px;
-            border-radius: 50%;
-">{{ user.username }}</a>
+          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" ><img class="image1"  src="{% static 'images/Study.png' %}"></a>
          <ul class="dropdown-menu" role="menu">
-          <li><a href="{% url 'change_password' %}"> Change Password</a></li>
+         <li><a><p>Signed in as</p>
+         <p>{{ user.username }}</p></a></li>
+          <li><a href="{% url 'studetnprofile' %}">Profile</a></li>
              {% if user.is_staff %}
                     <li><a href="{% url 'faculty_edit' %}">Edit Faculty
                         Profile</a></li>
@@ -113,13 +120,13 @@
          </ul>
          </li>
             {% else %}
-                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user "></span> Sign Up</a>
+                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span style="padding-top: 12px" class="glyphicon glyphicon-user "></span> Sign Up</a>
       <ul class="dropdown-menu" role="menu">
         <li><a href="{% url 'student_signup' %}">Student Signup</a></li>
         <li><a href="{% url 'faculty_signup' %}">Teacher Signup</a></li>
       </ul>
       </li>
-      <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in "></span> Login</a>
+      <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span style="padding-top: 12px" class="glyphicon glyphicon-log-in "></span> Login</a>
       <ul class="dropdown-menu" role="menu">
         <li><a href="{% url 'student_login' %}">Student Login</a></li>
         <li><a href="{% url 'faculty_login' %}">Teacher Login</a></li>
@@ -132,6 +139,18 @@
 
 
 <!-- make a row for  3 courses using for loop  -->
+<<<<<<< HEAD
+
+
+<div class=" container">
+           <div class="row" >
+                    <div class="col-md-3 card">
+
+
+                        <img class = "img-responsive" src="{% static 'images/img.jpg' %}" style="width:100%;padding:0px;" >
+                        <a href = "actual.html">
+                            <h3>IIT BOMBAY</h3>
+=======
 <div class="container-fluid">
         <div class="row" >
             <div class="col-md-4">
@@ -141,6 +160,7 @@
                         <div class="title">
                         <a href = "#">
                         <h3>DBMS</h3>
+>>>>>>> e015028e280dd7646e4bc0a06ed91b3dc6049799
                         </a>
                         </div>
 
