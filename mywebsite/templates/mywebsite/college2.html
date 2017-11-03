@@ -11,6 +11,7 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+
    <style>
         .desc{
 
@@ -30,11 +31,11 @@
             position: relative;
 
             align-content: center;
-
             border: 1px solid;
             border-color: #DBDBD6;
             max-height: 100%;
             margin-left:10px;
+            margin-right:80px;
 
         }
 
@@ -54,7 +55,8 @@
             border-bottom: 2px solid;
         }
 
-        .container-fluid {
+        .container {
+            margin-top:100px;
             padding-left: 100px;
         }
         .teacher{
@@ -64,10 +66,16 @@
             text-align: right;
         }
         img.center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+       .image1 {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+
+        }
 
     </style>
 </head>
@@ -79,7 +87,8 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-            <img class="image" src="{% static 'images/Study.png' %}">
+            <img class="image1" src="{% static 'images/Study.png' %}" style="width: 50px;
+    height: 50px; border-radius: 50%;">
         </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
@@ -92,7 +101,8 @@
             <li><a href="{% url 'about_us' %}"><span class="glyphicon glyphicon-user"></span> Aboutus</a></li>
              <li><a href="{% url 'discussion_forum' %}"><span class="glyphicon glyphicons-user-vr-add"></span>Discussion Forum</a></li>
       {% if user.is_authenticated %}
-         <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" ><img class="image1"  src="{% static 'images/Study.png' %}">{{ user.username }}</a>
+         <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" ><img class="image1" src="{% static 'images/Study.png' %}" style="width: 50px;
+    height: 50px; border-radius: 50%;">{{ user.username }}</a>
          <ul class="dropdown-menu" role="menu">
           <li><a href="{% url 'change_password' %}"> Change Password</a></li>
              {% if user.is_staff %}
@@ -124,29 +134,55 @@
 </nav>
 
 
-<!-- make a row for  3 college using for loop  -->
-
-
+<div class=" container">
            <div class="row" >
                     <div class="col-md-3 card">
 
 
-                        <img class = "imgA1" src="img.jpg" style="width:100%;" >
-
-
-                        <a href = "actualpage.html">
+                        <img class = "img-responsive" src="{% static 'images/img.jpg' %}" style="width:100%;padding:0px;" >
+                        <a href = "actual.html">
                             <h3>IIT BOMBAY</h3>
                         </a>
 
 
-                        <img class="imgB1 img-circle center"  src="IItbombay.jpg" alt="Avatar" style=" width: 150px;height: 150px; "">
+                        <img class="imgB1 img-circle center"  src="{% static 'images/IItbombay.jpg' %}" alt="Avatar" style=" width: 150px;height: 150px; margin-bottom: 30px;">
+
+
+
+                    </div>
+ <div class="col-md-3 card">
+
+
+                        <img class = "img-responsive" src="{% static 'images/img.jpg' %}" style="width:100%;" >
+                        <a href = "actual.html">
+                            <h3>IIT BOMBAY</h3>
+                        </a>
+
+
+                        <img class="imgB1 img-circle center"  src="{% static 'images/IItbombay.jpg' %}" alt="Avatar" style=" width: 150px;height: 150px; margin-bottom: 30px;">
+
+
+
+                    </div>
+ <div class="col-md-3 card">
+
+
+                        <img class = "img-responsive" src="{% static 'images/img.jpg' %}" style="width:100%;" >
+                        <a href = "actual.html">
+                            <h3>IIT BOMBAY</h3>
+                        </a>
+
+
+                        <img class="imgB1 img-circle center"  src="{% static 'images/IItbombay.jpg' %}" alt="Avatar" style=" width: 150px;height: 150px; margin-bottom: 30px;">
 
 
 
                     </div>
 
+           </div>
+</div>
 
 
-            </div>
+
 </body>
 </html>
