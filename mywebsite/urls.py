@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^$',views.home,name='home'),
     url(r'^discussion-forum/$',views.discussion_forum,name='discussion_forum'),
     url(r'^about-us/$',views.about_us,name='about_us'),
+    url(r'^actual/$',views.actual,name='actual'),
     url(r'^college/$',views.college,name='college'),
     url(r'^course/$',views.course,name='course'),
     url(r'^studentprofile/$',views.studentprofile,name='studetnprofile'),

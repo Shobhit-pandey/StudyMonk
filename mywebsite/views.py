@@ -32,6 +32,9 @@ def home(request):
 def profile(request):
     return render(request,'mywebsite/home.html')
 
+def actual(request):
+    return render(request,'mywebsite/actual.html')
+
 def about_us(request):
     return render(request,'mywebsite/about.html')
 
