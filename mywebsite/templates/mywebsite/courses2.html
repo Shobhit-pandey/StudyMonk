@@ -11,30 +11,17 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-     <style>
-        .desc{
+    <style>
 
-            background-color: black;
-
-        }
-        .top{
-            position: absolute;
-
-        }
         h3{
             text-align: center;
         }
         .card {
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-            width: 25%;
-            position: relative;
-
-            align-content: center;
-            border: 1px solid;
             border-color: #DBDBD6;
             max-height: 100%;
-            margin-left:10px;
-            margin-right:80px;
+            align-content: center;
+            border-radius:10%;
 
         }
 
@@ -43,6 +30,9 @@
 
         }
 
+
+
+        }
 
         .btn-group {
             padding-top: 20px;
@@ -54,9 +44,10 @@
             border-bottom: 2px solid;
         }
 
-        .container {
+        .container-fluid {
+            margin-left:auto;
+            margin-right:auto;
             margin-top:100px;
-            padding-left: 100px;
         }
         .teacher{
             text-align: left;
@@ -65,16 +56,19 @@
             text-align: right;
         }
         img.center {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-       .image1 {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.h{
+    width: 100%;
+    height:100px; margin-bottom:40%;  display: block; border-radius:10% 10% 0% 0%; padding-left:0px; padding-right:0px; margin-left: 0px; margin-right: 0px;
 
-        }
+}
+.title{
+    margin-top: 20%; text-align: center; padding-bottom: 20%
+
+}
 
     </style>
 </head>
@@ -94,7 +88,7 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
 <div class="navbar-header">
-            <a class="navbar-brand" href="{% url 'home' %}" style="font-size: 3vw;padding-top: 25px">Studymonk</a>
+            <a class="navbar-brand" href="{% url 'home' %}" style="font-size: 50px;padding-top: 25px">Studymonk</a>
         </div>
 
       </ul>
@@ -138,55 +132,53 @@
 
 
 <!-- make a row for  3 courses using for loop  -->
-
-
-<div class=" container">
-           <div class="row" >
-                    <div class="col-md-3 card">
-
-
-                        <img class = "img-responsive" src="{% static 'images/img.jpg' %}" style="width:100%;padding:0px;" >
-                        <a href = "{% url 'actual' %}">
-                            <h3>IIT BOMBAY</h3>
+<div class="container-fluid">
+        <div class="row" >
+            <div class="col-md-4">
+                    <div class="card" style="height:auto;">
+                        <div class="h" style="background-color:#3EF7D8; ">
+                        </div>
+                        <div class="title">
+                        <a href = "#">
+                        <h3>IIT BOMBAY</h3>
                         </a>
-
-
-                        <img class="imgB1 img-circle center"  src="{% static 'images/IItbombay.jpg' %}" alt="Avatar" style=" width: 150px;height: 150px; margin-bottom: 30px;">
-
-
+                        </div>
 
                     </div>
- <div class="col-md-3 card">
+            </div>
+            <div class="col-md-4 ">
+                    <div class="card" style="height:auto;">
 
 
-                        <img class = "img-responsive" src="{% static 'images/img.jpg' %}" style="width:100%;" >
-                        <a href = "actual.html">
-                            <h3>IIT BOMBAY</h3>
+                        <div class="h" style="background-color:#3EF1F7; ">
+                        </div>
+                        <div class="title">
+                        <a href = "#">
+                        <h3>IIT BOMBAY</h3>
                         </a>
-
-
-                        <img class="imgB1 img-circle center"  src="{% static 'images/IItbombay.jpg' %}" alt="Avatar" style=" width: 150px;height: 150px; margin-bottom: 30px;">
-
-
+                        </div>
 
                     </div>
- <div class="col-md-3 card">
+            </div>
+            <div class="col-md-4 ">
+                    <div class="card" style="height:auto;">
 
 
-                        <img class = "img-responsive" src="{% static 'images/img.jpg' %}" style="width:100%;" >
-                        <a href = "actual.html">
-                            <h3>IIT BOMBAY</h3>
+                        <div class="h" style="background-color:#C034E9;">
+                        </div>
+                        <div class="title" >
+                        <a href = "#">
+                        <h3>IIT BOMBAY</h3>
                         </a>
-
-
-                        <img class="imgB1 img-circle center"  src="{% static 'images/IItbombay.jpg' %}" alt="Avatar" style=" width: 150px;height: 150px; margin-bottom: 30px;">
-
-
+                        </div>
 
                     </div>
+            </div>
 
-           </div>
+        </div>
 </div>
+
+
 
 </body>
 </html>
