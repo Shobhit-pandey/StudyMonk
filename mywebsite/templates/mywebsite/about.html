@@ -40,34 +40,36 @@
 </head>
 <body>
 
-<nav class="navbar navbar-inverse navbar-fixed-top" style="width: 100%">
+<nav class="navbar navbar-inverse navbar-fixed-top"style="width: 100%">
 
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-            <img class="image" src="{% static 'images/Study.png' %}">
-        </div>
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <img class="image" src="{% static 'images/Study.png' %}">
+    </div>
     <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-<div class="navbar-header">
-            <a class="navbar-brand" href="{% url 'home' %}" style="font-size: 50px;padding-top: 25px">Studymonk</a>
-        </div>
-
-      </ul>
-
-        <ul class="nav navbar-nav navbar-right ">
-            <li><a href="{% url 'home' %}"><span class="glyphicon glyphicon-user" style="padding-top: 15px"></span>Home</a></li>
-            <li><a href="{% url 'discussion_forum' %}" style="padding-top: 25px"><span class="glyphicon glyphicons-user-vr-add"></span>Discussion
-                Forum</a></li>
-            {% if user.is_staff %}
+        <ul class="nav navbar-nav">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{% url 'home' %}" style="font-size: 50px;padding-top: 25px">Studymonk</a>
+                {% if user.is_authenticated %}
+                {% endif %}
+            </div>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="{% url 'about_us' %}" style="padding-top: 25px"><span class="glyphicon glyphicon-user"></span>
+                Aboutus</a></li>
+            <li><a href="{% url 'discussion_forum' %}" style="padding-top: 25px;"><span
+                    class="glyphicon glyphicons-user-vr-add"></span>Discussion Forum</a></li>
+            {% if user.is_authenticated %}
                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><img class="image1"
-                                                                                                     src="{% static 'images/Study.png' %}">{{ user.username }}</a>
+                                                                                                     src="{% static 'images/Study.png' %}">{{ user.username }}
+                </a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="{% url 'change_password' %}"> Change Password</a></li>
-                        {% if user.id in facultyregistration.user_id %}
+                        <li><a href="{% url 'studetnprofile' %}">Profile</a></li>
+                        {% if user.is_staff %}
                             <li><a href="{% url 'faculty_edit' %}">Edit Faculty
                                 Profile</a></li>
                         {% else %}
@@ -77,17 +79,18 @@
                         <li><a href="{% url 'logout' %}"> Logout</a></li>
                     </ul>
                 </li>
-
             {% else %}
-                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding-top: 25px"><span
-                        class="glyphicon glyphicon-user "></span> Sign Up</a>
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                                        style="padding-top: 25px"><span class="glyphicon glyphicon-user "></span> Sign
+                    Up</a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="{% url 'student_signup' %}">Student Signup</a></li>
                         <li><a href="{% url 'faculty_signup' %}">Teacher Signup</a></li>
                     </ul>
                 </li>
-                <li class="dropdown"><a href="#" style="padding-top: 25px" class="dropdown-toggle" data-toggle="dropdown"><span
-                        class="glyphicon glyphicon-log-in "></span> Login</a>
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                                        style="padding-top: 25px"><span class="glyphicon glyphicon-log-in "></span>
+                    Login</a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="{% url 'student_login' %}">Student Login</a></li>
                         <li><a href="{% url 'faculty_login' %}">Teacher Login</a></li>
