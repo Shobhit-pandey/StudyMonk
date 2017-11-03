@@ -1,7 +1,8 @@
 <!DOCTYPE>
- {% load staticfiles %}
+{% load staticfiles %}
 <html>
 <head>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" type="text/css">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -10,14 +11,55 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <link href="{% static 'css/home.css' %}" rel="stylesheet" type="text/css">
 
 
+    <style>
+        .card {
+    font-size: 1em;
+    overflow: hidden;
+    padding: 0;
+            height: 300px;
+    border: none;
+    border-radius: .28571429rem;
+    box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+}
+.card-block {
+    font-size: 1em;
+    position: relative;
+    margin: 0;
+    padding: 1em;
+    border: none;
+    border-top: 1px solid rgba(34, 36, 38, .1);
+    box-shadow: none;
+}
+.card-img-top {
+    display: block;
+    width: 100%;
+    opacity: 0.2;
+    height: 100px;
+}
+        .text-bold {
+    font-weight: 700;
+}
+
+.meta {
+    font-size: 1em;
+    color: rgba(0, 0, 0, .4);
+}
+
+.meta a {
+    text-decoration: none;
+    color: rgba(0, 0, 0, .4);
+}
+
+.meta a:hover {
+    color: rgba(0, 0, 0, .87);
+}
+    </style>
 
 </head>
 <body>
-<nav class="navbar navbar-inverse navbar-fixed-top"style="width: 100%">
-
+<nav class="navbar navbar-inverse navbar-fixed-top" style="width: 100%">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
             <span class="icon-bar"></span>
@@ -26,6 +68,7 @@
         </button>
         <img class="image" src="{% static 'images/Study.png' %}">
     </div>
+
     <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
             <div class="navbar-header">
@@ -35,9 +78,9 @@
             </div>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="{% url 'about_us' %}" style="padding-top: 25px"><span class="glyphicon glyphicon-user"></span>
+            <li><a href="{% url 'home' %}" style="padding-top: 25px"><span class="glyphicon glyphicon-home"></span>
                 Home</a></li>
-          <li><a href="{% url 'about_us' %}" style="padding-top: 25px"><span class="glyphicon glyphicon-user"></span>
+            <li><a href="{% url 'about_us' %}" style="padding-top: 25px"><span class="glyphicon glyphicon-user"></span>
                 Aboutus</a></li>
             <li><a href="{% url 'discussion_forum' %}" style="padding-top: 25px;"><span
                     class="glyphicon glyphicons-user-vr-add"></span>Discussion Forum</a></li>
@@ -46,8 +89,10 @@
                                                                                                      src="{% static 'images/Study.png' %}">
                 </a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="#" ><p>Signed in as</p>
-                            <p>{{ user.username }}</p></a><hr></li>
+                        <li><a href="#"><p>Signed in as</p>
+                            <p>{{ user.username }}</p></a>
+                            <hr>
+                        </li>
 
                         <li><a href="{% url 'studetnprofile' %}">Profile</a></li>
                         {% if user.is_staff %}
@@ -82,5 +127,84 @@
     </div>
 
 </nav>
+
+<div class="container" style="margin-top: 100px">
+    <div class="row">
+        <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
+                <div class="card">
+                    <img class="card-img-top"  src="{% static 'images/IITk.jpeg.jpeg' %}">
+                    <div class="card-block">
+                        <h5 class="text-bold">IIT Kanpur</h5>
+                    </div>
+                </div>
+            </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
+                <div class="card">
+                    <img class="card-img-top"  src="{% static 'images/IITBHU.jpeg' %}">
+                    <div class="card-block">
+                        <h5 class="text-bold">IIT BHU</h5>
+                    </div>
+                </div>
+            </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
+                <div class="card">
+                    <img class="card-img-top"  src="{% static 'images/IITk.jpeg.jpeg' %}">
+                    <div class="card-block">
+                        <h5 class="text-bold">IIT Kanpur</h5>
+                    </div>
+                </div>
+            </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
+                <div class="card">
+                    <img class="card-img-top"  src="{% static 'images/IITBHU.jpeg' %}">
+                    <div class="card-block">
+                        <h5 class="text-bold">IIT BHU</h5>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+</div>
+<div class="container" style="margin-top: 100px">
+    <div class="row">
+        <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
+                <div class="card">
+                    <img class="card-img-top"  src="{% static 'images/iit-bombay.jpg' %}">
+                    <div class="card-block">
+                        <h5 class="text-bold">IIT BOMBAY</h5>
+                    </div>
+                </div>
+            </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
+                <div class="card">
+                    <img class="card-img-top"  src="{% static 'images/IIT-Delhi-1.jpg' %}">
+                    <div class="card-block">
+                        <h5 class="text-bold">IIIT DELHI</h5>
+                    </div>
+                </div>
+            </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
+                <div class="card">
+                    <img class="card-img-top"  src="{% static 'images/iit-bombay.jpg' %}">
+                    <div class="card-block">
+                        <h5 class="text-bold">IIT BOMBAY</h5>
+                    </div>
+                </div>
+            </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
+                <div class="card">
+                    <img class="card-img-top"  src="{% static 'images/IIT-Delhi-1.jpg' %}">
+                    <div class="card-block">
+                        <h5 class="text-bold">IIIT DELHI</h5>
+                    </div>
+                </div>
+            </div>
+
+
+
+    </div>
+</div>
+
 </body>
+
 </html>
