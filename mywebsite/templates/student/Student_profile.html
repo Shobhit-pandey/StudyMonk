@@ -1,8 +1,10 @@
 <!DOCTYPE html>
+{% load staticfiles %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+        <link rel="stylesheet" href="{% static 'css/home.css' %}" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -48,7 +50,69 @@
     </style>
 </head>
 <body>
-<div class="container">
+<nav class="navbar navbar-inverse navbar-fixed-top"style="width: 100%">
+
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <img class="image" src="{% static 'images/Study.png' %}">
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{% url 'home' %}" style="font-size: 50px;padding-top: 25px">Studymonk</a>
+                {% if user.is_authenticated %}
+                {% endif %}
+            </div>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="{% url 'about_us' %}" style="padding-top: 25px"><span class="glyphicon glyphicon-user"></span>
+                Aboutus</a></li>
+            <li><a href="{% url 'discussion_forum' %}" style="padding-top: 25px;"><span
+                    class="glyphicon glyphicons-user-vr-add"></span>Discussion Forum</a></li>
+            {% if user.is_authenticated %}
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><img class="image1"
+                                                                                                     src="{% static 'images/Study.png' %}">{{ user.username }}
+                </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="{% url 'studetnprofile' %}">Profile</a></li>
+                        {% if user.is_staff %}
+                            <li><a href="{% url 'faculty_edit' %}">Edit Faculty
+                                Profile</a></li>
+                        {% else %}
+                            <li><a href="{% url 'student_edit' %}">Edit
+                                Student Profile</a></li>
+                        {% endif %}
+                        <li><a href="{% url 'logout' %}"> Logout</a></li>
+                    </ul>
+                </li>
+            {% else %}
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                                        style="padding-top: 25px"><span class="glyphicon glyphicon-user "></span> Sign
+                    Up</a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="{% url 'student_signup' %}">Student Signup</a></li>
+                        <li><a href="{% url 'faculty_signup' %}">Teacher Signup</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                                        style="padding-top: 25px"><span class="glyphicon glyphicon-log-in "></span>
+                    Login</a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="{% url 'student_login' %}">Student Login</a></li>
+                        <li><a href="{% url 'faculty_login' %}">Teacher Login</a></li>
+                    </ul>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+
+</nav>
+
+<div class="container" style="margin-top: 100px;">
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
 
