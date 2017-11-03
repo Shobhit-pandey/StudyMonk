@@ -1,13 +1,15 @@
-<!DOCTYPE>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-    <!-- jQuery library -->
+    <meta charset="UTF-8">
+    <title>Title</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
     <style>
         .user-row {
     margin-bottom: 14px;
@@ -103,41 +105,15 @@
                   </table>
 
                   <!--<a href="#" class="btn btn-primary">Upload Topic</a> -->
-
+                  <a href="{% url 'change_password' %}" class="btn btn-primary">change Password</a>
                 </div>
-                  <div class="row">
-        <div class="col-md-6 col-md-offset-1 padding-top">
-            change password for
-            {{ user  }}
-            <form action="{% url 'change_password' %}" method = "post">
-                <!--div class="form-group">
-                    <label for="oldPassword"> Old Password:</label>
-                    <input type ="text" maxlength="20" class="form-control" name="oldpassword"placeholder="Old Password">
-                </div>
-                <div class="form-group">
-
-                    <label for="newPassword"> New Password:</label>
-                    <input type ="text" maxlength="20" class="form-control" name="newpassword"placeholder="New Password ">
-                </div-->
-                {% csrf_token %}
-                {{ form.as_p }}
-                <div class="form-group">
-                    <button type="submit" class="btn btn-default" id="submit" type="submit">
-                    Submit</button>
-                </div>
-
-            </form>
-        </div>
-    </div>
               </div>
             </div>
 
           </div>
         </div>
-
       </div>
     </div>
-
 
 </body>
 </html>

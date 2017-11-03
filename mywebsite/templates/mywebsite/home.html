@@ -62,7 +62,7 @@
                                                                                                      src="{% static 'images/Study.png' %}">{{ user.username }}
                 </a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="{% url 'change_password' %}"> Change Password</a></li>
+                        <li><a href="{% url 'studetnprofile' %}">Profile</a></li>
                         {% if user.is_staff %}
                             <li><a href="{% url 'faculty_edit' %}">Edit Faculty
                                 Profile</a></li>
