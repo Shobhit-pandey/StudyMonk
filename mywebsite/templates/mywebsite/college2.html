@@ -10,457 +10,77 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-
-    <style>
-        .desc{
-
-            background-color: black;
-
-        }
-        h3{
-            text-align: center;
-        }
-        .card {
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-            width: 30%;
-
-            align-content: center;
-
-            border: 1px solid;
-            border-color: #DBDBD6;
-            max-height: 100%;
-            margin:10px;
-
-        }
-
-        .card:hover {
-            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-
-        }
-
-
-        .image {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            margin:auto;
-            display: block;
-
-
-        }
-
-        .btn-group {
-            padding-top: 20px;
-            padding-right: 30px;
-        }
-
-        hr {
-            color: black;
-            border-bottom: 2px solid;
-        }
-
-        .container-fluid {
-            padding-left: 100px;
-        }
-        .teacher{
-            text-align: left;
-        }
-        .student{
-            text-align: right;
-        }
+        <link href="{% static 'css/home.css' %}" rel="stylesheet" type="text/css">
 
 
 
-            .square-flip{
-        -webkit-perspective: 1000;
-        -moz-perspective: 1000;
-        -ms-perspective: 1000;
-        perspective: 1000;
-
-        -webkit-transform: perspective(1000px);
-        -moz-transform: perspective(1000px);
-        -ms-transform: perspective(1000px);
-        transform: perspective(1000px);
-
-        -webkit-transform-style: preserve-3d;
-        -moz-transform-style: preserve-3d;
-        -ms-transform-style: preserve-3d;
-        transform-style: preserve-3d;
-
-        /*border:1px solid #efefef;*/
-
-        position:relative;
-        float:left;
-        margin:20px;
-
-        }
-        .square-flip{
-            width:300px;
-            height:300px;
-        }
-        .square,.square2{
-            width:100%;
-            height:100%;
-        }
-        .square{
-
-            background-size: cover;
-            background-position:center center;
-
-            -ms-transition: transform 0.60s cubic-bezier(.5,.3,.3,1);
-                transition: transform 0.60s cubic-bezier(.5,.3,.3,1);
-                -webkit-transition: transform 0.60s cubic-bezier(.5,.3,.3,1);
-            overflow: hidden;
-
-            position:absolute;
-            top:0;
-
-
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-        }
-        .square-flip .square{
-            -webkit-transform: rotateY(0deg);
-            -moz-transform: rotateY(0deg);
-            -o-transform: rotateY(0deg);
-            -ms-transform: rotateY(0deg);
-            transform: rotateY(0deg);
-            transform-style: preserve-3d;
-            z-index:1;
-        }
-        .square-flip:hover .square{
-            -webkit-transform: rotateY(-180deg);
-            -moz-transform: rotateY(-180deg);
-            -o-transform: rotateY(-180deg);
-            -ms-transform: rotateY(-180deg);
-            transform: rotateY(-180deg);
-            transform-style: preserve-3d;
-        }
-
-
-        .square2{
-
-            background-size: cover;
-            background-position:center center;
-
-            -ms-transition: transform 0.60s cubic-bezier(.5,.3,.3,1);
-                transition: transform 0.60s cubic-bezier(.5,.3,.3,1);
-                -webkit-transition: transform 0.60s cubic-bezier(.5,.3,.3,1);
-            overflow: hidden;
-
-            position:absolute;
-            top:0;
-
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-        }
-        .square-flip .square2{
-            -webkit-transform: rotateY(180deg);
-            -moz-transform: rotateY(180deg);
-            -o-transform: rotateY(180deg);
-            -ms-transform: rotateY(180deg);
-            transform: rotateY(180deg);
-            transform-style: preserve-3d;
-            z-index:1;
-        }
-        .square-flip:hover .square2{
-            -webkit-transform: rotateY(0deg);
-            -moz-transform: rotateY(0deg);
-            -o-transform: rotateY(0deg);
-            -ms-transform: rotateY(0deg);
-            transform: rotateY(0deg);
-            transform-style: preserve-3d;
-        }
-
-        /*Square content*/
-        .square-container{
-            padding:20px;
-            text-align:center;
-            position:relative;
-            top:50%;
-
-            -ms-transition: transform 0.60s cubic-bezier(.5,.3,.3,1);
-                transition: transform 0.60s cubic-bezier(.5,.3,.3,1);
-                -webkit-transition: transform 0.60s cubic-bezier(.5,.3,.3,1);
-
-
-            -webkit-transform: translateY(-50%) translateX(0px)  scale(1);
-            -ms-transform: translateY(-50%) translateX(0px)  scale(1);
-            transform: translateY(-50%) translateX(0px)  scale(1);
-            transform-style: preserve-3d;
-            z-index:2;
-        }
-        .square-flip:hover .square-container{
-
-            -webkit-transform: translateY(-50%) translateX(-650px)  scale(.88);
-            -ms-transform: translateY(-50%) translateX(-650px)  scale(.88);
-      transform: translateY(-50%) translateX(-650px)  scale(.88);
-            transform-style: preserve-3d;
-
-        }
-
-        .square-container2{
-            padding:40px;
-            text-align:center;
-            position:relative;
-            top:50%;
-
-            -ms-transition: transform 0.60s cubic-bezier(.5,.3,.3,1);
-                transition: transform 0.60s cubic-bezier(.5,.3,.3,1);
-                -webkit-transition: transform 0.60s cubic-bezier(.5,.3,.3,1);
-
-
-            -webkit-transform: translateY(-50%) translateX(650px) translateZ(60px) scale(.88);
-            -ms-transform: translateY(-50%) translateX(650px) translateZ(60px) scale(.88);
-      transform: translateY(-50%) translateX(650px) translateZ(60px) scale(.88);
-
-            transform-style: preserve-3d;
-            z-index:2;
-        }
-        .square-flip:hover .square-container2{
-
-            -webkit-transform: translateY(-50%) translateX(0px) translateZ(0px) scale(1);
-            -ms-transform: translateY(-50%) translateX(0px) translateZ(0px) scale(1);
-            transform: translateY(-50%) translateX(0px) translateZ(0px) scale(1);
-      transform-style: preserve-3d;
-        }
-
-
-
-        /*Style text*/
-        .square-flip h2{
-            color:white;
-            font-family: "Open Sans";
-            font-weight:700;
-            font-size:22px;
-        }
-        .square-flip h3{
-            color:white;
-            font-family: "Open Sans";
-            font-weight:500;
-            font-size:16px;
-            line-height:26px;
-        }
-        /*Elements*/
-        .flip-overlay{
-            display:block;
-            background:rgba(0,0,0,0.5);
-            width:100%;
-            height:100%;
-            position:absolute;
-            top:0;
-        }
-        .align-center{
-            margin:0 auto;
-        }
-
-
-
-        /*ADD SHADOWS OPTIONAL*/
-        .square-flip .square .boxshadow, .square-flip .square .textshadow, .square-flip .square2 .boxshadow, .square-flip .square2 .textshadow{
-            -ms-transition: 0.60s;
-                transition: 0.60s;
-                -webkit-transition: 0.60s;
-        }
-
-        .square-flip .square .boxshadow{
-            -webkit-box-shadow: 24px 42px 58px -8px rgba(0,0,0,0.3);
-            -moz-box-shadow: 24px 42px 58px -8px rgba(0,0,0,0.3);
-            box-shadow: 24px 42px 58px -8px rgba(0,0,0,0.3);
-        }
-        .square-flip .square .textshadow{
-            -webkit-text-shadow: 24px 42px 58px -8px rgba(0,0,0,0.3);
-            -moz-text-shadow: 24px 42px 58px -8px rgba(0,0,0,0.3);
-            text-shadow: 24px 42px 58px -8px rgba(0,0,0,0.3);
-        }
-        .square-flip:hover .square .boxshadow, .square-flip:hover .square .textshadow{
-            -webkit-box-shadow: 240px 42px 58px -8px rgba(0,0,0,0.0);
-            -moz-box-shadow: 240px 42px 58px -8px rgba(0,0,0,0.0);
-            box-shadow: 240px 42px 58px -8px rgba(0,0,0,0.0);
-        }
-
-
-        .square-flip .square2 .boxshadow{
-            -webkit-box-shadow: 240px 42px 58px -8px rgba(0,0,0,0.0);
-            -moz-box-shadow: 240px 42px 58px -8px rgba(0,0,0,0.0);
-            box-shadow: 240px 42px 58px -8px rgba(0,0,0,0.0);
-        }
-        .square-flip .square2 .textshadow{
-            -webkit-text-shadow: 240px 42px 58px -8px rgba(0,0,0,0.0);
-            -moz-text-shadow: 240px 42px 58px -8px rgba(0,0,0,0.0);
-            text-shadow: 240px 42px 58px -8px rgba(0,0,0,0.0);
-        }
-        .square-flip:hover .square2 .boxshadow, .square-flip:hover .square2 .textshadow{
-            -webkit-box-shadow: 24px 42px 58px -8px rgba(0,0,0,0.3);
-            -moz-box-shadow: 24px 42px 58px -8px rgba(0,0,0,0.3);
-            box-shadow: 24px 42px 58px -8px rgba(0,0,0,0.3);
-        }
-
-
-        /*You can delete this style*/
-        .centerflipcards{
-      display:block;
-            width:1330px;
-      height:440px;
-            text-align:center;
-            margin:0 auto;
-            margin-top:100px;
-        }
-.clearfix{clear:both;}
-.centerflipcards p{
-      font-family:"Open Sans";
-      font-size:13px;
-      margin-top:10px;
-      font-weight:700;
-}
-    </style>
 </head>
 <body>
-<nav class="navbar navbar-inverse navbar-fixed-top" style="width: 100%" >
-        <<div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-            <img class="image1" src="{% static 'images/Study.png' %}" style="width: 50px;
-    height: 50px; border-radius: 50%;">
-        </div>
+<nav class="navbar navbar-inverse navbar-fixed-top"style="width: 100%">
+
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <img class="image" src="{% static 'images/Study.png' %}">
+    </div>
     <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-<div class="navbar-header">
-            <a class="navbar-brand" href="{% url 'home' %}" style="font-size: 3vw;padding-top: 25px">Studymonk</a>
-        </div>
-
-      </ul>
-         <ul class="nav navbar-nav navbar-right">
-            <li><a href="{% url 'about_us' %}"><span class="glyphicon glyphicon-user"></span> Aboutus</a></li>
-             <li><a href="{% url 'discussion_forum' %}"><span class="glyphicon glyphicons-user-vr-add"></span>Discussion Forum</a></li>
-      {% if user.is_authenticated %}
-         <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" ><img class="image1" src="{% static 'images/Study.png' %}" style="width: 50px;
-    height: 50px; border-radius: 50%;">{{ user.username }}</a>
-         <ul class="dropdown-menu" role="menu">
-          <li><a href="{% url 'change_password' %}"> Change Password</a></li>
-             {% if user.is_staff %}
-                    <li><a href="{% url 'faculty_edit' %}">Edit Faculty
-                        Profile</a></li>
-                {% else %}
-                    <li><a href="{% url 'student_edit' %}">Edit
-                        Student Profile</a></li>
+        <ul class="nav navbar-nav">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{% url 'home' %}" style="font-size: 3vw;padding-top: 25px ">Studymonk</a>
+                {% if user.is_authenticated %}
                 {% endif %}
-                 <li><a href="{% url 'logout' %}"> Logout</a></li>
-         </ul>
-         </li>
+            </div>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="{% url 'about_us' %}" style="padding-top: 25px"><span class="glyphicon glyphicon-user"></span>
+                Home</a></li>
+          <li><a href="{% url 'about_us' %}" style="padding-top: 25px"><span class="glyphicon glyphicon-user"></span>
+                Aboutus</a></li>
+            <li><a href="{% url 'discussion_forum' %}" style="padding-top: 25px;"><span
+                    class="glyphicon glyphicons-user-vr-add"></span>Discussion Forum</a></li>
+            {% if user.is_authenticated %}
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><img class="image1"
+                                                                                                     src="{% static 'images/Study.png' %}">
+                </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#" ><p>Signed in as</p>
+                            <p>{{ user.username }}</p></a><hr></li>
+
+                        <li><a href="{% url 'studetnprofile' %}">Profile</a></li>
+                        {% if user.is_staff %}
+                            <li><a href="{% url 'faculty_edit' %}">Edit Faculty
+                                Profile</a></li>
+                        {% else %}
+                            <li><a href="{% url 'student_edit' %}">Edit
+                                Student Profile</a></li>
+                        {% endif %}
+                        <li><a href="{% url 'logout' %}"> Logout</a></li>
+                    </ul>
+                </li>
             {% else %}
-                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user "></span> Sign Up</a>
-      <ul class="dropdown-menu" role="menu">
-        <li><a href="{% url 'student_signup' %}">Student Signup</a></li>
-        <li><a href="{% url 'faculty_signup' %}">Teacher Signup</a></li>
-      </ul>
-      </li>
-      <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in "></span> Login</a>
-      <ul class="dropdown-menu" role="menu">
-        <li><a href="{% url 'student_login' %}">Student Login</a></li>
-        <li><a href="{% url 'faculty_login' %}">Teacher Login</a></li>
-      </ul>
-      </li>
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                                        style="padding-top: 25px"><span class="glyphicon glyphicon-user "></span> Sign
+                    Up</a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="{% url 'student_signup' %}">Student Signup</a></li>
+                        <li><a href="{% url 'faculty_signup' %}">Teacher Signup</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                                        style="padding-top: 25px"><span class="glyphicon glyphicon-log-in "></span>
+                    Login</a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="{% url 'student_login' %}">Student Login</a></li>
+                        <li><a href="{% url 'faculty_login' %}">Teacher Login</a></li>
+                    </ul>
+                </li>
             {% endif %}
-    </ul>
+        </ul>
     </div>
+
 </nav>
-
-
-
-
-
-
-<div class="centerflipcards">
-<a href="#">
-    <div class="square-flip" style="margin-right:60px; margin-left:80px;" >
-
-        <div class='square' data-image="{%  static 'images/IITD.jpeg' %}">
-            <div class="square-container">
-                <div class="align-center"><img class= "img-circle" src="{%  static 'images/IITD.jpeg' %}" alt=""></div>
-
-            </div>
-            <div class="flip-overlay"></div>
-        </div>
-        <div class='square2' data-image="{%  static 'images/IITD.jpeg' %}">
-            <div class="square-container2">
-                <div class="align-center"></div>
-                <h2>IIT Delhi</h2>
-            </div>
-            <div class="flip-overlay"></div>
-        </div>
-
-
-    </div>
-</a>
-<a href="#">
-    <div class="square-flip" style="margin-right:60px;" >
-
-        <div class='square' data-image="{%  static 'images/IITD.jpeg' %}">
-            <div class="square-container">
-                <div class="align-center"><img class= "img-circle" src="{%  static 'images/IITD.jpeg' %}" alt=""></div>
-
-            </div>
-            <div class="flip-overlay"></div>
-        </div>
-        <div class='square2' data-image="{%  static 'images/IITD.jpeg' %}">
-            <div class="square-container2">
-                <div class="align-center"></div>
-                <h2>IIT Delhi</h2>
-            </div>
-            <div class="flip-overlay"></div>
-        </div>
-
-
-    </div>
-</a>
-<a href="#">
-    <div class="square-flip">
-
-        <div class='square' data-image="{%  static 'images/IITD.jpeg' %}">
-            <div class="square-container">
-                <div class="align-center"><img class= "img-circle" src="{%  static 'images/IITD.jpeg' %}" alt=""></div>
-
-            </div>
-            <div class="flip-overlay"></div>
-        </div>
-        <div class='square2' data-image="{%  static 'images/IITD.jpeg' %}">
-            <div class="square-container2">
-                <div class="align-center"></div>
-                <h2>IIT Delhi</h2>
-            </div>
-            <div class="flip-overlay"></div>
-        </div>
-
-
-    </div>
-</a>
-
-
-
-</div>
-
 </body>
-<script type="text/javascript">
-     //Count nr. of square classes
-  var countSquare = $('.square').length;
-
-  //For each Square found add BG image
-  for (i = 0; i < countSquare; i++) {
-    var firstImage = $('.square').eq([i]);
-    var secondImage = $('.square2').eq([i]);
-
-    var getImage = firstImage.attr('data-image');
-    var getImage2 = secondImage.attr('data-image');
-
-    firstImage.css('background-image', 'url(' + getImage + ')');
-    secondImage.css('background-image', 'url(' + getImage2 + ')');
-  }
-
-
-</script>
 </html>
