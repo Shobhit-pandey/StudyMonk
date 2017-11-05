@@ -12,6 +12,210 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+<script type="text/javascript">
+
+    window.onload = function(){
+        var nums =[1];
+        //populate all the topic id's
+        /*for (i in id){
+            nums.push({{i}});
+        }*/
+
+
+      // document
+        for (var i = 0; i < nums.length; i++) {
+
+    // This is the number we're on...
+
+
+        var element = "#d"+nums[i] ;
+        var elem = $(element);
+
+        elem.click(function() {
+
+        var id = $(this).attr("id");
+        console.log(id);
+        docs(id);
+
+        });
+    }
+    //video on every id
+for (var i = 0; i < nums.length; i++) {
+
+    // This is the number we're on...
+
+
+        var element = "#v"+nums[i] ;
+        var elem = $(element);
+
+        elem.click(function() {
+
+        var id = $(this).attr("id");
+        console.log(id);
+        v(id);
+
+        });
+    }
+
+//comments on every topic
+for (var i = 0; i < nums.length; i++) {
+
+    // This is the number we're on...
+
+
+        var element = "#c"+nums[i] ;
+        var elem = $(element);
+
+        elem.click(function() {
+
+        var id = $(this).attr("id");
+        console.log(id);
+        cmnt(id);
+
+        });
+    }
+
+
+
+
+
+}
+
+function docs(numcopy)
+
+{   //decoding JSON if reqd
+    //var d = '{{doc}}';
+    //var decoded = $('<textarea/>').html(d.text();
+    //console.log(decoded);
+    //var doc = JSON.parse(decoded);    // removes any document on page
+
+    $('.Test').remove()
+    var data  = "<div class = 'Test'>";
+    var topicid=numcopy.slice(1);
+    console.log(topicid);
+
+    //for(i=0;i<doc.length;i++)
+    //{
+      // doc[i].topic_id = topicid;
+      //make a new line for each doc
+
+    //}
+
+
+//test
+    data = data + " hello docs here"+topicid+"</div>";
+    var pet = "s" + topicid;
+
+    console.log("id is:"+topicid)+"append to"+pet;
+    console.log(data);
+    // append in e
+    //var e = "#s"+topicid;
+    $("#s1").append(data);
+// test ends
+}
+//function for appending videos
+
+//function for appending docs
+function v(numcopy)
+{  //decoding JSON if reqd
+    //var d = '{{video}}';
+    //var decoded = $('<textarea/>').html(d.text();
+    //console.log(decoded);
+    //var video = JSON.parse(decoded);
+    //remove others
+    $('.Test').remove()
+    var data  = "<div class = 'Test'>";
+    var topicid=numcopy.slice(1);
+    console.log(topicid);
+    // find all videos  and append them
+    //for(i=0;i<video.length;i++)
+    //{
+      // video[i].topic_id = topicid;
+      // append all videos with download and view option
+
+    //}
+
+
+//test
+    data = data + " hello videos"+topicid+"</div>";
+    var pet = "s" + topicid;
+    // append in s+topic.id
+    $("#s1").append(data);
+    console.log("hello end of docs ");
+// test ends
+
+}
+//function for appending comments
+
+function cmnt(numcopy)
+
+{
+    // decode JSon if reqd
+     //var d1 = '{{topic_thread}}';
+    //var decoded1 = $('<textarea/>').html(d1.text();
+    //console.log(decoded1);
+    //var topic_thread = JSON.parse(decoded);
+
+
+//var d2= '{{stud_topic_cmnt}}';
+    //var decoded2 = $('<textarea/>').html(d2.text();
+    //console.log(decoded2);
+    //var stud_topic_cmnt = JSON.parse(decoded2);
+
+
+    //var d3= '{{fac_topic_cmnt}}';
+    //var decoded3 = $('<textarea/>').html(d3.text();
+    //console.log(decoded3);
+    //var fac_topic_cmnt = JSON.parse(decoded3);
+
+
+
+ // get all the threads of the topic
+/* for(i=0;i<topic_thread;i++)
+{ if(topic_thread.topic_id==)
+   {
+    // sort both fac and stud cmnts acc to timestamp
+    if faculty cmnt append to left ..if stud append to right
+
+   }
+}
+
+*/
+
+
+
+
+
+
+
+
+     // removes any document on page
+
+
+    $('.Test').remove()
+    var data  = "<div class = 'Test'>";
+    var topicid=numcopy.slice(1);
+    console.log(topicid);
+
+
+
+
+
+
+
+    // comment box ...change submit button id  = "ct" + topic id
+
+     data = data +  "<form action='#'method ='post'><div class='form-group'><input type ='text' maxlength='2000' class='form-control' name='comment' placeholder='comment'></div><div class='form-group'><button type='submit' class='btn btn-default' id='ct1' type='submit'>Comment</button> </div></form></div>"
+     console.log(data);
+
+    //append actual data in
+    //var e = "#s"+topicid;
+    $("#s1").append(data);
+
+}
+
+
+</script>
     <style>
 
 
@@ -28,7 +232,8 @@
             padding: 20px;
             border: 1px solid;
             border-color: #DBDBD6;
-            max-height: 100%;
+            height:auto ;
+            padding-bottom: 100px;
 
 
         }
@@ -51,6 +256,7 @@
         }
 
         .container-fluid {
+            margin-top: 200px;
             padding-left: 100px;
         }
         .desc{
@@ -63,8 +269,9 @@
             margin-top: 10px;
             margin-bottom:10px;
         }
-
-
+.Test{
+            display: inline-block;
+        }
     </style>
 </head>
 <body>
@@ -87,9 +294,9 @@
             </div>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="{% url 'about_us' %}" style="padding-top: 5px"><span class="glyphicon glyphicon-user"></span>
+            <li><a href="{% url 'about_us' %}" style="padding-top: 25px"><span class="glyphicon glyphicon-user"></span>
                 Aboutus</a></li>
-            <li><a href="{% url 'discussion_forum' %}" style="padding-top: 5px;"><span
+            <li><a href="{% url 'discussion_forum' %}" style="padding-top: 25px;"><span
                     class="glyphicon glyphicons-user-vr-add"></span>Discussion Forum</a></li>
             {% if user.is_authenticated %}
                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><img class="image1"
@@ -109,7 +316,7 @@
                 </li>
             {% else %}
                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
-                                        style="padding-top: 5px"><span class="glyphicon glyphicon-user "></span> Sign
+                                        style="padding-top: 25px"><span class="glyphicon glyphicon-user "></span> Sign
                     Up</a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="{% url 'student_signup' %}">Student Signup</a></li>
@@ -117,7 +324,7 @@
                     </ul>
                 </li>
                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
-                                        style="padding-top: 5px"><span class="glyphicon glyphicon-log-in "></span>
+                                        style="padding-top: 25px"><span class="glyphicon glyphicon-log-in "></span>
                     Login</a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="{% url 'student_login' %}">Student Login</a></li>
@@ -132,48 +339,34 @@
 
 
 <div class="container-fluid">
-  <!-- make a row for a new thread -->
-
+   <!-- for all topics make a new row  -->
     <div class="row">
         <div class="col-md-12">
-            <div class="card">
-                <h3 align="center"><b> Primary Key </b></h3>
+
+            <div class="card" id="1">
+                <h3 align="center"><b>{t.title } </b></h3>
 
                 <div class="desc">
-                   Description This contains the description about a topic .
+                   {{t.description}}
                 </div>
-                <div class="timest">
+                <div class="timest" >
                  28 May 2017
                 </div>
-                <p style="float: left; font-size: 9pt; text-align: center; width: 30%; margin-right: 2%; margin-bottom: 0.5em;"><img src="/Users/shivanshsharma/Desktop/v.png" style="width: 100%; height:10%; ">Documents</p>
-                <p style="float: left; font-size: 9pt; text-align: center; width: 30%; margin-right: 2%; margin-bottom: 0.5em;"><img src="/Users/shivanshsharma/Desktop/v.png" style="width: 100%; height:10%;">Videos</p>
-                <p style="float: left; font-size: 9pt; text-align: center; width: 30%; margin-right: 2%; margin-bottom: 0.5em;"><img src="/Users/shivanshsharma/Desktop/v.png" style="width: 100%; height:10%;">Comments</p>
-
-
-               <form action="#" method = "post">
-                <div class="form-group">
-
-                    <input type ="text" maxlength="2000" class="form-control" name="comment"placeholder="comment">
+                <div>
+                <p  id = "d1" style="float: left; font-size: 9pt; text-align: center; width: 30%; margin-right: 2%; margin-bottom: 0.5em;"><img src="{% static 'images/v.png' %}" style="width: 100%; height:10%; ">Documents</p>
+                <p id = "v1" style="float: left; font-size: 9pt; text-align: center; width: 30%; margin-right: 2%; margin-bottom: 0.5em;"><img src="{% static 'images/v.png' %}"  style="width: 100%; height:10%;">Videos</p>
+                <p id = "c1" style="float: left; font-size: 9pt; text-align: center; width: 30%; margin-right: 2%; margin-bottom: 0.5em;"><img src="{% static 'images/v.png' %}"  style="width: 100%; height:10%;">Comments</p>
                 </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-default" id="comment" type="submit">
-                    Comment</button>
+                <div  id="s1" >
+                <!-- for appending the data through js -->
                 </div>
-            </form>
-
 
              </div>
         </div>
+
     </div>
 </div>
 
-
-
-<script type="text/javascript">
-
-
-</script>
-
-
+   <!-- for loop ends  -->
 </body>
 </html>
