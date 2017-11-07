@@ -30,7 +30,7 @@ def home(request):
     return render(request,'mywebsite/home.html')
 
 def profile(request):
-    return render(request,'mywebsite/home.html')
+    return render(request,'mywebsite/Profile.html')
 
 def actual(request):
     return render(request,'mywebsite/actual.html')
@@ -44,8 +44,6 @@ def college(request):
     return render(request,'mywebsite/college2.html')
 def course(request):
     return render(request,'mywebsite/courses2.html')
-def studentprofile(request):
-    return  render(request,'student/Student_profile.html')
 
 def student_signup(request):
     if (request.method=='POST'):
