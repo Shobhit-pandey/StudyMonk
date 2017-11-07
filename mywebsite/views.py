@@ -30,7 +30,14 @@ def home(request):
     return render(request,'mywebsite/home.html')
 
 def profile(request):
-    return render(request,'mywebsite/Profile.html')
+    user_id = request.user.id
+    try :
+        person = StudentRegistration.objects.filter(user_id=user_id).get()
+        print person.user.email
+    except:
+        person = FacultyRegistration.objects.filter(user_id=user_id).get()
+        print person.user.email
+    return render(request,'mywebsite/Profile.html',{'person':person})
 
 def actual(request):
     return render(request,'mywebsite/actual.html')
@@ -109,7 +116,14 @@ def change_password(request):
             return redirect(reverse('change_password'))
     else:
         form=PasswordChangeForm(user=request.user)
-        args={'form':form}
+        user_id = request.user.id
+        try:
+            person = StudentRegistration.objects.filter(user_id=user_id).get()
+            print person.user.email
+        except:
+            person = FacultyRegistration.objects.filter(user_id=user_id).get()
+            print person.user.email
+        args={'form':form,'person':person}
         return render(request,'accounts/edit_password.html',args)
 
 @login_required()

@@ -134,39 +134,39 @@
                     <tbody>
                       <tr>
                         <td>First-Name</td>
-                        <td>{{user.first_name }}</td>
+                        <td>{{person.user.first_name }}</td>
                       </tr>
                       <tr>
                         <td>Last-Name</td>
-                        <td>{{ user.last_name }}</td>
+                        <td>{{ person.user.last_name }}</td>
                       </tr>
                       <tr>
                         <td>Username</td>
-                        <td>{{ user.username }}</td>
+                        <td>{{ person.user.username }}</td>
                       </tr>
 
                          <tr>
                              <tr>
                         <td>College</td>
-                        <td>IIITV</td>
+                        <td>{{ person.college_name }}</td>
                       </tr>
 
                        <tr>
                              <tr>
                         <td>Gender</td>
-                        <td>Male</td>
+                        <td>{{ person.gender }}</td>
                       </tr>
 
                         {% if user.is_staff %}
                        <tr>
                         <td>Description</td>
-                        <td>I am computer Science Student At Indian Institute of Information Technolgy</td>
+                        <td>{{ person.description }}</td>
                       </tr>
                         {% endif %}
 
                       <tr>
                         <td>Email</td>
-                        <td>{{ user.email }}</td>
+                        <td>{{ person.user.email }}</td>
                       </tr>
 
 
