@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 {% load staticfiles %}
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="css/normalize.css">
-    <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <link rel="stylesheet" href="{% static 'css/home.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+    <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
     <!-- jQuery library -->
@@ -21,15 +20,16 @@
 
 
     body{
-        background-image: url({% static 'images/facsignup.jpg' %});
+        background-image: url({% static 'images/teacherlogin.jpg' %});
         background-repeat:  no-repeat;
         background-attachment: fixed;
         background-size: cover;
+
     }
 
 </style>
 <body>
-<nav class="navbar navbar-inverse navbar-fixed-top" style="width: 100%;">
+<nav class=" navbar navbar-inverse navbar-fixed-top " style="width: 100%" >
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
@@ -80,49 +80,36 @@
 
     </div>
 </nav>
-<form action="{% url 'faculty_signup' %}" method="post" style="margin-top: 100px">
 
-    <h1>Sign Up For Faculty</h1>
+
+<form action="{% url 'login' %}" method="post" style=" margin-top: 150px">
+    {% csrf_token %}
+    <h1>Teacher Login</h1>
 
     <!--fieldset>
-      <legend>Your basic info</legend>
-      <label for="firstname">First-Name:</label>
-      <input type="text" id="firstname" name="user_first_name">
+            <label for="username">UserName:</label>
+          {{ form.username }}
+          <label for="password">Password:</label>
+          {{ form.password }}
+            <p style="float: left"> <a href="#">Forgot Password</a> </p>
+                </div>
 
-        <label for="lastname">Last-Name:</label>
-      <input type="text" id="lastname" name="user_last_name">
+                <p style="float: right"><a href="#">Create New Account</a>
+                </p>
+        </fieldset-->
 
-      <label for="mail">Email:</label>
-      <input type="email" id="mail" name="user_email">
-
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="user_password">
-        <label for="password">Confirm Password:</label>
-      <input type="password" id="confirmpassword" name="user_confirm_password">
-
-
-      <label for="bio">Biography:</label>
-      <textarea id="bio" name="user_bio"></textarea>
-
-
-    <label for="gender">Gender:</label>
-    <select id="job" name="user_gender">
-      <optgroup label="Gender">
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-      </optgroup>
-    </select>
-
-</fieldset-->
-
-    {% csrf_token %}
     {{ form.as_p }}
     <div class="row" style="padding-top: 30px">
 
-        <button type="submit">Sign Up</button>
+        <button type="submit">Login</button>
     </div>
-</form>
+    <div class="row" style="padding-top: 30px">
 
+       <p style="float: left"> <a href="{% url 'reset_password' %}">Forgot Password? </a> </p>
+        <p style="float: right"><a href="{% url 'faculty_signup' %}">Create New Account</a>
+        </div>
+
+</form>
 
 </body>
 </html>
