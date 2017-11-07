@@ -25,18 +25,14 @@ def user_login(request):
     pass
 
 def home(request):
-    # student = StudentRegistration.objects.filter(college_name=StudentRegistration).order_by('user__studentregistration__college_name')
-    # faculty = FacultyRegistration.objects.update()
     return render(request,'mywebsite/home.html')
 
 def profile(request):
     user_id = request.user.id
     try :
         person = StudentRegistration.objects.filter(user_id=user_id).get()
-        print person.user.email
     except:
         person = FacultyRegistration.objects.filter(user_id=user_id).get()
-        print person.user.email
     return render(request,'mywebsite/Profile.html',{'person':person})
 
 def actual(request):
@@ -81,13 +77,9 @@ def faculty_signup(request):
         form=FacultyRegistrationForm(request.POST)
         if (form.is_valid()):
             user = form.save()
-            print("form save")
             user.is_active = False
-            print("active")
             user.is_staff=True
-            print("staff")
             user.save()
-            print("save")
             current_site = get_current_site(request)
             subject = 'Activate StudyMonk Faculty Account'
             message = render_to_string('accounts/account_activation_email.html', {
