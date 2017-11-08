@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.models import User
 
-from mywebsite.models import StudentRegistration, FacultyRegistration, AboutUs
+from mywebsite.models import StudentRegistration, FacultyRegistration, AboutUs, CollegeName, CourseName
 
 CHOICE = (
     ('male', 'male'),
@@ -149,3 +149,27 @@ class AboutUsForm(forms.Form):
         print("clean gender: ", self.cleaned_data)
         return self.cleaned_data.get('gender')
 
+class CollegeNameForm(forms.Form):
+    college_name = forms.CharField(max_length=200,required=True)
+    college_images = forms.ImageField()
+
+    def save(self, kwargs=None):
+        print(self.cleaned_data)
+        s = CollegeName.objects.create(college_name=self.cleaned_data.get('college_name'),
+                                       college_images=self.cleaned_data.get('college_images'),
+                                       )
+        s.save()
+        return s
+
+class CourseNameForm(forms.Form):
+    course_name = forms.CharField(max_length=200,required=True)
+    college_name = forms.CharField(max_length=200, required =True)
+
+    def save(self, kwargs=None):
+        print(self.cleaned_data)
+        u = CollegeName.objects.create(college_name=self.cleaned_data.get('college_name'))
+        s = CourseName.objects.create(course_name=self.cleaned_data.get('course_name'),
+
+                                      )
+        s.save()
+        return s

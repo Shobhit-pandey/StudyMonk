@@ -102,6 +102,10 @@
       </ul>
          <ul class="nav navbar-nav navbar-right">
             <li><a href="{% url 'about_us' %}"><span style="padding-top: 12px" class="glyphicon glyphicon-user"></span> Aboutus</a></li>
+         {% if user.is_superuser %}
+                <li><a href="{% url 'addcourse' %}" style="padding-top: 25px;"><span
+                    class="glyphicon glyphicons-user-vr-add"></span>ADD Course</a></li>
+            {% endif %}
              <li><a href="{% url 'discussion_forum' %}"><span style="padding-top: 25px" class="glyphicon glyphicons-user-vr-add"></span>Discussion Forum</a></li>
       {% if user.is_authenticated %}
           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" ><img class="image1"  src="{% static 'images/Study.png' %}"></a>

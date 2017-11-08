@@ -67,6 +67,7 @@ class CollegeName(models.Model):
         return self.college_name
 
 class CourseName(models.Model):
+    college_name = models.ForeignKey(CollegeName,null=False)
     course_name = models.CharField(max_length=200,primary_key=True)
 
     def __str__(self):

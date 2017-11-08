@@ -16,7 +16,8 @@ from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 
-from mywebsite.form import StudentRegistrationForm, FacultyRegistrationForm, StudentEditProfile, FacultyEditProfile
+from mywebsite.form import StudentRegistrationForm, FacultyRegistrationForm, StudentEditProfile, FacultyEditProfile, \
+    CollegeNameForm, CourseNameForm
 from mywebsite.models import StudentRegistration, FacultyRegistration
 from mywebsite.token import account_activation_token
 
@@ -94,6 +95,29 @@ def faculty_signup(request):
     else:
         form = FacultyRegistrationForm()
     return render(request, 'faculty/Teachersign.html', {'form':form})
+
+def add_college(request):
+    if (request.method=='POST'):
+        form=CollegeNameForm(request.POST)
+        if (form.is_valid()):
+            form.save()
+            return redirect('home')
+            #return HttpResponseRedirect(reverse('home'))
+    else:
+        form = CollegeNameForm()
+    return render(request, 'mywebsite/addcollege.html', {'form':form})
+
+def add_course(request):
+    if (request.method=='POST'):
+        form=CourseNameForm(request.POST)
+        if (form.is_valid()):
+            form.save()
+            return redirect('home')
+            #return HttpResponseRedirect(reverse('home'))
+    else:
+        form = CourseNameForm()
+    return render(request, 'mywebsite/addcourse.html', {'form':form})
+
 
 @login_required
 def change_password(request):

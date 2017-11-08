@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Course</title>
+</head>
+<body>
+{% if user.is_superuser %}
+<form action="{% url 'addcourse' %}" method="post" style="margin-top: 100px">
+
+    <h1>Add College to database</h1>
+
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="row" style="padding-top: 30px">
+
+        <button type="submit">ADD Course</button>
+    </div>
+</form>
+    {% else %}
+    <p>
+    <h1>Wrong Url</h1>
+    </p>
+{% endif %}
+</body>
+</html>
