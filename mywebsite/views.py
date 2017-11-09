@@ -98,7 +98,7 @@ def faculty_signup(request):
 
 def add_college(request):
     if (request.method=='POST'):
-        form=CollegeNameForm(request.POST)
+        form=CollegeNameForm(request.POST,request.FILES)
         if (form.is_valid()):
             form.save()
             return redirect('mywebsite:home')

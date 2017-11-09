@@ -151,7 +151,7 @@ class AboutUsForm(forms.Form):
 
 class CollegeNameForm(forms.Form):
     college_name = forms.CharField(max_length=200,required=True)
-    college_images = forms.ImageField()
+    college_images = forms.ImageField(required=False)
 
     def save(self, kwargs=None):
         print(self.cleaned_data)
