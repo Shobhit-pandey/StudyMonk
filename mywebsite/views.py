@@ -18,7 +18,7 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 
 from mywebsite.form import StudentRegistrationForm, FacultyRegistrationForm, StudentEditProfile, FacultyEditProfile, \
     CollegeNameForm, CourseNameForm
-from mywebsite.models import StudentRegistration, FacultyRegistration
+from mywebsite.models import StudentRegistration, FacultyRegistration, CollegeName, CourseName, AboutUs
 from mywebsite.token import account_activation_token
 
 
@@ -40,14 +40,17 @@ def actual(request):
     return render(request,'mywebsite/actual.html')
 
 def about_us(request):
-    return render(request,'mywebsite/about.html')
+    about_us = AboutUs.objects.all()
+    return render(request,'mywebsite/about.html',{'about_us':about_us})
 
 def discussion_forum(request):
     return render(request,'mywebsite/discussion_forum.html')
 def college(request):
-    return render(request,'mywebsite/college2.html')
+    college = CollegeName.objects.all()
+    return render(request,'mywebsite/college2.html',{'college':college})
 def course(request):
-    return render(request,'mywebsite/courses2.html')
+    course = CourseName.objects.all()
+    return render(request,'mywebsite/courses2.html',{'course':course})
 
 def student_signup(request):
     if (request.method=='POST'):
