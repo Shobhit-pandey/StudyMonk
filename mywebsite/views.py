@@ -66,7 +66,7 @@ def student_signup(request):
                 'token': account_activation_token.make_token(user),
             })
             user.email_user(subject, message)
-            return redirect('account_activation_sent')
+            return redirect('mywebsite:account_activation_sent')
             #return redirect('home')
             #return HttpResponseRedirect(reverse('home'))
     else:
@@ -90,7 +90,7 @@ def faculty_signup(request):
                 'token': account_activation_token.make_token(user),
             })
             user.email_user(subject, message)
-            return redirect('account_activation_sent')
+            return redirect('mywebsite:account_activation_sent')
             #return HttpResponseRedirect(reverse('home'))
     else:
         form = FacultyRegistrationForm()
@@ -101,7 +101,7 @@ def add_college(request):
         form=CollegeNameForm(request.POST)
         if (form.is_valid()):
             form.save()
-            return redirect('home')
+            return redirect('mywebsite:home')
             #return HttpResponseRedirect(reverse('home'))
     else:
         form = CollegeNameForm()
@@ -112,7 +112,7 @@ def add_course(request):
         form=CourseNameForm(request.POST)
         if (form.is_valid()):
             form.save()
-            return redirect('home')
+            return redirect('mywebsite:home')
             #return HttpResponseRedirect(reverse('home'))
     else:
         form = CourseNameForm()
@@ -127,9 +127,9 @@ def change_password(request):
         if form.is_valid():
             form.save()
             update_session_auth_hash(request,form.user)
-            return redirect(reverse('home'))
+            return redirect(reverse('mywebsite:home'))
         else:
-            return redirect(reverse('change_password'))
+            return redirect(reverse('mywebsite:change_password'))
     else:
         form=PasswordChangeForm(user=request.user)
         user_id = request.user.id
@@ -149,7 +149,7 @@ def student_edit(request):
 
         # if form.is_valid():
         form.save()
-        return redirect(reverse('home'))
+        return redirect(reverse('mywebsite:home'))
     else:
         form=StudentEditProfile(instance=request.user)
         args={'form':form}
@@ -163,7 +163,7 @@ def faculty_edit(request):
 
         # if form.is_valid():
         form.save()
-        return redirect(reverse('home'))
+        return redirect(reverse('mywebsite:home'))
     else:
         form=FacultyEditProfile(instance=request.user)
         args={'form':form}
@@ -185,26 +185,6 @@ def activate(request, uidb64, token):
         user.profile.email_confirmed = True
         user.save()
         login(request, user)
-        return redirect('home')
+        return redirect('mywebsite:home')
     else:
         return render(request, 'accounts/account_activation_invalid.html')
-
-class StudentCustomLogin(ModelBackend): #requires to define two functions authenticate and get_user
-    def authenticate(self, username=None, password=None, **kwargs):
-        UserModel = get_user_model()
-        try:
-            user = UserModel.objects.get(username=username)
-        except UserModel.DoesNotExist:
-            return None
-        else:
-            if getattr(user, 'is_active', False) and user.check_password(password):
-                if user.is_staff == False:
-                    return user
-        return redirect('home')
-
-    def get_user(self, user_id):
-        UserModel = get_user_model()
-        try:
-            return UserModel.objects.get(pk=user_id)
-        except UserModel.DoesNotExist:
-            return None

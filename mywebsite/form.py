@@ -163,11 +163,9 @@ class CollegeNameForm(forms.Form):
 
 class CourseNameForm(forms.Form):
     course_name = forms.CharField(max_length=200,required=True)
-    college_name = forms.CharField(max_length=200, required =True)
 
     def save(self, kwargs=None):
         print(self.cleaned_data)
-        u = CollegeName.objects.create(college_name=self.cleaned_data.get('college_name'))
         s = CourseName.objects.create(course_name=self.cleaned_data.get('course_name'),
 
                                       )
