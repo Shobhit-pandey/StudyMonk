@@ -96,29 +96,6 @@ def faculty_signup(request):
         form = FacultyRegistrationForm()
     return render(request, 'faculty/Teachersign.html', {'form':form})
 
-def add_college(request):
-    if (request.method=='POST'):
-        form=CollegeNameForm(request.POST,request.FILES)
-        if (form.is_valid()):
-            form.save()
-            return redirect('mywebsite:home')
-            #return HttpResponseRedirect(reverse('home'))
-    else:
-        form = CollegeNameForm()
-    return render(request, 'mywebsite/addcollege.html', {'form':form})
-
-def add_course(request):
-    if (request.method=='POST'):
-        form=CourseNameForm(request.POST)
-        if (form.is_valid()):
-            form.save()
-            return redirect('mywebsite:home')
-            #return HttpResponseRedirect(reverse('home'))
-    else:
-        form = CourseNameForm()
-    return render(request, 'mywebsite/addcourse.html', {'form':form})
-
-
 @login_required
 def change_password(request):
     if request.method=='POST':

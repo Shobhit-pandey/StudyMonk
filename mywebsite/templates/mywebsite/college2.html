@@ -82,11 +82,6 @@
                 Home</a></li>
             <li><a href="{% url 'mywebsite:about_us' %}" style="padding-top: 25px"><span class="glyphicon glyphicon-user"></span>
                 Aboutus</a></li>
-
-            {% if user.is_superuser %}
-                <li><a href="{% url 'mywebsite:addcollege' %}" style="padding-top: 25px;"><span
-                    class="glyphicon glyphicons-user-vr-add"></span>ADD College</a></li>
-            {% endif %}
             <li><a href="{% url 'mywebsite:discussion_forum' %}" style="padding-top: 25px;"><span
                     class="glyphicon glyphicons-user-vr-add"></span>Discussion Forum</a></li>
             {% if user.is_authenticated %}

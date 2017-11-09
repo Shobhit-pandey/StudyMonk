@@ -9,8 +9,6 @@ from mywebsite import views
 urlpatterns = [
     url(r'^$',views.home,name='home'),
     url(r'^discussion-forum/$',views.discussion_forum,name='discussion_forum'),
-    url(r'^addcollege/$',views.add_college,name='addcollege'),
-    url(r'^addcourse/$',views.add_course,name='addcourse'),
     url(r'^about-us/$',views.about_us,name='about_us'),
     url(r'^actual/$',views.actual,name='actual'),
     url(r'^college/$',views.college,name='college'),
