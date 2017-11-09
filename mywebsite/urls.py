@@ -1,4 +1,4 @@
-from django.conf.urls import url, include
+from django.conf.urls import url
 from django.contrib.auth.views import login, logout, password_reset, password_reset_done, password_reset_confirm, \
     password_reset_complete
 
@@ -8,7 +8,6 @@ from mywebsite import views
 
 urlpatterns = [
     url(r'^$',views.home,name='home'),
-    url(r'^discussion/', include('qa.urls')),
     url(r'^discussion-forum/$',views.discussion_forum,name='discussion_forum'),
     url(r'^addcollege/$',views.add_college,name='addcollege'),
     url(r'^addcourse/$',views.add_course,name='addcourse'),
@@ -24,9 +23,7 @@ urlpatterns = [
     url(r'^accounts/faculty/signup/$', views.faculty_signup, name='faculty_signup'),
     url(r'^accounts/profile/$', views.profile, name='profile'),
     url(r'^accounts/logout/$', logout,{'template_name':'mywebsite/home.html'}, name='logout'),
-    url(r'^accounts/faculty/login/$', login,{'template_name':'faculty/Teacherlogin.html'}, name='faculty_login'),
-    url(r'^accounts/student/login/$', login, {'template_name': 'student/Studentlogin.html'}, name='student_login'),
-    url(r'^accounts/login/$', login, {'template_name': 'student/Studentlogin.html'}, name='login'),
+    url(r'^accounts/login/$', login,{'template_name':'accounts/login.html'}, name='login'),
     url(r'^account_activation_sent/$', views.account_activation_sent, name='account_activation_sent'),
     url(r'^account/activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
         views.activate, name='activate'),
