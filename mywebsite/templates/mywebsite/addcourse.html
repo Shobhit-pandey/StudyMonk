@@ -6,7 +6,7 @@
 </head>
 <body>
 {% if user.is_superuser %}
-<form action="{% url 'addcourse' %}" method="post" style="margin-top: 100px">
+<form action="{% url 'mywebsite:addcourse' %}" method="post" style="margin-top: 100px">
 
     <h1>Add College to database</h1>
 
