@@ -80,7 +80,7 @@ class Teaches(models.Model):
         unique_together = (("course_id","faculty_id"),)
 
     def __str__(self):
-        return self.faculty_id
+        return self.faculty_id.user.first_name + self.faculty_id.user.last_name
 
 class CollegeCourses(models.Model):
     course_id = models.ForeignKey(CourseName,null=False,unique=True)
@@ -90,7 +90,7 @@ class CollegeCourses(models.Model):
         unique_together = (("course_id","college_id"),)
 
     def __str__(self):
-        return self.college_id
+        return self.college_id.college_name
 
 class Topic(models.Model):
     title = models.CharField(max_length=100)
@@ -107,7 +107,7 @@ class Upload(models.Model):
     class Meta:
         unique_together = (("topic_id","faculty_id"),)
     def __str__(self):
-        return self.faculty_id
+        return self.faculty_id.user.first_name + self.faculty_id.user.last_name
 
 class Document(models.Model):
     document_name = models.CharField(max_length=100)
