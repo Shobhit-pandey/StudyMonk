@@ -127,83 +127,93 @@
     </div>
 
 </nav>
-
-<div class="container" style="margin-top: 100px">
-    <div class="row">
-        <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
+{% for colleges in college %}
+    <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
                 <div class="card">
-                    <img class="card-img-top"  src="{% static 'images/IITk.jpeg.jpeg' %}">
+                    <img class="card-img-top"  src="{{ colleges.college_images.url }}">
                     <div class="card-block">
-                        <h5 class="text-bold">IIT Kanpur</h5>
-                    </div>
-                </div>
-            </div>
-        <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
-                <div class="card">
-                    <img class="card-img-top"  src="{% static 'images/IITBHU.jpeg' %}">
-                    <div class="card-block">
-                        <h5 class="text-bold">IIT BHU</h5>
-                    </div>
-                </div>
-            </div>
-        <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
-                <div class="card">
-                    <img class="card-img-top"  src="{% static 'images/IITk.jpeg.jpeg' %}">
-                    <div class="card-block">
-                        <h5 class="text-bold">IIT Kanpur</h5>
-                    </div>
-                </div>
-            </div>
-        <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
-                <div class="card">
-                    <img class="card-img-top"  src="{% static 'images/IITBHU.jpeg' %}">
-                    <div class="card-block">
-                        <h5 class="text-bold">IIT BHU</h5>
+                        <h5 class="text-bold">{{ colleges.college_name }}</h5>
                     </div>
                 </div>
             </div>
 
-    </div>
-</div>
-<div class="container" style="margin-top: 100px">
-    <div class="row">
-        <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
-                <div class="card">
-                    <img class="card-img-top"  src="{% static 'images/iit-bombay.jpg' %}">
-                    <div class="card-block">
-                        <h5 class="text-bold">IIT BOMBAY</h5>
-                    </div>
-                </div>
-            </div>
-        <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
-                <div class="card">
-                    <img class="card-img-top"  src="{% static 'images/IIT-Delhi-1.jpg' %}">
-                    <div class="card-block">
-                        <h5 class="text-bold">IIIT DELHI</h5>
-                    </div>
-                </div>
-            </div>
-        <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
-                <div class="card">
-                    <img class="card-img-top"  src="{% static 'images/iit-bombay.jpg' %}">
-                    <div class="card-block">
-                        <h5 class="text-bold">IIT BOMBAY</h5>
-                    </div>
-                </div>
-            </div>
-        <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
-                <div class="card">
-                    <img class="card-img-top"  src="{% static 'images/IIT-Delhi-1.jpg' %}">
-                    <div class="card-block">
-                        <h5 class="text-bold">IIIT DELHI</h5>
-                    </div>
-                </div>
-            </div>
-
-
-
-    </div>
-</div>
+{% endfor %}
+{#<div class="container" style="margin-top: 100px">#}
+{#    <div class="row">#}
+{#        <div class="col-sm-6 col-md-4 col-lg-3 mt-4">#}
+{#                <div class="card">#}
+{#                    <img class="card-img-top"  src="{% static 'images/IITk.jpeg.jpeg' %}">#}
+{#                    <div class="card-block">#}
+{#                        <h5 class="text-bold">IIT Kanpur</h5>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        <div class="col-sm-6 col-md-4 col-lg-3 mt-4">#}
+{#                <div class="card">#}
+{#                    <img class="card-img-top"  src="{% static 'images/IITBHU.jpeg' %}">#}
+{#                    <div class="card-block">#}
+{#                        <h5 class="text-bold">IIT BHU</h5>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        <div class="col-sm-6 col-md-4 col-lg-3 mt-4">#}
+{#                <div class="card">#}
+{#                    <img class="card-img-top"  src="{% static 'images/IITk.jpeg.jpeg' %}">#}
+{#                    <div class="card-block">#}
+{#                        <h5 class="text-bold">IIT Kanpur</h5>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        <div class="col-sm-6 col-md-4 col-lg-3 mt-4">#}
+{#                <div class="card">#}
+{#                    <img class="card-img-top"  src="{% static 'images/IITBHU.jpeg' %}">#}
+{#                    <div class="card-block">#}
+{#                        <h5 class="text-bold">IIT BHU</h5>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{##}
+{#    </div>#}
+{#</div>#}
+{#<div class="container" style="margin-top: 100px">#}
+{#    <div class="row">#}
+{#        <div class="col-sm-6 col-md-4 col-lg-3 mt-4">#}
+{#                <div class="card">#}
+{#                    <img class="card-img-top"  src="{% static 'images/iit-bombay.jpg' %}">#}
+{#                    <div class="card-block">#}
+{#                        <h5 class="text-bold">IIT BOMBAY</h5>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        <div class="col-sm-6 col-md-4 col-lg-3 mt-4">#}
+{#                <div class="card">#}
+{#                    <img class="card-img-top"  src="{% static 'images/IIT-Delhi-1.jpg' %}">#}
+{#                    <div class="card-block">#}
+{#                        <h5 class="text-bold">IIIT DELHI</h5>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        <div class="col-sm-6 col-md-4 col-lg-3 mt-4">#}
+{#                <div class="card">#}
+{#                    <img class="card-img-top"  src="{% static 'images/iit-bombay.jpg' %}">#}
+{#                    <div class="card-block">#}
+{#                        <h5 class="text-bold">IIT BOMBAY</h5>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        <div class="col-sm-6 col-md-4 col-lg-3 mt-4">#}
+{#                <div class="card">#}
+{#                    <img class="card-img-top"  src="{% static 'images/IIT-Delhi-1.jpg' %}">#}
+{#                    <div class="card-block">#}
+{#                        <h5 class="text-bold">IIIT DELHI</h5>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{##}
+{##}
+{##}
+{#    </div>#}
+{#</div>#}
 
 </body>
 

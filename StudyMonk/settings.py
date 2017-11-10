@@ -130,5 +130,5 @@ EMAIL_HOST = 'localhost'
 EMAIL_PORT=1025
 
 
-MEDIA_ROOT = os.path.join(BASE_DIR , 'mywebsite/media')
-MEDIA_URL = 'mywebsite/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
