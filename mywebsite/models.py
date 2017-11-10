@@ -26,6 +26,7 @@ class FacultyRegistration(models.Model):
     user = models.ForeignKey(User,null=False)
     gender = models.CharField(choices=CHOICE, default='male', max_length=20, null=False)
     college_name = models.CharField(max_length=100, null=False)
+    course_name = models.CharField(max_length=100, null=False)
     mentorship = models.BooleanField(default=False)
     description = models.CharField(max_length=1000,null=True,blank=True)
 
@@ -75,9 +76,10 @@ class CourseName(models.Model):
 
 class Teaches(models.Model):
     faculty_id =models.ForeignKey(FacultyRegistration,null=False,unique=True)
-    course_id = models.ForeignKey(CourseName,null=False,unique=True)
+    course_id = models.ForeignKey(CourseName,null=False)
+    college_id = models.ForeignKey(CollegeName,null=False)
     class Meta:
-        unique_together = (("course_id","faculty_id"),)
+        unique_together = (("course_id","faculty_id","college_id"),)
 
     def __str__(self):
         return self.faculty_id.user.first_name + self.faculty_id.user.last_name

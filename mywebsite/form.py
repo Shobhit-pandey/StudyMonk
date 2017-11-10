@@ -61,6 +61,7 @@ class FacultyRegistrationForm(forms.Form):
     email = forms.EmailField(required=True,help_text='Required. Inform a valid email address.')
     gender = forms.ChoiceField(CHOICE,required=True)
     college_name = forms.CharField(max_length=100,required=True)
+    course_name = forms.CharField(max_length=100, required=True)
     mentorship = forms.BooleanField(required=False)
     description = forms.CharField(max_length=1000, required=False)
 
@@ -93,6 +94,7 @@ class FacultyRegistrationForm(forms.Form):
         s = FacultyRegistration.objects.create(user=u,
                                                gender=self.cleaned_data.get('gender'),
                                                college_name = self.cleaned_data.get('college_name'),
+                                               course_name = self.cleaned_data.get('course_name'),
                                                mentorship=self.cleaned_data.get('mentorship'),
                                                description=self.cleaned_data.get('description'),
                                                )
