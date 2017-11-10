@@ -1,10 +1,113 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE>
+ {% load staticfiles %}
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Courses</title>
+    <!-- Latest compiled and minified CSS -->
+            <link rel="stylesheet" href="{% static 'css/home.css' %}" type="text/css">
+                <link rel="stylesheet" href="{% static 'css/courses.css' %}" type="text/css">
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
 </head>
 <body>
+<nav class="navbar navbar-inverse navbar-fixed-top" style="width: 100%">
+       <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+            <img class="image" src="{% static 'images/Study.png' %}" style="width: 50px;
+            height: 50px;
+            border-radius: 50%;
+">
+        </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+<div class="navbar-header">
+            <a class="navbar-brand" href="{% url 'mywebsite:home' %}" style="font-size: 50px;padding-top: 25px">Studymonk</a>
+        </div>
 
+      </ul>
+         <ul class="nav navbar-nav navbar-right">
+            <li><a href="{% url 'mywebsite:about_us' %}"><span style="padding-top: 12px" class="glyphicon glyphicon-user"></span> Aboutus</a></li>
+
+             <li><a href="{% url 'mywebsite:discussion_forum' %}"><span style="padding-top: 25px" class="glyphicon glyphicons-user-vr-add"></span>Discussion Forum</a></li>
+      {% if user.is_authenticated %}
+          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" ><img class="image1"  src="{% static 'images/Study.png' %}"></a>
+         <ul class="dropdown-menu" role="menu">
+         <li><a><p>Signed in as</p>
+         <p>{{ user.username }}</p></a></li>
+          <li><a href="{% url 'mywebsite:profile' %}">Profile</a></li>
+             {% if user.is_staff %}
+                    <li><a href="{% url 'mywebsite:faculty_edit' %}">Edit Faculty
+                        Profile</a></li>
+                {% else %}
+                    <li><a href="{% url 'mywebsite:student_edit' %}">Edit
+                        Student Profile</a></li>
+                {% endif %}
+                 <li><a href="{% url 'mywebsite:logout' %}"> Logout</a></li>
+         </ul>
+         </li>
+            {% else %}
+                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span style="padding-top: 12px" class="glyphicon glyphicon-user "></span> Sign Up</a>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="{% url 'mywebsite:student_signup' %}">Student Signup</a></li>
+        <li><a href="{% url 'mywebsite:faculty_signup' %}">Teacher Signup</a></li>
+      </ul>
+      </li>
+      <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span style="padding-top: 12px" class="glyphicon glyphicon-log-in "></span> Login</a>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="{% url 'mywebsite:student_login' %}">Student Login</a></li>
+        <li><a href="{% url 'mywebsite:faculty_login' %}">Teacher Login</a></li>
+      </ul>
+      </li>
+            {% endif %}
+    </ul>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    {% for course in college_name %}
+        {% if forloop.counter|divisibleby:"5" or forloop.counter == 1 %}
+            <div class="row">
+     {% endif %}
+
+        <div class="col-sm-6 col-md-4 col-lg-3 col-mt-4" style="margin-top: 10px">
+                   <a href="#">
+
+                    <div class="card" style="height:auto;">
+                        <div class="h" style="background-color:#607eff; ">
+                        </div>
+                        <div class="title">
+                        <a href = "#">
+                            {% for courses_name in course_name %}
+                                {% if courses_name.id == course.course_id_id  %}
+                                <h3> {{ courses_name.course_name }}</h3>
+                                {% endif %}
+
+                                {% endfor %}
+
+                        </a>
+                        </div>
+
+                    </div>
+                       </a>
+            </div>
+        {% if forloop.counter|divisibleby:"4" or forloop.last == true %}
+            </div>
+      {% endif %}
+    {% endfor %}
+
+</div>
 </body>
+
 </html>

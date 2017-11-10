@@ -61,32 +61,32 @@ class AboutUs(models.Model):
 
 
 class CollegeName(models.Model):
-    college_name = models.CharField(max_length=200,primary_key=True)
+    college_name = models.CharField(max_length=200)
     college_images = models.ImageField()
 
     def __str__(self):
         return self.college_name
 
 class CourseName(models.Model):
-    course_name = models.CharField(max_length=200,primary_key=True)
+    course_name = models.CharField(max_length=200)
 
     def __str__(self):
         return self.course_name
 
 
 class Teaches(models.Model):
-    faculty_id =models.ForeignKey(FacultyRegistration,null=False,unique=True)
-    course_id = models.ForeignKey(CourseName,null=False)
-    college_id = models.ForeignKey(CollegeName,null=False)
+    faculty_id =models.ForeignKey(FacultyRegistration,null=False,unique=False)
+    course_id = models.ForeignKey(CourseName,null=False,unique=False)
+    college_id = models.ForeignKey(CollegeName,null=False,unique=False)
     class Meta:
         unique_together = (("course_id","faculty_id","college_id"),)
 
     def __str__(self):
-        return self.faculty_id.user.first_name + self.faculty_id.user.last_name
+        return self.faculty_id.user.first_name +"  "+ self.faculty_id.user.last_name
 
 class CollegeCourses(models.Model):
-    course_id = models.ForeignKey(CourseName,null=False,unique=True)
-    college_id = models.ForeignKey(CollegeName,null=False,unique=True)
+    course_id = models.ForeignKey(CourseName,null=False,unique=False)
+    college_id = models.ForeignKey(CollegeName,null=False,unique=False)
 
     class Meta:
         unique_together = (("course_id","college_id"),)
@@ -103,9 +103,9 @@ class Topic(models.Model):
         return self.title
 
 class Upload(models.Model):
-    faculty_id = models.ForeignKey(FacultyRegistration,unique=True)
-    topic_id = models.ForeignKey(Topic,unique=True)
-    time_stamp = models.TimeField(null=False)
+    faculty_id = models.ForeignKey(FacultyRegistration,unique=False)
+    topic_id = models.ForeignKey(Topic,unique=False)
+    time_stamp = models.TimeField(null=False,unique=False)
     class Meta:
         unique_together = (("topic_id","faculty_id"),)
     def __str__(self):

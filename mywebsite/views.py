@@ -18,7 +18,7 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 
 from mywebsite.form import StudentRegistrationForm, FacultyRegistrationForm, StudentEditProfile, FacultyEditProfile, \
     CollegeNameForm, CourseNameForm
-from mywebsite.models import StudentRegistration, FacultyRegistration, CollegeName, CourseName, AboutUs
+from mywebsite.models import StudentRegistration, FacultyRegistration, CollegeName, CourseName, AboutUs, CollegeCourses
 from mywebsite.token import account_activation_token
 
 
@@ -168,3 +168,21 @@ def activate(request, uidb64, token):
         return redirect('mywebsite:home')
     else:
         return render(request, 'accounts/account_activation_invalid.html')
+
+def college_detail(request,pk):
+    college = get_object_or_404(CollegeName,pk=pk)
+    college_id = pk
+    college_name = CollegeCourses.objects.filter(college_id_id=college_id)
+    course_name = CourseName.objects.all()
+
+    return render(request, 'mywebsite/collegetocourses.html', {'college':college,'college_name':college_name,
+                                                               'course_name':course_name})
+
+def course_detail(request,pk):
+    course = get_object_or_404(CourseName,pk=pk)
+    course_id = pk
+    course_name = CollegeCourses.objects.filter(course_id_id=course_id)
+    college_name = CollegeName.objects.all()
+
+    return render(request, 'mywebsite/coursetocolleges.html', {'course':course,'course_name':course_name,
+                                                               'college_name':college_name})
