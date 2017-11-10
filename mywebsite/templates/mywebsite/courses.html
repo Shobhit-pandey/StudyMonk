@@ -132,49 +132,63 @@
 </nav>
 
 <div class="container-fluid">
-        <div class="row" >
-            <div class="col-md-4">
+    {% for courses in course %}
+        <div class="col-md-4">
                     <div class="card" style="height:auto;">
                         <div class="h" style="background-color:#3EF7D8; ">
                         </div>
                         <div class="title">
                         <a href = "#">
-                        <h3> hi hi IIT BOMBAY</h3>
+                        <h3> {{ courses.course_name }}</h3>
                         </a>
                         </div>
 
                     </div>
             </div>
-            <div class="col-md-4 ">
-                    <div class="card" style="height:auto;">
-
-
-                        <div class="h" style="background-color:#3EF1F7; ">
-                        </div>
-                        <div class="title">
-                        <a href = "#">
-                        <h3>IIT BOMBAY</h3>
-                        </a>
-                        </div>
-
-                    </div>
-            </div>
-            <div class="col-md-4 ">
-                    <div class="card" style="height:auto;">
-
-
-                        <div class="h" style="background-color:#C034E9;">
-                        </div>
-                        <div class="title" >
-                        <a href = "#">
-                        <h3>IIT BOMBAY</h3>
-                        </a>
-                        </div>
-
-                    </div>
-            </div>
-
-        </div>
+    {% endfor %}
+{#        <div class="row" >#}
+{#            <div class="col-md-4">#}
+{#                    <div class="card" style="height:auto;">#}
+{#                        <div class="h" style="background-color:#3EF7D8; ">#}
+{#                        </div>#}
+{#                        <div class="title">#}
+{#                        <a href = "#">#}
+{#                        <h3> IIT BOMBAY</h3>#}
+{#                        </a>#}
+{#                        </div>#}
+{##}
+{#                    </div>#}
+{#            </div>#}
+{#            <div class="col-md-4 ">#}
+{#                    <div class="card" style="height:auto;">#}
+{##}
+{##}
+{#                        <div class="h" style="background-color:#3EF1F7; ">#}
+{#                        </div>#}
+{#                        <div class="title">#}
+{#                        <a href = "#">#}
+{#                        <h3>IIT BOMBAY</h3>#}
+{#                        </a>#}
+{#                        </div>#}
+{##}
+{#                    </div>#}
+{#            </div>#}
+{#            <div class="col-md-4 ">#}
+{#                    <div class="card" style="height:auto;">#}
+{##}
+{##}
+{#                        <div class="h" style="background-color:#C034E9;">#}
+{#                        </div>#}
+{#                        <div class="title" >#}
+{#                        <a href = "#">#}
+{#                        <h3>IIT BOMBAY</h3>#}
+{#                        </a>#}
+{#                        </div>#}
+{##}
+{#                    </div>#}
+{#            </div>#}
+{##}
+{#        </div>#}
 </div>
 
 
