@@ -103,7 +103,7 @@
         </a>
             </div>
 
-      {% if forloop.counter|divisibleby:"4" %}
+      {% if forloop.counter|divisibleby:"4" or forloop.last == true %}
             </div>
       {% endif %}
 {% endfor %}
