@@ -76,7 +76,13 @@
 
 <div class="container-fluid">
     {% for courses in course %}
+        {% if forloop.counter|divisibleby:"5" or forloop.counter == 1 %}
+            <div class="row">
+     {% endif %}
+
         <div class="col-md-4">
+                   <a href="#">
+
                     <div class="card" style="height:auto;">
                         <div class="h" style="background-color:#3EF7D8; ">
                         </div>
@@ -87,7 +93,11 @@
                         </div>
 
                     </div>
+                       </a>
             </div>
+        {% if forloop.counter|divisibleby:"4" or forloop.last == true %}
+            </div>
+      {% endif %}
     {% endfor %}
 
 </div>
