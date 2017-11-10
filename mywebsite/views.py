@@ -45,12 +45,12 @@ def about_us(request):
 
 def discussion_forum(request):
     return render(request,'mywebsite/discussion_forum.html')
-def college(request):
+def colleges_list(request):
     college = CollegeName.objects.all()
-    return render(request,'mywebsite/college2.html',{'college':college})
-def course(request):
+    return render(request, 'mywebsite/collegeslist.html', {'college':college})
+def courses_list(request):
     course = CourseName.objects.all()
-    return render(request,'mywebsite/courses2.html',{'course':course})
+    return render(request, 'mywebsite/courses.html', {'course':course})
 
 def student_signup(request):
     if (request.method=='POST'):
