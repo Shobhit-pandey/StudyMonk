@@ -115,10 +115,10 @@ def change_password(request):
         user_id = request.user.id
         try:
             person = StudentRegistration.objects.filter(user_id=user_id).get()
-            print person.user.email
+            print (person.user.email)
         except:
             person = FacultyRegistration.objects.filter(user_id=user_id).get()
-            print person.user.email
+            print (person.user.email)
         args={'form':form,'person':person}
         return render(request,'accounts/edit_password.html',args)
 
