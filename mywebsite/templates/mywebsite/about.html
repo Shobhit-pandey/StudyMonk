@@ -121,7 +121,16 @@
       <div class="col-md-6" id="pet">
     </div>
     </div>
+{% for abouts in about_us %}
+    <div class = "col-md-4" id="per01">
 
+          <div id ="per1">
+
+            <img src="{{ abouts.dp.url }}" class="img-circle">
+
+          </div>
+        </div>
+    {% endfor %}
     <div class = "row" style=" margin-bottom:150px">
         <div class = "col-md-4" id="per01">
 
