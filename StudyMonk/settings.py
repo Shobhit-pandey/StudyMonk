@@ -129,6 +129,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = 'localhost'
 EMAIL_PORT=1025
 
+LOGIN_REDIRECT_URL = 'mywebsite:home'
+
+LOGOUT_REDIRECT_URL = 'mywebsite:home'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
