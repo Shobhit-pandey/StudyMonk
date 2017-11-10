@@ -105,7 +105,8 @@
 
 </nav>
 <div class = "container">
-  <div class="row" style="color:#FFFFFF; align-content:center;">
+
+  <div class="row" style=" align-content:center;">
 
 
   <div class="col-md-12">
@@ -114,73 +115,39 @@
   </div>
   </div>
 
-    <div class ="row" style="color: #FFFFFF; margin-bottom:200px">
+
+    <div class ="row" style=" margin-bottom:200px">
       <div class = "col-md-6" id ="per" style="color:#FFFFFF; align-content:center;">
 
       </div>
       <div class="col-md-6" id="pet">
     </div>
     </div>
+<!--------->
+
 {% for abouts in about_us %}
-    <div class = "col-md-4" id="per01">
 
-          <div id ="per1">
+    {% if forloop.counter|divisibleby:"4" or forloop.counter == 1 %}
+            <div class="row">
+     {% endif %}
 
+
+    <div class = "col-md-4" id="per0{{forloop.counter}}">
+
+          <div id ="per{{forloop.counter}}">
             <img src="{{ abouts.dp.url }}" class="img-circle">
 
           </div>
         </div>
-    {% endfor %}
-    <div class = "row" style=" margin-bottom:150px">
-        <div class = "col-md-4" id="per01">
 
-          <div id ="per1">
+    {% if forloop.counter|divisibleby:"3" or forloop.last == true %}
+            </div>
+      {% endif %}
+{% endfor %}
 
-            <img src="{% static 'images/sakshi.jpg' %}" class="img-circle">
+<!----->
 
-          </div>
-        </div>
-
-        <div class = "col-md-4" id ="per02">
-          <div id ="per2">
-            <img src="{% static 'images/shobhit.jpg' %}" class="img-circle">
-        </div>
-        </div>
-        <div class = "col-md-4" id ="per03">
-          <div id ="per3">
-            <img src="{% static 'images/bhuvnesh.png' %}" class="img-circle">
-          </div>
-        </div>
-    </div>
- <div class = "row">
-        <div class = "col-md-4" id="per04">
-
-          <div id ="per4">
-
-
-            <img src="{% static 'images/phani.jpg' %}" class="img-circle">
-
-
-
-
-
-          </div>
-        </div>
-
-        <div class = "col-md-4" id ="per05">
-          <div id ="per5">
-            <img src="{% static 'images/../../../media/Study1.png' %}" class="img-circle">
-        </div>
-        </div>
-        <div class = "col-md-4" id ="per06">
-          <div id ="per6">
-            <img src="{% static 'images/../../../media/Study1.png' %}" class="img-circle">
-          </div>
-        </div>
-    </div>
-
-
-    </div>
+     </div>
     </body>
 <script type="text/javascript">
 
@@ -233,8 +200,8 @@ function fun(numcopy)
     //var id_child = $(u).attr("id");
     //var number_child = id_child.charAt(3);
     var i = numcopy.charAt(3)-1;
-
-     var data = "<div id ="+ "'"+numcopy.charAt(3)+"'"+"><h2>"+ "User["+i+"].Name"+"</h2><h3>"+ "User["+i+"].description "+"</h3><a href='User["+i+"].linkedin'><img src={% static 'images/linkedin.jpeg' %} alt='Avatar' style='height:40px ;width:50px; margin-right: 30px;margin-left: 30px'></a><a href='User["+i+"].github'><img src='{% static 'images/github.png' %}' alt='Avatar' style='height:40px ;width:50px; margin-right: 30px'></a><a href='User["+i+"].fb'><img src='{% static 'images/fb.png' %}' alt='Avatar' style='height:40px ;width:50px'></a></div>"
+    var data = "<div id ="+ "'"+numcopy.charAt(3)+"'"+"><h2>"+ "User["+i+"].Name"+"</h2><h3>"+ "User["+i+"].description "+"</h3><a href='User["+i+"].linkedin'><img src={% static 'images/linkedin.jpeg' %} alt='Avatar' style='height:40px ;width:50px; margin-right: 30px;margin-left: 30px'></a><a href='User["+i+"].github'><img src='{% static 'images/github.png' %}' alt='Avatar' style='height:40px ;width:50px; margin-right: 30px'></a><a href='User["+i+"].fb'><img src='{% static 'images/fb.png' %}' alt='Avatar' style='height:40px ;width:50px'></a></div>"
+ //var data = "<div id ="+ "'"+numcopy.charAt(3)+"'"+"><h2>" + "{{ about_us[" + i   +"]."+"first_name" +"'}}"   +     "</h2><h3>"+ "User["+i+"].description "+"</h3><a href='User["+i+"].linkedin'><img src={% static 'images/linkedin.jpeg' %} alt='Avatar' style='height:40px ;width:50px; margin-right: 30px;margin-left: 30px'></a><a href='User["+i+"].github'><img src='{% static 'images/github.png' %}' alt='Avatar' style='height:40px ;width:50px; margin-right: 30px'></a><a href='User["+i+"].fb'><img src='{% static 'images/fb.png' %}' alt='Avatar' style='height:40px ;width:50px'></a></div>"
 
     $("#pet").append(data);
 
