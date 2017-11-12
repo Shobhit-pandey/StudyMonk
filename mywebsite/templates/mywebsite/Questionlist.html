@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link href="{% static 'css/home.css' %}" rel="stylesheet" type="text/css">
+    <style>
+        .selectpicker {
+            width: 300px;
+            height: 50px;
+        }
+
+        .row {
+            padding: 10px 20px;
+            border-radius: 04px;
+            height: 80px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -150px;
+            margin-top: -150px;
+            /*-webkit-box-shadow: 1px 1px 22px 0px rgba(50, 50, 50, 0.25);
+            -moz-box-shadow: 1px 1px 22px 0px rgba(50, 50, 50, 0.25);
+            box-shadow: 1px 1px 22px 0px rgba(50, 50, 50, 0.25);*/
+        }
+
+    </style>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+.card {
+    font-size: 1em;
+    overflow: hidden;
+    padding: 0;
+    width: 80%;
+    height: auto;
+    border: none;
+    border-radius: .28571429rem;
+    box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+}
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top" style="width: 100%">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <img class="image" src="{% static 'images/Study.png' %}">
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{% url 'mywebsite:home' %}" style="font-size: 3vw;padding-top: 25px">Studymonk</a>
+            </div>
+
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="{% url 'mywebsite:home' %}" style="padding-top: 25px"><span
+                    class="glyphicon glyphicon-home"></span>Home</a></li>
+            <li><a href="{% url 'mywebsite:about_us' %}" style="padding-top: 25px"><span
+                    class="glyphicon glyphicon-user"></span> Aboutus</a></li>
+
+            {% if user.is_authenticated %}
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><img class="image1"
+                                                                                                     src="{% static 'images/Study.png' %}"></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a><p>Signed in as</p>
+                            <p>{{ user.username }}</p></a></li>
+                        <li><a href="{% url 'mywebsite:profile' %}">Profile</a></li>
+                        {% if user.is_staff %}
+                            <li><a href="{% url 'mywebsite:faculty_edit' %}">Edit Faculty
+                                Profile</a></li>
+                        {% else %}
+                            <li><a href="{% url 'mywebsite:student_edit' %}">Edit
+                                Student Profile</a></li>
+                        {% endif %}
+                        <li><a href="{% url 'mywebsite:logout' %}"> Logout</a></li>
+                    </ul>
+                </li>
+            {% else %}
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                                        style="padding-top: 25px"><span class="glyphicon glyphicon-user "></span> Sign
+                    Up</a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="{% url 'mywebsite:student_signup' %}">Student Signup</a></li>
+                        <li><a href="{% url 'mywebsite:faculty_signup' %}">Teacher Signup</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                                        style="padding-top: 25px"><span class="glyphicon glyphicon-log-in "></span>
+                    Login</a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="{% url 'mywebsite:student_login' %}">Student Login</a></li>
+                        <li><a href="{% url 'mywebsite:faculty_login' %}">Teacher Login</a></li>
+                    </ul>
+                </li>
+            {% endif %}
+        </ul>
+
+    </div>
+
+</nav>
+<div class="row">
+    <div class="col-xs-12 col-md-12 col-sm-12">
+        <select class="selectpicker">
+            <option>Select Subject</option>
+            <option>Computer Network</option>
+            <option>Database Management System</option>
+            <option>Operating System</option>
+        </select>
+    </div>
+</div>
+
+<div class="row4" style="padding-top: 300px">
+    <div class="col-xm-12 col-md-12">
+        <div class="card">
+            <div class="row5">
+                <div class="col-xm-12 col-md-12">
+                    <button class="btn-primary btn" style="float: right">add question</button>
+                </div>
+            </div>
+            <div class="row6">
+                <div class="col-xm-6 col-md-6 col-sm-6">
+         <p>1.What is computer network and Internet HTPP database management system and computer network</p>
+                </div>
+                <div class="col-xm-3 col-md-3 col-sm-3">
+                    <p>Date and time</p>
+                </div>
+                <div class="col-xm-3 col-md-3 col-sm-3">
+                    <p>Uesrname</p>
+                </div>
+                </div>
+            <div class="row7">
+                <div class="col-xm-12 col-sm-12 col-md-12">
+                    <p>Reply</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
