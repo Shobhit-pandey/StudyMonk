@@ -35,16 +35,16 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
-.card {
-    font-size: 1em;
-    overflow: hidden;
-    padding: 0;
-    width: 80%;
-    height: auto;
-    border: none;
-    border-radius: .28571429rem;
-    box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
-}
+        .card {
+            font-size: 1em;
+            overflow: hidden;
+            padding: 0;
+            width: 80%;
+            height: auto;
+            border: none;
+            border-radius: .28571429rem;
+            box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+        }
     </style>
 </head>
 <body>
@@ -131,7 +131,7 @@
             </div>
             <div class="row6">
                 <div class="col-xm-6 col-md-6 col-sm-6">
-         <p>1.What is computer network and Internet HTPP database management system and computer network</p>
+                    <p>1.What is computer network and Internet HTPP database management system and computer network</p>
                 </div>
                 <div class="col-xm-3 col-md-3 col-sm-3">
                     <p>Date and time</p>
@@ -139,14 +139,32 @@
                 <div class="col-xm-3 col-md-3 col-sm-3">
                     <p>Uesrname</p>
                 </div>
-                </div>
+            </div>
             <div class="row7">
                 <div class="col-xm-12 col-sm-12 col-md-12">
-                    <p>Reply</p>
+                    <div id="reply-button">Reply</div>
+
+                    <div id="reply-div">
+                        <form class="form-inline" role="form">
+                            <div class="form-group">
+                                <input class="form-control" type="text" placeholder="Your comments"/>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-default">Add</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script>
+    $(document).ready($("#reply-div").hide())
+    $("#reply-button").click(function () {
+
+        $("#reply-div").show();
+    })
+</script>
 </body>
 </html>
