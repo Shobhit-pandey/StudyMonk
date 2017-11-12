@@ -13,26 +13,6 @@ COPYRIGHT = (
     ('no','no')
 )
 
-class StudentRegistration(models.Model):
-    user = models.ForeignKey(User,null=False)
-    college_name = models.CharField(max_length=100,null=False)
-    gender = models.CharField(choices=CHOICE,default='male', max_length=20,null=False)
-
-    def __str__(self):
-        return self.user.username
-
-
-class FacultyRegistration(models.Model):
-    user = models.ForeignKey(User,null=False)
-    gender = models.CharField(choices=CHOICE, default='male', max_length=20, null=False)
-    college_name = models.CharField(max_length=100, null=False)
-    course_name = models.CharField(max_length=100, null=False)
-    mentorship = models.BooleanField(default=False)
-    description = models.CharField(max_length=1000,null=True,blank=True)
-
-    def __str__(self):
-        return self.user.username
-
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     email_confirmed = models.BooleanField(default=False)
@@ -72,6 +52,26 @@ class CourseName(models.Model):
 
     def __str__(self):
         return self.course_name
+
+class StudentRegistration(models.Model):
+    user = models.ForeignKey(User,null=False)
+    college_name = models.ForeignKey(CollegeName)
+    gender = models.CharField(choices=CHOICE,default='male', max_length=20,null=False)
+
+    def __str__(self):
+        return self.user.username
+
+class FacultyRegistration(models.Model):
+    user = models.ForeignKey(User,null=False)
+    gender = models.CharField(choices=CHOICE, default='male', max_length=20, null=False)
+    college_name = models.ForeignKey(CollegeName)
+    course_name = models.ForeignKey(CourseName)
+    mentorship = models.BooleanField(default=False)
+    description = models.CharField(max_length=1000,null=True,blank=True)
+
+    def __str__(self):
+        return self.user.username
+
 
 
 class Teaches(models.Model):

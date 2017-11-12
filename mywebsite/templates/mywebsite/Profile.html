@@ -124,12 +124,15 @@
                       </tr>
 
                         {% if user.is_staff %}
+                            <tr>
+                        <td>Course</td>
+                        <td>{{ person.course_name }}</td>
+                      </tr>
                        <tr>
                         <td>Description</td>
                         <td>{{ person.description }}</td>
                       </tr>
                         {% endif %}
-
                       <tr>
                         <td>Email</td>
                         <td>{{ person.user.email }}</td>

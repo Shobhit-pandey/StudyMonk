@@ -80,49 +80,66 @@
 
     </div>
 </nav>
+
 <form action="{% url 'mywebsite:faculty_signup' %}" method="post" style="margin-top: 100px">
 
     <h1>Sign Up For Faculty</h1>
-
-    <!--fieldset>
-      <legend>Your basic info</legend>
-      <label for="firstname">First-Name:</label>
-      <input type="text" id="firstname" name="user_first_name">
-
-        <label for="lastname">Last-Name:</label>
-      <input type="text" id="lastname" name="user_last_name">
-
-      <label for="mail">Email:</label>
-      <input type="email" id="mail" name="user_email">
-
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="user_password">
-        <label for="password">Confirm Password:</label>
-      <input type="password" id="confirmpassword" name="user_confirm_password">
-
-
-      <label for="bio">Biography:</label>
-      <textarea id="bio" name="user_bio"></textarea>
-
-
-    <label for="gender">Gender:</label>
-    <select id="job" name="user_gender">
-      <optgroup label="Gender">
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-      </optgroup>
-    </select>
-
-</fieldset-->
-
     {% csrf_token %}
-    {{ form.as_p }}
+   {{ form.as_p }}
+{#    <fieldset>#}
+{#      <label for="username">Username:</label>#}
+{#      {{ form.username }}#}
+{##}
+{#        <label for="password">Password:</label>#}
+{#      {{ form.password }}#}
+{#    {% for entry in college_name %}#}
+{#            {{ entry.college_name }}#}
+{#        {% endfor %}#}
+{##}
+{#        <label for="firstname">First Name</label>#}
+{#        {{ form.first_name }}#}
+{##}
+{#        <label for="lastname">Last Name</label>#}
+{#        {{ form.last_name }}#}
+{##}
+{#        <label for="email">Email:</label>#}
+{#      {{ form.email }}#}
+{##}
+{#        <label for="gender">Gender</label>#}
+{#        {{ form.gender }}#}
+{##}
+{#        <label for="college_name">College Name</label>#}
+{#        <select name="college_name">#}
+{#        {% for entry in college %}#}
+{#        <option value="{{ entry.college_name }}">{{ entry.college_name }}</option>#}
+{#        {% endfor %}#}
+{#        </select>#}
+{##}
+{#        {{ form.college_name }}#}
+{#        <label for="course_name">Course Name</label>#}
+{#        <select name="course_name">#}
+{#        {% for entry in course %}#}
+{#            {{ entry.course_name }}#}
+{#        <option value="{{ entry.course_name }}" {{ form.course_name }}>{{ entry.course_name }}</option>#}
+{#        {% endfor %}#}
+{#        </select>#}
+{##}
+{#    {{ form.course_name }}#}
+{##}
+{#                <label for="mentorship">Interest in Mentorship</label>#}
+{#        {{ form.mentorship }}#}
+{#        <br>#}
+{#        <br>#}
+{#                <label for="description">Some Description About You</label>#}
+{#        {{ form.description }}#}
+{#</fieldset>#}
+
+
     <div class="row" style="padding-top: 30px">
 
         <button type="submit">Sign Up</button>
     </div>
 </form>
-
 
 </body>
 </html>

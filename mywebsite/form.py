@@ -10,6 +10,7 @@ CHOICE = (
     ('other','other')
 )
 
+
 class StudentRegistrationForm(forms.Form):
 
     #TODO provide required attribute
@@ -19,7 +20,7 @@ class StudentRegistrationForm(forms.Form):
     last_name = forms.CharField(max_length=50,required=True)
     email = forms.EmailField(required=True,help_text='Required. Inform a valid email address.')
     gender = forms.ChoiceField(CHOICE,required=True)
-    college_name = forms.CharField(max_length=100,required=True)
+    college_name = forms.ModelChoiceField(queryset=CollegeName.objects.all())
 
     def clean_email(self):
         if User.objects.filter(email=self.cleaned_data.get('email', None)).count() > 0:
@@ -60,11 +61,10 @@ class FacultyRegistrationForm(forms.Form):
     last_name = forms.CharField(max_length=50,required=True)
     email = forms.EmailField(required=True,help_text='Required. Inform a valid email address.')
     gender = forms.ChoiceField(CHOICE,required=True)
-    college_name = forms.CharField(max_length=100,required=True)
-    course_name = forms.CharField(max_length=100, required=True)
+    college_name = forms.ModelChoiceField(queryset=CollegeName.objects.all())
+    course_name = forms.ModelChoiceField(queryset=CourseName.objects.all())
     mentorship = forms.BooleanField(required=False)
     description = forms.CharField(max_length=1000, required=False)
-
 
     def clean_email(self):
         if User.objects.filter(email=self.cleaned_data.get('email', None)).count() > 0:
@@ -90,7 +90,6 @@ class FacultyRegistrationForm(forms.Form):
                                      password = self.cleaned_data.get('password'),
                                      username = self.cleaned_data.get('username'))
         u.save()
-
         s = FacultyRegistration.objects.create(user=u,
                                                gender=self.cleaned_data.get('gender'),
                                                college_name = self.cleaned_data.get('college_name'),

@@ -53,6 +53,7 @@ def courses_list(request):
     return render(request, 'mywebsite/courses.html', {'course':course})
 
 def student_signup(request):
+    college = CollegeName.objects.all()
     if (request.method=='POST'):
         form=StudentRegistrationForm(request.POST)
         if (form.is_valid()):
@@ -77,7 +78,13 @@ def student_signup(request):
     return render(request, 'student/Studentsign.html', {'form':form})
 
 def faculty_signup(request):
+    college = CollegeName.objects.all()
+    course = CourseName.objects.all()
+    form = FacultyRegistrationForm()
     if (request.method=='POST'):
+        college = CollegeName.objects.all()
+        course = CourseName.objects.all()
+        # print college.college_name
         form=FacultyRegistrationForm(request.POST)
         if (form.is_valid()):
             user = form.save()
@@ -97,7 +104,7 @@ def faculty_signup(request):
             #return HttpResponseRedirect(reverse('home'))
     else:
         form = FacultyRegistrationForm()
-    return render(request, 'faculty/Teachersign.html', {'form':form})
+    return render(request, 'faculty/Teachersign.html', {'form':form,'college':college,'course':course})
 
 @login_required
 def change_password(request):
