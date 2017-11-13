@@ -207,3 +207,16 @@ def faculty_college(request,pk3):
     return render(request, 'mywebsite/facultyfromcollege.html', {'faculty':faculty,'faculty_name':faculty_name,
                                                                  'faculty_college_name':faculty_college_name
                                                                })
+def faculty_course(request,pk4):
+    referer = request.META.get('HTTP_REFERER')
+    faculty = get_object_or_404(CollegeName,pk=pk4)
+    college_id = pk4
+    course_id = referer[-2]
+    print college_id
+    faculty_name = FacultyRegistration.objects.filter(college_name_id=college_id)
+    faculty_course_name = FacultyRegistration.objects.filter(course_name_id=course_id)
+    #college_name = CollegeName.objects.all()
+
+    return render(request, 'mywebsite/facultyfromcourses.html', {'faculty':faculty,'faculty_name':faculty_name,
+                                                                 'faculty_course_name':faculty_course_name
+                                                               })
