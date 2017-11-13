@@ -1,7 +1,10 @@
 <!DOCTYPE html>
+{% load staticfiles %}
 <html lang="en">
 <head>
     <!-- Latest compiled and minified CSS -->
+    <meta charset="UTF-8">
+    <title>Title</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <!-- jQuery library -->
@@ -11,6 +14,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <link href="{% static 'css/home.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/questionlist.css' %}" rel="stylesheet" type="text/css">
+
     <style>
         .selectpicker {
             width: 300px;
@@ -26,15 +31,7 @@
             top: 50%;
             margin-left: -150px;
             margin-top: -150px;
-            /*-webkit-box-shadow: 1px 1px 22px 0px rgba(50, 50, 50, 0.25);
-            -moz-box-shadow: 1px 1px 22px 0px rgba(50, 50, 50, 0.25);
-            box-shadow: 1px 1px 22px 0px rgba(50, 50, 50, 0.25);*/
         }
-
-    </style>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <style>
         .card {
             font-size: 1em;
             overflow: hidden;
@@ -45,7 +42,9 @@
             border-radius: .28571429rem;
             box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
         }
+
     </style>
+
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top" style="width: 100%">
@@ -141,21 +140,36 @@
                 </div>
             </div>
             <div class="row7">
-                <div class="col-xm-12 col-sm-12 col-md-12">
+                <div class="col-xm-3 col-sm-3 col-md-3">
                     <div id="reply-button">Reply</div>
-
                     <div id="reply-div">
                         <form class="form-inline" role="form">
                             <div class="form-group">
                                 <input class="form-control" type="text" placeholder="Your comments"/>
                             </div>
                             <div class="form-group">
-                                <button class="btn btn-default">Add</button>
+                                <button class="btn btn-default">Commit</button>
                             </div>
                         </form>
                     </div>
                 </div>
+                <div class="col-xm-3 col-sm-3 col-md-3">
+                    <div id="view-answer">answer</div>
+                    <div id="view-div">
+                        <div>tcp</div>
+                        <div>udp</div>
+                    </div>
+                </div>
             </div>
+            <!--<div class="row8">
+                <div class="col-xm-12 col-sm-12 col-md-12">
+                    <div id="view-answer">answer</div>
+                    <div id="view-div">
+                        <div>tcp</div>
+                        <div>udp</div>
+                    </div>
+                </div>
+            </div>-->
         </div>
     </div>
 </div>
@@ -164,6 +178,11 @@
     $("#reply-button").click(function () {
 
         $("#reply-div").show();
+    })
+    $(document).ready($("#view-div").hide())
+    $("#view-answer").click(function () {
+
+        $("#view-div").show();
     })
 </script>
 </body>

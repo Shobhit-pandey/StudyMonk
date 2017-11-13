@@ -1,0 +1,26 @@
+.selectpicker {
+    width: 300px;
+    height: 50px;
+}
+
+.row {
+    padding: 10px 20px;
+    border-radius: 04px;
+    height: 80px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -150px;
+    margin-top: -150px;
+}
+
+.card {
+    font-size: 1em;
+    overflow: hidden;
+    padding: 0;
+    width: 80%;
+    height: auto;
+    border: none;
+    border-radius: .28571429rem;
+    box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+}
