@@ -88,7 +88,7 @@
                         <div class="h" style="background-color:#607eff; ">
                         </div>
                         <div class="title">
-                        <a href = "#">
+                        <a href = "{% url 'mywebsite:faculty_college' pk3=course.course_id_id %}">
                             {% for courses_name in course_name %}
                                 {% if courses_name.id == course.course_id_id  %}
                                 <h3> {{ courses_name.course_name }}</h3>

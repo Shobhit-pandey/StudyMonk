@@ -176,20 +176,34 @@ def activate(request, uidb64, token):
     else:
         return render(request, 'accounts/account_activation_invalid.html')
 
-def college_detail(request,pk):
-    college = get_object_or_404(CollegeName,pk=pk)
-    college_id = pk
+def college_detail(request,pk1):
+    college = get_object_or_404(CollegeName,pk=pk1)
+    college_id = pk1
     college_name = CollegeCourses.objects.filter(college_id_id=college_id)
     course_name = CourseName.objects.all()
 
     return render(request, 'mywebsite/collegetocourses.html', {'college':college,'college_name':college_name,
                                                                'course_name':course_name})
 
-def course_detail(request,pk):
-    course = get_object_or_404(CourseName,pk=pk)
-    course_id = pk
+def course_detail(request,pk2):
+    course = get_object_or_404(CourseName,pk=pk2)
+    course_id = pk2
     course_name = CollegeCourses.objects.filter(course_id_id=course_id)
     college_name = CollegeName.objects.all()
 
     return render(request, 'mywebsite/coursetocolleges.html', {'course':course,'course_name':course_name,
                                                                'college_name':college_name})
+
+def faculty_college(request,pk3):
+    referer = request.META.get('HTTP_REFERER')
+    faculty = get_object_or_404(CourseName,pk=pk3)
+    course_id = pk3
+    college_id = referer[-2]
+    print college_id
+    faculty_name = FacultyRegistration.objects.filter(course_name_id=course_id)
+    faculty_college_name = FacultyRegistration.objects.filter(college_name_id=college_id)
+    #college_name = CollegeName.objects.all()
+
+    return render(request, 'mywebsite/facultyfromcollege.html', {'faculty':faculty,'faculty_name':faculty_name,
+                                                                 'faculty_college_name':faculty_college_name
+                                                               })
