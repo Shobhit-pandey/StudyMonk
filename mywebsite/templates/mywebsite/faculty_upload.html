@@ -1,0 +1,375 @@
+<!DOCTYPE>
+{% load staticfiles %}
+<html>
+<head>
+    {% load staticfiles %}
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+
+    window.onload = function(){
+        var nums =[1];
+        //populate all the topic id's
+        /*for (i in id){
+            //nums.push();
+        }*/
+
+
+      // document
+        for (var i = 0; i < nums.length; i++) {
+
+    // This is the number we're on...
+
+
+        var element = "#d"+nums[i] ;
+        var elem = $(element);
+
+        elem.click(function() {
+
+        var id = $(this).attr("id");
+        console.log(id);
+        docs(id);
+
+        });
+    }
+    //video on every id
+for (var i = 0; i < nums.length; i++) {
+
+    // This is the number we're on...
+
+
+        var element = "#v"+nums[i] ;
+        var elem = $(element);
+
+        elem.click(function() {
+
+        var id = $(this).attr("id");
+        console.log(id);
+        v(id);
+
+        });
+    }
+
+//comments on every topic
+for (var i = 0; i < nums.length; i++) {
+
+    // This is the number we're on...
+
+
+        var element = "#c"+nums[i] ;
+        var elem = $(element);
+
+        elem.click(function() {
+
+        var id = $(this).attr("id");
+        console.log(id);
+        cmnt(id);
+
+        });
+    }
+
+
+
+
+
+}
+
+function docs(numcopy)
+
+{   //decoding JSON if reqd
+    //var d = '{{doc}}';
+    //var decoded = $('<textarea/>').html(d.text();
+    //console.log(decoded);
+    //var doc = JSON.parse(decoded);    // removes any document on page
+
+    $('.Test').remove()
+    var data  = "<div class = 'Test'>";
+    var topicid=numcopy.slice(1);
+    console.log(topicid);
+
+    //for(i=0;i<doc.length;i++)
+    //{
+      // doc[i].topic_id = topicid;
+      //make a new line for each doc
+
+    //}
+
+
+//test
+    data = data + " hello docs here"+topicid+"</div>";
+    var pet = "s" + topicid;
+
+    console.log("id is:"+topicid)+"append to"+pet;
+    console.log(data);
+    // append in e
+    //var e = "#s"+topicid;
+    $("#s1").append(data);
+// test ends
+}
+//function for appending videos
+
+//function for appending docs
+function v(numcopy)
+{  //decoding JSON if reqd
+    //var d = '{{video}}';
+    //var decoded = $('<textarea/>').html(d.text();
+    //console.log(decoded);
+    //var video = JSON.parse(decoded);
+    //remove others
+    $('.Test').remove()
+    var data  = "<div class = 'Test'>";
+    var topicid=numcopy.slice(1);
+    console.log(topicid);
+    // find all videos  and append them
+    //for(i=0;i<video.length;i++)
+    //{
+      // video[i].topic_id = topicid;
+      // append all videos with download and view option
+
+    //}
+
+
+//test
+    data = data + " hello videos"+topicid+"</div>";
+    var pet = "s" + topicid;
+    // append in s+topic.id
+    $("#s1").append(data);
+    console.log("hello end of docs ");
+// test ends
+
+}
+//function for appending comments
+
+function cmnt(numcopy)
+
+{
+    // decode JSon if reqd
+     //var d1 = '{{topic_thread}}';
+    //var decoded1 = $('<textarea/>').html(d1.text();
+    //console.log(decoded1);
+    //var topic_thread = JSON.parse(decoded);
+
+
+//var d2= '{{stud_topic_cmnt}}';
+    //var decoded2 = $('<textarea/>').html(d2.text();
+    //console.log(decoded2);
+    //var stud_topic_cmnt = JSON.parse(decoded2);
+
+
+    //var d3= '{{fac_topic_cmnt}}';
+    //var decoded3 = $('<textarea/>').html(d3.text();
+    //console.log(decoded3);
+    //var fac_topic_cmnt = JSON.parse(decoded3);
+
+
+
+ // get all the threads of the topic
+/* for(i=0;i<topic_thread;i++)
+{ if(topic_thread.topic_id==)
+   {
+    // sort both fac and stud cmnts acc to timestamp
+    if faculty cmnt append to left ..if stud append to right
+
+   }
+}
+
+*/
+
+
+
+
+
+
+
+
+     // removes any document on page
+
+
+    $('.Test').remove()
+    var data  = "<div class = 'Test'>";
+    var topicid=numcopy.slice(1);
+    console.log(topicid);
+
+
+
+
+
+
+
+    // comment box ...change submit button id  = "ct" + topic id
+
+     data = data +  "<form action='#'method ='post'><div class='form-group'><input type ='text' maxlength='2000' class='form-control' name='comment' placeholder='comment'></div><div class='form-group'><button type='submit' class='btn btn-default' id='ct1' type='submit'>Comment</button> </div></form></div>"
+     console.log(data);
+
+    //append actual data in
+    //var e = "#s"+topicid;
+    $("#s1").append(data);
+
+}
+
+
+</script>
+    <style>
+
+
+    body{
+        background-image: url({% static 'images/home.jpg' %});
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+
+
+        .card {
+
+            width: 80%;
+            padding: 20px;
+            border: 1px solid;
+            border-color: #DBDBD6;
+            height:auto ;
+            padding-bottom: 100px;
+
+
+        }
+
+
+        .image {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .btn-group {
+            padding-top: 20px;
+            padding-right: 30px;
+        }
+
+        hr {
+            color: black;
+            border-bottom: 2px solid;
+        }
+
+        .container-fluid {
+            margin-top: 200px;
+            padding-left: 100px;
+        }
+        .desc{
+            text-align: center;
+            color: #A0A0A0;
+        }
+        .timest{
+            text-align: center;
+            color: black;
+            margin-top: 10px;
+            margin-bottom:10px;
+        }
+.Test{
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-inverse" style="width: 100%;top: 0;position: fixed;">
+
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <img class="image" src="{% static 'images/Study.png' %}">
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{% url 'mywebsite:home' %}" style="font-size: 3vw;padding-top: 25px">Studymonk</a>
+                {% if user.is_authenticated %}
+                {% endif %}
+            </div>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="{% url 'mywebsite:about_us' %}" style="padding-top: 25px"><span class="glyphicon glyphicon-user"></span>
+                Aboutus</a></li>
+            <li><a href="{% url 'mywebsite:discussion_forum' %}" style="padding-top: 25px;"><span
+                    class="glyphicon glyphicons-user-vr-add"></span>Discussion Forum</a></li>
+            {% if user.is_authenticated %}
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><img class="image1"
+                                                                                                     src="{% static 'images/Study.png' %}">{{ user.username }}
+                </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="{% url 'mywebsite:change_password' %}"> Change Password</a></li>
+                        {% if user.is_staff %}
+                            <li><a href="{% url 'mywebsite:faculty_edit' %}">Edit Faculty
+                                Profile</a></li>
+                        {% else %}
+                            <li><a href="{% url 'mywebsite:student_edit' %}">Edit
+                                Student Profile</a></li>
+                        {% endif %}
+                        <li><a href="{% url 'mywebsite:logout' %}"> Logout</a></li>
+                    </ul>
+                </li>
+            {% else %}
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                                        style="padding-top: 25px"><span class="glyphicon glyphicon-user "></span> Sign
+                    Up</a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="{% url 'mywebsite:student_signup' %}">Student Signup</a></li>
+                        <li><a href="{% url 'mywebsite:faculty_signup' %}">Teacher Signup</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                                        style="padding-top: 25px"><span class="glyphicon glyphicon-log-in "></span>
+                    Login</a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="{% url 'mywebsite:student_login' %}">Student Login</a></li>
+                        <li><a href="{% url 'mywebsite:faculty_login' %}">Teacher Login</a></li>
+                    </ul>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+
+</nav>
+
+
+<div class="container-fluid">
+   <!-- for all topics make a new row  -->
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="card" id="1">
+                {% for faculty in faculty_name %}
+
+                {% endfor %}
+                <h3 align="center"><b>{{ faculty.course_name.course_name }} BY {{ faculty.user.first_name }} {{ faculty.user.last_name }}  </b></h3>
+
+                <div class="desc">
+                   {{t.description}}
+                </div>
+                <div class="timest" >
+                 28 May 2017
+                </div>
+                <div>
+                <p  id = "d1" style="float: left; font-size: 9pt; text-align: center; width: 30%; margin-right: 2%; margin-bottom: 0.5em;"><img src="{% static 'images/v.png' %}" style="width: 100%; height:10%; ">Documents</p>
+                <p id = "v1" style="float: left; font-size: 9pt; text-align: center; width: 30%; margin-right: 2%; margin-bottom: 0.5em;"><img src="{% static 'images/v.png' %}"  style="width: 100%; height:10%;">Videos</p>
+                <p id = "c1" style="float: left; font-size: 9pt; text-align: center; width: 30%; margin-right: 2%; margin-bottom: 0.5em;"><img src="{% static 'images/v.png' %}"  style="width: 100%; height:10%;">Comments</p>
+                </div>
+                <div  id="s1" >
+                <!-- for appending the data through js -->
+                </div>
+
+             </div>
+        </div>
+
+    </div>
+</div>
+
+   <!-- for loop ends  -->
+</body>
+</html>

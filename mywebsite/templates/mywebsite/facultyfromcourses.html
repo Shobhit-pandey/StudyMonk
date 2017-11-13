@@ -95,13 +95,13 @@
      {% endif %}
 
         <div class="col-sm-6 col-md-4 col-lg-3 col-mt-4" style="margin-top: 10px">
-                   <a href="#">
+                   <a href="{% url 'mywebsite:faculty_upload' pk5=faculties.id %}">
 
                     <div class="card" style="height:auto;">
                         <div class="h" style="background-color:#607eff; ">
                         </div>
                         <div class="title">
-                        <a href = "#">
+                        <a href="{% url 'mywebsite:faculty_upload' pk5=faculties.id %}">
                                 {% if faculties.user.is_staff %}
                                      {% for faculty_course_names in faculty_course_name %}
                                         {% if faculties.course_name_id == faculty_course_names.course_name_id and forloop.counter == 1 %}
