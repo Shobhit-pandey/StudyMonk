@@ -112,23 +112,20 @@
         </div>
     </div>
 </div>
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-6" id="college">
-            <a href="{% url 'mywebsite:college' %}">
-            <div class="box"><p class="todo2" id="college">College</p></div>
-                </a>
-
-        </div>
-        <div class="col-md-6" id="course">
-          <a href="{% url 'mywebsite:course' %}">
-            <div class="box"><p class="todo2" id="course">Course</p></div>
-              </a>
-        </div>
-
-        </div>
+<div class="row" style="margin-top: 50px">
+    <div class="col-sm-6 col-md-6 col-xs-6" style="text-align: center">
+        <a href="{% url 'mywebsite:college' %}">
+            <button type="button" class="btn btn-danger" style="width: 200px;height: 50px">
+                <span style="font-size: 30px;text-align: center">College</span></button>
+        </a>
     </div>
+    <div class="col-sm-6 col-md-6 col-xs-6" style="text-align: center">
+        <a href="{% url 'mywebsite:course' %}">
+            <button type="button" class="btn btn-danger" style="width: 200px;height: 50px">
+                <span style="font-size: 30px;text-align: center">Course</span></button>
+        </a>
+    </div>
+</div>
 
 
 </body>

@@ -13,10 +13,13 @@
     color: white;
 }
 .box {
-    display: inline-block;
     background-color: red;
-    margin-left: 250px;
+    left: 50%;
+    top: 50%;
+    margin-left: -150px;
+    margin-top: -150px;
     width: 200px;
+    position: absolute;
     text-align: center;
 }
 .row2{
