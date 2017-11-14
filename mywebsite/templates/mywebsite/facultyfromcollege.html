@@ -105,7 +105,7 @@
                                 {% if faculties.user.is_staff %}
                                      {% for faculty_college_names in faculty_college_name %}
                                         {% if faculties.college_name_id == faculty_college_names.college_name_id and forloop.counter == 1 %}
-                                            <h3> {{ faculties.user.username }}</h3>
+                                            <h3> {{ faculties.user.first_name }} {{ faculties.user.last_name }}</h3>
 
                                         {% endif %}
                                     {% endfor %}
