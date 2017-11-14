@@ -78,16 +78,16 @@
 <div class="container-fluid">
     {% for course in college_name %}
         {% if forloop.counter|divisibleby:"5" or forloop.counter == 1 %}
-            <div class="row" style="margin-top:20px;">
+           <div class="row">
      {% endif %}
 
         <div class="col-sm-6 col-md-4 col-lg-3 col-mt-4" style="margin-top: 10px">
                    <a href="#">
 
-                     <div class="card" style=" height: 300px;">
-                       <div class="h" style="background-color:#607eff; height:50%;margin-bottom: 0% ">
+                     <div class="card" style=" height: auto;">
+                       <div class="h" style="background-color:#607eff; ">
                         </div>
-                        <div class="title" style="height: 50%;">
+                        <div class="title">
                         <a href = "{% url 'mywebsite:faculty_college' pk3=course.course_id_id %}">
                             {% for courses_name in course_name %}
                                 {% if courses_name.id == course.course_id_id  %}
