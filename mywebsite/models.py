@@ -97,7 +97,7 @@ class CollegeCourses(models.Model):
 class Topic(models.Model):
     title = models.CharField(max_length=100)
     description = models.CharField(max_length=1000)
-    course_id = models.ForeignKey(CourseName,null=False)
+    faculty_id = models.ForeignKey(FacultyRegistration,null=False)
 
     def __str__(self):
         return self.title

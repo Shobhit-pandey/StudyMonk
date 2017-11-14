@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.models import User
 
-from mywebsite.models import StudentRegistration, FacultyRegistration, AboutUs, CollegeName, CourseName
+from mywebsite.models import StudentRegistration, FacultyRegistration, AboutUs, CollegeName, CourseName, Topic
 
 CHOICE = (
     ('male', 'male'),
@@ -187,5 +187,12 @@ class CourseNameForm(forms.Form):
                                       )
         s.save()
         return s
+class TopicForm(forms.Form):
+    topic = forms.CharField(max_length=100,required=True)
+    description = forms.CharField(max_length=1000,required=False)
 
-
+    def save(self, kwargs=None):
+        t = Topic.objects.create(topic=self.cleaned_data.get('topic'),
+                                 description=self.cleaned_data.get('description'))
+        t.save()
+        return t

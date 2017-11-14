@@ -226,3 +226,6 @@ def faculty_upload(request,pk5):
     return render(request, 'mywebsite/faculty_upload.html', {'faculty':faculty,'faculty_name':faculty_name,
                                                                  # 'faculty_course_name':faculty_course_name
                                                                })
+
+def topic_upload(request,pk6):
+    return render(request, 'mywebsite/faculty_upload.html')
