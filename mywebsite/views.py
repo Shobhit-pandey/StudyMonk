@@ -1,18 +1,23 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.contrib.auth import update_session_auth_hash, login
+from django.contrib.auth import update_session_auth_hash, authenticate, login, get_user_model
+from django.contrib.auth.backends import ModelBackend
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth.forms import PasswordChangeForm, UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.sites.shortcuts import get_current_site
+from django.db.models import Q
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, redirect, reverse, get_object_or_404
+
 # Create your views here.
 from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 
-from mywebsite.form import StudentRegistrationForm, FacultyRegistrationForm, StudentEditProfile, FacultyEditProfile
+from mywebsite.form import StudentRegistrationForm, FacultyRegistrationForm, StudentEditProfile, FacultyEditProfile, \
+    CollegeNameForm, CourseNameForm
 from mywebsite.models import StudentRegistration, FacultyRegistration, CollegeName, CourseName, AboutUs, CollegeCourses
 from mywebsite.token import account_activation_token
 
@@ -194,7 +199,7 @@ def faculty_college(request,pk3):
     faculty = get_object_or_404(CourseName,pk=pk3)
     course_id = pk3
     college_id = referer[-2]
-    print(college_id)
+    print college_id
     faculty_name = FacultyRegistration.objects.filter(course_name_id=course_id)
     faculty_college_name = FacultyRegistration.objects.filter(college_name_id=college_id)
     #college_name = CollegeName.objects.all()
@@ -207,7 +212,7 @@ def faculty_course(request,pk4):
     faculty = get_object_or_404(CollegeName,pk=pk4)
     college_id = pk4
     course_id = referer[-2]
-    print(college_id)
+    print college_id
     faculty_name = FacultyRegistration.objects.filter(college_name_id=college_id)
     faculty_course_name = FacultyRegistration.objects.filter(course_name_id=course_id)
     #college_name = CollegeName.objects.all()
