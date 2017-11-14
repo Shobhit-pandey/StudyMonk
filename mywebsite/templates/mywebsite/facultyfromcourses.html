@@ -3,7 +3,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="{% static 'css/home.css' %}" type="text/css">
-        <link rel="stylesheet" href="{% static 'css/faculty.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'css/collegelist.css' %}" type="text/css">
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -86,9 +86,10 @@
     </div>
 
 </nav>
-
-<div class="container-fluid" style="margin-top:200px;">
+<p>fewfwefwe</p>
+<div class="container-fluid">
     {% for faculties in faculty_name %}
+        <p>wevfuwyvuw</p>
         {% if forloop.counter|divisibleby:"5" or forloop.counter == 1 %}
             <div class="row">
      {% endif %}
@@ -96,15 +97,15 @@
         <div class="col-sm-6 col-md-4 col-lg-3 col-mt-4" style="margin-top: 10px">
                    <a href="{% url 'mywebsite:faculty_upload' pk5=faculties.id %}">
 
-                    <div class="card" style="height:300px;">
-                        <div class="h" style="background-color:#607eff; height:50%;margin-bottom: 0% ">
+                    <div class="card" style="height:auto;">
+                        <div class="h" style="background-color:#607eff; ">
                         </div>
-                        <div class="title1" style="height: 50%;">
+                        <div class="title">
                         <a href="{% url 'mywebsite:faculty_upload' pk5=faculties.id %}">
                                 {% if faculties.user.is_staff %}
                                      {% for faculty_course_names in faculty_course_name %}
                                         {% if faculties.course_name_id == faculty_course_names.course_name_id and forloop.counter == 1 %}
-                                            <h3> {{ faculties.user.username }}</h3>
+                                            <h3> {{ faculties.user.first_name }} {{ faculties.user.last_name }}</h3>
 
                                         {% endif %}
                                     {% endfor %}
