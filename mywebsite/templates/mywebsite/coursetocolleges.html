@@ -89,7 +89,7 @@
 <div class="container">
 {% for college in course_name %}
      {% if forloop.counter|divisibleby:"5" or forloop.counter == 1 %}
-            <div class="row">
+            <div class="row" style="margin-top:20px;">
      {% endif %}
 
     <div class="col-sm-6 col-md-4 col-lg-3 col-mt-4"  style="margin-top: 100px">
@@ -98,8 +98,9 @@
 
                     {% for colleges in college_name %}
                         {% if college.college_id_id == colleges.id %}
-                             <img class="card-img-top"  src="{{ colleges.college_images.url }}">
-                        <div class="card-block">
+                             <div class="hn" style="background-size: cover; background-position: center; height:50%;">
+                            <img class="card-img-top"  src="{{ colleges.college_images.url }}" style="background-size: 100%;  min-width: 100%;  min-height: 100%;">
+                        <div class="card-block" style="height: 50%;">
                         <h5 class="text-bold">{{ colleges.college_name }}</h5>
                     </div>
                         {% endif %}
