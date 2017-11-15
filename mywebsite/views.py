@@ -17,7 +17,7 @@ from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 
 from mywebsite.form import StudentRegistrationForm, FacultyRegistrationForm, StudentEditProfile, FacultyEditProfile, \
-    CollegeNameForm, CourseNameForm
+    CollegeNameForm, CourseNameForm, TopicForm
 from mywebsite.models import StudentRegistration, FacultyRegistration, CollegeName, CourseName, AboutUs, CollegeCourses, \
     Topic
 from mywebsite.token import account_activation_token
@@ -233,8 +233,17 @@ def faculty_upload(request,pk5):
                                                                  # 'faculty_course_name':faculty_course_name
                                                                })
 
-def topic_upload(request,pk6):
-    topic = get_object_or_404(Topic,pk=pk6)
-    topic_upload = pk6
-    topic_name = Topic.objects.filter(faculty_id_id=topic_upload)
-    return render(request, 'mywebsite/topic_create.html',{'topic':topic,'topic_name':topic_name})
+def topic_upload(request):
+    if request.method=='POST':
+        form = TopicForm(request.POST)
+        if form.is_valid():
+            # u =form.save(commit=False)
+            # u.user_id=request.user.id
+            # u.save()
+            # # form.save().user_id=request.user.id
+            form.save()
+            return redirect('mywebsite:topic_upload')
+    else:
+        form = TopicForm()
+
+    return render(request, 'mywebsite/topic_create.html',{'form':form})

@@ -340,10 +340,10 @@ function cmnt(numcopy)
         <div class="col-md-12">
         {% for faculty in faculty_name %}
                 {% if faculty.user_id == user.id %}
-                    <a href="{% url 'mywebsite:topic_upload' pk6=faculty.id %}"><h1 style="text-align: center">Create New Topic</h1></a>
+                    <a href="{% url 'mywebsite:topic_upload' %}"><h1 style="text-align: center">Create New Topic</h1></a>
                     {% endif %}
                 {% endfor %}
-        <h3 align="center"><b>{{ faculty.course_name.course_name }} BY {{ faculty.user.first_name }} {{ faculty.user.last_name1 }}  </b></h3>
+        <h3 align="center"><b>{{ faculty.course_name.course_name }} BY {{ faculty.user.first_name }} {{ faculty.user.last_name }}  </b></h3>
 
             <div class="card" id="1">
                 <div class="desc">

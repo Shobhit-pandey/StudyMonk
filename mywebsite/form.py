@@ -188,11 +188,11 @@ class CourseNameForm(forms.Form):
         s.save()
         return s
 class TopicForm(forms.Form):
-    topic = forms.CharField(max_length=100,required=True)
+    title = forms.CharField(max_length=100,required=True)
     description = forms.CharField(max_length=1000,required=False)
 
     def save(self, kwargs=None):
-        t = Topic.objects.create(topic=self.cleaned_data.get('topic'),
+        t = Topic.objects.create(title=self.cleaned_data.get('title'),
                                  description=self.cleaned_data.get('description'))
         t.save()
         return t

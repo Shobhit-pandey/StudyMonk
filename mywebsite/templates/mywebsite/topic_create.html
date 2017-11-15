@@ -1,10 +1,97 @@
 <!DOCTYPE html>
-<html lang="en">
+{% load staticfiles %}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
+<style>
+
+
+    body{
+        background-image: url({% static 'images/teacherlogin.jpg' %});
+        background-repeat:  no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+
+    }
+
+</style>
 <body>
+<nav class=" navbar navbar-inverse navbar-fixed-top " style="width: 100%" >
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+            <img class="image" src="{% static 'images/Study.png' %}">
+        </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+<div class="navbar-header">
+            <a class="navbar-brand" href="{% url 'mywebsite:home' %}" style="font-size: 3vw;padding-top: 25px">Studymonk</a>
+        </div>
+
+      </ul>
+         <ul class="nav navbar-nav navbar-right">
+             <li><a href="{% url 'mywebsite:home' %}"style="padding-top: 25px"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+            <li><a href="{% url 'mywebsite:about_us' %}" style="padding-top: 25px"><span class="glyphicon glyphicon-user"></span> Aboutus</a></li>
+             <li><a href="{% url 'mywebsite:discussion_forum' %}"style="padding-top: 25px"><span class="glyphicon glyphicons-user-vr-add"></span>Discussion Forum</a></li>
+      {% if user.is_authenticated %}
+          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" ><img class="image1"  src="{% static 'images/Study.png' %}">{{ user.username }}</a>
+         <ul class="dropdown-menu" role="menu">
+          <li><a href="{% url 'mywebsite:change_password' %}"> Change Password</a></li>
+             {% if user.is_staff %}
+                    <li><a href="{% url 'mywebsite:faculty_edit' %}">Edit Faculty
+                        Profile</a></li>
+                {% else %}
+                    <li><a href="{% url 'mywebsite:student_edit' %}">Edit
+                        Student Profile</a></li>
+                {% endif %}
+                 <li><a href="{% url 'mywebsite:logout' %}"> Logout</a></li>
+         </ul>
+         </li>{% else %}
+                 <li class="dropdown"><a style="padding-top: 25px" href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user "></span> Sign Up</a>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="{% url 'mywebsite:student_signup' %}">Student Signup</a></li>
+        <li><a href="{% url 'mywebsite:faculty_signup' %}">Teacher Signup</a></li>
+      </ul>
+      </li>
+      <li class="dropdown"><a style="padding-top: 25px" href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in "></span> Login</a>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="{% url 'mywebsite:student_login' %}">Student Login</a></li>
+        <li><a href="{% url 'mywebsite:faculty_login' %}">Teacher Login</a></li>
+      </ul>
+      </li>
+            {% endif %}
+    </ul>
+
+    </div>
+</nav>
+
+
+<form action="{% url 'mywebsite:topic_upload' %}" method="post" style=" margin-top: 150px">
+    {% csrf_token %}
+    <h1>Add Topic {{ user.first_name }} </h1>
+    {{ form.as_p }}
+    <div class="row" style="padding-top: 30px">
+
+        <button type="submit">Create Topic</button>
+    </div>
+
+</form>
 
 </body>
 </html>
