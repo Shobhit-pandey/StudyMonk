@@ -84,7 +84,8 @@
 
 <form action="{% url 'mywebsite:topic_upload' %}" method="post" style=" margin-top: 150px">
     {% csrf_token %}
-    <h1>Add Topic {{ user.first_name }} </h1>
+    <h1>Hello {{ user.first_name }}</h1>
+    <h1>Add Topic </h1>
     {{ form.as_p }}
     <div class="row" style="padding-top: 30px">
 

@@ -230,7 +230,7 @@ def faculty_upload(request,pk5):
 
 def topic_upload(request):
     if request.method=='POST':
-        form = TopicForm(request.POST)
+        form = TopicForm(request.POST,initial={'user_id':request.user.id})
         if form.is_valid():
             # u =form.save(commit=False)
             # u.user_id=request.user.id
@@ -239,6 +239,6 @@ def topic_upload(request):
             form.save()
             return redirect('mywebsite:topic_upload')
     else:
-        form = TopicForm()
+        form = TopicForm(initial={'user_id':request.user.id})
 
     return render(request, 'mywebsite/topic_create.html',{'form':form})
