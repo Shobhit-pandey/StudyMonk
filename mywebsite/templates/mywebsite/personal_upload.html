@@ -338,8 +338,9 @@ function cmnt(numcopy)
    <!-- for all topics make a new row  -->
     <div class="row">
         <div class="col-md-12">
+        <h1 style="text-align: center">Welcome {{ user.first_name }},</h1>
         <a href="{% url 'mywebsite:topic_upload' %}"><h1 style="text-align: center">Create New Topic</h1></a>
-            <h1>Welcome {{ user.first_name }},</h1>
+
 
             {% for  topic in topic_name%}
                 {{ topic.title }}

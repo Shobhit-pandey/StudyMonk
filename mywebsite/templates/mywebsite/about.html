@@ -64,10 +64,7 @@
             <li><a href="{% url 'mywebsite:discussion_forum' %}" style="padding-top: 25px;"><span
                     class="glyphicon glyphicons-user-vr-add"></span>Discussion Forum</a></li>
             {% if user.is_authenticated %}
-                {% if user.is_staff %}
-                <li><a href="{% url 'mywebsite:personal_upload' pk6=user.id %} " style="padding-top: 25px;"><span
-                    class="glyphicon glyphicons-user-vr-add"></span>Upload</a></li>
-                    {% endif %}
+
                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><img class="image1"
                                                                                                      src="{% static 'images/Study.png' %}">
                 </a>
@@ -136,7 +133,7 @@
      {% endif %}
 
 
-    <div class = "col-md-4" id="per0{{forloop.counter}}">
+    <div class = "col-md-4" id="per0{{abouts.id}}">
 
           <div id ="per{{forloop.counter}}">
             <img src="{{ abouts.dp.url }}" class="img-circle">
@@ -203,11 +200,21 @@ function fun(numcopy)
 
     //var id_child = $(u).attr("id");
     //var number_child = id_child.charAt(3);
-    var i = numcopy.charAt(3)-1;
-    var data = "<div id ="+ "'"+numcopy.charAt(3)+"'"+"><h2>"+ "User["+i+"].Name"+"</h2><h3>"+ "User["+i+"].description "+"</h3><a href='User["+i+"].linkedin'><img src={% static 'images/linkedin.jpeg' %} alt='Avatar' style='height:40px ;width:50px; margin-right: 30px;margin-left: 30px'></a><a href='User["+i+"].github'><img src='{% static 'images/github.png' %}' alt='Avatar' style='height:40px ;width:50px; margin-right: 30px'></a><a href='User["+i+"].fb'><img src='{% static 'images/fb.png' %}' alt='Avatar' style='height:40px ;width:50px'></a></div>"
-{# //var data = "<div id ="+ "'"+numcopy.charAt(3)+"'"+"><h2>" + "{{ about_us[" + i   +"]."+"first_name" +"'}}"   +     "</h2><h3>"+ "User["+i+"].description "+"</h3><a href='User["+i+"].linkedin'><img src={% static 'images/linkedin.jpeg' %} alt='Avatar' style='height:40px ;width:50px; margin-right: 30px;margin-left: 30px'></a><a href='User["+i+"].github'><img src='{% static 'images/github.png' %}' alt='Avatar' style='height:40px ;width:50px; margin-right: 30px'></a><a href='User["+i+"].fb'><img src='{% static 'images/fb.png' %}' alt='Avatar' style='height:40px ;width:50px'></a></div>"#}
+    var i = numcopy.charAt(3);
 
+    {% for abouts in about_us %}
+        var j = {{abouts.id}}
+
+        if ( j == i )
+    {  // console.log(i);
+
+    var data = "<div id ="+ "'"+numcopy.charAt(3)+"'"+"><h2>"+ "{{ abouts.first_name }} {{ abouts.last_name }}"+"</h2><h3>"+ "{{ abouts.description }} "+"</h3><a href='{{ abouts.linkedin }}'><img src={% static 'images/linkedin.jpeg' %} alt='Avatar' style='height:40px ;width:50px; margin-right: 30px;margin-left: 30px'></a><a href='{{ abouts.github }}'><img src='{% static 'images/github.png' %}' alt='Avatar' style='height:40px ;width:50px; margin-right: 30px'></a><a href='{{ abouts.fb_id }}'><img src='{% static 'images/fb.png' %}' alt='Avatar' style='height:40px ;width:50px'></a></div>"
+     //var data = i;
+    {# //var data = "<div id ="+ "'"+numcopy.charAt(3)+"'"+"><h2>" + "{{ about_us[" + i   +"]."+"first_name" +"'}}"   +     "</h2><h3>"+ "User["+i+"].description "+"</h3><a href='User["+i+"].linkedin'><img src={% static 'images/linkedin.jpeg' %} alt='Avatar' style='height:40px ;width:50px; margin-right: 30px;margin-left: 30px'></a><a href='User["+i+"].github'><img src='{% static 'images/github.png' %}' alt='Avatar' style='height:40px ;width:50px; margin-right: 30px'></a><a href='User["+i+"].fb'><img src='{% static 'images/fb.png' %}' alt='Avatar' style='height:40px ;width:50px'></a></div>"#}
     $("#pet").append(data);
+    }
+    {% endfor %}
+
 
 
 
