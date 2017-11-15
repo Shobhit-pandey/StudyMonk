@@ -93,6 +93,10 @@
             <div class="row">
      {% endif %}
 
+        {% if faculties.user.is_staff %}
+        {% for faculty_college_names in faculty_college_name %}
+        {% if faculties.college_name_id == faculty_college_names.college_name_id and forloop.counter == 1 %}
+
         <div class="col-sm-6 col-md-4 col-lg-3 col-mt-4" style="margin-top: 10px">
                    <a href="{% url 'mywebsite:faculty_upload' pk5=faculties.id %}">
 
@@ -104,7 +108,8 @@
                                 {% if faculties.user.is_staff %}
                                      {% for faculty_college_names in faculty_college_name %}
                                         {% if faculties.college_name_id == faculty_college_names.college_name_id and forloop.counter == 1 %}
-                                            <h3> {{ faculties.user.first_name }} {{ faculties.user.last_name }}</h3>
+                                            <h3>{{ faculties.user.username }}</h3>
+                                            <h3>{{ faculties.user.first_name }} {{ faculties.user.last_name }}</h3>
 
                                         {% endif %}
                                     {% endfor %}
@@ -116,6 +121,9 @@
                     </div>
                        </a>
             </div>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
         {% if forloop.counter|divisibleby:"4" or forloop.last == true %}
             </div>
       {% endif %}

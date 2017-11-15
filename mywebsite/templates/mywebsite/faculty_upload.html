@@ -338,16 +338,14 @@ function cmnt(numcopy)
    <!-- for all topics make a new row  -->
     <div class="row">
         <div class="col-md-12">
+        {% for faculty in faculty_name %}
+                {% if faculty.user_id == user.id %}
+                    <a href="{% url 'mywebsite:topic_upload' pk6=faculty.id %}"><h1 style="text-align: center">Create New Topic</h1></a>
+                    {% endif %}
+                {% endfor %}
+        <h3 align="center"><b>{{ faculty.course_name.course_name }} BY {{ faculty.user.first_name }} {{ faculty.user.last_name1 }}  </b></h3>
 
             <div class="card" id="1">
-                {% for faculty in faculty_name %}
-                {% if faculty.user_id == user.id %}
-                    <a href="#"><h1 style="text-align: center">Create New Topic</h1></a>
-                    {% endif %}
-
-                <h3 align="center"><b>{{ faculty.course_name.course_name }} BY {{ faculty.user.first_name }} {{ faculty.user.last_name1 }}  </b></h3>
-                {% endfor %}
-
                 <div class="desc">
                    {{t.description}}
                 </div>

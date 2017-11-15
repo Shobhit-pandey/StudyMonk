@@ -18,7 +18,8 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 
 from mywebsite.form import StudentRegistrationForm, FacultyRegistrationForm, StudentEditProfile, FacultyEditProfile, \
     CollegeNameForm, CourseNameForm
-from mywebsite.models import StudentRegistration, FacultyRegistration, CollegeName, CourseName, AboutUs, CollegeCourses
+from mywebsite.models import StudentRegistration, FacultyRegistration, CollegeName, CourseName, AboutUs, CollegeCourses, \
+    Topic
 from mywebsite.token import account_activation_token
 
 
@@ -233,4 +234,7 @@ def faculty_upload(request,pk5):
                                                                })
 
 def topic_upload(request,pk6):
-    return render(request, 'mywebsite/faculty_upload.html')
+    topic = get_object_or_404(Topic,pk=pk6)
+    topic_upload = pk6
+    topic_name = Topic.objects.filter(faculty_id_id=topic_upload)
+    return render(request, 'mywebsite/topic_create.html',{'topic':topic,'topic_name':topic_name})
