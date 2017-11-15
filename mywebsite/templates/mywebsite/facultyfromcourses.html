@@ -86,8 +86,8 @@
     </div>
 
 </nav>
-
-<div class="container-fluid" style="margin-top: 200px;">
+<div class="card" style="margin-top: 70px;width:80%;height: auto;margin-left: 130px;background-color:white">
+    <div class="container">
     {% for faculties in faculty_name %}
         {% if forloop.counter|divisibleby:"5" or forloop.counter == 1 %}
             <div class="row">
@@ -96,7 +96,8 @@
         {% for faculty_course_names in faculty_course_name %}
         {% if faculties.course_name_id == faculty_course_names.course_name_id and forloop.counter == 1 %}
 
-        <div class="col-sm-6 col-md-4 col-lg-3 col-mt-4" style="margin-top: 10px">
+            <div class="col-sm-6 col-md-4 col-lg-3 col-mt-4"
+                 style="margin-left: 40px;margin-top: 20px;margin-bottom: 40px">
                    <a href="{% url 'mywebsite:faculty_upload' pk5=faculties.id %}">
 
                       <div class="card" style="height:300px;">
