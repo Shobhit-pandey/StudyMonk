@@ -87,9 +87,8 @@
 
 </nav>
 <p>fewfwefwe</p>
-<div class="container-fluid">
+<div class="container-fluid" style="margin-top: 200px;">
     {% for faculties in faculty_name %}
-        <p>wevfuwyvuw</p>
         {% if forloop.counter|divisibleby:"5" or forloop.counter == 1 %}
             <div class="row">
      {% endif %}
@@ -97,10 +96,10 @@
         <div class="col-sm-6 col-md-4 col-lg-3 col-mt-4" style="margin-top: 10px">
                    <a href="{% url 'mywebsite:faculty_upload' pk5=faculties.id %}">
 
-                    <div class="card" style="height:auto;">
-                        <div class="h" style="background-color:#607eff; ">
+                    <div class="card" style="height:300px;">
+                        <div class="h"style="background-color:#607eff; height:50%;margin-bottom: 0% ">
                         </div>
-                        <div class="title">
+                        <div class="title" style="height: 50%;">
                         <a href="{% url 'mywebsite:faculty_upload' pk5=faculties.id %}">
                                 {% if faculties.user.is_staff %}
                                      {% for faculty_college_names in faculty_college_name %}
