@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'^college-list/(?P<pk1>[\w\-]+)/$', views.college_detail, name='college_detail'),
     url(r'^faculty/topic/add/$', views.topic_upload, name='topic_upload'),
     url(r'^faculty/upload/(?P<pk5>[\w\-]+)/$', views.faculty_upload, name='faculty_upload'),
+    url(r'^upload/(?P<pk6>[\w\-]+)/$', views.personal_upload, name='personal_upload'),
     url(r'^college/courses/faculty-list/(?P<pk3>[\w\-]+)/$', views.faculty_college, name='faculty_college'),
     url(r'^courses/college/faculty-list/(?P<pk4>[\w\-]+)/$', views.faculty_course, name='faculty_course'),
     url(r'^course-list/(?P<pk2>[\w\-]+)/$', views.course_detail, name='course_detail'),
