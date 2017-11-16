@@ -337,22 +337,37 @@ function cmnt(numcopy)
 <div class="container-fluid">
    <!-- for all topics make a new row  -->
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12" >
         <h1 style="text-align: center">Welcome {{ user.first_name }},</h1>
         <a href="{% url 'mywebsite:topic_upload' %}"><h1 style="text-align: center">Create New Topic</h1></a>
+        </div>
+    </div>
 
             {% for  topic in topic_name%}
-             <div class="card" id="1">
+                 <div class="row" style="margin-bottom: 50px;">
+        <div class="col-md-12">
+             <div class="card" id="1" >
                 <div class="desc">
                     <h1>Title : {{ topic.title }}</h1>
                     <h1>Description : {{ topic.description }}</h1>
+                    <form action="#" method="post" style="display: inline-block;">
+
+          <button type="submit" style="margin-right: 30px;">addDoc</button>
+
+      </form>
+                     <form action="#" method="post" style="display: inline-block;">
+
+          <button type="submit">addVideo</button>
+
+      </form>
 
                 </div>
                 <div class="timest" >
-                 28 May 2017
+                 29 May 2017
                 </div>
                 <div>
                 <p  id = "d1" style="float: left; font-size: 9pt; text-align: center; width: 10%; margin-right: 25%; margin-bottom: 0.5em;"><img src="{% static 'images/doc.png' %}" style="width: 100%; height:10%; ">Documents</p>
+
                 <p id = "v1" style="float: left; font-size: 9pt; text-align: center; width: 10%; margin-right: 28%; margin-bottom: 0.5em;"><img src="{% static 'images/video.png' %}"  style="width: 100%; height:10%;">Videos</p>
                 <p id = "c1" style="float: left; font-size: 9pt; text-align: center; width: 10%; margin-right: 2%; margin-bottom: 0.5em;"><img src="{% static 'images/comment.jpg' %}"  style="width: 100%; height:10%;">Comments</p>
                 </div>
@@ -361,10 +376,13 @@ function cmnt(numcopy)
                 </div>
 
              </div>
-            {% endfor %}
-        </div>
+                </div>
+                 </div>
 
-    </div>
+            {% endfor %}
+
+
+
 </div>
 
    <!-- for loop ends  -->
