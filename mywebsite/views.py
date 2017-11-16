@@ -222,11 +222,10 @@ def faculty_upload(request,pk5):
     faculty = get_object_or_404(FacultyRegistration,pk=pk5)
     upload = pk5
     faculty_name = FacultyRegistration.objects.filter(id=upload)
-    # faculty_course_name = FacultyRegistration.objects.filter(course_name_id=course_id)
-    #college_name = CollegeName.objects.all()
+    topic = Topic.objects.all()
 
     return render(request, 'mywebsite/faculty_upload.html', {'faculty':faculty,'faculty_name':faculty_name,
-                                                                 # 'faculty_course_name':faculty_course_name
+                                                                 'topic':topic
                                                                })
 
 def topic_upload(request):
