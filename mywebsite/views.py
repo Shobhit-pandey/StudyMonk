@@ -14,7 +14,8 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 
 from mywebsite.form import StudentRegistrationForm, FacultyRegistrationForm, StudentEditProfile, FacultyEditProfile, \
     TopicForm
-from mywebsite.models import StudentRegistration, FacultyRegistration, CollegeName, CourseName, AboutUs, CollegeCourses
+from mywebsite.models import StudentRegistration, FacultyRegistration, CollegeName, CourseName, AboutUs, CollegeCourses, \
+    Topic
 from mywebsite.token import account_activation_token
 
 
@@ -230,7 +231,7 @@ def faculty_upload(request,pk5):
 
 def topic_upload(request):
     if request.method=='POST':
-        form = TopicForm(request.POST)
+        form = TopicForm(request.POST,initial={'user_id':request.user.id})
         if form.is_valid():
             # u =form.save(commit=False)
             # u.user_id=request.user.id
@@ -239,6 +240,13 @@ def topic_upload(request):
             form.save()
             return redirect('mywebsite:topic_upload')
     else:
-        form = TopicForm()
+        form = TopicForm(initial={'user_id':request.user.id})
 
     return render(request, 'mywebsite/topic_create.html',{'form':form})
+
+def personal_upload(request,pk6):
+    faculty = get_object_or_404(User,pk=pk6)
+    upload=pk6
+    topic_name = Topic.objects.filter(user_id=upload)
+    return render(request,'mywebsite/personal_upload.html',{'faculty':faculty,'topic_name':topic_name})
+

@@ -39,6 +39,10 @@
 
              <li><a href="{% url 'mywebsite:discussion_forum' %}"><span style="padding-top: 25px" class="glyphicon glyphicons-user-vr-add"></span>Discussion Forum</a></li>
       {% if user.is_authenticated %}
+          {% if user.is_staff %}
+                <li><a href="{% url 'mywebsite:personal_upload' pk6=user.id %} " style="padding-top: 25px;"><span
+                    class="glyphicon glyphicons-user-vr-add"></span>Upload</a></li>
+                    {% endif %}
           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" ><img class="image1"  src="{% static 'images/Study.png' %}"></a>
          <ul class="dropdown-menu" role="menu">
          <li><a><p>Signed in as</p>
@@ -71,8 +75,7 @@
     </ul>
     </div>
 </nav>
-<div class="card"
-     style="margin-top: 70px;width:80%;height: 100%;margin-left: 130px;margin-right:130px;background-color:white">
+<div class="card" style="margin-top: 70px;width:80%;height: 100%;margin-left: 130px;background-color:white">
     <div class="container">
     {% for course in college_name %}
         {% if forloop.counter|divisibleby:"4" or forloop.counter == 1 %}

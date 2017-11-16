@@ -292,10 +292,6 @@ function cmnt(numcopy)
             <li><a href="{% url 'mywebsite:discussion_forum' %}" style="padding-top: 25px;"><span
                     class="glyphicon glyphicons-user-vr-add"></span>Discussion Forum</a></li>
             {% if user.is_authenticated %}
-                {% if user.is_staff %}
-                <li><a href="{% url 'mywebsite:personal_upload' pk6=user.id %} " style="padding-top: 25px;"><span
-                    class="glyphicon glyphicons-user-vr-add"></span>Upload</a></li>
-                    {% endif %}
                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><img class="image1"
                                                                                                      src="{% static 'images/Study.png' %}">
                 </a>
@@ -342,30 +338,32 @@ function cmnt(numcopy)
    <!-- for all topics make a new row  -->
     <div class="row">
         <div class="col-md-12">
-        {% for faculty in faculty_name %}
-                {% if faculty.user_id == user.id %}
-                    <a href="{% url 'mywebsite:topic_upload' %}"><h1 style="text-align: center">Create New Topic</h1></a>
-                    {% endif %}
-                {% endfor %}
-        <h3 align="center"><b>{{ faculty.course_name.course_name }} BY {{ faculty.user.first_name }} {{ faculty.user.last_name }}  </b></h3>
+        <h1 style="text-align: center">Welcome {{ user.first_name }},</h1>
+        <a href="{% url 'mywebsite:topic_upload' %}"><h1 style="text-align: center">Create New Topic</h1></a>
 
-            <div class="card" id="1">
-                <div class="desc">
-                   {{t.description}}
-                </div>
-                <div class="timest" >
-                 28 May 2017
-                </div>
-                <div>
-                <p  id = "d1" style="float: left; font-size: 9pt; text-align: center; width: 30%; margin-right: 2%; margin-bottom: 0.5em;"><img src="{% static 'images/v.png' %}" style="width: 100%; height:10%; ">Documents</p>
-                <p id = "v1" style="float: left; font-size: 9pt; text-align: center; width: 30%; margin-right: 2%; margin-bottom: 0.5em;"><img src="{% static 'images/v.png' %}"  style="width: 100%; height:10%;">Videos</p>
-                <p id = "c1" style="float: left; font-size: 9pt; text-align: center; width: 30%; margin-right: 2%; margin-bottom: 0.5em;"><img src="{% static 'images/v.png' %}"  style="width: 100%; height:10%;">Comments</p>
-                </div>
-                <div  id="s1" >
-                <!-- for appending the data through js -->
-                </div>
 
-             </div>
+            {% for  topic in topic_name%}
+                {{ topic.title }}
+                <br>
+                {{ topic.description }}
+            {% endfor %}
+{#            <div class="card" id="1">#}
+{#                <div class="desc">#}
+{#                   {{t.description}}#}
+{#                </div>#}
+{#                <div class="timest" >#}
+{#                 28 May 2017#}
+{#                </div>#}
+{#                <div>#}
+{#                <p  id = "d1" style="float: left; font-size: 9pt; text-align: center; width: 30%; margin-right: 2%; margin-bottom: 0.5em;"><img src="{% static 'images/v.png' %}" style="width: 100%; height:10%; ">Documents</p>#}
+{#                <p id = "v1" style="float: left; font-size: 9pt; text-align: center; width: 30%; margin-right: 2%; margin-bottom: 0.5em;"><img src="{% static 'images/v.png' %}"  style="width: 100%; height:10%;">Videos</p>#}
+{#                <p id = "c1" style="float: left; font-size: 9pt; text-align: center; width: 30%; margin-right: 2%; margin-bottom: 0.5em;"><img src="{% static 'images/v.png' %}"  style="width: 100%; height:10%;">Comments</p>#}
+{#                </div>#}
+{#                <div  id="s1" >#}
+{#                <!-- for appending the data through js -->#}
+{#                </div>#}
+{##}
+{#             </div>#}
         </div>
 
     </div>
