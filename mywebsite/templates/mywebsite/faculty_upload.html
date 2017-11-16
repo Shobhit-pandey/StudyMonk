@@ -346,26 +346,31 @@ function cmnt(numcopy)
                 {% if faculty.user_id == user.id %}
                     <a href="{% url 'mywebsite:topic_upload' %}"><h1 style="text-align: center">Create New Topic</h1></a>
                     {% endif %}
-                {% endfor %}
-        <h3 align="center"><b>{{ faculty.course_name.course_name }} BY {{ faculty.user.first_name }} {{ faculty.user.last_name }}  </b></h3>
 
+        <h3 align="center"><b>{{ faculty.course_name.course_name }} BY {{ faculty.user.first_name }} {{ faculty.user.last_name }}  </b></h3>
+        {% for topics in topic %}
+            {% if topics.user_id == faculty.user_id %}
             <div class="card" id="1">
                 <div class="desc">
-                   {{t.description}}
+                    <h1>Title : {{ topics.title }}</h1>
+                    <h1>Description : {{topics.description}}</h1>
                 </div>
                 <div class="timest" >
                  28 May 2017
                 </div>
                 <div>
-                <p  id = "d1" style="float: left; font-size: 9pt; text-align: center; width: 30%; margin-right: 2%; margin-bottom: 0.5em;"><img src="{% static 'images/v.png' %}" style="width: 100%; height:10%; ">Documents</p>
-                <p id = "v1" style="float: left; font-size: 9pt; text-align: center; width: 30%; margin-right: 2%; margin-bottom: 0.5em;"><img src="{% static 'images/v.png' %}"  style="width: 100%; height:10%;">Videos</p>
-                <p id = "c1" style="float: left; font-size: 9pt; text-align: center; width: 30%; margin-right: 2%; margin-bottom: 0.5em;"><img src="{% static 'images/v.png' %}"  style="width: 100%; height:10%;">Comments</p>
+                <p  id = "d1" style="float: left; font-size: 9pt; text-align: center; width: 10%; margin-right: 25%; margin-bottom: 0.5em;"><img src="{% static 'images/doc.png' %}" style="width: 100%; height:10%; ">Documents</p>
+                <p id = "v1" style="float: left; font-size: 9pt; text-align: center; width: 10%; margin-right: 28%; margin-bottom: 0.5em;"><img src="{% static 'images/video.png' %}"  style="width: 100%; height:10%;">Videos</p>
+                <p id = "c1" style="float: left; font-size: 9pt; text-align: center; width: 10%; margin-right: 2%; margin-bottom: 0.5em;"><img src="{% static 'images/comment.jpg' %}"  style="width: 100%; height:10%;">Comments</p>
                 </div>
                 <div  id="s1" >
                 <!-- for appending the data through js -->
                 </div>
 
              </div>
+            {% endif %}
+            {% endfor %}
+        {% endfor %}
         </div>
 
     </div>

@@ -341,29 +341,27 @@ function cmnt(numcopy)
         <h1 style="text-align: center">Welcome {{ user.first_name }},</h1>
         <a href="{% url 'mywebsite:topic_upload' %}"><h1 style="text-align: center">Create New Topic</h1></a>
 
-
             {% for  topic in topic_name%}
-                {{ topic.title }}
-                <br>
-                {{ topic.description }}
+             <div class="card" id="1">
+                <div class="desc">
+                    {{ topic.title }}
+                     <br>
+                   {{ topic.description }}
+                </div>
+                <div class="timest" >
+                 28 May 2017
+                </div>
+                <div>
+                <p  id = "d1" style="float: left; font-size: 9pt; text-align: center; width: 10%; margin-right: 25%; margin-bottom: 0.5em;"><img src="{% static 'images/doc.png' %}" style="width: 100%; height:10%; ">Documents</p>
+                <p id = "v1" style="float: left; font-size: 9pt; text-align: center; width: 10%; margin-right: 28%; margin-bottom: 0.5em;"><img src="{% static 'images/video.png' %}"  style="width: 100%; height:10%;">Videos</p>
+                <p id = "c1" style="float: left; font-size: 9pt; text-align: center; width: 10%; margin-right: 2%; margin-bottom: 0.5em;"><img src="{% static 'images/comment.jpg' %}"  style="width: 100%; height:10%;">Comments</p>
+                </div>
+                <div  id="s1" >
+                <!-- for appending the data through js -->
+                </div>
+
+             </div>
             {% endfor %}
-{#            <div class="card" id="1">#}
-{#                <div class="desc">#}
-{#                   {{t.description}}#}
-{#                </div>#}
-{#                <div class="timest" >#}
-{#                 28 May 2017#}
-{#                </div>#}
-{#                <div>#}
-{#                <p  id = "d1" style="float: left; font-size: 9pt; text-align: center; width: 30%; margin-right: 2%; margin-bottom: 0.5em;"><img src="{% static 'images/v.png' %}" style="width: 100%; height:10%; ">Documents</p>#}
-{#                <p id = "v1" style="float: left; font-size: 9pt; text-align: center; width: 30%; margin-right: 2%; margin-bottom: 0.5em;"><img src="{% static 'images/v.png' %}"  style="width: 100%; height:10%;">Videos</p>#}
-{#                <p id = "c1" style="float: left; font-size: 9pt; text-align: center; width: 30%; margin-right: 2%; margin-bottom: 0.5em;"><img src="{% static 'images/v.png' %}"  style="width: 100%; height:10%;">Comments</p>#}
-{#                </div>#}
-{#                <div  id="s1" >#}
-{#                <!-- for appending the data through js -->#}
-{#                </div>#}
-{##}
-{#             </div>#}
         </div>
 
     </div>
