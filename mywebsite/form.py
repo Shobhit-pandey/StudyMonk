@@ -22,11 +22,11 @@ class StudentRegistrationForm(forms.Form):
     gender = forms.ChoiceField(CHOICE,required=True)
     college_name = forms.ModelChoiceField(queryset=CollegeName.objects.all())
 
-    def clean_password(self):
-        if User.objects.filter(password=self.cleaned_data.get('password', None)).size() < 8:
-            raise forms.ValidationError("password should be atleast 8 digit")
-
-        return self.cleaned_data.get('password')
+    # def clean_password(self):
+    #     if User.objects.filter(password=self.cleaned_data.get('password', None)).size() < 8:
+    #         raise forms.ValidationError("password should be atleast 8 digit")
+    #
+    #     return self.cleaned_data.get('password')
 
     def clean_email(self):
         if User.objects.filter(email=self.cleaned_data.get('email', None)).count() > 0:
@@ -190,7 +190,7 @@ class CourseNameForm(forms.Form):
 class TopicForm(forms.Form):
     title = forms.CharField(max_length=100,required=True)
     description = forms.CharField(max_length=1000,required=False)
-    user_id = forms.CharField(max_length=1000,required=True,disabled=True)
+    user_id = forms.CharField(max_length=1000, required=True, disabled=True)
 
     def save(self, kwargs=None):
         t = Topic.objects.create(title=self.cleaned_data.get('title'),
