@@ -348,17 +348,9 @@ function cmnt(numcopy)
                      {% for faculties in faculty_name %}
                 {% if faculties.user_id == user.id %}
 
-                    <form action="#" method="post" style="display: inline-block;">
-
-          <button type="submit" style="margin-right: 30px;">addDoc</button>
-
-      </form>
-                     <form action="#" method="post" style="display: inline-block;">
-
-          <button type="submit">addVideo</button>
-
-      </form>
-{% endif %}
+                    <a href="{% url 'mywebsite:add_doc' pk7=topics.id %}"  style="display: inline-block;">ADD DOC</a>
+                    <a href="{% url 'mywebsite:add_video' pk8=topics.id %}"  style="display: inline-block;">ADD VIDEO</a>
+                {% endif %}
                 {% endfor %}
                 </div>
 

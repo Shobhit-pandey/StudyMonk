@@ -2,14 +2,18 @@ from django import forms
 from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.models import User
 
-from mywebsite.models import StudentRegistration, FacultyRegistration, AboutUs, CollegeName, CourseName, Topic
+from mywebsite.models import StudentRegistration, FacultyRegistration, AboutUs, CollegeName, CourseName, Topic, \
+    Document, Video
 
 CHOICE = (
     ('male', 'male'),
     ('female', 'female'),
     ('other','other')
 )
-
+COPYRIGHT = (
+    ('yes','yes'),
+    ('no','no')
+)
 
 class StudentRegistrationForm(forms.Form):
 
@@ -185,3 +189,51 @@ class TopicForm(forms.Form):
                                  user_id=self.cleaned_data.get('user_id'))
         t.save()
         return t
+
+
+class DocumentForm(forms.Form):
+    document_name = forms.CharField(max_length=100,required=True)
+    topic_id =forms.CharField(max_length=1000,required=True, disabled=True)
+    copyright = forms.ChoiceField(COPYRIGHT,required=True)
+    document_file = forms.FileField(required=True)
+
+    def clean_document_file(self):
+        print("clean document_file: ", self.cleaned_data)
+        return self.cleaned_data.get('document_file')
+
+    def clean_documet_name(self):
+        print("documet_name: ", self.cleaned_data)
+        return self.cleaned_data.get('documet_name')
+
+
+    def save(self, kwargs=None):
+        d= Document.objects.create(document_name=self.cleaned_data.get('document_name'),
+                                   topic_id = self.cleaned_data.get('topic_id'),
+                                   copyright=self.cleaned_data.get('copyright'),
+                                   document_file=self.cleaned_data.get('document_file'))
+
+        d.save()
+        return d
+
+class VideoForm(forms.Form):
+    video_name = forms.CharField(max_length=100, required=True)
+    topic_id = forms.CharField(max_length=1000, required=True, disabled=True)
+    copyright = forms.ChoiceField(COPYRIGHT, required=True)
+    video_file = forms.FileField(required=True)
+
+    def clean_video_name(self):
+        print("clean video_name: ", self.cleaned_data)
+        return self.cleaned_data.get('video_name')
+
+    def clean_video_file(self):
+        print("clean video file: ", self.cleaned_data)
+        return self.cleaned_data.get('video_file')
+
+    def save(self, kwargs=None):
+        v = Video.objects.create(video_name=self.cleaned_data.get('video_name'),
+                                 topic_id=self.cleaned_data.get('topic_id'),
+                                 copyright=self.cleaned_data.get('copyright'),
+                                 video_file=self.cleaned_data.get('video_file'))
+
+        v.save()
+        return v

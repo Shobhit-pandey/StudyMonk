@@ -334,16 +334,8 @@ function cmnt(numcopy)
                     <h1>Description : {{ topic.description }}</h1>
 
 
-                    <form action="#" method="post" style="display: inline-block;">
-
-          <button type="submit" style="margin-right: 30px;">addDoc</button>
-
-      </form>
-                     <form action="#" method="post" style="display: inline-block;">
-
-          <button type="submit">addVideo</button>
-
-      </form>
+                    <a href="{% url 'mywebsite:add_doc' pk7=topic.id %}"  style="display: inline-block;">ADD DOC</a>
+                    <a href="{% url 'mywebsite:add_video' pk8=topic.id %}"  style="display: inline-block;">ADD VIDEO</a>
 
                 </div>
 

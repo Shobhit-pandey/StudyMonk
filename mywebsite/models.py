@@ -113,18 +113,18 @@ class Upload(models.Model):
 
 class Document(models.Model):
     document_name = models.CharField(max_length=100)
-    topic_id = models.ForeignKey(Topic)
+    topic_id = models.CharField(max_length=1000, editable=False, null=False)
     copyright = models.CharField(choices=COPYRIGHT,max_length=10)
-    document_file = models.FileField()
+    document_file = models.FileField(upload_to='documents')
 
     def __str__(self):
         return self.document_name
 
 class Video(models.Model):
     video_name = models.CharField(max_length=100)
-    topic_id = models.ForeignKey(Topic)
-    copyright = models.CharField(choices=COPYRIGHT,max_length=10)
-    video_file = models.FileField()
+    topic_id = models.CharField(max_length=1000, editable=False, null=False)
+    copyright = models.CharField(choices=COPYRIGHT, max_length=10)
+    video_file = models.FileField(upload_to='videos')
 
     def __str__(self):
         return self.video_name
@@ -177,6 +177,7 @@ class StudentComment(models.Model):
 
     def __str__(self):
         return self.content
+
 class FacultyComment(models.Model):
     content = models.CharField(max_length=10000)
     time_stamp = models.TimeField()

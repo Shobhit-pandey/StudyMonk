@@ -13,7 +13,7 @@ from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 
 from mywebsite.form import StudentRegistrationForm, FacultyRegistrationForm, StudentEditProfile, FacultyEditProfile, \
-    TopicForm
+    TopicForm, DocumentForm, VideoForm
 from mywebsite.models import StudentRegistration, FacultyRegistration, CollegeName, CourseName, AboutUs, CollegeCourses, \
     Topic, TopicThread
 from mywebsite.token import account_activation_token
@@ -247,7 +247,7 @@ def topic_upload(request):
             # u.save()
             # # form.save().user_id=request.user.id
             form.save()
-            return redirect('mywebsite:topic_upload')
+            return redirect('mywebsite:home')
     else:
         form = TopicForm(initial={'user_id':request.user.id})
 
@@ -258,4 +258,32 @@ def personal_upload(request,pk6):
     upload=pk6
     topic_name = Topic.objects.filter(user_id=upload)
     return render(request,'mywebsite/personal_upload.html',{'faculty':faculty,'topic_name':topic_name})
+
+
+def add_doc(request,pk7):
+    topic = get_object_or_404(Topic, pk=pk7)
+    form = DocumentForm(initial={'topic_id': pk7})
+    if request.method=='POST':
+        form = DocumentForm(request.POST,request.FILES,initial={'topic_id':pk7})
+        if form.is_valid():
+            form.save()
+            return redirect('mywebsite:home')
+    else:
+        form = DocumentForm(initial={'topic_id':pk7})
+
+    return render(request, 'mywebsite/add_doc.html',{'form':form,'topic':topic})
+
+
+def add_video(request,pk8):
+    topic = get_object_or_404(Topic,pk=pk8)
+    form = VideoForm(initial={'topic_id': pk8})
+    if request.method=='POST':
+        form = VideoForm(request.POST,request.FILES,initial={'topic_id':pk8})
+        if form.is_valid():
+            form.save()
+            return redirect('mywebsite:home')
+    else:
+        form = VideoForm(initial={'topic_id':pk8})
+
+    return render(request, 'mywebsite/add_video.html',{'form':form,'topic':topic})
 
