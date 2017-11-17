@@ -2,6 +2,8 @@
 from __future__ import unicode_literals
 
 import datetime
+import smtplib
+
 from django.contrib.auth import update_session_auth_hash, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm
@@ -184,6 +186,23 @@ def activate(request, uidb64, token):
         return redirect('mywebsite:home')
     else:
         return render(request, 'accounts/account_activation_invalid.html')
+
+email_address = 'studymonk.se@gmail.com'
+email_password = 'qwertyuiopzxcvbnm'
+
+
+def send_verification_mail(email, msg):
+    print("send verificaion mail")
+    try:
+        server = smtplib.SMTP('smtp.gmail.com', 587)
+        server.ehlo()
+        server.starttls()
+        server.login(email_address, email_password)
+        server.sendmail(email_address, email, msg)
+        server.close()
+        print('successfully sent the mail')
+    except:
+        print("failed to send mail")
 
 def college_detail(request,pk1):
     college = get_object_or_404(CollegeName,pk=pk1)
