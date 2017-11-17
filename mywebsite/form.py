@@ -22,12 +22,6 @@ class StudentRegistrationForm(forms.Form):
     gender = forms.ChoiceField(CHOICE,required=True)
     college_name = forms.ModelChoiceField(queryset=CollegeName.objects.all())
 
-    # def clean_password(self):
-    #     if User.objects.filter(password=self.cleaned_data.get('password', None)).size() < 8:
-    #         raise forms.ValidationError("password should be atleast 8 digit")
-    #
-    #     return self.cleaned_data.get('password')
-
     def clean_email(self):
         if User.objects.filter(email=self.cleaned_data.get('email', None)).count() > 0:
             raise forms.ValidationError("User with this email already exists")
@@ -71,13 +65,6 @@ class FacultyRegistrationForm(forms.Form):
     course_name = forms.ModelChoiceField(queryset=CourseName.objects.all())
     mentorship = forms.BooleanField(required=False)
     description = forms.CharField(max_length=1000, required=False)
-
-
-    def clean_password(self):
-        if User.objects.filter(password=self.cleaned_data.get('password', None)).__sizeof__() < 8:
-            raise forms.ValidationError("password should be atleast 8 digit")
-
-        return self.cleaned_data.get('password')
 
     def clean_email(self):
         if User.objects.filter(email=self.cleaned_data.get('email', None)).count() > 0:
