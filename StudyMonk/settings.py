@@ -25,7 +25,7 @@ SECRET_KEY = 'l1k+#1w$^%fx$!d^+u_q7h*p9_qd46aut&s!0wh=_h@(s385qo'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['studymonk.pythonanywhere.com','127.0.0.1:8000']
+ALLOWED_HOSTS = ['studymonk.pythonanywhere.com','127.0.0.1','localhost']
 
 
 # Application definition
