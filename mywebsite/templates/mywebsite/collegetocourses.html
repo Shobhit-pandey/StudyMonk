@@ -30,7 +30,7 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
 <div class="navbar-header">
-    <a class="navbar-brand" href="{% url 'mywebsite:home' %}" style="font-size: 3vw;padding-top: 25px ">Studymonk</a>
+    <a class="navbar-brand" href="{% url 'mywebsite:home' %}" style="font-size: 3vw;padding-top: 20px ">Studymonk</a>
         </div>
 
       </ul>
@@ -68,7 +68,7 @@
     </ul>
     </div>
 </nav>
-<div class="card" style="margin-top: 70px;width:80%;height: 100%;margin-left: 130px;background-color:white">
+<div class="card" style="margin-top: 60px;width:80%;height: auto;margin-left: 130px;background-color:white">
     <div class="container">
     {% for course in college_name %}
         {% if forloop.counter|divisibleby:"4" or forloop.counter == 1 %}
@@ -85,7 +85,7 @@
                         <a href = "{% url 'mywebsite:faculty_college' pk3=course.course_id_id %}">
                             {% for courses_name in course_name %}
                                 {% if courses_name.id == course.course_id_id  %}
-                                <h3> {{ courses_name.course_name }}</h3>
+                                    <h3 style="padding: 0.5em"> {{ courses_name.course_name }}</h3>
                                 {% endif %}
 
                                 {% endfor %}

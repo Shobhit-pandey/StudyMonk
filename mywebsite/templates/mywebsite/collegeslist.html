@@ -13,7 +13,6 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
 </head>
 <body style="background-color:#dfdfdf">
 <nav class="navbar navbar-inverse navbar-fixed-top" style="width: 100%">
@@ -29,7 +28,7 @@
     <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
             <div class="navbar-header">
-                <a class="navbar-brand" href="{% url 'mywebsite:home' %}" style="font-size: 3vw;padding-top: 25px ">Studymonk</a>
+                <a class="navbar-brand" href="{% url 'mywebsite:home' %}" style="font-size: 3vw;padding-top: 20px ">Studymonk</a>
                 {% if user.is_authenticated %}
                 {% endif %}
             </div>
@@ -81,14 +80,14 @@
     </div>
 
 </nav>
-<div class="card" style="margin-top: 65px;width:80%;height: 100%;margin-left: 130px;background-color:white">
+<div class="card" style="margin-top: 60px;width:80%;height: auto;margin-left: 130px;background-color:white">
 <div class="container">
 {% for colleges in college %}
     {% if forloop.counter|divisibleby:"4" or forloop.counter == 1 %}
             <div class="row" style="margin-top:20px;">
      {% endif %}
 
-<div class="col-sm-6 col-md-4 col-lg-3 col-mt-4" style="margin-top: 20px;margin-left: 40px;margin-bottom: 40px">
+<div class="col-sm-6 col-md-4 col-lg-3 col-mt-4" style="margin-top: 20px;margin-left: 40px;margin-bottom: 40px;">
     <a href="{% url 'mywebsite:college_detail' pk1=colleges.id %}">
         <div class="card" style="background-color: white">
                     <div class="hn" style="background-size: cover; background-position: center; height:50%;">

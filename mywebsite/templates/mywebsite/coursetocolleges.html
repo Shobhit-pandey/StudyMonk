@@ -31,7 +31,7 @@
     <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
             <div class="navbar-header">
-                <a class="navbar-brand" href="{% url 'mywebsite:home' %}" style="font-size: 3vw;padding-top: 25px ">Studymonk</a>
+                <a class="navbar-brand" href="{% url 'mywebsite:home' %}" style="font-size: 3vw;padding-top: 20px ">Studymonk</a>
                 {% if user.is_authenticated %}
                 {% endif %}
             </div>
@@ -83,7 +83,7 @@
     </div>
 
 </nav>
-<div class="card" style="margin-top: 70px;width:80%;height: 100%;margin-left: 130px;background-color:white">
+<div class="card" style="margin-top: 60px;width:80%;height: auto;margin-left: 130px;background-color:white">
 <div class="container">
 {% for college in course_name %}
     {% if forloop.counter|divisibleby:"4" or forloop.counter == 1 %}

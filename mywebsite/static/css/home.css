@@ -37,10 +37,10 @@
 
     .image {
         margin-bottom: 8px;
-        margin-top: 13px;
+        margin-top: 15px;
         margin-left: 10px;
-            width: 45px;
-            height: 45px;
+        width: 30px;
+        height: 30px;
             border-radius: 100%;
         }
 
@@ -53,8 +53,8 @@
 
     .image1 {
             margin-right: 10px;
-            width: 45px;
-            height: 45px;
+        width: 30px;
+        height: 30px;
             border-radius: 100%;
 
         }
