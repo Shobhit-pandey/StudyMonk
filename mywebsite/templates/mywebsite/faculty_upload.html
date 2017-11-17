@@ -346,6 +346,9 @@ function cmnt(numcopy)
                     <a href="{% url 'mywebsite:add_video' pk8=topics.id %}"  style="display: inline-block;">ADD VIDEO</a>
                 {% endif %}
                 {% endfor %}
+                {% if user.is_authenticated %}
+                    <a href="{% url 'mywebsite:add_comment' pk9=topics.id %}"  style="display: inline-block;">ADD Comment</a>
+                    {% endif %}
                 </div>
 
 

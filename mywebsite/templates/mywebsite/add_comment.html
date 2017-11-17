@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Comment</title>
+</head>
+<body>
+<form action="{% url 'mywebsite:add_comment' pk9=topic.id %}" method="post" style=" margin-top: 150px">
+    {% csrf_token %}
+    <h1>Hello {{ user.first_name }}</h1>
+    <h1>Add Commment </h1>
+    {{ form.as_p }}
+    <div class="row" style="padding-top: 30px">
+
+        <button type="submit">Add Comment</button>
+    </div>
+
+</form>
+</body>
+</html>

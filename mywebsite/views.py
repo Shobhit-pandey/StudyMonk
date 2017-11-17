@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+import datetime
 from django.contrib.auth import update_session_auth_hash, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm
@@ -13,7 +14,7 @@ from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 
 from mywebsite.form import StudentRegistrationForm, FacultyRegistrationForm, StudentEditProfile, FacultyEditProfile, \
-    TopicForm, DocumentForm, VideoForm
+    TopicForm, DocumentForm, VideoForm, CommentForm
 from mywebsite.models import StudentRegistration, FacultyRegistration, CollegeName, CourseName, AboutUs, CollegeCourses, \
     Topic, TopicThread
 from mywebsite.token import account_activation_token
@@ -25,6 +26,7 @@ def user_login(request):
 def home(request):
     return render(request,'mywebsite/home.html')
 
+@login_required()
 def profile(request):
     user_id = request.user.id
     try :
@@ -225,7 +227,7 @@ def faculty_course(request,pk4):
     return render(request, 'mywebsite/facultyfromcourses.html', {'faculty':faculty,'faculty_name':faculty_name,
                                                                  'faculty_course_name':faculty_course_name
                                                                })
-
+@login_required()
 def faculty_upload(request,pk5):
     faculty = get_object_or_404(FacultyRegistration,pk=pk5)
     upload = pk5
@@ -237,7 +239,7 @@ def faculty_upload(request,pk5):
     return render(request, 'mywebsite/faculty_upload.html', {'faculty':faculty,'faculty_name':faculty_name,
                                                                  'topic':topic,'topic_thread':topic_thread
                                                                })
-
+@login_required()
 def topic_upload(request):
     if request.method=='POST':
         form = TopicForm(request.POST,initial={'user_id':request.user.id})
@@ -253,13 +255,14 @@ def topic_upload(request):
 
     return render(request, 'mywebsite/topic_create.html',{'form':form})
 
+@login_required()
 def personal_upload(request,pk6):
     faculty = get_object_or_404(User,pk=pk6)
     upload=pk6
     topic_name = Topic.objects.filter(user_id=upload)
     return render(request,'mywebsite/personal_upload.html',{'faculty':faculty,'topic_name':topic_name})
 
-
+@login_required()
 def add_doc(request,pk7):
     topic = get_object_or_404(Topic, pk=pk7)
     form = DocumentForm(initial={'topic_id': pk7})
@@ -273,7 +276,7 @@ def add_doc(request,pk7):
 
     return render(request, 'mywebsite/add_doc.html',{'form':form,'topic':topic})
 
-
+@login_required()
 def add_video(request,pk8):
     topic = get_object_or_404(Topic,pk=pk8)
     form = VideoForm(initial={'topic_id': pk8})
@@ -286,4 +289,31 @@ def add_video(request,pk8):
         form = VideoForm(initial={'topic_id':pk8})
 
     return render(request, 'mywebsite/add_video.html',{'form':form,'topic':topic})
+
+@login_required()
+def add_comment(request,pk9):
+    topic = get_object_or_404(Topic,pk=pk9)
+    if request.method == 'POST':
+        form =CommentForm(request.POST,initial={'topic_id':pk9,'user_id':request.user.id,'time_stamp':datetime.datetime.now()})
+        if form.is_valid():
+            form.save()
+            return redirect('mywebsite:home')
+    else:
+        form = CommentForm(initial={'topic_id': pk9, 'user_id': request.user.id,
+                                                  'time_stamp': datetime.datetime.now()})
+    return render(request, 'mywebsite/add_comment.html', {'form': form, 'topic': topic})
+
+@login_required()
+def faculty_comments(request,pk10):
+    topic = get_object_or_404(Topic,pk=pk10)
+    if request.method == 'POST':
+        form =CommentForm(request.POST,initial={'topic_id':pk10,'user_id':request.user.id,'time_stamp':datetime.datetime.now()})
+        if form.is_valid():
+            form.save()
+            return redirect('mywebsite:home')
+        else:
+            form = CommentForm(initial={'topic_id': pk10, 'user_id': request.user.id,
+                                                      'time_stamp': datetime.datetime.now()})
+        return render(request, 'mywebsite/personal_upload.html', {'form': form, 'topic': topic})
+
 

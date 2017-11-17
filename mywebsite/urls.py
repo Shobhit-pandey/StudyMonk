@@ -30,6 +30,7 @@ urlpatterns = [
     url(r'^courses/college/faculty-list/(?P<pk4>[\w\-]+)/$', views.faculty_course, name='faculty_course'),
     url(r'^course-list/(?P<pk2>[\w\-]+)/$', views.course_detail, name='course_detail'),
     url(r'^doc/add/(?P<pk7>[\w\-]+)/$', views.add_doc, name='add_doc'),
+    url(r'^comment/add/(?P<pk9>[\w\-]+)/$', views.add_comment, name='add_comment'),
     url(r'^video/add/(?P<pk8>[\w\-]+)/$', views.add_video, name='add_video'),
     url(r'^account/activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
         views.activate, name='activate'),

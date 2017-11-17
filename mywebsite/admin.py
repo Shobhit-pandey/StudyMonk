@@ -3,9 +3,9 @@ from __future__ import unicode_literals
 
 from django.contrib import admin
 
-from mywebsite.models import FacultyComment, StudentComment, Thread, Subject, FacultyTopicComment, StudentTopicComment, \
+from mywebsite.models import Thread, Subject, FacultyTopicComment, StudentTopicComment, \
     TopicThread, Video, Document, Upload, Topic, CollegeCourses, Teaches, CourseName, CollegeName, AboutUs, Profile, \
-    FacultyRegistration, StudentRegistration
+    FacultyRegistration, StudentRegistration, Comment
 
 admin.site.site_header = "Study Monk"
 
@@ -26,6 +26,5 @@ admin.site.register(StudentTopicComment)
 admin.site.register(FacultyTopicComment)
 admin.site.register(Subject)
 admin.site.register(Thread)
-admin.site.register(StudentComment)
-admin.site.register(FacultyComment)
+admin.site.register(Comment)
 

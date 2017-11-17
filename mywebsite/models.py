@@ -169,20 +169,11 @@ class Thread(models.Model):
     def __str__(self):
         return self.question
 
-class StudentComment(models.Model):
-    content = models.CharField(max_length=10000)
-    time_stamp = models.TimeField()
-    thread_id = models.ForeignKey(TopicThread)
-    student_id = models.ForeignKey(StudentRegistration)
-
-    def __str__(self):
-        return self.content
-
-class FacultyComment(models.Model):
-    content = models.CharField(max_length=10000)
-    time_stamp = models.TimeField()
-    thread_id = models.ForeignKey(TopicThread)
-    faculty_id = models.ForeignKey(FacultyRegistration)
+class Comment(models.Model):
+    content = models.CharField(max_length=10000,null=False,blank=False)
+    time_stamp = models.DateTimeField(editable=False,null=False,blank=False)
+    topic_id = models.CharField(max_length=100,null=False,editable=False,blank=False)
+    user_id = models.CharField(max_length=100,null=False,editable=False,blank=False)
 
     def __str__(self):
         return self.content

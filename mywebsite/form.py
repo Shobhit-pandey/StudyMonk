@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.models import User
 
 from mywebsite.models import StudentRegistration, FacultyRegistration, AboutUs, CollegeName, CourseName, Topic, \
-    Document, Video
+    Document, Video, Comment
 
 CHOICE = (
     ('male', 'male'),
@@ -237,3 +237,22 @@ class VideoForm(forms.Form):
 
         v.save()
         return v
+
+
+class CommentForm(forms.Form):
+    content = forms.CharField(max_length=10000,required=True)
+    time_stamp = forms.DateTimeField(required=True,disabled=True)
+    topic_id = forms.CharField(max_length=1000,required=True,disabled=True)
+    user_id = forms.CharField(max_length=1000,required=True,disabled=True)
+
+    def clean_content(self):
+        print("clean content: ", self.cleaned_data)
+        return self.cleaned_data.get('content')
+
+    def save(self,kwargs=None):
+        c=Comment.objects.create(content=self.cleaned_data.get('content'),
+                                 time_stamp=self.cleaned_data.get('time_stamp'),
+                                 topic_id=self.cleaned_data.get('topic_id'),
+                                 user_id=self.cleaned_data.get('user_id'))
+        c.save()
+        return c
