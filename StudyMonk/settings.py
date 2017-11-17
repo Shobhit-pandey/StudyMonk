@@ -124,9 +124,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# TIME_ZONE = 'Asia/kolkata'
+TIME_ZONE = 'Asia/Calcutta'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 EMAIL_HOST = 'localhost'
 EMAIL_PORT=1025
