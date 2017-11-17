@@ -128,6 +128,11 @@ def change_password(request):
 
 @login_required()
 def student_edit(request):
+    user_id = request.user.id
+    try:
+        person = StudentRegistration.objects.filter(user_id=user_id).get()
+    except:
+        person = FacultyRegistration.objects.filter(user_id=user_id).get()
     if request.method=='POST':
         form=StudentEditProfile(request.POST,instance=request.user)
 
@@ -136,12 +141,16 @@ def student_edit(request):
         return redirect(reverse('mywebsite:home'))
     else:
         form=StudentEditProfile(instance=request.user)
-        args={'form':form}
-        return render(request,'student/edit_student.html',args)
+    return render(request, 'student/edit_student.html', {'form': form, 'person': person})
 
 
 @login_required()
 def faculty_edit(request):
+    user_id = request.user.id
+    try:
+        person = StudentRegistration.objects.filter(user_id=user_id).get()
+    except:
+        person = FacultyRegistration.objects.filter(user_id=user_id).get()
     if request.method=='POST':
         form=FacultyEditProfile(request.POST,instance=request.user)
 
@@ -150,8 +159,7 @@ def faculty_edit(request):
         return redirect(reverse('mywebsite:home'))
     else:
         form=FacultyEditProfile(instance=request.user)
-        args={'form':form}
-        return render(request,'faculty/edit_teacher.html',args)
+    return render(request, 'faculty/edit_teacher.html', {'form': form, 'person': person})
 
 
 def account_activation_sent(request):
