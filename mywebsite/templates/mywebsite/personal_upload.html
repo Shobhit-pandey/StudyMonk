@@ -180,20 +180,20 @@ function cmnt(numcopy)
     var topicid=numcopy.slice(1);
     console.log(topicid);
 
-
-
-
-
-
-
+    {% for topic in topic_name%}
+        var j = {{topic.id}}
     // comment box ...change submit button id  = "ct" + topic id
+        if (j==topicid)
+        {
 
-     data = data + "hello in id:"+ topicid+ "<form action='{% url 'mywebsite:home' %}'method ='post'><div class='form-group'><input type ='text' maxlength='2000' class='form-control' name='comment' placeholder='comment'></div><div class='form-group'><button type='submit' class='btn btn-default' id='ct1' type='submit'>Comment</button> </div></form></div>"
-     console.log(data);
+     data = data + "hello in id:"+ {{ topic.id }}+ "<form action='{% url 'mywebsite:add_comment' pk9=topic.id %}'method ='post'>{% csrf_token %}<div class='form-group'><button type='submit' class='btn btn-default' id='ct1' type='submit'>Comment</button> </div></form></div>"
+    console.log(data);
 
     //append actual data in
     var e = "#s"+topicid;
     $(e).append(data);
+        }
+    {% endfor %}
 
 }
 
@@ -329,8 +329,7 @@ function cmnt(numcopy)
 
                     <a href="{% url 'mywebsite:add_doc' pk7=topic.id %}"  style="display: inline-block;">ADD DOC</a>
                     <a href="{% url 'mywebsite:add_video' pk8=topic.id %}"  style="display: inline-block;">ADD VIDEO</a>
-                    <a href="{% url 'mywebsite:add_comment' pk9=topic.id %}"  style="display: inline-block;">ADD Comment</a>
-
+{#                    <a href="{% url 'mywebsite:add_comment' pk9=topic.id %}"  style="display: inline-block;">ADD Comment</a>#}
                 </div>
 
 

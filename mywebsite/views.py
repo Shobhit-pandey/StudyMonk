@@ -234,8 +234,6 @@ def faculty_upload(request,pk5):
     faculty_name = FacultyRegistration.objects.filter(id=upload)
     topic = Topic.objects.all()
     topic_thread = TopicThread.objects.all();
-
-
     return render(request, 'mywebsite/faculty_upload.html', {'faculty':faculty,'faculty_name':faculty_name,
                                                                  'topic':topic,'topic_thread':topic_thread
                                                                })
