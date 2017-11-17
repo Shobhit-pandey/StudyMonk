@@ -37,7 +37,7 @@ class StudentRegistrationForm(forms.Form):
         if User.objects.filter(email=self.cleaned_data.get('email', None)).count() > 0:
             raise forms.ValidationError("User with this email already exists")
 
-        req = "@ac.in"
+        req = ".ac.in"
         if req not in self.cleaned_data.get('email'):
             raise forms.ValidationError("sign up with your college account")
 
@@ -92,7 +92,7 @@ class FacultyRegistrationForm(forms.Form):
         if User.objects.filter(email=self.cleaned_data.get('email', None)).count() > 0:
             raise forms.ValidationError("User with this email already exists")
 
-        req = "@ac.in"
+        req = ".ac.in"
         if req not in self.cleaned_data.get('email'):
             raise forms.ValidationError("sign up with your college account")
 
