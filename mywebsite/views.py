@@ -10,8 +10,10 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 # Create your views here.
 from django.template.loader import render_to_string
+from django.utils import timezone
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from tzlocal import get_localzone
 
 from mywebsite.form import StudentRegistrationForm, FacultyRegistrationForm, StudentEditProfile, FacultyEditProfile, \
     TopicForm, DocumentForm, VideoForm, CommentForm
@@ -292,6 +294,8 @@ def add_video(request,pk8):
 def add_comment(request,pk9):
     topic = get_object_or_404(Topic,pk=pk9)
     if request.method == 'POST':
+        local_tz = get_localzone()
+        timezone.activate(local_tz)
         form =CommentForm(request.POST,initial={'topic_id':pk9,'user_id':request.user.id,'time_stamp':datetime.datetime.now()})
         if form.is_valid():
             form.save()

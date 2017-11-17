@@ -26,9 +26,20 @@ class StudentRegistrationForm(forms.Form):
     gender = forms.ChoiceField(CHOICE,required=True)
     college_name = forms.ModelChoiceField(queryset=CollegeName.objects.all())
 
+    def clean_password(self):
+        MIN_LENGTH = 8
+        password = self.cleaned_data.get('password')
+        if len(password) < 8:
+            raise forms.ValidationError("The new password must be at least 8 characters long.")
+        return self.cleaned_data.get('password')
+
     def clean_email(self):
         if User.objects.filter(email=self.cleaned_data.get('email', None)).count() > 0:
             raise forms.ValidationError("User with this email already exists")
+
+        req = "@ac.in"
+        if req not in self.cleaned_data.get('email'):
+            raise forms.ValidationError("sign up with your college account")
 
         return self.cleaned_data.get('email')
 
@@ -70,9 +81,20 @@ class FacultyRegistrationForm(forms.Form):
     mentorship = forms.BooleanField(required=False)
     description = forms.CharField(max_length=1000, required=False)
 
+    def clean_password(self):
+        MIN_LENGTH = 8
+        password = self.cleaned_data.get('password')
+        if len(password) < 8:
+            raise forms.ValidationError("The new password must be at least 8 characters long.")
+        return self.cleaned_data.get('password')
+
     def clean_email(self):
         if User.objects.filter(email=self.cleaned_data.get('email', None)).count() > 0:
             raise forms.ValidationError("User with this email already exists")
+
+        req = "@ac.in"
+        if req not in self.cleaned_data.get('email'):
+            raise forms.ValidationError("sign up with your college account")
 
         return self.cleaned_data.get('email')
 
