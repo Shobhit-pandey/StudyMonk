@@ -297,13 +297,6 @@ function cmnt(numcopy)
                 </a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="{% url 'mywebsite:change_password' %}"> Change Password</a></li>
-                        {% if user.is_staff %}
-                            <li><a href="{% url 'mywebsite:faculty_edit' %}">Edit Faculty
-                                Profile</a></li>
-                        {% else %}
-                            <li><a href="{% url 'mywebsite:student_edit' %}">Edit
-                                Student Profile</a></li>
-                        {% endif %}
                         <li><a href="{% url 'mywebsite:logout' %}"> Logout</a></li>
                     </ul>
                 </li>

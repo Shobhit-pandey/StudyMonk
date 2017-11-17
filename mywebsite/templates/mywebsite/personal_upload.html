@@ -282,13 +282,6 @@ function cmnt(numcopy)
                             <p>{{ user.username }}</p></a><hr></li>
 
                         <li><a href="{% url 'mywebsite:profile' %}">Profile</a></li>
-                        {% if user.is_staff %}
-                            <li><a href="{% url 'mywebsite:faculty_edit' %}">Edit Faculty
-                                Profile</a></li>
-                        {% else %}
-                            <li><a href="{% url 'mywebsite:student_edit' %}">Edit
-                                Student Profile</a></li>
-                        {% endif %}
                         <li><a href="{% url 'mywebsite:logout' %}"> Logout</a></li>
                     </ul>
                 </li>
