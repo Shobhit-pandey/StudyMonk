@@ -32,6 +32,17 @@ urlpatterns = [
     url(r'^courses/college/faculty-list/(?P<pk4>[\w\-]+)/$', views.faculty_course, name='faculty_course'),
     url(r'^course-list/(?P<pk2>[\w\-]+)/$', views.course_detail, name='course_detail'),
     url(r'^doc/add/(?P<pk7>[\w\-]+)/$', views.add_doc, name='add_doc'),
+    url(r'^account/activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+        views.activate, name='activate'),
+    url(r'^accounts/reset-password/$',password_reset,{'template_name':'accounts/reset_password.html',
+                                             'post_reset_redirect':'mywebsite:password_reset_done',
+                                             'email_template_name':'accounts/reset_password_email.html'},name='reset_password'),
+
+    url(r'^accounts/reset-password/done/$',password_reset_done,{'template_name':'accounts/reset_password_done.html'},name='password_reset_done'),
+
+
+    url(r'^accounts/reset-password/confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$',password_reset_confirm,name='password_reset_confirm'),
+    url(r'^accounts/reset-password/complete/$',password_reset_complete,name='password_reset_complete'),
     url(r'^QuestionList/$', views.SubjectList.as_view(), name='question-list'),
     url(r'^questions/(?P<pk>\d+)/$',views.questions, name='questions'),
     url(r'^comments/(?P<pk>\d+)/$',views.discussioncomments, name='comments'),
@@ -40,15 +51,4 @@ urlpatterns = [
     url(r'^add_q/(?P<pk>\d+)/$',views.fill_question, name='add-q' ),
     url(r'^comment/add/(?P<pk9>[\w\-]+)/$', views.add_comment, name='add_comment'),
     url(r'^video/add/(?P<pk8>[\w\-]+)/$', views.add_video, name='add_video'),
-    url(r'^account/activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
-        views.activate, name='activate'),
-    url(r'^accounts/reset-password/$',password_reset,{'template_name':'accounts/reset_password.html',
-                                             'post_reset_redirect':'password_reset_done',
-                                             'email_template_name':'accounts/reset_password_email.html'},name='reset_password'),
-
-    url(r'^accounts/reset-password/done/$',password_reset_done,{'template_name':'accounts/reset_password_done.html'},name='password_reset_done'),
-
-
-    url(r'^accounts/reset-password/confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$',password_reset_confirm,name='password_reset_confirm'),
-    url(r'^accounts/reset-password/complete/$',password_reset_complete,name='password_reset_complete'),
     ]

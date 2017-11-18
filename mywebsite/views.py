@@ -253,7 +253,6 @@ def faculty_course(request,pk4):
     return render(request, 'mywebsite/facultyfromcourses.html', {'faculty':faculty,'faculty_name':faculty_name,
                                                                  'faculty_course_name':faculty_course_name
                                                                })
-@login_required()
 def faculty_upload(request,pk5):
     faculty = get_object_or_404(FacultyRegistration,pk=pk5)
     upload = pk5
@@ -263,7 +262,6 @@ def faculty_upload(request,pk5):
     return render(request, 'mywebsite/faculty_upload.html', {'faculty':faculty,'faculty_name':faculty_name,
                                                                  'topic':topic,'topic_thread':topic_thread
                                                                })
-@login_required()
 def topic_upload(request):
     if request.method=='POST':
         form = TopicForm(request.POST,initial={'user_id':request.user.id})
@@ -279,14 +277,13 @@ def topic_upload(request):
 
     return render(request, 'mywebsite/topic_create.html',{'form':form})
 
-@login_required()
+
 def personal_upload(request,pk6):
     faculty = get_object_or_404(User,pk=pk6)
     upload=pk6
     topic_name = Topic.objects.filter(user_id=upload)
     return render(request,'mywebsite/personal_upload.html',{'faculty':faculty,'topic_name':topic_name})
 
-@login_required()
 def add_doc(request,pk7):
     topic = get_object_or_404(Topic, pk=pk7)
     form = DocumentForm(initial={'topic_id': pk7})
@@ -300,7 +297,6 @@ def add_doc(request,pk7):
 
     return render(request, 'mywebsite/add_doc.html',{'form':form,'topic':topic})
 
-@login_required()
 def add_video(request,pk8):
     topic = get_object_or_404(Topic,pk=pk8)
     form = VideoForm(initial={'topic_id': pk8})
@@ -314,7 +310,6 @@ def add_video(request,pk8):
 
     return render(request, 'mywebsite/add_video.html',{'form':form,'topic':topic})
 
-@login_required()
 def add_comment(request,pk9):
     topic = get_object_or_404(Topic,pk=pk9)
     if request.method == 'POST':
@@ -329,7 +324,6 @@ def add_comment(request,pk9):
                                                   'time_stamp': datetime.datetime.now()})
     return render(request, 'mywebsite/add_comment.html', {'form': form, 'topic': topic})
 
-@login_required()
 def faculty_comments(request,pk10):
     topic = get_object_or_404(Topic,pk=pk10)
     if request.method == 'POST':
@@ -344,7 +338,7 @@ def faculty_comments(request,pk10):
 
 
 # Create your views here.
-
+@login_required()
 def discussioncomment(request):
     if request.method == 'POST':
         comment_form = DiscussionCommentForm(request.POST)
@@ -386,16 +380,12 @@ def questions(request, pk):
     return render(request, 'mywebsite/ques.html', {'ques': ques, 'var': var, 'pk': pk})
 
 
-class DiscussionCommentComment(object):
-    pass
-
-
 def discussioncomments(request, pk):
     lists = DiscussionComment.objects.filter(thread=pk)
     args = {'lists': lists}
     return render(request, 'mywebsite/ans.html', args)
 
-
+@login_required()
 def fill_question(request, pk):
     if request.method == 'POST':
 
