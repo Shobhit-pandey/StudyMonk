@@ -22,15 +22,8 @@
 
 </head>
 <body>
-
-<div class="fullscreen-bg">
-    <video loop muted autoplay poster="img/videoframe.jpg" class="fullscreen-bg__video">
-        <source src="{% static 'videos/home_video.mp4' %}" type="video/mp4">
-    </video>
-</div>
-
-
-<nav class="navbar navbar-inverse navbar-fixed-top"style="width: 100%">
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
             <span class="icon-bar"></span>
@@ -49,7 +42,8 @@
             </div>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="{% url 'mywebsite:about_us' %}" style="padding-top: 25px"><span class="glyphicon glyphicon-user"></span>
+            <li><a href="{% url 'mywebsite:about_us' %}" style="padding-top: 25px"><span
+                    class="glyphicon glyphicon-user"></span>
                 Aboutus</a></li>
             <li><a href="{% url 'mywebsite:question-list' %}" style="padding-top: 25px;"><span
                     class="glyphicon glyphicons-user-vr-add"></span>Discussion Forum</a></li>
@@ -62,7 +56,7 @@
                                                                                                      src="{% static 'images/Study.png' %}">
                 </a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="#" ><p>Signed in as</p>
+                        <li><a href="#"><p>Signed in as</p>
                             <p>{{ user.username }}</p></a></li>
                         <li><a href="{% url 'mywebsite:profile' %}">Profile</a></li>
                         <li><a href="{% url 'mywebsite:logout' %}"> Logout</a></li>
@@ -88,10 +82,17 @@
             {% endif %}
         </ul>
     </div>
-
+    </div>
 </nav>
 
-<div class="container">
+<div class="container-fluid">
+
+    <div class="fullscreen-bg">
+        <video loop muted autoplay poster="img/videoframe.jpg" class="fullscreen-bg__video">
+            <source src="{% static 'videos/home_video.mp4' %}" type="video/mp4">
+        </video>
+    </div>
+
     <div class="row">
         <div class="col-md-12 col-sm-12">
             <h1 class="todo1">
@@ -100,19 +101,19 @@
 
         </div>
     </div>
-</div>
-<div class="row" style="margin-top: 50px">
-    <div class="col-sm-6 col-md-6 col-xs-6" style="text-align: center">
-        <a href="{% url 'mywebsite:college' %}">
-            <button type="button" class="btn btn-danger" style="width: 200px;height: 60px">
-                <span style="font-size: 30px;text-align: center">College</span></button>
-        </a>
-    </div>
-    <div class="col-sm-6 col-md-6 col-xs-6" style="text-align: center">
-        <a href="{% url 'mywebsite:course' %}">
-            <button type="button" class="btn btn-danger" style="width: 200px;height: 60px">
-                <span style="font-size: 30px;text-align: center">Course</span></button>
-        </a>
+    <div class="row" style="margin-top: 50px;">
+        <div class="col-sm-6 col-md-6 col-xs-6" style="text-align: center;">
+            <a href="{% url 'mywebsite:college' %}">
+                <button type="button" class="btn btn-danger" style="width: 200px;height: 60px">
+                    <span style="font-size: 30px;text-align: center">College</span></button>
+            </a>
+        </div>
+        <div class="col-sm-6 col-md-6 col-xs-6" style="text-align: center;">
+            <a href="{% url 'mywebsite:course' %}">
+                <button type="button" class="btn btn-danger" style="width: 200px;height: 60px">
+                    <span style="font-size: 30px;text-align: center">Course</span></button>
+            </a>
+        </div>
     </div>
 </div>
 

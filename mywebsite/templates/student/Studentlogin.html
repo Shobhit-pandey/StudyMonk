@@ -41,14 +41,15 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
 <div class="navbar-header">
-            <a class="navbar-brand" href="{% url 'mywebsite:home' %}" style="font-size: 3vw;padding-top: 25px">Studymonk</a>
+    <a class="navbar-brand" href="{% url 'mywebsite:home' %}" style="font-size: 3vw;padding-top: 20px">Studymonk</a>
         </div>
 
       </ul>
          <ul class="nav navbar-nav navbar-right">
              <li><a href="{% url 'mywebsite:home' %}"style="padding-top: 25px"><span class="glyphicon glyphicon-home"></span>Home</a></li>
             <li><a href="{% url 'mywebsite:about_us' %}" style="padding-top: 25px"><span class="glyphicon glyphicon-user"></span> Aboutus</a></li>
-             <li><a href="{% url 'mywebsite:discussion_forum' %}"style="padding-top: 25px"><span class="glyphicon glyphicons-user-vr-add"></span>Discussion Forum</a></li>
+             <li><a href="{% url 'mywebsite:question-list' %}" style="padding-top: 25px"><span
+                     class="glyphicon glyphicons-user-vr-add"></span>Discussion Forum</a></li>
       {% if user.is_authenticated %}
           {% if user.is_staff %}
               <li><a href="{% url 'mywebsite:personal_upload' pk6=user.id %} " style="padding-top: 25px;"><span
