@@ -254,7 +254,7 @@ function cmnt(numcopy)
     </style>
 </head>
 <body>
-<nav class="navbar navbar-inverse navbar-fixed-top"style="width: 100%">
+<nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
             <span class="icon-bar"></span>
@@ -275,7 +275,7 @@ function cmnt(numcopy)
         <ul class="nav navbar-nav navbar-right">
             <li><a href="{% url 'mywebsite:about_us' %}" style="padding-top: 25px"><span class="glyphicon glyphicon-user"></span>
                 Aboutus</a></li>
-            <li><a href="{% url 'mywebsite:discussion_forum' %}" style="padding-top: 25px;"><span
+            <li><a href="{% url 'mywebsite:question-list' %}" style="padding-top: 25px;"><span
                     class="glyphicon glyphicons-user-vr-add"></span>Discussion Forum</a></li>
             {% if user.is_authenticated %}
                 {% if user.is_staff %}

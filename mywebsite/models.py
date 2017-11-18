@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from django.urls import reverse
+# from django.urls import reverse
 from django.utils import timezone
 
 CHOICE = (
@@ -99,7 +99,7 @@ class CollegeCourses(models.Model):
 class Topic(models.Model):
     title = models.CharField(max_length=100)
     description = models.CharField(max_length=1000)
-    user_id = models.IntegerField(max_length=11,editable=False)
+    user_id = models.CharField(max_length=1000, editable=False, null=False)
 
     def __str__(self):
         return self.title
@@ -115,7 +115,7 @@ class Upload(models.Model):
 
 class Document(models.Model):
     document_name = models.CharField(max_length=100)
-    topic_id = models.IntegerField(max_length=11,editable=False)
+    topic_id = models.CharField(max_length=1000, editable=False, null=False)
     copyright = models.CharField(choices=COPYRIGHT,max_length=10)
     document_file = models.FileField(upload_to='documents')
 
@@ -124,7 +124,7 @@ class Document(models.Model):
 
 class Video(models.Model):
     video_name = models.CharField(max_length=100)
-    topic_id = models.IntegerField(max_length=11,editable=False)
+    topic_id = models.CharField(max_length=1000, editable=False, null=False)
     copyright = models.CharField(choices=COPYRIGHT, max_length=10)
     video_file = models.FileField(upload_to='videos')
 
@@ -165,7 +165,6 @@ class Subject(models.Model):
 
     def get_absolute_url(self):
         return reverse('mywebsite:student_login')
-
 class Thread(models.Model):
     question = models.CharField(max_length=500)
     timestamp = models.DateTimeField(default=timezone.now())
@@ -181,8 +180,8 @@ class Thread(models.Model):
 class Comment(models.Model):
     content = models.CharField(max_length=10000,null=False,blank=False)
     time_stamp = models.DateTimeField(editable=False,null=False,blank=False)
-    topic_id = models.IntegerField(max_length=11,editable=False)
-    user_id = models.IntegerField(max_length=11,editable=False)
+    topic_id = models.CharField(max_length=100, null=False, editable=False, blank=False)
+    user_id = models.CharField(max_length=100, null=False, editable=False, blank=False)
 
     def __str__(self):
         return self.content
