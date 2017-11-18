@@ -267,6 +267,7 @@ def faculty_upload(request,pk5):
                                                              'topic':topic,'topic_videos':video,'topic_docs':document,
                                                              'topic_comment':comment
                                                                })
+@login_required()
 def topic_upload(request):
     if request.method=='POST':
         form = TopicForm(request.POST,initial={'user_id':request.user.id})

@@ -130,7 +130,7 @@ STATIC_URL = '/static/'
 TIME_ZONE = 'Asia/Calcutta'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
+LOGIN_URL = '/login/'
 EMAIL_HOST = 'localhost'
 EMAIL_PORT=1025
 
