@@ -1,11 +1,13 @@
 from django.conf.urls import url
 from django.contrib.auth.views import login, logout, password_reset, password_reset_done, password_reset_confirm, \
     password_reset_complete
+from django.views.generic import TemplateView
 
 from mywebsite import views
 
 urlpatterns = [
     url(r'^$',views.home,name='home'),
+    url(r'^login/$',login,{'template_name':'student/Studentlogin.html'}, name='login' ),
     url(r'^discussion-forum/$',views.discussion_forum,name='discussion_forum'),
     url(r'^about-us/$',views.about_us,name='about_us'),
     url(r'^actual/$',views.actual,name='actual'),
@@ -30,6 +32,12 @@ urlpatterns = [
     url(r'^courses/college/faculty-list/(?P<pk4>[\w\-]+)/$', views.faculty_course, name='faculty_course'),
     url(r'^course-list/(?P<pk2>[\w\-]+)/$', views.course_detail, name='course_detail'),
     url(r'^doc/add/(?P<pk7>[\w\-]+)/$', views.add_doc, name='add_doc'),
+    url(r'^QuestionList/$', views.SubjectList.as_view(), name='question-list'),
+    url(r'^questions/(?P<pk>\d+)/$',views.questions, name='questions'),
+    url(r'^comments/(?P<pk>\d+)/$',views.discussioncomments, name='comments'),
+    url(r'^comment/$',views.discussioncomment, name='comment'),
+    url(r'^answers/$',TemplateView.as_view(template_name='ans.html'), name='answers' ),
+    url(r'^add_q/(?P<pk>\d+)/$',views.fill_question, name='add-q' ),
     url(r'^comment/add/(?P<pk9>[\w\-]+)/$', views.add_comment, name='add_comment'),
     url(r'^video/add/(?P<pk8>[\w\-]+)/$', views.add_video, name='add_video'),
     url(r'^account/activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',

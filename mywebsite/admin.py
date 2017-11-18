@@ -5,7 +5,7 @@ from django.contrib import admin
 
 from mywebsite.models import Thread, Subject, FacultyTopicComment, StudentTopicComment, \
     TopicThread, Video, Document, Upload, Topic, CollegeCourses, Teaches, CourseName, CollegeName, AboutUs, Profile, \
-    FacultyRegistration, StudentRegistration, Comment
+    FacultyRegistration, StudentRegistration, Comment, DiscussionComment
 
 admin.site.site_header = "Study Monk"
 
@@ -27,4 +27,5 @@ admin.site.register(FacultyTopicComment)
 admin.site.register(Subject)
 admin.site.register(Thread)
 admin.site.register(Comment)
+admin.site.register(DiscussionComment)
 

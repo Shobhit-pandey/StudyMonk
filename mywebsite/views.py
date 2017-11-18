@@ -10,18 +10,20 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.models import User
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMessage, send_mail
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 # Create your views here.
 from django.template.loader import render_to_string
 from django.utils import timezone
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.views import generic
 from tzlocal import get_localzone
 
 from mywebsite.form import StudentRegistrationForm, FacultyRegistrationForm, StudentEditProfile, FacultyEditProfile, \
-    TopicForm, DocumentForm, VideoForm, CommentForm
+    TopicForm, DocumentForm, VideoForm, CommentForm, DiscussionCommentForm, QForm, QuestionForm
 from mywebsite.models import StudentRegistration, FacultyRegistration, CollegeName, CourseName, AboutUs, CollegeCourses, \
-    Topic, TopicThread
+    Topic, TopicThread, DiscussionComment, Subject, Thread
 from mywebsite.token import account_activation_token
 
 
@@ -339,5 +341,85 @@ def faculty_comments(request,pk10):
             form = CommentForm(initial={'topic_id': pk10, 'user_id': request.user.id,
                                                       'time_stamp': datetime.datetime.now()})
         return render(request, 'mywebsite/personal_upload.html', {'form': form, 'topic': topic})
+
+
+# Create your views here.
+
+def discussioncomment(request):
+    if request.method == 'POST':
+        comment_form = DiscussionCommentForm(request.POST)
+        pk1 = request.POST['pk']
+        if comment_form.is_valid():
+
+            # pk1 = Thread.pk
+            com = comment_form.save()
+            com.save()
+            lists = DiscussionComment.objects.filter(thread=pk1)
+            args = {'lists': lists}
+            return render(request, 'mywebsite/ans.html', args)
+
+        else:
+            print (comment_form.errors)
+            return HttpResponseRedirect(reverse('mywebsite:question-list'))
+
+    else:
+        comment_form = DiscussionCommentForm()
+        return render(request, 'mywebsite/ques.html', {'comment_form': comment_form})
+
+
+class SubjectList(generic.ListView):
+    model = Subject
+    template_name = 'mywebsite/QuestionList.html'
+    context_object_name = 'subs'
+
+    def get_queryset(self):
+        return Subject.objects.all()
+
+
+def questions(request, pk):
+    global answers
+    ques = Thread.objects.filter(subject=pk)
+    var = ""
+    for q in ques:
+        var = q.subject
+
+    return render(request, 'mywebsite/ques.html', {'ques': ques, 'var': var, 'pk': pk})
+
+
+class DiscussionCommentComment(object):
+    pass
+
+
+def discussioncomments(request, pk):
+    lists = DiscussionComment.objects.filter(thread=pk)
+    args = {'lists': lists}
+    return render(request, 'mywebsite/ans.html', args)
+
+
+def fill_question(request, pk):
+    if request.method == 'POST':
+
+        q_form = QForm(request.POST)
+
+        if q_form.is_valid():
+            # ques = Thread.objects.filter(subject=pk)
+
+            q_question = q_form['question'].value()
+            q_user = request.user
+            q_subject = Subject.objects.get(pk=pk)
+            T = Thread.objects.create(question=q_question, subject=q_subject, user=q_user)
+            T.save()
+            print(T)
+            ques = Thread.objects.filter(subject=pk)
+            return render(request, 'mywebsite/ques.html', {'ques':ques,'pk':pk})
+
+
+        else:
+            print(QForm.errors)
+            return HttpResponseRedirect(reverse('mywebsite:student_login'))
+
+    else:
+        q_form = QuestionForm()
+        return render(request, 'mywebsite/add_question.html', {'q_form': q_form})
 
 

@@ -1,0 +1,35 @@
+
+<html>
+<body>
+    <div id="content-container" class="container p-none">
+        <div class="lgn-container col-lg-8">
+            <form id="user_form" method="post"
+                  action="{% url 'accounts:login' %}">
+                {% csrf_token %}
+                <table class="table">
+                    <tr>
+                        <td><label for="{{ user_form.username1 }}">Username</label></td>
+                        <td><input id="{{ user_form.username1 }}" name="username"
+                                   type="text" class="form-control"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="{{ user_form.password2 }}">Password</label></td>
+                        <td><input id="{{ user_form.password2 }}" name="password"
+                                   type="password" class="form-control"></td>
+                    </tr>
+                </table>
+                {% if user_form.errors %}
+                    <p class=" label label-danger">
+                        Your username and password didn't match.
+                        Please try again.
+                    </p>
+                {% endif %}
+
+                <input type="submit" value="Login"
+                       class="btn btn-primary pull-right" />
+{#                <input type="hidden" name="next" value="" />#}
+            </form>
+        </div>
+    </div>
+</body>
+</html>

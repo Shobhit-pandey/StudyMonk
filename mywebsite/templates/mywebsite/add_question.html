@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ADD QUESTION</title>
+    <style>
+        .form-control{
+            width: 600px;
+            height: 150px;
+            margin-top: 150px;
+            margin-left: 350px;
+            margin-right: 350px;
+        }
+    </style>
+</head>
+<body>
+
+<form  method="post" role="form">
+    {% csrf_token %}
+        <div class="form-group">
+            <label for="{{ q_form.question1 }}">ADD QUESTION</label>
+            <div class="row" style="margin: auto">
+                <div class="col-sm-12 col-md-12 col-xs-12">
+            <textarea placeholder="Type youe question here" class="form-control" id="{{ q_form.question1 }}" name="question" >
+            </textarea>
+            </div>
+            </div>
+            </div>
+    <div class="form-group">
+    <button type="submit" class="btn btn-default" style="width: 100px;height: 50px;margin-left: 350px;">
+        submit</button>
+    </div>
+</form>
+</body>
+</html>

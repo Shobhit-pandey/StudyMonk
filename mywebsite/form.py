@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.models import User
 
 from mywebsite.models import StudentRegistration, FacultyRegistration, AboutUs, CollegeName, CourseName, Topic, \
-    Document, Video, Comment
+    Document, Video, Comment, Thread, DiscussionComment
 
 CHOICE = (
     ('male', 'male'),
@@ -278,3 +278,20 @@ class CommentForm(forms.Form):
                                  user_id=self.cleaned_data.get('user_id'))
         c.save()
         return c
+
+
+class DiscussionCommentForm(forms.ModelForm):
+    class Meta:
+        model = DiscussionComment
+        fields = ['content', 'thread', 'user']
+
+
+class QuestionForm(forms.ModelForm):
+    class Meta:
+        model = Thread
+        fields = ['question', 'subject', 'user']
+
+class QForm(forms.ModelForm):
+    class Meta:
+        model = Thread
+        fields = ['question']

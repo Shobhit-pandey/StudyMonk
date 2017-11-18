@@ -1,0 +1,81 @@
+<html>
+<head>
+    <style>
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: auto;
+    height: auto;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+    </style>
+
+</head>
+<body>
+<div class="row">
+                <div class="col-xm-12 col-md-12" style="align-content: center">
+                    <a href="{% url 'mywebsite:add-q' pk=pk %}"><button class="btn btn-primary" style="width: 150px;height: 50px">
+                        <span style="font-size: 20px">Ask question</span></button></a>
+                </div>
+            </div>
+                {% for temp in ques %}
+                    <div class="card">
+                    <div class="row">
+                    <div class="col-xm-12 col-md-12 col-sm-12">
+                        <p>{{ temp.question }} &nbsp; {{ temp.timestamp }}&nbsp; {{ user.username }}</p>
+                    </div>
+                    </div>
+                        <div class="row">
+
+                    <div class="col-xm-12 col-sm-12 col-md-12">
+                        <div id="reply-button">Reply</div>
+                        <div id="reply-div">
+                            <form class="form-inline" action="{% url 'mywebsite:comment' %}" method="post" role="form">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <input class="form-control" id="{{ comment_form.pk2 }}" type="hidden" name="pk"
+                                           value="{{ temp.pk }}"/>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" id="{{ comment_form.content2 }}" name="content"
+                                           type="text" placeholder="Your comments"/>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" id="{{ comment_form.thread2 }}" name="thread"
+                                           value="{{ temp.pk }}" type="hidden">
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" id="{{ comment_form.user2 }}" name="user" value="1"
+                                           type="hidden">
+                                </div>
+
+                                <div class="form-group">
+                                    <button class="btn btn-default">Commit</button>
+                                </div>
+                            </form>
+                        </div>
+                    <a href="{% url 'mywebsite:comments' pk=temp.pk %}">answers</a>
+                        </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+
+
+<script>
+    $(document).ready($("#reply-div").hide())
+    $("#reply-button").click(function () {
+
+        $("#reply-div").show();
+    })
+    $(document).ready($("#view-div").hide())
+    $("#view-answer").click(function () {
+
+        $("#view-div").show();
+    })
+</script>
+</body>
+</html>

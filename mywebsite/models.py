@@ -2,6 +2,8 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.urls import reverse
+from django.utils import timezone
 
 CHOICE = (
     ('male', 'male'),
@@ -161,13 +163,19 @@ class Subject(models.Model):
     def __str__(self):
         return self.subject_name
 
+    def get_absolute_url(self):
+        return reverse('mywebsite:student_login')
 class Thread(models.Model):
-    question = models.CharField(max_length=1000)
-    subject_id = models.ForeignKey(Subject)
-    time_stamp = models.TimeField
-    student_id = models.ForeignKey(StudentRegistration)
+    question = models.CharField(max_length=500)
+    timestamp = models.DateTimeField(default=timezone.now())
+    subject = models.ForeignKey(Subject)
+    user = models.ForeignKey(User)
+
     def __str__(self):
         return self.question
+
+    def get_absolute_url(self):
+        return reverse('mywebsite:student_login')
 
 class Comment(models.Model):
     content = models.CharField(max_length=10000,null=False,blank=False)
@@ -177,3 +185,16 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.content
+
+
+class DiscussionComment(models.Model):
+    content = models.CharField(max_length=1000)
+    timestamp = models.DateTimeField(default=timezone.now())
+    thread = models.ForeignKey(Thread)
+    user = models.ForeignKey(User)
+
+    def __str__(self):
+        return self.user.user.username
+
+    def get_absolute_url(self):
+        return reverse('mywebsite:student_login')
