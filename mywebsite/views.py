@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.models import User
 from django.contrib.sites.shortcuts import get_current_site
+from django.core.mail import EmailMessage, send_mail
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 # Create your views here.
 from django.template.loader import render_to_string
@@ -72,7 +73,8 @@ def student_signup(request):
                 'uid': urlsafe_base64_encode(force_bytes(user.pk)),
                 'token': account_activation_token.make_token(user),
             })
-            user.email_user(subject, message)
+            # user.email_user(subject, message)
+            send_verification_mail(user.email,message)
             return redirect('mywebsite:account_activation_sent')
             #return redirect('home')
             #return HttpResponseRedirect(reverse('home'))
@@ -102,7 +104,7 @@ def faculty_signup(request):
                 'uid': urlsafe_base64_encode(force_bytes(user.pk)),
                 'token': account_activation_token.make_token(user),
             })
-            user.email_user(subject, message)
+            send_verification_mail(user.email, message)
             return redirect('mywebsite:account_activation_sent')
             #return HttpResponseRedirect(reverse('home'))
     else:
@@ -194,12 +196,13 @@ email_password = 'qwertyuiopzxcvbnm'
 def send_verification_mail(email, msg):
     print("send verificaion mail")
     try:
-        server = smtplib.SMTP('smtp.gmail.com', 587)
-        server.ehlo()
+        server = smtplib.SMTP('smtp.gmail.com',587)
+        server.set_debuglevel(1)
         server.starttls()
-        server.login(email_address, email_password)
+        server.ehlo()
+        server.login('studymonk.se@gmail.com', 'qwertyuiopzxcvbnm')
         server.sendmail(email_address, email, msg)
-        server.close()
+        server.quit()
         print('successfully sent the mail')
     except:
         print("failed to send mail")
