@@ -75,8 +75,8 @@ def student_signup(request):
                 'uid': urlsafe_base64_encode(force_bytes(user.pk)),
                 'token': account_activation_token.make_token(user),
             })
-            # user.email_user(subject, message)
-            send_verification_mail(user.email,message)
+            user.email_user(subject, message)
+            # send_verification_mail(user.email,message)
             return redirect('mywebsite:account_activation_sent')
             #return redirect('home')
             #return HttpResponseRedirect(reverse('home'))
@@ -106,7 +106,8 @@ def faculty_signup(request):
                 'uid': urlsafe_base64_encode(force_bytes(user.pk)),
                 'token': account_activation_token.make_token(user),
             })
-            send_verification_mail(user.email, message)
+            user.email_user(subject, message)
+            # send_verification_mail(user.email, message)
             return redirect('mywebsite:account_activation_sent')
             #return HttpResponseRedirect(reverse('home'))
     else:
