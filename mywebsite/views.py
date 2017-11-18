@@ -23,7 +23,7 @@ from tzlocal import get_localzone
 from mywebsite.form import StudentRegistrationForm, FacultyRegistrationForm, StudentEditProfile, FacultyEditProfile, \
     TopicForm, DocumentForm, VideoForm, CommentForm, DiscussionCommentForm, QForm, QuestionForm
 from mywebsite.models import StudentRegistration, FacultyRegistration, CollegeName, CourseName, AboutUs, CollegeCourses, \
-    Topic, TopicThread, DiscussionComment, Subject, Thread
+    Topic, TopicThread, DiscussionComment, Subject, Thread, Comment, Video, Document
 from mywebsite.token import account_activation_token
 
 
@@ -258,9 +258,13 @@ def faculty_upload(request,pk5):
     upload = pk5
     faculty_name = FacultyRegistration.objects.filter(id=upload)
     topic = Topic.objects.all()
-    topic_thread = TopicThread.objects.all();
+    comment = Comment.objects.all()
+    video = Video.objects.all()
+    document = Document.objects.all()
+
     return render(request, 'mywebsite/faculty_upload.html', {'faculty':faculty,'faculty_name':faculty_name,
-                                                                 'topic':topic,'topic_thread':topic_thread
+                                                             'topic':topic,'topic_videos':video,'topic_docs':document,
+                                                             'topic_comment':comment
                                                                })
 def topic_upload(request):
     if request.method=='POST':
@@ -282,8 +286,12 @@ def personal_upload(request,pk6):
     faculty = get_object_or_404(User,pk=pk6)
     upload=pk6
     topic_name = Topic.objects.filter(user_id=upload)
-    return render(request,'mywebsite/personal_upload.html',{'faculty':faculty,'topic_name':topic_name})
-
+    comment = Comment.objects.all()
+    video = Video.objects.all()
+    document = Document.objects.all()
+    return render(request,'mywebsite/personal_upload.html',{'faculty':faculty,'topic_name':topic_name,
+                                                            'topic_videos':video,'topic_docs':document,'topic_comment':comment})
+@login_required()
 def add_doc(request,pk7):
     topic = get_object_or_404(Topic, pk=pk7)
     form = DocumentForm(initial={'topic_id': pk7})
@@ -296,7 +304,7 @@ def add_doc(request,pk7):
         form = DocumentForm(initial={'topic_id':pk7})
 
     return render(request, 'mywebsite/add_doc.html',{'form':form,'topic':topic})
-
+@login_required()
 def add_video(request,pk8):
     topic = get_object_or_404(Topic,pk=pk8)
     form = VideoForm(initial={'topic_id': pk8})
@@ -309,7 +317,7 @@ def add_video(request,pk8):
         form = VideoForm(initial={'topic_id':pk8})
 
     return render(request, 'mywebsite/add_video.html',{'form':form,'topic':topic})
-
+@login_required()
 def add_comment(request,pk9):
     topic = get_object_or_404(Topic,pk=pk9)
     if request.method == 'POST':
@@ -323,7 +331,7 @@ def add_comment(request,pk9):
         form = CommentForm(initial={'topic_id': pk9, 'user_id': request.user.id,
                                                   'time_stamp': datetime.datetime.now()})
     return render(request, 'mywebsite/add_comment.html', {'form': form, 'topic': topic})
-
+@login_required()
 def faculty_comments(request,pk10):
     topic = get_object_or_404(Topic,pk=pk10)
     if request.method == 'POST':
