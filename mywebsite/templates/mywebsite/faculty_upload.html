@@ -334,6 +334,8 @@ function cmnt(numcopy)
 
 
         {% for topics in topic %}
+            {{ topics.user_id }} {{ faculty.user_id }}
+            <br>
             {% if topics.user_id == faculty.user_id %}
                 <div class ="row" style="margin-bottom: 50px;">
             <div class="col-md-12">
