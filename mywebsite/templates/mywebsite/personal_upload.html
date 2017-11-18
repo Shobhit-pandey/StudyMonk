@@ -94,7 +94,16 @@ function docs(numcopy)
     // add a for loop for all the documents
 
 var data2 ;
-     data2 ="<div class = 'Test'>" + "hello clicked topic id :"+ topic_id + "</div>";
+     data2 ="<div class = 'Test'>" ;
+    {% for docs in topic_docs %}
+        var k = {{ docs.topic_id }};
+        if(k==topic_id)
+        {
+            data2 = data2 +'{{docs.document_name}}';
+            data2 = data2 +"<a href='{{ docs.document_file }}' download='{{docs.document_name}}'>download</a>"+"<br>";
+        }
+    {% endfor %}
+   data2 = data2 +  "</div>";
     console.log(data2);
     // append in e
     var e = "#s"+topic_id;
@@ -111,6 +120,14 @@ function v(numcopy)
     var data  = "<div class = 'Test'>";
     var topicid=numcopy.slice(1);
     console.log(topicid);
+    {% for video in topic_videos %}
+        var k = {{ video.topic_id }};
+        if(k==topicid)
+        {
+            data = data +'{{video.video_name}}';
+            data = data +"<a href='{{ video.video_file }}' download='{{video.video_name}}'>download</a>"+"<br>";
+        }
+    {% endfor %}
     // find all videos  and append them
     //for(i=0;i<video.length;i++)
     //{
@@ -121,7 +138,7 @@ function v(numcopy)
 
 
 //test
-    data = data + " hello videos for topic with id :"+topicid+"</div>";
+    data = data + "</div>";
     var pet = "#s" + topicid;
     // append in s+topic.id
     $(pet).append(data);
@@ -133,46 +150,6 @@ function v(numcopy)
 function cmnt(numcopy)
 
 {
-    // decode JSon if reqd
-     //var d1 = '{{topic_thread}}';
-    //var decoded1 = $('<textarea/>').html(d1.text();
-    //console.log(decoded1);
-    //var topic_thread = JSON.parse(decoded);
-
-
-//var d2= '{{stud_topic_cmnt}}';
-    //var decoded2 = $('<textarea/>').html(d2.text();
-    //console.log(decoded2);
-    //var stud_topic_cmnt = JSON.parse(decoded2);
-
-
-    //var d3= '{{fac_topic_cmnt}}';
-    //var decoded3 = $('<textarea/>').html(d3.text();
-    //console.log(decoded3);
-    //var fac_topic_cmnt = JSON.parse(decoded3);
-
-
-
- // get all the threads of the topic
-/* for(i=0;i<topic_thread;i++)
-{ if(topic_thread.topic_id==)
-   {
-    // sort both fac and stud cmnts acc to timestamp
-    if faculty cmnt append to left ..if stud append to right
-
-   }
-}
-
-*/
-
-
-
-
-
-
-
-
-     // removes any document on page
 
 
     $('.Test').remove();
@@ -180,20 +157,30 @@ function cmnt(numcopy)
     var topicid=numcopy.slice(1);
     console.log(topicid);
 
-    {% for topic in topic_name%}
+
+{% for comment in topic_comment %}
+        var k = {{ comment.topic_id}};
+        if(k==topicid)
+        {
+            data = data +'{{ comment.content }}'+"<br>";
+        }
+    {% endfor %}
+
+{% for topic in topic_name%}
         var j = {{topic.id}}
     // comment box ...change submit button id  = "ct" + topic id
         if (j==topicid)
         {
-
-     data = data + "hello in id:"+ {{ topic.id }}+ "<form action='{% url 'mywebsite:add_comment' pk9=topic.id %}'method ='post'>{% csrf_token %}<div class='form-group'><button type='submit' class='btn btn-default' id='ct1' type='submit'>Comment</button> </div></form></div>"
-    console.log(data);
-
-    //append actual data in
-    var e = "#s"+topicid;
-    $(e).append(data);
+     data = data + "<form action='{% url 'mywebsite:add_comment' pk9=topic.id %}'method ='post'>{% csrf_token %}<div class='form-group'><button type='submit' class='btn btn-default' id='ct1' type='submit'>Comment</button> </div></form></div>"
+            console.log(data);
         }
-    {% endfor %}
+    //append actual data in
+            {% endfor %}
+
+
+    data = data + "</div>";
+    var pet = "#s" + topicid;
+     $(pet).append(data);
 
 }
 
@@ -245,7 +232,9 @@ function cmnt(numcopy)
             margin-bottom:10px;
         }
 .Test{
-            display: inline-block;
+display:inline-block;
+    align-content:left;
+
         }
     </style>
 </head>
@@ -343,6 +332,7 @@ function cmnt(numcopy)
                 <p id = "c{{ topic.id }}" style="float: left; font-size: 9pt; text-align: center; width: 10%; margin-right: 2%; margin-bottom: 0.5em;"><img src="{% static 'images/comment.jpg' %}"  style="width: 100%; height:10%;">Comments</p>
                 </div>
                 <div  id="s{{ topic.id }}" >
+<br style="clear: both;">
                 <!-- for appending the data through js -->
                 </div>
 
