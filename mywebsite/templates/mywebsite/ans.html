@@ -129,15 +129,29 @@
 <div class="col-xm-12 col-sm-12 col-md-12">
 
 <div class="card ">
-    <div id="view-answer" style="font-size:40px; color:#000000; margin-bottom:15px;">Answers</div>
+    {% for list in lists %}
+    {% if forloop.counter == 1 %}
+    <div class=" contaniner">
+        <div class="row">
+            <div class ="col-md-12">
+                <span style="font-size: 50px">Question : {{ list.thread }}</span>
+            </div>
+        </div>
+
+    </div>
+         <div id="view-answer" style="font-size:40px; color:#000000; margin-bottom:15px;">Answers</div>
+    {% endif %}
+
     <div id="view-div" data-actions-icnt="#">
-      {% for list in lists %}
+
+
           <div class="cmnt" style="font-size:30px; font-family: Courier; color:#6495ed;">{{ list.content }} 
           <br> 
           <div class = "cmnt_username" style="font-size:25px; color:#2f4f4f;padding-top:5px; margin-top:0px; ">{{ list.user }}</div> 
           <div class = "cmnt_time" style="font-size:25px; color:#a9a9a9;">{{ list.timestamp }}</div> 
           </div>
         {% endfor %}
+
 
 
     </div>

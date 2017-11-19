@@ -394,6 +394,7 @@ def questions(request, pk):
 
 def discussioncomments(request, pk):
     lists = DiscussionComment.objects.filter(thread=pk)
+    # questions = Thread.objects.filter()
     args = {'lists': lists}
     return render(request, 'mywebsite/ans.html', args)
 
