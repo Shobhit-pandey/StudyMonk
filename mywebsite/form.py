@@ -285,13 +285,31 @@ class DiscussionCommentForm(forms.ModelForm):
         model = DiscussionComment
         fields = ['content', 'thread', 'user']
 
+    def clean_content(self):
+        return self.cleaned_data.get('content')
+
+    def clean_thread(self):
+        return self.cleaned_data.get('thread')
+
+    def clean_user(self):
+        return self.cleaned_data.get('user')
+
 
 class QuestionForm(forms.ModelForm):
     class Meta:
         model = Thread
         fields = ['question', 'subject', 'user']
+    def clean_question(self):
+        return self.cleaned_data.get('question')
+    def clean_subject(self):
+        return self.cleaned_data.get('subject')
+    def clean_user(self):
+        return self.cleaned_data.get('user')
 
 class QForm(forms.ModelForm):
     class Meta:
         model = Thread
         fields = ['question']
+
+    def clean_question(self):
+        return self.cleaned_data.get('question')

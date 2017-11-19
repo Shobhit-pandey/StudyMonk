@@ -14,6 +14,9 @@ sudo pip install mysqlclient && sudo pip3 install mysqlclient
 # install Pillow by -
 sudo pip install Pillow
 
+# install tzlocal by -
+sudo pip install tzlocal
+
 # second fork this repo 
 # Third clone forked repo to directory where you want .
 first go to terminal and go to that dir
