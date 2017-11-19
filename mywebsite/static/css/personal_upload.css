@@ -43,33 +43,3 @@ hr {
     margin-bottom: 10px;
 }
 
-.Test {
-    display: inline-block;
-}
-
-#d1 {
-    float: left;
-    font-size: 9pt;
-    text-align: center;
-    width: 10%;
-    margin-right: 25%;
-    margin-bottom: 0.5em;
-}
-
-#v1 {
-    float: left;
-    font-size: 9pt;
-    text-align: center;
-    width: 10%;
-    margin-right: 28%;
-    margin-bottom: 0.5em;
-}
-
-#c1 {
-    float: left;
-    font-size: 9pt;
-    text-align: center;
-    width: 10%;
-    margin-right: 2%;
-    margin-bottom: 0.5em;
-}
