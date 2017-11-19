@@ -25,10 +25,36 @@
             width: 60%;
             height: auto;
             margin-left: 20%;
+            border: 1px solid;
+            border-color:#708090;
         }
 
         .card:hover {
             box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .cmnt{
+
+            font-size:20px;
+             margin-bottom:20px;
+
+        }
+        .cmnt_username{
+
+            text-align:right;
+          font-size:14px;
+    padding-right:10px;
+    display: inline;
+    width:100%;
+            color:#a9a9a9;
+        }
+
+        .cmnt_time{
+            color:#d3d3d3;
+            display:inline;
+
+         font-size:14px;
+
         }
     </style>
 
@@ -103,20 +129,27 @@
     <div class="col-xm-12 col-md-12" style="align-content: center">
         <a href="{% url 'mywebsite:add-q' pk=pk %}">
             <button class="btn btn-primary" style="width: 150px;height: 50px;float: right">
-                <span style="font-size: 20px">Ask question</span></button>
+                <span style="font-size: 20px;">Ask question</span></button>
         </a>
     </div>
 </div>
 {% for temp in ques %}
-    <div class="card">
+    <div class="card" style="margin-bottom:40px; padding:25px;">
         <div class="row">
             <div class="col-xm-12 col-md-12 col-sm-12">
-                <p>{{ temp.question }} &nbsp; {{ temp.timestamp }}&nbsp; {{ user.username }}</p>
+
+
+
+                <div class="cmnt" style="font-size:35px;">{{ temp.question }}
+                    <br>
+                    <div class = "cmnt_username" style="font-size:25px; color:#2f4f4f;">{{ user.username }}</div>
+                    <div class = "cmnt_time" style="font-size:25px; color:#a9a9a9;">{{ temp.timestamp }}</div></div>
+
             </div>
         </div>
         <div class="row">
             <div class="col-xm-3 col-sm-3 col-md-3">
-                <div id="reply-button" style="color: blue">Reply</div>
+                <div id="reply-button" style="color: #87cefa;font-size:22px;">Reply</div>
                 <div id="reply-div">
                     <form class="form-inline" action="{% url 'mywebsite:comment' %}" method="post" role="form">
                         {% csrf_token %}
@@ -125,8 +158,8 @@
                                    value="{{ temp.pk }}"/>
                         </div>
                         <div class="form-group">
-                            <input class="form-control" id="{{ comment_form.content2 }}" name="content"
-                                   type="text" placeholder="Your comments"/>
+                            <input class="form-control" style="margin-top: 30px;padding-bottom:15px; padding-top:15px; margin-bottom:20px;" id="{{ comment_form.content2 }}" name="content"
+                                   type="text" placeholder="Your answer"/>
                         </div>
                         <div class="form-group">
                             <input class="form-control" id="{{ comment_form.thread2 }}" name="thread"
@@ -138,13 +171,13 @@
                         </div>
 
                         <div class="form-group">
-                            <button class="btn btn-default">Commit</button>
+                            <button class="btn btn-default">Comment</button>
                         </div>
                     </form>
                 </div>
             </div>
-            <div class="col-xm-3 col-sm-3 col-md-3">
-                <a href="{% url 'mywebsite:comments' pk=temp.pk %}">view answers</a>
+            <div class="col-xm-3 col-sm-3 col-md-3" style="color: blue;font-size:22px;">
+                <a href="{% url 'mywebsite:comments' pk=temp.pk %}">View answers</a>
             </div>
         </div>
     </div>

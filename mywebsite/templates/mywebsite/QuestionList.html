@@ -93,10 +93,10 @@
     <div class="row">
         <div class="col-md-12">
             <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
-                    Select subject
+                <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown" style="font-size:30px; ">
+                    Select Subject
                     <span class="caret"></span></button>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1" style="font-size:26px; font-family: Courier;">
                     {% for sub in subs %}
                         <li role="presentation"><a role="menuitem" tabindex="-1"
                                                    href="{% url 'mywebsite:questions' pk=sub.pk %}">{{ sub.subject_name }}</a>

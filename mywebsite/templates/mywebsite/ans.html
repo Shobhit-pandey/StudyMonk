@@ -17,14 +17,44 @@
     <script type="text/javascript" src="js/bootstrap.js"></script>
 
     <style>
+
+
         .card {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-            width: 50%;
-            margin-top: 100px;
-            margin-left: 20%;
-    height: auto;
-}
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+             width: 80%;
+            height: auto;
+             margin-top: 100px;
+            margin-left: 10%;
+            margin-right:10%;
+            border: 1px solid;
+            border-color:#708090;
+            padding:25px;
+        }
+
+        .cmnt{
+
+            font-size:20px;
+             margin-bottom:20px;
+
+        }
+        .cmnt_username{
+
+            text-align:right;
+          font-size:14px;
+        padding-right:10px;
+         display: inline;
+          width:100%;
+            color:#a9a9a9;
+        }
+
+        .cmnt_time{
+            color:#d3d3d3;
+            display:inline;
+
+         font-size:14px;
+
+        }
 
 
     </style>
@@ -97,15 +127,19 @@
 
 <div class="row">
 <div class="col-xm-12 col-sm-12 col-md-12">
-<div class="card">
-    <div id="view-answer">Answer</div>
+
+<div class="card ">
+    <div id="view-answer" style="font-size:40px; color:#000000; margin-bottom:15px;">Answers</div>
     <div id="view-div" data-actions-icnt="#">
-        {% for list in lists %}
-            <div style="margin-top: 15px;">{{ list.content }}
-                <span style="font-size: 15px;margin-left: 20px;color: blue">answer by<span
-                        style="color: sandybrown"> {{ list.user }}</span></span>
-                <span style="font-size: 15px;margin-left: 20px;color: blue">on {{ list.timestamp }}</span></div>
+      {% for list in lists %}
+          <div class="cmnt" style="font-size:30px; font-family: Courier; color:#6495ed;">{{ list.content }} 
+          <br> 
+          <div class = "cmnt_username" style="font-size:25px; color:#2f4f4f;padding-top:5px; margin-top:0px; ">{{ list.user }}</div> 
+          <div class = "cmnt_time" style="font-size:25px; color:#a9a9a9;">{{ list.timestamp }}</div> 
+          </div>
         {% endfor %}
+
+
     </div>
 </div>
 </div>
