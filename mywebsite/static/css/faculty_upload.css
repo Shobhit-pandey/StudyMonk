@@ -1,0 +1,92 @@
+        .card {
+
+            width: 80%;
+            padding: 20px;
+            border: 1px solid;
+            border-color: #DBDBD6;
+            height:auto ;
+            padding-bottom: 100px;
+
+
+        }
+.add_button{
+            padding: 10px;
+            border: 1.5px solid;
+            border-color: #778899;
+            height:auto ;}
+
+
+        .image {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .btn-group {
+            padding-top: 20px;
+            padding-right: 30px;
+        }
+
+        hr {
+            color: black;
+            border-bottom: 2px solid;
+        }
+
+        .container-fluid {
+            margin-top: 200px;
+            padding-left: 100px;
+        }
+        .desc{
+            text-align: center;
+            color: #A0A0A0;
+        }
+        .timest{
+            text-align: center;
+            color: black;
+            margin-top: 10px;
+            margin-bottom:10px;
+        }
+     .Test {
+    margin-top: 20px;
+    display: inline-block;
+}
+
+
+
+.dname{
+    font-size:26px;
+    padding-right:40px;
+    display: inline;
+    width:100%;
+}
+        .ddown{
+            font-size:20px;
+            display: inline;
+            width:100%;
+        }
+        .cmnt{
+
+            font-size:20px;
+             margin-bottom:20px;
+
+        }
+        .cmnt_username{
+
+            text-align:right;
+          font-size:14px;
+    padding-right:10px;
+    display: inline;
+    width:100%;
+            color:#a9a9a9;
+        }
+
+        .cmnt_time{
+            color:#d3d3d3;
+            display:inline;
+
+         font-size:14px;
+
+        }
+        .cmnt_form{
+            margin-top:30px;
+        }

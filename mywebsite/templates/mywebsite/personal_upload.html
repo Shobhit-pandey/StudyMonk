@@ -94,13 +94,16 @@ function docs(numcopy)
     // add a for loop for all the documents
 
 var data2 ;
-     data2 ="<div class = 'Test'>" ;
+     data2 ="  <div class = 'Test'> " ;
     {% for docs in topic_docs %}
         var k = {{ docs.topic_id }};
         if(k==topic_id)
-        {
+        {   data2= data2 +"<div class= 'dname'>";
             data2 = data2 +'{{docs.document_name}}';
-            data2 = data2 +"<a href='{{ docs.document_file }}' download='{{docs.document_name}}'>download</a>"+"<br>";
+            data2 = data2 +"</div>";
+            data2 = data2 + "<div class='ddown'>";
+            data2 = data2 +"<a href='{{ docs.document_file}}' download='{{docs.document_name}}'><i class='fa fa-arrow-circle-down' aria-hidden='true'></i></a>"+"<br>";
+            data2 = data2 +"</div>";
         }
     {% endfor %}
    data2 = data2 +  "</div>";
@@ -117,15 +120,18 @@ function v(numcopy)
 {
     $('.Test').remove();
     // add one more div in actual data case
-    var data  = "<div class = 'Test'>";
+    var data  = " <div class = 'Test video1'>";
     var topicid=numcopy.slice(1);
     console.log(topicid);
     {% for video in topic_videos %}
         var k = {{ video.topic_id }};
         if(k==topicid)
-        {
+        {data= data +"<div class= 'dname'>";
             data = data +'{{video.video_name}}';
-            data = data +"<a href='{{ video.video_file }}' download='{{video.video_name}}'>download</a>"+"<br>";
+             data = data +"</div>";
+            data = data + "<div class='ddown'>";
+            data = data +"<a href='{{ video.video_file }}' download='{{video.video_name}}'><i class='fa fa-arrow-circle-down' aria-hidden='true'></i></a>"+"<br>";
+            data= data +"</div>";
         }
     {% endfor %}
     // find all videos  and append them
@@ -162,7 +168,11 @@ function cmnt(numcopy)
         var k = {{ comment.topic_id}};
         if(k==topicid)
         {
-            data = data +'{{ comment.content }}'+"<br>";
+
+            data = data +"<div class='cmnt'>"+'{{ comment.content }}'+'{{ comment.user_id }}'+"<br>";
+            data = data +"<div class = 'cmnt_username'>"+"username"+"</div>";
+            data = data +"<div class = 'cmnt_time'>"+"29 May 2012 01:00:00"+"</div></div>";
+
         }
     {% endfor %}
 
@@ -171,7 +181,7 @@ function cmnt(numcopy)
     // comment box ...change submit button id  = "ct" + topic id
         if (j==topicid)
         {
-     data = data + "<form action='{% url 'mywebsite:add_comment' pk9=topic.id %}'method ='post'>{% csrf_token %}<div class='form-group'><button type='submit' class='btn btn-default' id='ct1' type='submit'>Comment</button> </div></form></div>"
+     data = data +"<div class = 'cmnt_form'>"+ "<form action='{% url 'mywebsite:add_comment' pk9=topic.id %}'method ='post'>{% csrf_token %}<div class='form-group'><button type='submit' class='btn btn-default' id='ct1' type='submit'>Comment</button> </div></form></div>"
             console.log(data);
         }
     //append actual data in
@@ -231,9 +241,56 @@ function cmnt(numcopy)
             margin-top: 10px;
             margin-bottom:10px;
         }
-.Test{
-display:inline-block;
-    align-content:left;
+.Test {
+    margin-top: 20px;
+    display: inline-block;
+}
+
+
+
+.dname{
+    font-size:26px;
+ padding-right:10px;
+    display: inline;
+    width:100%;
+}
+        .ddown{
+            font-size:20px;
+            display: inline;
+            width:100%;
+
+        }
+        .cmnt{
+
+            font-size:20px;
+             margin-bottom:20px;
+
+        }
+        .cmnt_username{
+
+            text-align:right;
+          font-size:14px;
+    padding-right:10px;
+    display: inline;
+    width:100%;
+            color:#a9a9a9;
+        }
+
+        .cmnt_time{
+            color:#d3d3d3;
+            display:inline;
+
+         font-size:14px;
+
+        }
+        .cmnt_form{
+            margin-top:30px;
+        }
+        .add_button{
+            padding: 10px;
+            border: 1.5px solid;
+            border-color: #778899;
+            height:auto ;
 
         }
     </style>
@@ -316,8 +373,8 @@ display:inline-block;
                     <h1>Description : {{ topic.description }}</h1>
 
 
-                    <a href="{% url 'mywebsite:add_doc' pk7=topic.id %}"  style="display: inline-block;">ADD DOC</a>
-                    <a href="{% url 'mywebsite:add_video' pk8=topic.id %}"  style="display: inline-block;">ADD VIDEO</a>
+                    <a href="{% url 'mywebsite:add_doc' pk7=topic.id %}" class = "add_button" style="display: inline-block; margin-right:20px;">ADD DOC</a>
+                    <a href="{% url 'mywebsite:add_video' pk8=topic.id %}"  class = "add_button" style="display: inline-block;">ADD VIDEO</a>
 {#                    <a href="{% url 'mywebsite:add_comment' pk9=topic.id %}"  style="display: inline-block;">ADD Comment</a>#}
                 </div>
 
@@ -332,7 +389,9 @@ display:inline-block;
                 <p id = "c{{ topic.id }}" style="float: left; font-size: 9pt; text-align: center; width: 10%; margin-right: 2%; margin-bottom: 0.5em;"><img src="{% static 'images/comment.jpg' %}"  style="width: 100%; height:10%;">Comments</p>
                 </div>
                 <div  id="s{{ topic.id }}" >
+
 <br style="clear: both;">
+
                 <!-- for appending the data through js -->
                 </div>
 
