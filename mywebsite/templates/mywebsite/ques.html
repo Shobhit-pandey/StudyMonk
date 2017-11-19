@@ -17,6 +17,11 @@
     <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.js"></script>
+       <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <style>
         .card {
@@ -57,7 +62,57 @@
 
         }
     </style>
+<script type="text/javascript">
 
+
+
+    window.onload = function(){
+ $('.Test').hide();
+
+         //$('.Test').hide();
+
+         //$("#reply-div1").s.css('visibility', 'visible');
+        var nums =[];
+        var nums2= [];
+        {% for  topics in ques%}
+         var j = {{ topics.id }};
+            nums.push(j);
+        {% endfor %}
+
+        console.log(nums);
+        for (var i = 0; i < nums.length; i++) {
+
+        var element = "#reply-button"+nums[i];
+        var elem = $(element);
+        console.log(element);
+        console.log("hi");
+        (elem).click(function() {
+         console.log("hi in function");
+        var id = $(this).attr("id");
+        console.log(id);
+        docs(id);
+        });
+    }
+
+
+
+}
+
+function docs(numcopy)
+
+{
+     $('.Test').hide();
+// when actual data plz add one more div in next line
+    //var data  = "<div class = 'Test'>";
+    var topic_id=numcopy.slice(12);
+    var e1 = "#reply-div"+topic_id;
+    $(e1).show();
+
+}
+
+
+
+</script>
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -140,17 +195,18 @@
 
 
 
-                <div class="cmnt" style="font-size:35px;">{{ temp.question }}
+                <div class="cmnt" style="font-size:35px;">{{ temp.question }}{{ temp.id }}
                     <br>
                     <div class = "cmnt_username" style="font-size:25px; color:#2f4f4f;">{{ user.username }}</div>
                     <div class = "cmnt_time" style="font-size:25px; color:#a9a9a9;">{{ temp.timestamp }}</div></div>
+
 
             </div>
         </div>
         <div class="row">
             <div class="col-xm-3 col-sm-3 col-md-3">
-                <div id="reply-button" style="color: #87cefa;font-size:22px;">Reply</div>
-                <div id="reply-div">
+                <div id="reply-button{{ temp.id }}" style="color: #87cefa;font-size:22px;">Reply</div>
+                <div id ="reply-div{{ temp.id }}" class = "Test">
                     <form class="form-inline" action="{% url 'mywebsite:comment' %}" method="post" role="form">
                         {% csrf_token %}
                         <div class="form-group">
@@ -187,17 +243,6 @@
 
 
 
-<script>
-    $(document).ready($("#reply-div").hide())
-    $("#reply-button").click(function () {
 
-        $("#reply-div").show();
-    })
-    $(document).ready($("#view-div").hide())
-    $("#view-answer").click(function () {
-
-        $("#view-div").show();
-    })
-</script>
 </body>
 </html>
