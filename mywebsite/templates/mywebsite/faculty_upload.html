@@ -172,8 +172,12 @@ function cmnt(numcopy)
         {
 
             data = data +"<div class='cmnt'>"+'{{ comment.content }}'+'{{ comment.user_id }}'+"<br>";
-            data = data +"<div class = 'cmnt_username'>"+"username"+"</div>";
-            data = data +"<div class = 'cmnt_time'>"+"29 May 2012 01:00:00"+"</div></div>";
+            {% for users in user_u %}
+        {% if users.id == comment.user_id %}
+            data = data +"<div class = 'cmnt_username'>"+"{{ users.username }}"+"</div>";
+        {% endif %}
+        {% endfor %}
+            data = data +"<div class = 'cmnt_time'>"+"{{ comment.time_stamp }}"+"</div></div>";
 
         }
     {% endfor %}
@@ -281,8 +285,6 @@ function cmnt(numcopy)
 
 
         {% for topics in topic %}
-            {{ topics.user_id }} {{ faculty.user_id }}
-            <br>
             {% if topics.user_id == faculty.user_id %}
                 <div class ="row" style="margin-bottom: 50px;">
             <div class="col-md-12">

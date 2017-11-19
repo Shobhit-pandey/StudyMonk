@@ -99,7 +99,7 @@ class CollegeCourses(models.Model):
 class Topic(models.Model):
     title = models.CharField(max_length=100)
     description = models.CharField(max_length=1000)
-    user_id = models.IntegerField(max_length=11,editable=False)
+    user_id = models.IntegerField(editable=False)
 
     def __str__(self):
         return self.title
@@ -115,7 +115,7 @@ class Upload(models.Model):
 
 class Document(models.Model):
     document_name = models.CharField(max_length=100)
-    topic_id = models.IntegerField(max_length=11,editable=False)
+    topic_id = models.IntegerField(editable=False)
     copyright = models.CharField(choices=COPYRIGHT,max_length=10)
     document_file = models.FileField(upload_to='documents')
 
@@ -124,7 +124,7 @@ class Document(models.Model):
 
 class Video(models.Model):
     video_name = models.CharField(max_length=100)
-    topic_id = models.IntegerField(max_length=11,editable=False)
+    topic_id = models.IntegerField(editable=False)
     copyright = models.CharField(choices=COPYRIGHT, max_length=10)
     video_file = models.FileField(upload_to='videos')
 
@@ -181,8 +181,8 @@ class Thread(models.Model):
 class Comment(models.Model):
     content = models.CharField(max_length=10000,null=False,blank=False)
     time_stamp = models.DateTimeField(editable=False,null=False,blank=False)
-    topic_id = models.IntegerField(max_length=11,editable=False)
-    user_id = models.IntegerField(max_length=11,editable=False)
+    topic_id = models.IntegerField(editable=False)
+    user_id = models.IntegerField(editable=False)
 
     def __str__(self):
         return self.content
