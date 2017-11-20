@@ -104,7 +104,7 @@ var data2 ;
             data2 = data2 +'{{docs.document_name}}';
             data2 = data2 +"</div>";
             data2 = data2 + "<div class='ddown'>";
-            data2 = data2 +"<a href='{{ docs.document_file}}' download='{{docs.document_name}}'>download</a>"+"<br>";
+            data2 = data2 +"<a href='{{ docs.document_file.url}}' download='{{docs.document_name}}'>download</a>"+"<br>";
             data2 = data2 +"</div>";
         }
     {% endfor %}
@@ -132,7 +132,7 @@ function v(numcopy)
             data = data +'{{video.video_name}}';
              data = data +"</div>";
             data = data + "<div class='ddown'>";
-            data = data +"<a href='{{ video.video_file }}' download='{{video.video_name}}'>download</a>"+"<br>";
+            data = data +"<a href='{{ video.video_file.url }}' download='{{video.video_name}}'>download</a>"+"<br>";
             data= data +"</div>";
         }
     {% endfor %}
