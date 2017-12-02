@@ -87,7 +87,8 @@ function docs(numcopy)
 
 {
      $('.Test').remove();
-// when actual data plz add one more div in next line
+
+     // when actual data plz add one more div in next line
     //var data  = "<div class = 'Test'>";
     var topic_id=numcopy.slice(1);
 
@@ -104,7 +105,7 @@ var data2 ;
             data2 = data2 +'{{docs.document_name}}';
             data2 = data2 +"</div>";
             data2 = data2 + "<div class='ddown'>";
-            data2 = data2 +"<a href='{{ docs.document_file.url}}' download='{{docs.document_name}}'>download</a>"+"<br>";
+            data2 = data2 +"<a href='{{ docs.document_file.url }}' download='{{docs.document_name}}'><i class='fa fa-arrow-circle-down' aria-hidden='true'></i></a>"+"<br>";
             data2 = data2 +"</div><div class='dview' >";
             data2 = data2 +"<p><a href='{{ docs.document_file.url }}' target='_blank' title ='open document'>View document</a></p></div>";
         }
@@ -115,20 +116,25 @@ var data2 ;
     var e = "#s"+topic_id;
     $(e).append(data2);
 // test ends
+
+
+     ///////
 }
 //function for appending videos
 
 //function for appending docs
 function v(numcopy)
 {
-    $('.Test').remove();
+
+
+
+        $('.Test').remove();
     // add one more div in actual data case
     var data  = " <div class = 'Test video1'>";
     var topicid=numcopy.slice(1);
     console.log(topicid);
     {% for video in topic_videos %}
         var k = {{ video.topic_id }};
-        if(k==topicid)
         if(k==topicid)
         {data= data +"<div class= 'dname'>";
             data = data +
@@ -167,6 +173,8 @@ function v(numcopy)
     // append in s+topic.id
     $(pet).append(data);
 // test ends
+    //////////
+
 
 }
 //function for appending comments
@@ -176,7 +184,8 @@ function cmnt(numcopy)
 {
 
 
-    $('.Test').remove();
+
+     $('.Test').remove();
     var data  = "<div class = 'Test'>";
     var topicid=numcopy.slice(1);
     console.log(topicid);
@@ -188,7 +197,7 @@ function cmnt(numcopy)
         {
 
             data = data +"<div class='cmnt'>"+'{{ comment.content }}'+'{{ comment.user_id }}'+"<br>";
-            {% for users in user_u %}
+    {% for users in user_u %}
         {% if users.id == comment.user_id %}
             data = data +"<div class = 'cmnt_username'>"+"{{ users.username }}"+"</div>";
         {% endif %}
@@ -203,7 +212,7 @@ function cmnt(numcopy)
     // comment box ...change submit button id  = "ct" + topic id
         if (j==topicid)
         {
-     data = data +"<div class = 'cmnt_form'>"+ "<form action='{% url 'mywebsite:add_comment' pk9=topics.id %}'method ='post'>{% csrf_token %}<div class='form-group'><button type='submit' class='btn btn-default' id='ct1' type='submit'>Comment</button> </div></form></div>"+"</div>"
+     data = data +"<div class = 'cmnt_form'>"+ "<form action='{% url 'mywebsite:add_comment' pk9=topic.id %}'method ='post'>{% csrf_token %}<div class='form-group'><button type='submit' class='btn btn-default' id='ct1' type='submit'>Comment</button> </div></form></div>"
             console.log(data);
         }
     //append actual data in
@@ -214,6 +223,10 @@ function cmnt(numcopy)
     var pet = "#s" + topicid;
      $(pet).append(data);
 
+
+
+
+     ///////////
 }
 
 
