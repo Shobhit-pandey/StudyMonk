@@ -187,7 +187,7 @@ function cmnt(numcopy)
         if(k==topicid)
         {
 
-            data = data +"<div class='cmnt'>"+'{{ comment.content }}'+'{{ comment.user_id }}'+"<br>";
+            data = data +"<div class='cmnt'>"+'{{ comment.content }}'+"<br>";
             {% for users in user_u %}
         {% if users.id == comment.user_id %}
             data = data +"<div class = 'cmnt_username'>"+"{{ users.username }}"+"</div>";
