@@ -87,8 +87,7 @@ function docs(numcopy)
 
 {
      $('.Test').remove();
-
-     // when actual data plz add one more div in next line
+// when actual data plz add one more div in next line
     //var data  = "<div class = 'Test'>";
     var topic_id=numcopy.slice(1);
 
@@ -97,7 +96,7 @@ function docs(numcopy)
     // add a for loop for all the documents
 
 var data2 ;
-     data2 ="  <div class = 'Test' > " ;
+     data2 ="  <div class = 'Test'> " ;
     {% for docs in topic_docs %}
         var k = {{ docs.topic_id }};
         if(k==topic_id)
@@ -105,7 +104,7 @@ var data2 ;
             data2 = data2 +'{{docs.document_name}}';
             data2 = data2 +"</div>";
             data2 = data2 + "<div class='ddown'>";
-            data2 = data2 +"<a href='{{ docs.document_file.url }}' download='{{docs.document_name}}'><i class='fa fa-arrow-circle-down' aria-hidden='true'></i></a>"+"<br>";
+            data2 = data2 +"<a href='{{ docs.document_file.url}}' download='{{docs.document_name}}'>download</a>"+"<br>";
             data2 = data2 +"</div><div class='dview' >";
             data2 = data2 +"<p><a href='{{ docs.document_file.url }}' target='_blank' title ='open document'>View document</a></p></div>";
         }
@@ -116,25 +115,20 @@ var data2 ;
     var e = "#s"+topic_id;
     $(e).append(data2);
 // test ends
-
-
-     ///////
 }
 //function for appending videos
 
 //function for appending docs
 function v(numcopy)
 {
-
-
-
-        $('.Test').remove();
+    $('.Test').remove();
     // add one more div in actual data case
     var data  = " <div class = 'Test video1'>";
     var topicid=numcopy.slice(1);
     console.log(topicid);
     {% for video in topic_videos %}
         var k = {{ video.topic_id }};
+        if(k==topicid)
         if(k==topicid)
         {data= data +"<div class= 'dname'>";
             data = data +
@@ -173,8 +167,6 @@ function v(numcopy)
     // append in s+topic.id
     $(pet).append(data);
 // test ends
-    //////////
-
 
 }
 //function for appending comments
@@ -184,8 +176,7 @@ function cmnt(numcopy)
 {
 
 
-
-     $('.Test').remove();
+    $('.Test').remove();
     var data  = "<div class = 'Test'>";
     var topicid=numcopy.slice(1);
     console.log(topicid);
@@ -197,7 +188,7 @@ function cmnt(numcopy)
         {
 
             data = data +"<div class='cmnt'>"+'{{ comment.content }}'+'{{ comment.user_id }}'+"<br>";
-    {% for users in user_u %}
+            {% for users in user_u %}
         {% if users.id == comment.user_id %}
             data = data +"<div class = 'cmnt_username'>"+"{{ users.username }}"+"</div>";
         {% endif %}
@@ -223,119 +214,10 @@ function cmnt(numcopy)
     var pet = "#s" + topicid;
      $(pet).append(data);
 
-
-
-
-     ///////////
 }
 
 
 </script>
-
- <style>
-
-        .card {
-
-            width: 80%;
-            padding: 20px;
-            border: 1px solid;
-            border-color: #DBDBD6;
-            height:auto ;
-            padding-bottom: 100px;
-
-
-        }
-
-
-        .image {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-        }
-
-        .btn-group {
-            padding-top: 20px;
-            padding-right: 30px;
-        }
-
-        hr {
-            color: black;
-            border-bottom: 2px solid;
-        }
-
-        .container-fluid {
-            margin-top: 200px;
-            padding-left: 100px;
-        }
-        .desc{
-            text-align: center;
-            color: #A0A0A0;
-        }
-        .timest{
-            text-align: center;
-            color: black;
-            margin-top: 10px;
-            margin-bottom:10px;
-        }
-.Test {
-
-    margin-top: 20px;
-    display: inline-block;
-
-}
-.dview{
-     font-size:26px;
-       display: inline;
-        width:100%;
-}
-
-
-.dname{
-    font-size:26px;
- padding-right:10px;
-    display: inline;
-    width:100%;
-}
-        .ddown{
-            font-size:20px;
-            display: inline;
-            width:100%;
-
-        }
-        .cmnt{
-
-            font-size:20px;
-             margin-bottom:20px;
-
-        }
-        .cmnt_username{
-
-            text-align:right;
-          font-size:14px;
-    padding-right:10px;
-    display: inline;
-    width:100%;
-            color:#a9a9a9;
-        }
-
-        .cmnt_time{
-            color:#d3d3d3;
-            display:inline;
-
-         font-size:14px;
-
-        }
-        .cmnt_form{
-            margin-top:30px;
-        }
-        .add_button{
-            padding: 10px;
-            border: 1.5px solid;
-            border-color: #778899;
-            height:auto ;
-
-        }
-    </style>
 
 </head>
 <body>
@@ -451,7 +333,7 @@ function cmnt(numcopy)
                 <p id = "v{{ topics.id }}" style="float: left; font-size: 9pt; text-align: center; width: 10%; margin-right: 28%; margin-bottom: 0.5em;"><img src="{% static 'images/video.png' %}"  style="width: 100%; height:10%;">Videos</p>
                 <p id = "c{{ topics.id }}" style="float: left; font-size: 9pt; text-align: center; width: 10%; margin-right: 2%; margin-bottom: 0.5em;"><img src="{% static 'images/comment.jpg' %}"  style="width: 100%; height:10%;">Comments</p>
                 </div>
-                <div  id="s{{ topics.id }}"  style="text-align:center;">
+                <div  id="s{{ topics.id }}"  >
 
                 <!-- for appending the data through js -->
                 </div>
