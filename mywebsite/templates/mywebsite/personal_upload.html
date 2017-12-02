@@ -385,6 +385,32 @@ function cmnt(numcopy)
         <div class="col-md-12" >
         <h1 style="text-align: center">Welcome {{ user.first_name }},</h1>
         <a href="{% url 'mywebsite:topic_upload' %}"><h1 style="text-align: center">Create New Topic</h1></a>
+
+
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#MyModal">Create Topic
+               </button>
+            <div id="MyModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form action="{% url 'mywebsite:topic_upload' %}" method="post" style=" margin-top: 150px">
+                            {% csrf_token %}
+                            <h1>Hello {{ user.first_name }}</h1>
+                            <h1>Add Topic </h1>
+                            {{ form.as_p }}
+                            <div class="row" style="padding-top: 30px">
+
+                            <button type="submit">Create Topic</button>
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+
         </div>
     </div>
 
@@ -398,6 +424,25 @@ function cmnt(numcopy)
 
 
                     <a href="{% url 'mywebsite:add_doc' pk7=topic.id %}" class = "add_button" style="display: inline-block; margin-right:20px;">ADD DOC</a>
+{#                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#MyModal">ADD DOC#}
+{#                        </button>#}
+{#                        <div id="MyModal" class="modal fade" role="dialog">#}
+{#                            <div class="modal-dialog">#}
+{#                                <div class="modal-content">#}
+{#                                    <form enctype="multipart/form-data" action="{% url 'mywebsite:add_doc' pk7=topic.id %}" method="post" style=" margin-top: 150px">#}
+{#                                        {% csrf_token %}#}
+{#                                        <h1>Hello {{ user.first_name }}</h1>#}
+{#                                        <h1>Add Document </h1>#}
+{#                                        {{ form_doc.as_p }}#}
+{#                                        <div class="row" style="padding-top: 30px">#}
+{#                                            <button type="submit">Add Document</button>#}
+{#                                        </div>#}
+{#                                    </form>#}
+{#                                </div>#}
+{##}
+{#                            </div>#}
+{#                        </div>#}
+
                     <a href="{% url 'mywebsite:add_video' pk8=topic.id %}"  class = "add_button" style="display: inline-block;">ADD VIDEO</a>
 {#                    <a href="{% url 'mywebsite:add_comment' pk9=topic.id %}"  style="display: inline-block;">ADD Comment</a>#}
                 </div>

@@ -292,6 +292,23 @@ function cmnt(numcopy)
         {% for faculty in faculty_name %}
                 {% if faculty.user_id == user.id %}
                     <a href="{% url 'mywebsite:topic_upload' %}"><h1 style="text-align: center">Create New Topic</h1></a>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#MyModal">Create Topic
+                    </button>
+                    <div id="MyModal" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form action="{% url 'mywebsite:topic_upload' %}" method="post" style=" margin-top: 150px">
+                                    {% csrf_token %}
+                                    <h1>Hello {{ user.first_name }}</h1>
+                                    <h1>Add Topic </h1>
+                                    {{ form.as_p }}
+                                    <div class="row" style="padding-top: 30px">
+                                        <button type="submit">Create Topic</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                     {% endif %}
 
         <h3 align="center"><b>{{ faculty.course_name.course_name }} BY {{ faculty.user.first_name }} {{ faculty.user.last_name }}  </b></h3>
