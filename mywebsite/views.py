@@ -272,12 +272,8 @@ def topic_upload(request):
     if request.method=='POST':
         form = TopicForm(request.POST,initial={'user_id':request.user.id})
         if form.is_valid():
-            # u =form.save(commit=False)
-            # u.user_id=request.user.id
-            # u.save()
-            # # form.save().user_id=request.user.id
             form.save()
-            return redirect('mywebsite:home')
+            return HttpResponseRedirect("/upload/" + (str)(request.user.id))
     else:
         form = TopicForm(initial={'user_id':request.user.id})
 
@@ -303,7 +299,7 @@ def add_doc(request,pk7):
         form = DocumentForm(request.POST,request.FILES,initial={'topic_id':pk7})
         if form.is_valid():
             form.save()
-            return redirect('mywebsite:home')
+            return HttpResponseRedirect("/upload/" + (str)(request.user.id))
     else:
         form = DocumentForm(initial={'topic_id':pk7})
 
@@ -316,7 +312,7 @@ def add_video(request,pk8):
         form = VideoForm(request.POST,request.FILES,initial={'topic_id':pk8})
         if form.is_valid():
             form.save()
-            return redirect('mywebsite:home')
+            return HttpResponseRedirect("/upload/"+(str)(request.user.id))
     else:
         form = VideoForm(initial={'topic_id':pk8})
 
