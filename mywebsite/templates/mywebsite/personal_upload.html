@@ -103,7 +103,8 @@ var data2 ;
             data2 = data2 +"</div>";
             data2 = data2 + "<div class='ddown'>";
             data2 = data2 +"<a href='{{ docs.document_file.url }}' download='{{docs.document_name}}'><i class='fa fa-arrow-circle-down' aria-hidden='true'></i></a>"+"<br>";
-            data2 = data2 +"</div>";
+            data2 = data2 +"</div><div class='dview' >";
+            data2 = data2 +"<p><a href='{{ docs.document_file.url }}' target='_blank' title ='open document'>View document</a></p></div>";
         }
     {% endfor %}
    data2 = data2 +  "</div>";
@@ -131,7 +132,7 @@ function v(numcopy)
                 "<div id=\"light\">\n" +
                 "  <a class=\"boxclose\" id=\"boxclose\" onclick=\"lightbox_close();\"></a>\n" +
                 "  <video id=\"VisaChipCardVideo\" width=\"600\" controls>\n" +
-                "      <source src='/media/videos/mov_bbb.mp4' type='video/mp4\'>\n" +
+                "      <source src='{{ video.video_file.url }}' type='video/mp4\'>\n" +
                 "      <!--Browser does not support <video> tag -->\n" +
                 "    </video>\n" +
                 "</div>\n" +
@@ -139,7 +140,6 @@ function v(numcopy)
                 "<div id=\"fade\" onClick=\"lightbox_close();\"></div>\n" +
                 "\n" +
                 "<div>\n" +
-                "  <a href=\"#\" onclick=\"lightbox_open();\">Watch video</a>\n" +
                 "</div>\n" +
                 "\n" +
                 '{{video.video_name}}';
@@ -264,7 +264,11 @@ function cmnt(numcopy)
     margin-top: 20px;
     display: inline-block;
 }
-
+.dview{
+     font-size:26px;
+       display: inline;
+        width:100%;
+}
 
 
 .dname{
