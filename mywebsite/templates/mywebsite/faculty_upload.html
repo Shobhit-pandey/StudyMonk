@@ -105,7 +105,8 @@ var data2 ;
             data2 = data2 +"</div>";
             data2 = data2 + "<div class='ddown'>";
             data2 = data2 +"<a href='{{ docs.document_file.url}}' download='{{docs.document_name}}'>download</a>"+"<br>";
-            data2 = data2 +"</div>";
+            data2 = data2 +"</div><div class='dview' >";
+            data2 = data2 +"<p><a href='{{ docs.document_file.url }}' target='_blank' title ='open document'>View document</a></p></div>";
         }
     {% endfor %}
    data2 = data2 +  "</div>";
@@ -128,11 +129,26 @@ function v(numcopy)
     {% for video in topic_videos %}
         var k = {{ video.topic_id }};
         if(k==topicid)
+        if(k==topicid)
         {data= data +"<div class= 'dname'>";
-            data = data +'{{video.video_name}}';
+            data = data +
+                "<div id=\"light\">\n" +
+                "  <a class=\"boxclose\" id=\"boxclose\" onclick=\"lightbox_close();\"></a>\n" +
+                "  <video id=\"VisaChipCardVideo\" width=\"600\" controls>\n" +
+                "      <source src='{{ video.video_file.url }}' type='video/mp4\'>\n" +
+                "      <!--Browser does not support <video> tag -->\n" +
+                "    </video>\n" +
+                "</div>\n" +
+                "\n" +
+                "<div id=\"fade\" onClick=\"lightbox_close();\"></div>\n" +
+                "\n" +
+                "<div>\n" +
+                "</div>\n" +
+                "\n" +
+                '{{video.video_name}}';
              data = data +"</div>";
             data = data + "<div class='ddown'>";
-            data = data +"<a href='{{ video.video_file.url }}' download='{{video.video_name}}'>download</a>"+"<br>";
+            data = data +"<a href='{{ video.video_file.url }}' download='{{video.video_name}}'><i class='fa fa-arrow-circle-down' aria-hidden='true'></i></a>"+"<br>"+"<br>"+"<br>";
             data= data +"</div>";
         }
     {% endfor %}
