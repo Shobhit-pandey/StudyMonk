@@ -198,12 +198,12 @@ function cmnt(numcopy)
         }
     {% endfor %}
 
-{% for topic in topic_name%}
-        var j = {{topic.id}}
+{% for topics in topic%}
+        var j = {{topics.id}}
     // comment box ...change submit button id  = "ct" + topic id
         if (j==topicid)
         {
-     data = data +"<div class = 'cmnt_form'>"+ "<form action='{% url 'mywebsite:add_comment' pk9=topic.id %}'method ='post'>{% csrf_token %}<div class='form-group'><button type='submit' class='btn btn-default' id='ct1' type='submit'>Comment</button> </div></form></div>"
+     data = data +"<div class = 'cmnt_form'>"+ "<form action='{% url 'mywebsite:add_comment' pk9=topics.id %}'method ='post'>{% csrf_token %}<div class='form-group'><button type='submit' class='btn btn-default' id='ct1' type='submit'>Comment</button> </div></form></div>"
             console.log(data);
         }
     //append actual data in
