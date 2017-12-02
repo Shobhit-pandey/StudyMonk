@@ -26,7 +26,6 @@ from mywebsite.models import StudentRegistration, FacultyRegistration, CollegeNa
     Topic, TopicThread, DiscussionComment, Subject, Thread, Comment, Video, Document
 from mywebsite.token import account_activation_token
 
-
 def user_login(request):
     pass
 
@@ -317,8 +316,12 @@ def add_video(request,pk8):
         form = VideoForm(initial={'topic_id':pk8})
 
     return render(request, 'mywebsite/add_video.html',{'form':form,'topic':topic})
+prev = []
 @login_required()
 def add_comment(request,pk9):
+    previous=request.META.get('HTTP_REFERER','/')
+    prev.append(previous)
+    print(prev)
     topic = get_object_or_404(Topic,pk=pk9)
     if request.method == 'POST':
         local_tz = get_localzone()
@@ -326,7 +329,7 @@ def add_comment(request,pk9):
         form =CommentForm(request.POST,initial={'topic_id':pk9,'user_id':request.user.id,'time_stamp':datetime.datetime.now()})
         if form.is_valid():
             form.save()
-            return redirect('mywebsite:home')
+            return HttpResponseRedirect((str)(prev[-2]))
     else:
         form = CommentForm(initial={'topic_id': pk9, 'user_id': request.user.id,
                                                   'time_stamp': datetime.datetime.now()})
