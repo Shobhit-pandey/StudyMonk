@@ -200,17 +200,7 @@ function cmnt(numcopy)
         {% endfor %}
     {% for users in user_u %}
         {% if users.id == comment.user_id %}
-            data = data +"<div class = 'cmnt_username'>"+"<a data-toggle=\"modal\" data-target=\"#MyModal1\">{{ users.username }}</a>"+" <div id=\"MyModal1\" class=\"modal fade\" role=\"dialog\">\n" +
-                "                <div class=\"modal-dialog\">\n" +
-                "                    <div class=\"modal-content\">\n" +'{% if users.is_staff %}<p style = "text-align:center;font-size:50px;">This is faculty profile</p><h1 style = "text-align:center;">Username : {{ users.username }}</h1><h1 style = "text-align:center;">FirstName : {{ users.first_name }}</h1><h1 style = "text-align:center;">LastName : {{ users.last_name }}</h1><h1 style = "text-align:center;">Email : {{ users.email }}</h1>{% for faculties in fac %}<h1 style = "text-align:center;">Mentorship : {{ faculties.mentorship }}</h1><h1 style = "text-align:center;">Description : {{ faculties.description }}</h1><h1 style = "text-align:center;">College : {{ faculties.college_name }}</h1><h1 style = "text-align:center;">Course : {{ faculties.course_name }}</h1><h1 style = "text-align:center;">Gender : {{ faculties.gender }}</h1>{% endfor %}' +
-                "{% else %}<p style = \"text-align:center;\">This is student profile</p><h1 style = \"text-align:center;\">Username : {{ users.username }}</h1><h1 style = \"text-align:center;\">FirstName : {{ users.first_name }}</h1><h1 style = \"text-align:center;\">LastName : {{ users.last_name }}</h1><h1 style = \"text-align:center;\">Email : {{ users.email }}</h1>{% for students in stu %}<h1 style = \"text-align:center;\">College : {{ students.college_name }}</h1><h1 style = \"text-align:center;\">Gender : {{ students.gender }}</h1>{% endfor %}{% endif %}"+
-                "\n" +
-                "                        \n" +
-                "\n" +
-                "                    </div>\n" +
-                "\n" +
-                "                </div>\n" +
-                "            </div>"+"</div>";
+            data = data +"<div class = 'cmnt_username'>"+"<a data-toggle=\"modal\" data-target=\"#MyModal1\">{{ users.username }}</a>"+"<div id=\"MyModal1\" class=\"modal fade\" role=\"dialog\"><div class=\"modal-dialog\"><div class=\"modal-content\">{% if users.is_staff %}<p style = \"text-align:center;font-size:50px;\">This is faculty profile</p><h1 style = \"text-align:center;\">Username : {{ users.username }}</h1><h1 style = \"text-align:center;\">FirstName : {{ users.first_name }}</h1><h1 style = \"text-align:center;\">LastName : {{ users.last_name }}</h1><h1 style = \"text-align:center;\">Email : {{ users.email }}</h1>{% for faculties in fac %}{% if faculties.user_id == users.id %}<h1 style = \"text-align:center;\">Mentorship : {{ faculties.mentorship }}</h1><h1 style = \"text-align:center;\">Description : {{ faculties.description }}</h1><h1 style = \"text-align:center;\">College : {{ faculties.college_name }}</h1><h1 style = \"text-align:center;\">Course : {{ faculties.course_name }}</h1><h1 style = \"text-align:center;\">Gender : {{ faculties.gender }}</h1>{% endif %}{% endfor %}{% else %}<p style = \"text-align:center;\">This is student profile</p><h1 style = \"text-align:center;\">Username : {{ users.username }}</h1><h1 style = \"text-align:center;\">FirstName : {{ users.first_name }}</h1><h1 style = \"text-align:center;\">LastName : {{ users.last_name }}</h1><h1 style = \"text-align:center;\">Email : {{ users.email }}</h1>{% for students in stu %}{% if students.user_id == users.id %}<h1 style = \"text-align:center;\">College : {{ students.college_name }}</h1><h1 style = \"text-align:center;\">Gender : {{ students.gender }}</h1>{% endif %}{% endfor %}{% endif %}</div></div></div>"+"</div>";
 
         {% endif %}
         {% endfor %}
@@ -269,7 +259,7 @@ function cmnt(numcopy)
             padding-right: 30px;
         }
 
-        hr {
+        .hr {
             color: black;
             border-bottom: 2px solid;
         }
