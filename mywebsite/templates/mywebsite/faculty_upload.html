@@ -218,7 +218,20 @@ function cmnt(numcopy)
 
 
 </script>
+<style>
 
+        .card {
+
+            width: 80%;
+            padding: 20px;
+            border: 1px solid;
+            border-color: #DBDBD6;
+            height:auto ;
+            padding-bottom: 100px;
+
+
+        }
+</style>
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -291,20 +304,24 @@ function cmnt(numcopy)
         <div class="col-md-12">
         {% for faculty in faculty_name %}
                 {% if faculty.user_id == user.id %}
-                    <a href="{% url 'mywebsite:topic_upload' %}"><h1 style="text-align: center">Create New Topic</h1></a>
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#MyModal">Create Topic
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#MyModal" style="margin-left:40%; margin-bottom:5%;background-color:#87cefa;border-color:#000000;">Create Topic
                     </button>
                     <div id="MyModal" class="modal fade" role="dialog">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                                <form action="{% url 'mywebsite:topic_upload' %}" method="post" style=" margin-top: 150px">
+
+                                <form action="{% url 'mywebsite:topic_upload' %}" method="post" style=" margin-top: 10%; ,margin-bottom:5%;">
                                     {% csrf_token %}
-                                    <h1>Hello {{ user.first_name }}</h1>
-                                    <h1>Add Topic </h1>
+
+                                    <h1 style="text-align:center;font-size:28px;color:#1e90ff;">Hello {{ user.first_name }}</h1>
+                                    <h1 style="text-align:center;font-size:28px;color:#1e90ff;">Enter Details of the Topic </h1>
+                                    <div style="padding-left:20%;padding-right:20%;">
                                     {{ form.as_p }}
-                                    <div class="row" style="padding-top: 30px">
-                                        <button type="submit">Create Topic</button>
                                     </div>
+
+
+                                        <button type="submit"  style=" margin-left:40%;padding-left: 10px;padding-right: 10px;background-color: #8c9aff; ">Create Topic</button>
+
                                 </form>
                             </div>
                         </div>
@@ -319,7 +336,7 @@ function cmnt(numcopy)
 
         {% for topics in topic %}
             {% if topics.user_id == faculty.user_id %}
-                <div class ="row" style="margin-bottom: 50px;">
+                <div class ="row" style="margin-bottom: 50px; text-align:center; margin-left:15%;margin-right:10%;">
             <div class="col-md-12">
             <div class="card" id="{{ topics.id }}">
                 <div class="desc">
