@@ -105,6 +105,7 @@ var data2 ;
             data2 = data2 +"</div>";
             data2 = data2 + "<div class='ddown'>";
             data2 = data2 +"<a href='{{ docs.document_file.url}}' download='{{docs.document_name}}'>download</a>"+"<br>";
+             data2 = data2 +"<div class='copyr'>"+'Copyright Issue:'+'{{ docs.copyright }}'+"</div>";
             data2 = data2 +"</div><div class='dview' >";
             data2 = data2 +"<p><a href='{{ docs.document_file.url }}' target='_blank' title ='open document'>View document</a></p></div>";
         }
@@ -150,6 +151,7 @@ function v(numcopy)
             data = data + "<div class='ddown'>";
             data = data +"<a href='{{ video.video_file.url }}' ></a>"+"<br>"+"<br>"+"<br>";
             data= data +"</div>";
+             data2 = data2 +"<div class='copyr'>"+'Copyright Issue:'+'{{ video.copyright }}'+"</div>";
         }
     {% endfor %}
     // find all videos  and append them
@@ -219,6 +221,10 @@ function cmnt(numcopy)
 
 </script>
 <style>
+    .copyr{
+            color:#a9a9a9;
+            font-size:18px;
+        }
 
         .card {
 
@@ -336,7 +342,7 @@ function cmnt(numcopy)
 
         {% for topics in topic %}
             {% if topics.user_id == faculty.user_id %}
-                <div class ="row" style="margin-bottom: 50px; text-align:center; margin-left:15%;margin-right:10%;">
+                <div class ="row" style="margin-bottom: 50px; margin-left:15%;margin-right:10%;">
             <div class="col-md-12">
             <div class="card" id="{{ topics.id }}">
                 <div class="desc">

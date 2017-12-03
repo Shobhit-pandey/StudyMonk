@@ -101,9 +101,11 @@ var data2 ;
         if(k==topic_id)
         {   data2= data2 +"<div class= 'dname'>";
             data2 = data2 +'{{docs.document_name}}';
+
             data2 = data2 +"</div>";
             data2 = data2 + "<div class='ddown'>";
             data2 = data2 +"<a href='{{ docs.document_file.url }}' download='{{docs.document_name}}'><i class='fa fa-arrow-circle-down' aria-hidden='true'></i></a>"+"<br>";
+             data2 = data2 +"<div class='copyr'>"+'Copyright Issue:'+'{{ docs.copyright }}'+"</div>";
             data2 = data2 +"</div><div class='dview' >";
             data2 = data2 +"<p><a href='{{ docs.document_file.url }}' target='_blank' title ='open document'>View document</a></p></div>";
         }
@@ -148,6 +150,7 @@ function v(numcopy)
             data = data + "<div class='ddown'>";
             data = data +"<a href='{{ video.video_file.url }}' ></a>"+"<br>"+"<br>"+"<br>";
             data= data +"</div>";
+             data = data +"<div class='copyr'>"+'Copyright Issue:'+'{{ video.copyright }}'+"</div>";
         }
     {% endfor %}
     // find all videos  and append them
@@ -217,6 +220,10 @@ function cmnt(numcopy)
 
 </script>
     <style>
+        .copyr{
+            color:#a9a9a9;
+            font-size:18px;
+        }
 
         .card {
 
@@ -274,7 +281,7 @@ function cmnt(numcopy)
 
 .dname{
     font-size:26px;
- padding-right:10px;
+ padding-right:20px;
     display: inline;
     width:100%;
 }
@@ -420,7 +427,7 @@ function cmnt(numcopy)
     </div>
 
             {% for topic in topic_name%}
-                 <div class="row" style="margin-bottom: 50px; text-align:center; margin-left:15%;margin-right:10%;">
+                 <div class="row" style="margin-bottom: 50px;  margin-left:15%;margin-right:10%;">
         <div class="col-md-12">
              <div class="card" id="{{ topic.id }}" >
                 <div class="desc">
@@ -454,7 +461,7 @@ function cmnt(numcopy)
 
 
                 <div class="timest" >
-                 29 May 2017
+{#                 29 May 2017#}
                 </div>
                 <div>
                 <p  id = "d{{ topic.id }}" style="float: left; font-size: 9pt; text-align: center; width: 10%; margin-right: 25%; margin-bottom: 0.5em;"><img src="{% static 'images/doc.png' %}" style="width: 100%; height:10%; ">Documents</p>
