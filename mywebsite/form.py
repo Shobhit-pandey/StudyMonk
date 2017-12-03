@@ -11,8 +11,8 @@ CHOICE = (
     ('other','other')
 )
 COPYRIGHT = (
+    ('no','no'),
     ('yes','yes'),
-    ('no','no')
 )
 
 class StudentRegistrationForm(forms.Form):
@@ -203,7 +203,7 @@ class CourseNameForm(forms.Form):
 class TopicForm(forms.Form):
     title = forms.CharField(max_length=100,required=True)
     description = forms.CharField(max_length=1000,required=False)
-    user_id = forms.CharField(max_length=1000, required=True, disabled=True)
+    user_id = forms.CharField(max_length=1000, required=True, disabled=True,widget=forms.HiddenInput())
 
     def save(self, kwargs=None):
         t = Topic.objects.create(title=self.cleaned_data.get('title'),
@@ -215,7 +215,7 @@ class TopicForm(forms.Form):
 
 class DocumentForm(forms.Form):
     document_name = forms.CharField(max_length=100,required=True)
-    topic_id =forms.CharField(max_length=1000,required=True, disabled=True)
+    topic_id =forms.CharField(max_length=1000,required=True, disabled=True,widget=forms.HiddenInput())
     copyright = forms.ChoiceField(COPYRIGHT,required=True)
     document_file = forms.FileField(required=True)
 
@@ -239,7 +239,7 @@ class DocumentForm(forms.Form):
 
 class VideoForm(forms.Form):
     video_name = forms.CharField(max_length=100, required=True)
-    topic_id = forms.CharField(max_length=1000, required=True, disabled=True)
+    topic_id = forms.CharField(max_length=1000, required=True, disabled=True,widget=forms.HiddenInput())
     copyright = forms.ChoiceField(COPYRIGHT, required=True)
     video_file = forms.FileField(required=True)
 
@@ -263,9 +263,9 @@ class VideoForm(forms.Form):
 
 class CommentForm(forms.Form):
     content = forms.CharField(max_length=10000,required=True)
-    time_stamp = forms.DateTimeField(required=True,disabled=True)
-    topic_id = forms.CharField(max_length=1000,required=True,disabled=True)
-    user_id = forms.CharField(max_length=1000,required=True,disabled=True)
+    time_stamp = forms.DateTimeField(required=True,disabled=True,widget=forms.HiddenInput())
+    topic_id = forms.CharField(max_length=1000,required=True,disabled=True,widget=forms.HiddenInput())
+    user_id = forms.CharField(max_length=1000,required=True,disabled=True,widget=forms.HiddenInput())
 
     def clean_content(self):
         print("clean content: ", self.cleaned_data)
