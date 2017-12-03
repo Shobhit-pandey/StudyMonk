@@ -188,8 +188,16 @@ function cmnt(numcopy)
         var k = {{ comment.topic_id}};
         if(k==topicid)
         {
+        {% for user in user_u %}
+            {% if user.id == comment.user_id %}
+                {% if user.is_staff %}
+            data = data +"<div class='cmntf'>"+'{{ comment.content }}'+"<br>";
+                    {% else %}
+                    data = data +"<div class='cmnts'>"+'{{ comment.content }}'+"<br>";
+                {% endif %}
 
-            data = data +"<div class='cmnt'>"+'{{ comment.content }}'+"<br>";
+            {% endif %}
+        {% endfor %}
             {% for users in user_u %}
         {% if users.id == comment.user_id %}
             data = data +"<div class = 'cmnt_username'>"+"{{ users.username }}"+"</div>";
@@ -237,6 +245,22 @@ function cmnt(numcopy)
 
 
         }
+    .cmntf{
+
+            font-size:20px;
+             margin-bottom:20px;
+            color:#006400;
+
+        }
+        .cmnts{
+
+            font-size:20px;
+             margin-bottom:20px;
+            color:#1e90ff;
+
+
+        }
+
 </style>
 </head>
 <body>

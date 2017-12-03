@@ -188,7 +188,16 @@ function cmnt(numcopy)
         if(k==topicid)
         {
 
-            data = data +"<div class='cmnt'>"+'{{ comment.content }}'+"<br>";
+            {% for user in user_u %}
+            {% if user.id == comment.user_id %}
+                {% if user.is_staff %}
+            data = data +"<div class='cmntf'>"+'{{ comment.content }}'+"<br>";
+                    {% else %}
+                    data = data +"<div class='cmnts'>"+'{{ comment.content }}'+"<br>";
+                {% endif %}
+
+            {% endif %}
+        {% endfor %}
     {% for users in user_u %}
         {% if users.id == comment.user_id %}
             data = data +"<div class = 'cmnt_username'>"+"{{ users.username }}"+"</div>";
@@ -291,10 +300,19 @@ function cmnt(numcopy)
             width:100%;
 
         }
-        .cmnt{
+        .cmntf{
 
             font-size:20px;
              margin-bottom:20px;
+            color:#006400;
+
+        }
+        .cmnts{
+
+            font-size:20px;
+             margin-bottom:20px;
+            color:#1e90ff;
+
 
         }
         .cmnt_username{
