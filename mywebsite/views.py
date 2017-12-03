@@ -262,6 +262,8 @@ def faculty_upload(request,pk5):
     video = Video.objects.all()
     document = Document.objects.all()
     user_u = User.objects.all()
+    fac = FacultyRegistration.objects.all()
+    stu = StudentRegistration.objects.all()
     if request.method=='POST':
         form = TopicForm(request.POST,initial={'user_id':request.user.id})
         if form.is_valid():
@@ -271,8 +273,8 @@ def faculty_upload(request,pk5):
         form = TopicForm(initial={'user_id':request.user.id})
     return render(request, 'mywebsite/faculty_upload.html', {'faculty':faculty,'faculty_name':faculty_name,
                                                              'topic':topic,'topic_videos':video,'topic_docs':document,
-                                                             'topic_comment':comment,'user_u':user_u,'form':form
-                                                               })
+                                                             'topic_comment':comment,'user_u':user_u,'form':form,
+                                                             'fac': fac, 'stu': stu})
 @login_required()
 def topic_upload(request):
     if request.method=='POST':
@@ -294,6 +296,8 @@ def personal_upload(request,pk6):
     video = Video.objects.all()
     document = Document.objects.all()
     user_u = User.objects.all()
+    fac = FacultyRegistration.objects.all()
+    stu = StudentRegistration.objects.all()
     if request.method=='POST':
         form = TopicForm(request.POST,initial={'user_id':request.user.id})
         if form.is_valid():
@@ -304,7 +308,8 @@ def personal_upload(request,pk6):
 
     return render(request,'mywebsite/personal_upload.html',{'faculty':faculty,'topic_name':topic_name,
                                                             'topic_videos':video,'topic_docs':document,
-                                                            'topic_comment':comment,'user_u':user_u,'form':form})
+                                                            'topic_comment':comment,'user_u':user_u,'form':form,
+                                                            'fac':fac,'stu':stu})
 @login_required()
 def add_doc(request,pk7):
     topic = get_object_or_404(Topic, pk=pk7)
@@ -438,5 +443,3 @@ def fill_question(request, pk):
     else:
         q_form = QuestionForm()
         return render(request, 'mywebsite/add_question.html', {'q_form': q_form})
-
-
