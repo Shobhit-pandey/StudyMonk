@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for lists in list %}
+    {% if lists.is_staff %}
+        {% for faculties in fac %}
+            {% if lists.id == faculties.user_id %}
+                <p style = "text-align:center;font-size:50px;">This is faculty profile</p>
+                <h1 style = "text-align:center;">Username : {{ lists.username }}</h1>
+                <h1 style = "text-align:center;">FirstName : {{ lists.first_name }}</h1>
+                <h1 style = "text-align:center;">LastName : {{ lists.last_name }}</h1>
+                <h1 style = "text-align:center;">Email : {{ lists.email }}</h1>
+                <h1 style = "text-align:center;">Mentorship : {{ faculties.mentorship }}</h1>
+                <h1 style = "text-align:center;">Description : {{ faculties.description }}</h1>
+                <h1 style = "text-align:center;">College : {{ faculties.college_name }}</h1>
+                <h1 style = "text-align:center;">Course : {{ faculties.course_name }}</h1>
+                <h1 style = "text-align:center;">Gender : {{ faculties.gender }}</h1>
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        {% for students in stu %}
+            {% if lists.id == students.user_id %}
+                <p style = "text-align:center;">This is student profile</p>
+                <h1 style = "text-align:center;">Username : {{ lists.username }}</h1>
+                <h1 style = "text-align:center;">FirstName : {{ lists.first_name }}</h1>
+                <h1 style = "text-align:center;">LastName : {{ lists.last_name }}</h1>
+                <h1 style = "text-align:center;">Email : {{ lists.email }}</h1>
+                <h1 style = "text-align:center;">College : {{ students.college_name }}</h1>
+                <h1 style = "text-align:center;">Gender : {{ students.gender }}</h1>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endfor %}
+</body>
+</html>

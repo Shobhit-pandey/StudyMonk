@@ -448,3 +448,10 @@ def fill_question(request, pk):
     else:
         q_form = QuestionForm()
         return render(request, 'mywebsite/add_question.html', {'q_form': q_form})
+
+def commentprofile(request,pk10):
+    list = User.objects.filter(id=pk10)
+    fac = FacultyRegistration.objects.all()
+    stu = StudentRegistration.objects.all()
+    args = {'list': list, 'fac': fac, 'stu': stu,}
+    return render(request, 'mywebsite/commentprofile.html', args)
