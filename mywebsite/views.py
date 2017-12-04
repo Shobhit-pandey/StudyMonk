@@ -372,7 +372,7 @@ def faculty_comments(request,pk10):
 @login_required()
 def discussioncomment(request):
     if request.method == 'POST':
-        comment_form = DiscussionCommentForm(request.POST)
+        comment_form = DiscussionCommentForm(request.POST,initial={'user_id':request.user.id})
         pk1 = request.POST['pk']
         if comment_form.is_valid():
 
@@ -406,11 +406,12 @@ def questions(request, pk):
     ques = Thread.objects.filter(subject=pk)
     fac = FacultyRegistration.objects.all()
     stu = StudentRegistration.objects.all()
+    user_u = User.objects.all()
     var = ""
     for q in ques:
         var = q.subject
 
-    return render(request, 'mywebsite/ques.html', {'ques': ques, 'var': var, 'pk': pk,'fac': fac, 'stu': stu})
+    return render(request, 'mywebsite/ques.html', {'user_u':user_u,'ques': ques, 'var': var, 'pk': pk,'fac': fac, 'stu': stu})
 
 
 def discussioncomments(request, pk):
@@ -424,7 +425,6 @@ def discussioncomments(request, pk):
 @login_required()
 def fill_question(request, pk):
     if request.method == 'POST':
-
         q_form = QForm(request.POST)
 
         if q_form.is_valid():
@@ -433,7 +433,7 @@ def fill_question(request, pk):
             q_question = q_form['question'].value()
             q_user = request.user
             q_subject = Subject.objects.get(pk=pk)
-            T = Thread.objects.create(question=q_question, subject=q_subject, user=q_user)
+            T = Thread.objects.create(question=q_question, subject=q_subject,user_id=request.user.id)
             T.save()
             print(T)
             ques = Thread.objects.filter(subject=pk)

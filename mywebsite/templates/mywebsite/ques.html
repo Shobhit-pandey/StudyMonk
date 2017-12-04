@@ -187,27 +187,30 @@ function docs(numcopy)
     </div>
 </div>
 {% for temp in ques %}
+{% for usere in user_u %}
+                            {% if usere.id == temp.user_id %}
     <div class="card" style="margin-bottom:40px; padding:25px;">
         <div class="row">
             <div class="col-xm-12 col-md-12 col-sm-12">
 
 
 
-                <div class="cmnt" style="font-size:35px;">{{ temp.question }}{{ temp.id }}
+                <div class="cmnt" style="font-size:35px;">{{ temp.id }} . {{ temp.question }}
                     <br>
                     <a data-toggle="modal" data-target="#MyModal">
-                        <div class = "cmnt_username" style="font-size:25px; color:#2f4f4f;">{{ user.username }}</div></a>
+                        <div class = "cmnt_username" style="font-size:25px; color:#2f4f4f;">{{ usere.username }}</div></a>
+                                <div class = "cmnt_time" style="font-size:25px; color:#a9a9a9;">{{ temp.timestamp }}</div></div>
               <div id="MyModal" class="modal fade" role="dialog">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        {% if user.is_staff %}
+                        {% if usere.is_staff %}
                             <p style = "text-align:center;font-size:50px;">This is faculty profile</p>
-                            <h1 style = "text-align:center;">Username : {{ user.username }}</h1>
-                            <h1 style = "text-align:center;">FirstName : {{ user.first_name }}</h1>
-                            <h1 style = "text-align:center;">LastName : {{ user.last_name }}</h1>
-                            <h1 style = "text-align:center;">Email : {{ user.email }}</h1>
+                            <h1 style = "text-align:center;">Username : {{ usere.username }}</h1>
+                            <h1 style = "text-align:center;">FirstName : {{ usere.first_name }}</h1>
+                            <h1 style = "text-align:center;">LastName : {{ usere.last_name }}</h1>
+                            <h1 style = "text-align:center;">Email : {{ usere.email }}</h1>
                             {% for faculties in fac %}
-                                {% if faculties.user_id == user.id %}
+                                {% if faculties.user_id == usere.id %}
                                     <h1 style = "text-align:center;">Mentorship : {{ faculties.mentorship }}</h1>
                                     <h1 style = "text-align:center;">Description : {{ faculties.description }}</h1>
                                     <h1 style = "text-align:center;">College : {{ faculties.college_name }}</h1>
@@ -217,22 +220,25 @@ function docs(numcopy)
                             {% endfor %}
                         {% else %}
                             <p style = "text-align:center;">This is student profile</p>
-                            <h1 style = "text-align:center;">Username : {{ user.username }}</h1>
-                            <h1 style = "text-align:center;">FirstName : {{ user.first_name }}</h1>
-                            <h1 style = "text-align:center;">LastName : {{ user.last_name }}</h1>
-                            <h1 style = "text-align:center;">Email : {{ user.email }}</h1>
+                            <h1 style = "text-align:center;">Username : {{ usere.username }}</h1>
+                            <h1 style = "text-align:center;">FirstName : {{ usere.first_name }}</h1>
+                            <h1 style = "text-align:center;">LastName : {{ usere.last_name }}</h1>
+                            <h1 style = "text-align:center;">Email : {{ usere.email }}</h1>
                             {% for students in stu %}
-                                {% if students.user_id == user.id %}
+                                {% if students.user_id == usere.id %}
                                     <h1 style = "text-align:center;">College : {{ students.college_name }}</h1>
                                     <h1 style = "text-align:center;">Gender : {{ students.gender }}</h1>
                                 {% endif %}
-                            {% endfor %}
-                        {% endif %}
                     </div>
 
                 </div>
+                                {% endfor %}
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
             </div>
-                    <div class = "cmnt_time" style="font-size:25px; color:#a9a9a9;">{{ temp.timestamp }}</div></div>
+
+
 
 
             </div>
@@ -256,7 +262,7 @@ function docs(numcopy)
                                    value="{{ temp.pk }}" type="hidden">
                         </div>
                         <div class="form-group">
-                            <input class="form-control" id="{{ comment_form.user2 }}" name="user" value="1"
+                            <input class="form-control" id="{{ comment_form.user2 }}" name="user" value="{{ user.id }}"
                                    type="hidden">
                         </div>
 
