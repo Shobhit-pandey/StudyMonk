@@ -90,7 +90,7 @@
             <div class="row">
      {% endif %}
 
-        {% if faculties.user.is_staff %}
+        {% if faculties.user.is_staff and faculties.user.is_active  %}
         {% for faculty_college_names in faculty_college_name %}
         {% if faculties.college_name_id == faculty_college_names.college_name_id and forloop.counter == 1 %}
 

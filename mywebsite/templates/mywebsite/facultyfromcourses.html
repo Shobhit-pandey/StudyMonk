@@ -89,7 +89,7 @@
         {% if forloop.counter|divisibleby:"5" or forloop.counter == 1 %}
             <div class="row">
      {% endif %}
-        {% if faculties.user.is_staff %}
+        {% if faculties.user.is_staff and faculties.user.is_active %}
         {% for faculty_course_names in faculty_course_name %}
         {% if faculties.course_name_id == faculty_course_names.course_name_id and forloop.counter == 1 %}
 
