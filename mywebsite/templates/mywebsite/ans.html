@@ -174,7 +174,7 @@
                             <h1 style = "text-align:center;">LastName : {{ list.user.last_name }}</h1>
                             <h1 style = "text-align:center;">Email : {{ list.user.email }}</h1>
                             {% for students in stu %}
-                                {% if students.user_id == users.id %}
+                                {% if students.user_id == list.user.id %}
                                     <h1 style = "text-align:center;">College : {{ students.college_name }}</h1>
                                     <h1 style = "text-align:center;">Gender : {{ students.gender }}</h1>
                                 {% endif %}

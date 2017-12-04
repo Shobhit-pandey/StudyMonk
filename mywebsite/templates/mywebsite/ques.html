@@ -195,7 +195,43 @@ function docs(numcopy)
 
                 <div class="cmnt" style="font-size:35px;">{{ temp.question }}{{ temp.id }}
                     <br>
-                    <div class = "cmnt_username" style="font-size:25px; color:#2f4f4f;">{{ user.username }}</div>
+                    <a data-toggle="modal" data-target="#MyModal">
+                        <div class = "cmnt_username" style="font-size:25px; color:#2f4f4f;">{{ user.username }}</div></a>
+              <div id="MyModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        {% if user.is_staff %}
+                            <p style = "text-align:center;font-size:50px;">This is faculty profile</p>
+                            <h1 style = "text-align:center;">Username : {{ user.username }}</h1>
+                            <h1 style = "text-align:center;">FirstName : {{ user.first_name }}</h1>
+                            <h1 style = "text-align:center;">LastName : {{ user.last_name }}</h1>
+                            <h1 style = "text-align:center;">Email : {{ user.email }}</h1>
+                            {% for faculties in fac %}
+                                {% if faculties.user_id == user.id %}
+                                    <h1 style = "text-align:center;">Mentorship : {{ faculties.mentorship }}</h1>
+                                    <h1 style = "text-align:center;">Description : {{ faculties.description }}</h1>
+                                    <h1 style = "text-align:center;">College : {{ faculties.college_name }}</h1>
+                                    <h1 style = "text-align:center;">Course : {{ faculties.course_name }}</h1>
+                                    <h1 style = "text-align:center;">Gender : {{ faculties.gender }}</h1>
+                                {% endif %}
+                            {% endfor %}
+                        {% else %}
+                            <p style = "text-align:center;">This is student profile</p>
+                            <h1 style = "text-align:center;">Username : {{ user.username }}</h1>
+                            <h1 style = "text-align:center;">FirstName : {{ user.first_name }}</h1>
+                            <h1 style = "text-align:center;">LastName : {{ user.last_name }}</h1>
+                            <h1 style = "text-align:center;">Email : {{ user.email }}</h1>
+                            {% for students in stu %}
+                                {% if students.user_id == user.id %}
+                                    <h1 style = "text-align:center;">College : {{ students.college_name }}</h1>
+                                    <h1 style = "text-align:center;">Gender : {{ students.gender }}</h1>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+
+                </div>
+            </div>
                     <div class = "cmnt_time" style="font-size:25px; color:#a9a9a9;">{{ temp.timestamp }}</div></div>
 
 

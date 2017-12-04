@@ -404,11 +404,13 @@ class SubjectList(generic.ListView):
 def questions(request, pk):
     global answers
     ques = Thread.objects.filter(subject=pk)
+    fac = FacultyRegistration.objects.all()
+    stu = StudentRegistration.objects.all()
     var = ""
     for q in ques:
         var = q.subject
 
-    return render(request, 'mywebsite/ques.html', {'ques': ques, 'var': var, 'pk': pk})
+    return render(request, 'mywebsite/ques.html', {'ques': ques, 'var': var, 'pk': pk,'fac': fac, 'stu': stu})
 
 
 def discussioncomments(request, pk):
