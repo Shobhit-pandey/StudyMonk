@@ -195,7 +195,7 @@ class DiscussionComment(models.Model):
     user = models.ForeignKey(User)
 
     def __str__(self):
-        return self.user.user.username
+        return self.content
 
     def get_absolute_url(self):
         return reverse('mywebsite:student_login')

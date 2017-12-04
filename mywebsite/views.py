@@ -418,8 +418,9 @@ def discussioncomments(request, pk):
     lists = DiscussionComment.objects.filter(thread=pk)
     fac = FacultyRegistration.objects.all()
     stu = StudentRegistration.objects.all()
+    user_u = User.objects.all()
     # questions = Thread.objects.filter()
-    args = {'lists': lists,'fac': fac, 'stu': stu}
+    args = {'lists': lists, 'fac': fac, 'stu': stu, 'user_u': user_u}
     return render(request, 'mywebsite/ans.html', args)
 
 @login_required()
