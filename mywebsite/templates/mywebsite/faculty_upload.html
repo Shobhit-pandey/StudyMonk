@@ -151,7 +151,7 @@ function v(numcopy)
             data = data + "<div class='ddown'>";
             data = data +"<a href='{{ video.video_file.url }}' ></a>"+"<br>"+"<br>"+"<br>";
             data= data +"</div>";
-             data2 = data2 +"<div class='copyr'>"+'Copyright Issue:'+'{{ video.copyright }}'+"</div>";
+             data = data +"<div class='copyr'>"+'Copyright Issue:'+'{{ video.copyright }}'+"</div>";
         }
     {% endfor %}
     // find all videos  and append them

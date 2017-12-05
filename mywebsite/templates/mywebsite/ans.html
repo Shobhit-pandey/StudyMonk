@@ -145,54 +145,23 @@
     <div id="view-div" data-actions-icnt="#">
 
 
-                        <!--{{ users.username }}-->
-          <div class="cmnt" style="font-size:30px; font-family: Courier; color:#6495ed;">{{ list.content }}
+        {% if list.user.is_staff %}
+          <div class="cmnt" style="font-size:30px; font-family: Courier; color:#13a73d;">{{ list.content }}
           <br>
 
               <a href="{% url 'mywebsite:commentprofile' pk10=list.user_id %}">
                   <div class = "cmnt_username" style="font-size:25px; color:#2f4f4f;padding-top:5px; margin-top:0px; ">{{ list.user }}</div></a>
-{#              <div id="MyModal" class="modal fade" role="dialog">#}
-{#                <div class="modal-dialog">#}
-{#                    <div class="modal-content">#}
-{##}
-{#                            {% for users in user_u %}#}
-{#                            {% if users.id == list.user_id %}#}
-{#                            {% if users.is_staff %}#}
-{#                            <p style = "text-align:center;font-size:50px;">This is faculty profile</p>#}
-{#                            <h1 style = "text-align:center;">Username : {{ users.username }}</h1>#}
-{#                            <h1 style = "text-align:center;">FirstName : {{ users.first_name }}</h1>#}
-{#                            <h1 style = "text-align:center;">LastName : {{ users.last_name }}</h1>#}
-{#                            <h1 style = "text-align:center;">Email : {{ users.email }}</h1>#}
-{#                            {% for faculties in fac %}#}
-{#                                {% if faculties.user_id == users.id %}#}
-{#                                    <h1 style = "text-align:center;">Mentorship : {{ faculties.mentorship }}</h1>#}
-{#                                    <h1 style = "text-align:center;">Description : {{ faculties.description }}</h1>#}
-{#                                    <h1 style = "text-align:center;">College : {{ faculties.college_name }}</h1>#}
-{#                                    <h1 style = "text-align:center;">Course : {{ faculties.course_name }}</h1>#}
-{#                                    <h1 style = "text-align:center;">Gender : {{ faculties.gender }}</h1>#}
-{#                                {% endif %}#}
-{#                            {% endfor %}#}
-{#                        {% else %}#}
-{#                            <p style = "text-align:center;">This is student profile</p>#}
-{#                            <h1 style = "text-align:center;">Username : {{ users.username }}</h1>#}
-{#                            <h1 style = "text-align:center;">FirstName : {{ users.first_name }}</h1>#}
-{#                            <h1 style = "text-align:center;">LastName : {{ users.last_name }}</h1>#}
-{#                            <h1 style = "text-align:center;">Email : {{ users.email }}</h1>#}
-{#                            {% for students in stu %}#}
-{#                                {% if students.user_id == list.user_id %}#}
-{#                                    <h1 style = "text-align:center;">College : {{ students.college_name }}</h1>#}
-{#                                    <h1 style = "text-align:center;">Gender : {{ students.gender }}</h1>#}
-{#                                {% endif %}#}
-{#                            {% endfor %}#}
-{#                        {% endif %}#}
-{#                        {% endif %}#}
-{#                        {% endfor %}#}
-{#                    </div>#}
-{##}
-{#                </div>#}
-{#            </div>#}
           <div class = "cmnt_time" style="font-size:25px; color:#a9a9a9;">{{ list.timestamp }}</div> 
           </div>
+        {% else %}
+            <div class="cmnt" style="font-size:30px; font-family: Courier; color:#6495ed;">{{ list.content }}
+          <br>
+
+              <a href="{% url 'mywebsite:commentprofile' pk10=list.user_id %}">
+                  <div class = "cmnt_username" style="font-size:25px; color:#2f4f4f;padding-top:5px; margin-top:0px; ">{{ list.user }}</div></a>
+          <div class = "cmnt_time" style="font-size:25px; color:#a9a9a9;">{{ list.timestamp }}</div> 
+          </div>
+        {% endif %}
 
         {% endfor %}
 
